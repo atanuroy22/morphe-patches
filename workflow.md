@@ -88,7 +88,7 @@ Expected files to modify
 - BaseSetting.java
 - Settings.java
 - strings.xml
-  - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note)
+  - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note, morphe_settings_title to Premium Settings, morphe_settings_submenu_title to Settings)
 - CustomBrandingPatch.java
 - BaseCustomBrandingPatch.kt
 - Constants.kt
