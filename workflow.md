@@ -62,7 +62,7 @@ YouTube Music defaults to enforce
    - Set default icon style to Original.
 
 Expected files to modify
-- BaseSettings.java
+- BaseSetting.java
 - Settings.java
 - strings.xml
 - CustomBrandingPatch.java
@@ -79,14 +79,14 @@ Release process from fork
    - Skip website deploy and FCM steps when related secrets/vars are missing.
 
 Manager usage notes
-1. Use this source URL in ReVanced Manager:
+1. Use this source URL in Morphe Manager:
    https://raw.githubusercontent.com/atanuroy22/morphe-patches/refs/heads/main/patches-bundle.json
 2. Ensure the JSON includes:
    - version
-   - patches download URL
-   - signature URL (or empty if not used by your flow)
-   - createdAt
-   - changelog/description
+   - download_url
+   - signature_download_url (or empty if not used by your flow)
+   - created_at
+   - description
 3. Keep that JSON updated for each release.
 
 Important
