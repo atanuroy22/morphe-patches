@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/atanuroy22/morphe-patches/compare/v1.0.0...v1.0.1) (2026-03-26)
+
+
+### Bug Fixes
+
+* align bundle and workflow notes for Morphe Manager ([a108e78](https://github.com/atanuroy22/morphe-patches/commit/a108e78e842f780da0ef298027bf1f0461952a78))
+
 # 1.0.0 (2026-03-26)
 
 
