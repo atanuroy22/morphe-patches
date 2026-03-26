@@ -7,6 +7,11 @@
 
 ## [1.0.2](https://github.com/atanuroy22/morphe-patches/compare/v1.0.1...v1.0.2) (2026-03-26)
 
+### Bug Fixes
+
+* set YouTube package default and feed/shorts defaults to fork preferences
+* set YouTube doodles/seekbar defaults and hide About entry in settings menu
+
 ## [1.0.1](https://github.com/atanuroy22/morphe-patches/compare/v1.0.0...v1.0.1) (2026-03-26)
 
 

@@ -29,7 +29,7 @@ Second \"item\" text"</string>
     <!-- String is also duplicated in Reddit import / export preference -->
     <string name="morphe_settings_import">Import</string>
     <string name="morphe_settings_import_copy">Copy</string>
-    <string name="morphe_settings_import_reset">Morphe settings reset to default</string>
+    <string name="morphe_settings_import_reset">Premium Youtube settings reset to default</string>
     <string name="morphe_settings_import_success">Imported %d settings</string>
     <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
     <string name="morphe_settings_search_hint">Search settings</string>
@@ -59,7 +59,7 @@ Second \"item\" text"</string>
 To translate new languages or improve the existing translations, visit morphe.software/translate"</string>
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
-    <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
+    <string name="morphe_pref_import_export_summary">Import / Export Premium Youtube settings</string>
     <string name="morphe_settings_import_file">Import from file</string>
     <string name="morphe_settings_import_file_success">Settings imported successfully, tap Save to apply</string>
     <string name="morphe_settings_import_file_failed">Failed to import settings</string>

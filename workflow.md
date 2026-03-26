@@ -24,37 +24,56 @@ Global patch behavior
   return;
 
 YouTube defaults to enforce
-1. External downloader
+1. MORPHE Youtube package name
+   - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids
+   
+2. External downloader
    - Enable external downloader.
    - Enable external downloader action button.
    - Set default package name to com.video.fun.app.
 
-2. Player
-   - Enable hide endscreen cards.
-   - Enable hide end screen suggested video.
+3. Player
+   - Enable hide endscreen cards button.
+   - Enable hide end screen suggested video button.
 
-3. Video
+4. Video
    - Enable remember video quality changes.
    - Enable remember playback speed changes.
    - Enable advanced video quality menu.
    - Enable remember shorts quality changes.
 
-4. General and navigation
+5. General and navigation
    - Set default app name to custom preset index 2.
    - Set custom name entry 2 to Premium Youtube.
    - Set default header logo to Premium.
    - Set default app icon style to Original.
-   - Disable hide shorts button by default.
-   - Disable hide mix playlists by default.
 
-5. Swipe controls
+6. Shorts
+   - Enable hide shorts on home feed button by default.
+
+7. Seekbar
+   - Enable slide to seek.
+   - Enable tap to seek.
+
+8. Feed
+   - Disable hide mix playlists button by default.
+   - Disable hide 'you may like' section button by default.
+   - Disable hide 'notify me' button by default.
+   - Disable hide 'show more' button by default.
+   - Disable hide latest post button by default.
+   - Enable hide YouTube Doodles button by default.
+
+9. Swipe controls
    - Enable swipe to change videos.
    - Enable brightness gesture.
    - Enable volume gesture.
    - Enable auto-brightness gesture.
 
-6. Miscellaneous
+10. Miscellaneous
    - Disable announcements by default.
+
+11. About
+   - Hide the About section inside Morphe/Premium YouTube settings. ("About" preference to the top.)
 
 YouTube Music defaults to enforce
 1. General
@@ -65,8 +84,10 @@ Expected files to modify
 - BaseSetting.java
 - Settings.java
 - strings.xml
+  - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note)
 - CustomBrandingPatch.java
 - BaseCustomBrandingPatch.kt
+- Constants.kt
 - CheckEnvironmentPatch.java
 
 Release process from fork
