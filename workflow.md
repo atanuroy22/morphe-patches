@@ -28,8 +28,8 @@ YouTube defaults to enforce
    - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids
    
 2. External downloader
-   - Enable external downloader.
-   - Enable external downloader action button.
+   - Disable Override download action button.
+   - Enable show external download button.
    - Set default package name to com.video.fun.app.
 
 3. Player
@@ -82,7 +82,7 @@ YouTube Music defaults to enforce
 2. General
    - Set custom branding entry 2 to YT Music Premium.
    - Set default icon style to Original.
-   - Set settings title to YT Music Premium Settings (morphe_settings_title).
+   - Set settings title to Premium Settings (morphe_settings_title).
 
 Expected files to modify
 - BaseSetting.java

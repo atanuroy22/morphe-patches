@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/atanuroy22/morphe-patches/compare/v1.0.4...v1.0.5) (2026-03-27)
+
+### Bug Fixes
+
+* align settings labels with Premium branding defaults
+* update workflow notes for external downloader default behavior
+
 ## [1.0.4](https://github.com/atanuroy22/morphe-patches/compare/v1.0.3...v1.0.4) (2026-03-26)
 
 ## [1.0.3](https://github.com/atanuroy22/morphe-patches/compare/v1.0.2...v1.0.3) (2026-03-26)
