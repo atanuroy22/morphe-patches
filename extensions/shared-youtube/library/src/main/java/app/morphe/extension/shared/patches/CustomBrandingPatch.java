@@ -170,13 +170,13 @@ public class CustomBrandingPatch {
     public static int getDefaultAppNameIndex() {
         return userProvidedCustomName()
                 ? numberOfPresetAppNames()
-                : 1;
+                : 2;
     }
 
     public static BrandingTheme getDefaultIconStyle() {
         return userProvidedCustomIcon()
                 ? BrandingTheme.CUSTOM
-                : BrandingTheme.BLACK;
+                : BrandingTheme.ORIGINAL;
     }
 
     /**

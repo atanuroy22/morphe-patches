@@ -352,8 +352,9 @@ internal fun baseCustomBrandingPatch(
                 )
             }
 
-            val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
-            val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing
+            val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 2 // 1 indexing
+            val enableOriginalIconByDefault = !useCustomIcon
+            val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else -1 // 0 indexing
 
             for (appNameIndex in 1 .. numberOfPresetAppNames) {
                 fun aliasName(name: String): String = ".morphe_" + name + '_' + appNameIndex
@@ -367,7 +368,7 @@ internal fun baseCustomBrandingPatch(
                         iconMipmapName = originalLauncherIconName,
                         appNameIndex = appNameIndex,
                         useCustomName = useCustomNameLabel,
-                        enabled = false,
+                        enabled = appNameIndex == enabledNameIndex && enableOriginalIconByDefault,
                         intentFilters
                     )
                 )
@@ -380,7 +381,11 @@ internal fun baseCustomBrandingPatch(
                             iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
                             appNameIndex = appNameIndex,
                             useCustomName = useCustomNameLabel,
-                            enabled = (appNameIndex == enabledNameIndex && iconIndex == enabledIconIndex),
+                            enabled = (
+                                !enableOriginalIconByDefault &&
+                                    appNameIndex == enabledNameIndex &&
+                                    iconIndex == enabledIconIndex
+                                ),
                             intentFilters
                         )
                     )
