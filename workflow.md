@@ -76,9 +76,13 @@ YouTube defaults to enforce
    - Hide the About section inside Morphe/Premium YouTube settings. ("About" preference to the top.)
 
 YouTube Music defaults to enforce
-1. General
-   - Set custom branding entry 2 to YT Music.
+1. YT Music package name
+   - Set MORPHE_MUSIC_PACKAGE_NAME to app.revanced.android.apps.youtube.music
+   
+2. General
+   - Set custom branding entry 2 to YT Music Premium.
    - Set default icon style to Original.
+   - Set settings title to YT Music Premium Settings (morphe_settings_title).
 
 Expected files to modify
 - BaseSetting.java
