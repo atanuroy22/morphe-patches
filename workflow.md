@@ -1,7 +1,7 @@
 Fork maintenance and customization workflow for morphe-patches
 
 Goal
-- Keep this fork synced with upstream.
+- Always keep this fork synced with upstream at https://github.com/MorpheApp/morphe-patches.git before making changes. First check whether upstream has pushed recently.
 - Apply my preferred YouTube and YouTube Music defaults.
 - Release from my fork without requiring MorpheApp private secrets.
 
@@ -28,7 +28,7 @@ YouTube defaults to enforce
    - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids
    
 2. External downloader
-   - Disable Override download action button.
+   - Disable Override download action button. morphe_external_downloader_action_button = false
    - Enable show external download button.
    - Set default package name to com.video.fun.app.
 
@@ -77,8 +77,9 @@ YouTube defaults to enforce
 
 YouTube Music defaults to enforce
 1. YT Music package name
-   - Set MORPHE_MUSIC_PACKAGE_NAME to app.revanced.android.apps.youtube.music
-   
+   - Set MORPHE_MUSIC_PACKAGE_NAME to app.revanced.android.apps.youtube.music in Constants.kt and other relevant files.
+   - Set targetPackage and morphe_music_package_name to app.revanced.android.apps.youtube.music in OverrideYouTubeMusicActionsPatch.kt and Settings.java respectively.
+
 2. General
    - Set custom branding entry 2 to YT Music Premium.
    - Set default icon style to Original.

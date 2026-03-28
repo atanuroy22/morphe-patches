@@ -30,7 +30,7 @@ private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val targetPackage = "app.morphe.android.apps.youtube.music"
+        val targetPackage = "app.revanced.android.apps.youtube.music"
         val manifestFile = get("AndroidManifest.xml")
         var manifestContent = manifestFile.readText()
 
