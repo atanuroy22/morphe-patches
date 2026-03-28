@@ -1,7 +1,7 @@
 Fork maintenance and customization workflow for morphe-patches
 
 Goal
-- Always keep this fork synced with upstream at https://github.com/MorpheApp/morphe-patches.git before making changes. First check whether upstream has pushed recently.
+- First fetch upstream and update my code.
 - Apply my preferred YouTube and YouTube Music defaults.
 - Release from my fork without requiring MorpheApp private secrets.
 
