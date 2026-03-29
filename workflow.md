@@ -29,48 +29,48 @@ YouTube defaults to enforce
    
 2. External downloader
    - Disable Override download action button. morphe_external_downloader_action_button = false
-   - Enable show external download button.
+   - Enable show external download button.(morphe_external_downloader = true)
    - Set default package name to com.video.fun.app.
 
 3. Player
-   - Enable hide endscreen cards button.
-   - Enable hide end screen suggested video button.
+   - Enable hide endscreen cards button.(morphe_hide_end_screen_cards = true)
+   - Enable hide end screen suggested video button.(morphe_hide_end_screen_suggested_video = true)
 
 4. Video
-   - Enable remember video quality changes.
-   - Enable remember playback speed changes.
-   - Enable advanced video quality menu.
-   - Enable remember shorts quality changes.
+   - Enable remember video quality changes.(morphe_remember_video_quality_last_selected = true)
+   - Enable remember playback speed changes.(morphe_remember_playback_speed_last_selected = true)
+   - Enable advanced video quality menu.(morphe_advanced_video_quality_menu = true)
+   - Enable remember shorts quality changes.(morphe_remember_shorts_quality_last_selected = true)
 
 5. General and navigation
    - Set default app name to custom preset index 2.
    - Set custom name entry 2 to Premium Youtube.
-   - Set default header logo to Premium.
+   - Set default header logo to Premium.(morphe_header_logo = HeaderLogo.PREMIUM)
    - Set default app icon style to Original.
 
 6. Shorts
-   - Enable hide shorts on home feed button by default.
+   - Enable hide shorts on home feed button by default.(morphe_hide_shorts_home = true)
 
 7. Seekbar
-   - Enable slide to seek.
-   - Enable tap to seek.
+   - Enable slide to seek.(morphe_slide_to_seek = true)
+   - Enable tap to seek.(morphe_tap_to_seek = true)
 
 8. Feed
    - Disable hide mix playlists button by default.
-   - Disable hide 'you may like' section button by default.
-   - Disable hide 'notify me' button by default.
-   - Disable hide 'show more' button by default.
-   - Disable hide latest post button by default.
-   - Enable hide YouTube Doodles button by default.
+   - Disable hide 'you may like' section button by default.(morphe_hide_you_may_like_section = false)
+   - Disable hide 'notify me' button by default.(morphe_hide_notify_me_button = false)
+   - Disable hide 'show more' button by default.(morphe_hide_show_more_button = false)
+   - Disable hide latest post button by default.(morphe_hide_latest_posts = false)
+   - Enable hide YouTube Doodles button by default.(morphe_hide_youtube_doodles = true)
 
 9. Swipe controls
-   - Enable swipe to change videos.
-   - Enable brightness gesture.
-   - Enable volume gesture.
-   - Enable auto-brightness gesture.
+   - Enable swipe to change videos.(morphe_swipe_change_video = true)
+   - Enable brightness gesture.(morphe_swipe_brightness = true)
+   - Enable volume gesture.(morphe_swipe_volume = true)
+   - Enable auto-brightness gesture.(morphe_swipe_lowest_value_enable_auto_brightness = true)
 
 10. Miscellaneous
-   - Disable announcements by default.
+   - Disable announcements by default.(morphe_announcements = false)
 
 11. About
    - Hide the About section inside Morphe/Premium YouTube settings. ("About" preference to the top.)
