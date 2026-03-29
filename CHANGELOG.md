@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/atanuroy22/morphe-patches/compare/v1.1.0...v1.1.1) (2026-03-29)
+
+
+### Bug Fixes
+
+* **music:** use valid HeaderLogo default ([f378e71](https://github.com/atanuroy22/morphe-patches/commit/f378e713fb60ef3221f42f930ebf2c8e1ad2d3b9))
+
 # [1.1.0](https://github.com/atanuroy22/morphe-patches/compare/v1.0.9...v1.1.0) (2026-03-28)
 
 
