@@ -1,3 +1,42 @@
+# [1.2.0](https://github.com/atanuroy22/morphe-patches/compare/v1.1.1...v1.2.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* align bundle and workflow notes for Morphe Manager ([b32d683](https://github.com/atanuroy22/morphe-patches/commit/b32d6839ebfae95eae80e8cb6920ffa3c9fee990))
+* **Change package name:** DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION is not updated correctly ([#1091](https://github.com/atanuroy22/morphe-patches/issues/1091)) ([39c5b47](https://github.com/atanuroy22/morphe-patches/commit/39c5b47cbd41163bac6fff1a397e186a8e9c567a))
+* disable backmerge step for fork releases ([a8807f2](https://github.com/atanuroy22/morphe-patches/commit/a8807f271fd34a73f1ef597184702e8a2e5de0b9))
+* Notification icon entries key mismatch ([#1040](https://github.com/atanuroy22/morphe-patches/issues/1040)) ([01ef1ea](https://github.com/atanuroy22/morphe-patches/commit/01ef1ea731196325a00de060d6f34f51644a94c5))
+* **release:** fetch full git history for semantic-release ([cbd678d](https://github.com/atanuroy22/morphe-patches/commit/cbd678d6749fa506b34641e88344c3de3274735e))
+* **release:** fetch tags before semantic-release ([5afa52b](https://github.com/atanuroy22/morphe-patches/commit/5afa52b864d8a35196c033f3ef8b20c0dee53a38))
+* remove fetch-depth from checkout step and update version to 1.1.2 ([66ee3e1](https://github.com/atanuroy22/morphe-patches/commit/66ee3e1af154f2c089ebf79343bebcacaf783295))
+* remove fetch-depth from checkout step and update version to 1.1.2 ([90520a7](https://github.com/atanuroy22/morphe-patches/commit/90520a75fa0fbb7d36727897c3060191bd89d744))
+* **Spoof video streams:** Expose patch to root (mount) install since the patch now works again with rooted devices ([0363d75](https://github.com/atanuroy22/morphe-patches/commit/0363d75d19ac6a6ec02319562f8f687db5027d6f))
+* use env guards for optional secrets in release workflow ([4117bc7](https://github.com/atanuroy22/morphe-patches/commit/4117bc7c3f881ee0c9e0791acbf2aa211363cd14))
+* **YouTube - Change start page:** Remove explore and trending start pages that YouTube no longer supports ([f165f0c](https://github.com/atanuroy22/morphe-patches/commit/f165f0c2a44f37ab3e2f036644eb5057f0a89bd4))
+* **YouTube - Disable video codecs:** Improve setting summary if the spoof video client does not support forcing AVC ([0238d14](https://github.com/atanuroy22/morphe-patches/commit/0238d14df83198f41c9cbddd4aa4933ba995581d))
+* **YouTube - Hide layout components:** Hide new type of community post ([#1114](https://github.com/atanuroy22/morphe-patches/issues/1114)) ([9fc6aef](https://github.com/atanuroy22/morphe-patches/commit/9fc6aefba130629cbeefb5d4bfa1cd798e9ce995))
+* **YouTube - Hide player overlay buttons:** Do not hide Morphe player buttons if hide fullscreen button is enabled ([96c5789](https://github.com/atanuroy22/morphe-patches/commit/96c5789e45ea2f5827db93319d9be7405c8cee19))
+* **YouTube - Overlay buttons:** Always use thin player overlay buttons with 20.21.37 ([db96e8e](https://github.com/atanuroy22/morphe-patches/commit/db96e8e34d7e0c1393562a7f1dfa5fd0fb1f9c5d))
+* **YouTube - Theme:** Carbon background color does not use custom background color with experimental app targets ([fa2439d](https://github.com/atanuroy22/morphe-patches/commit/fa2439d09286db83a0d588b407bbc5248e1589cf))
+* **YouTube:** "Restore old setings menu" does not work with experimental app targets ([#1127](https://github.com/atanuroy22/morphe-patches/issues/1127)) ([74826e6](https://github.com/atanuroy22/morphe-patches/commit/74826e6aea75dec8e7290f33e4bf9eb476d2abe8))
+* **YouTube:** Bold player buttons break under certain conditions ([#1126](https://github.com/atanuroy22/morphe-patches/issues/1126)) ([8d928f5](https://github.com/atanuroy22/morphe-patches/commit/8d928f596323b4d33cd2ae071a6c47101a61404b))
+* **YouTube:** Swiping back on home feed does not close the app ([74a5074](https://github.com/atanuroy22/morphe-patches/commit/74a5074991ec935d0588843b1067a084944c2e42))
+
+
+### Features
+
+* Add search and file export to debug logs ([#997](https://github.com/atanuroy22/morphe-patches/issues/997)) ([a53a6c3](https://github.com/atanuroy22/morphe-patches/commit/a53a6c3b0c8f534e4bca4a015a25452d2c73ae8a))
+* **Reddit:** Add experimental support for `2026.13.0` ([722f5bf](https://github.com/atanuroy22/morphe-patches/commit/722f5bf34f986c51b9631575cd09eb64dac47314))
+* **Reddit:** Add experimental support for `2026.14.0` ([921fa89](https://github.com/atanuroy22/morphe-patches/commit/921fa89a37a4e318ed3ba5a0cb090b00f0a4c3af))
+* **YouTube - Hide layout components:** Add "Hide search term thumbnails" setting ([#1116](https://github.com/atanuroy22/morphe-patches/issues/1116)) ([61d5fd6](https://github.com/atanuroy22/morphe-patches/commit/61d5fd62f300640240a82f477bb56c82cbedfbee))
+* **YouTube - Seekbar:** Add "Enable livestream DVR" setting ([#1092](https://github.com/atanuroy22/morphe-patches/issues/1092)) ([8af85d0](https://github.com/atanuroy22/morphe-patches/commit/8af85d07b68e08f8e2731a77a4a08a1931348911))
+* **YouTube - Seekbar:** Add "Expand livestream DVR duration" setting ([#1110](https://github.com/atanuroy22/morphe-patches/issues/1110)) ([1a446d0](https://github.com/atanuroy22/morphe-patches/commit/1a446d089c969993813a5017150ac8e648e26786))
+* **YouTube Music:** Add experimental support for `9.13.50` ([bd462e5](https://github.com/atanuroy22/morphe-patches/commit/bd462e5ab274968878314295b7238ae9371564d0))
+* **YouTube:** Add `Play all` patch ([#1012](https://github.com/atanuroy22/morphe-patches/issues/1012)) ([b3ac238](https://github.com/atanuroy22/morphe-patches/commit/b3ac238aa15342706d60532ea0bba12f45fef2ac))
+* **YouTube:** Add experimental support for `21.14.482` ([bb6f79f](https://github.com/atanuroy22/morphe-patches/commit/bb6f79f5a0ad36383a047586895d1c40212dae48))
+* **YouTube:** Add Morphe bold style player buttons ([#954](https://github.com/atanuroy22/morphe-patches/issues/954)) ([7f70b6f](https://github.com/atanuroy22/morphe-patches/commit/7f70b6f10ab5e600f4297d4208641a0ea2d817b1))
+
 ## [1.0.1](https://github.com/atanuroy22/morphe-patches/compare/v1.0.0...v1.0.1) (2026-04-09)
 
 # 1.0.0 (2026-04-09)
