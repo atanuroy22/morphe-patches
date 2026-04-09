@@ -77,6 +77,7 @@ Release process from fork
    - Build patches.
    - Publish release assets using GITHUB_TOKEN.
    - Skip website deploy and FCM steps when related secrets/vars are missing.
+4. Wait and fix until a successful release workflow run completes.
 
 Manager usage notes
 1. Use this source URL in Morphe Manager:
