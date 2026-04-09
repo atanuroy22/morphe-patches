@@ -26,6 +26,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Fetch tags
+        run: git fetch --force --tags
+
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
