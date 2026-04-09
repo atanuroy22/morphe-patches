@@ -71,7 +71,7 @@ Expected files to modify
 
 Release process from fork
 1. Commit using semantic-release trigger format (example):
-   build(Needs bump): release v1.1.2
+   build(Needs bump): set preferred defaults
 2. Push to main on fork.
 3. GitHub Actions release workflow should:
    - Build patches.
