@@ -1,12 +1,12 @@
 Fork maintenance and customization workflow for morphe-patches
 
 Goal
-- Keep this fork synced with upstream.
+- First fetch upstream and update my code i noticed now they pushed right now.
 - Apply my preferred YouTube and YouTube Music defaults.
 - Release from my fork without requiring MorpheApp private secrets.
 
 Repository setup
-1. Ensure remotes are configured:
+1. Ensure taking pull from remotes:
    - origin: my fork
    - upstream: https://github.com/MorpheApp/morphe-patches.git
 2. Sync main:

@@ -1,3 +1,12 @@
+# [Unreleased]
+
+### Changed
+
+* Set fork-specific YouTube defaults (external downloader, player, quality/speed memory, seek/swipe, announcements).
+* Set custom branding defaults to app name entry 2 and original icon style.
+* Update default branding labels for YouTube and YouTube Music.
+* Disable environment checks in CheckEnvironmentPatch.
+
 # [1.23.0](https://github.com/MorpheApp/morphe-patches/compare/v1.22.0...v1.23.0) (2026-04-09)
 
 
