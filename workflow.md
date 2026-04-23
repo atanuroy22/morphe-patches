@@ -24,49 +24,74 @@ Global patch behavior
   return;
 
 YouTube defaults to enforce
-1. External downloader
-   - Enable external downloader.
-   - Enable external downloader action button.
+1. MORPHE Youtube package name
+   - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids
+   
+2. External downloader
+   - Disable Override download action button. morphe_external_downloader_action_button = false
+   - Enable show external download button.(morphe_external_downloader = true)
    - Set default package name to com.video.fun.app.
 
-2. Player
-   - Enable hide endscreen cards.
-   - Enable hide end screen suggested video.
+3. Player
+   - Enable hide endscreen cards button.(morphe_hide_end_screen_cards = true)
+   - Enable hide end screen suggested video button.(morphe_hide_end_screen_suggested_video = true)
 
-3. Video
-   - Enable remember video quality changes.
-   - Enable remember playback speed changes.
-   - Enable advanced video quality menu.
-   - Enable remember shorts quality changes.
+4. Video
+   - Enable remember video quality changes.(morphe_remember_video_quality_last_selected = true)
+   - Enable remember playback speed changes.(morphe_remember_playback_speed_last_selected = true)
+   - Enable advanced video quality menu.(morphe_advanced_video_quality_menu = true)
+   - Enable remember shorts quality changes.(morphe_remember_shorts_quality_last_selected = true)
 
-4. General and navigation
+5. General and navigation
    - Set default app name to custom preset index 2.
    - Set custom name entry 2 to Premium Youtube.
-   - Set default header logo to Premium.
+   - Set default header logo to Premium.(morphe_header_logo = HeaderLogo.PREMIUM)
    - Set default app icon style to Original.
-   - Disable hide shorts button by default.
-   - Disable hide mix playlists by default.
 
-5. Swipe controls
-   - Enable swipe to change videos.
-   - Enable brightness gesture.
-   - Enable volume gesture.
-   - Enable auto-brightness gesture.
+6. Shorts
+   - Enable hide shorts on home feed button by default.(morphe_hide_shorts_home = true)
 
-6. Miscellaneous
-   - Disable announcements by default.
+7. Seekbar
+   - Enable slide to seek.(morphe_slide_to_seek = true)
+   - Enable tap to seek.(morphe_tap_to_seek = true)
+
+8. Feed
+   - Disable hide mix playlists button by default.
+   - Disable hide 'you may like' section button by default.(morphe_hide_you_may_like_section = false)
+   - Disable hide 'notify me' button by default.(morphe_hide_notify_me_button = false)
+   - Disable hide 'show more' button by default.(morphe_hide_show_more_button = false)
+   - Disable hide latest post button by default.(morphe_hide_latest_posts = false)
+   - Enable hide YouTube Doodles button by default.(morphe_hide_youtube_doodles = true)
+
+9. Swipe controls
+   - Enable swipe to change videos.(morphe_swipe_change_video = true)
+   - Enable brightness gesture.(morphe_swipe_brightness = true)
+   - Enable volume gesture.(morphe_swipe_volume = true)
+   - Enable auto-brightness gesture.(morphe_swipe_lowest_value_enable_auto_brightness = true)
+
+10. Miscellaneous
+   - Disable announcements by default.(morphe_announcements = false)
+
+11. About
+   - Hide the About section inside Morphe/Premium YouTube settings. ("About" preference to the top.)
 
 YouTube Music defaults to enforce
-1. General
-   - Set custom branding entry 2 to YT Music.
+1. YT Music package name
+   - Set MORPHE_MUSIC_PACKAGE_NAME to app.revanced.android.apps.youtube.music in Constants.kt and other relevant files.
+   - Set targetPackage and morphe_music_package_name to app.revanced.android.apps.youtube.music in OverrideYouTubeMusicActionsPatch.kt and Settings.java respectively.
+
+2. General
+   - Set custom branding entry 2 to YT Music Premium.
    - Set default icon style to Original.
 
 Expected files to modify
 - BaseSetting.java
 - Settings.java
 - strings.xml
+  - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note, morphe_settings_title to Extra Settings, morphe_settings_submenu_title to Premium Settings)
 - CustomBrandingPatch.java
 - BaseCustomBrandingPatch.kt
+- Constants.kt
 - CheckEnvironmentPatch.java
 
 Release process from fork
@@ -94,3 +119,4 @@ Important
 - Do not run destructive git commands.
 - Keep changes scoped to defaults only.
 - Update CHANGELOG.md whenever behavior changes.
+- Never change a single word inside the workflow.md file(Follow all the steps but Never edit this file strictly). 
