@@ -11,10 +11,10 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout dev
+      - name: Checkout main
         uses: actions/checkout@v6
         with:
-          ref: dev
+          ref: main
           fetch-depth: 0
           clean: true
 
@@ -37,7 +37,7 @@ jobs:
           git checkout -B crowdin
           git push --force origin crowdin
   merge:
-    name: Squash merge Crowdin into Dev
+    name: Squash merge Crowdin into Main
     if: github.event_name == 'workflow_dispatch'
     needs: pull
     permissions:
@@ -61,11 +61,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew checkStringResources -PnoProguard
 
-      # Step 3: Checkout dev branch to prepare for merging
-      - name: Checkout dev branch for merge
+      # Step 3: Checkout main branch to prepare for merging
+      - name: Checkout main branch for merge
         uses: actions/checkout@v6
         with:
-          ref: dev
+          ref: main
           fetch-depth: 0
           clean: true
 
@@ -73,11 +73,11 @@ jobs:
       - name: Fetch crowdin branch
         run: git fetch origin crowdin
 
-      # Step 5: Squash merge crowdin into dev
-      - name: Squash merge crowdin into dev
+      # Step 5: Squash merge crowdin into main
+      - name: Squash merge crowdin into main
         run: |
           git config --local user.name "Crowdin Bot"
           git config --local user.email "support+bot@crowdin.com"
           git merge --squash origin/crowdin
           git commit --allow-empty -m "chore: Update translations from Crowdin"
-          git push origin dev
+          git push origin main
