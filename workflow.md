@@ -120,3 +120,5 @@ Important
 - Keep changes scoped to defaults only.
 - Update CHANGELOG.md whenever behavior changes.
 - Never change a single word inside the workflow.md file(Follow all the steps but Never edit this file strictly). 
+
+**NOW COMPLETE THE RELEASE PROCESS**
