@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.4.1",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -197,7 +197,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -444,7 +444,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -586,7 +586,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -696,7 +696,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -817,7 +817,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -1006,7 +1006,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -1296,7 +1296,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -1426,7 +1426,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -2269,7 +2269,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -2393,7 +2393,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -2454,7 +2454,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -2579,7 +2579,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -2704,7 +2704,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -3078,7 +3078,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -3320,7 +3320,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -3381,7 +3381,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -3698,7 +3698,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -4485,7 +4485,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -4548,7 +4548,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -5101,7 +5101,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -5353,7 +5353,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -5659,7 +5659,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -6263,7 +6263,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -6452,7 +6452,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
@@ -6650,7 +6650,7 @@
       ],
       "compatiblePackages": [
         {
-          "packageName": "com.google.android.apps.youtube.music",
+          "packageName": "app.revanced.android.apps.youtube.music",
           "name": "YouTube Music",
           "description": null,
           "apkFileType": "APK_REQUIRED",
