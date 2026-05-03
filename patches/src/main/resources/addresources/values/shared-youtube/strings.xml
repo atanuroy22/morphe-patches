@@ -35,7 +35,7 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Follow app icon</string>
 
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-    <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_title">Premium Youtube Notice</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
     <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
 

@@ -1,3 +1,13 @@
+# [1.26.0](https://github.com/atanuroy22/morphe-patches/compare/v1.25.0...v1.26.0) (2026-05-03)
+
+### Features
+
+* Fork release with custom defaults (atanuroy22)
+
+### Bug Fixes
+
+* **YouTube Music:** Update package name to app.revanced.android.apps.youtube.music
+
 # [1.25.0](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0...v1.25.0) (2026-05-02)
 
 

@@ -7,7 +7,7 @@ import app.morphe.patcher.patch.Compatibility
 internal object Constants {
     val COMPATIBILITY_YOUTUBE_MUSIC = Compatibility(
         name = "YouTube Music",
-        packageName = "com.google.android.apps.youtube.music",
+        packageName = "app.revanced.android.apps.youtube.music",
         apkFileType = ApkFileType.APK_REQUIRED,
         appIconColor = 0xFF0000,
         signatures = setOf(
