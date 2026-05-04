@@ -16,7 +16,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class OverrideYouTubeMusicButtonsPatch {
 
-    private static final String YOUTUBE_MUSIC_PACKAGE_NAME = "com.google.android.apps.youtube.music";
+    private static final String YOUTUBE_MUSIC_PACKAGE_NAME = "app.revanced.android.apps.youtube.music";
     private static final String HIJACK_FLAG = "morphe_hijacked";
 
     public static Intent overrideSetPackage(Intent intent, String packageName) {

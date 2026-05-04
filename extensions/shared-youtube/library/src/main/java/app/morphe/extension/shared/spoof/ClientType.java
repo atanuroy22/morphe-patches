@@ -70,7 +70,7 @@ public enum ClientType {
             ANDROID_REEL.osVersion,
             "7.12.52",
             null,
-            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
+            "app.revanced.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
             IS_YOUTUBE_MUSIC,
             true,
             false,

@@ -16,7 +16,7 @@ public class AppCheckPatch {
             "com.google.android.apps.youtube.app.watchwhile.MainActivity";
 
     private static final String MAIN_ACTIVITY_CLASS_YOUTUBE_MUSIC =
-            "com.google.android.apps.youtube.music.activities.MusicActivity";
+            "app.revanced.android.apps.youtube.music.activities.MusicActivity";
 
     public static final boolean IS_YOUTUBE = classExists(MAIN_ACTIVITY_CLASS_YOUTUBE);
 

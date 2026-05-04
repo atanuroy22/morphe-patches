@@ -54,14 +54,14 @@ public final class ChangeStartPagePatch {
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
-    private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
+    private static final String SETTINGS_CLASS = "app.revanced.android.apps.youtube.music.settings.SettingsCompatActivity";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_KEY = ":android:show_fragment";
-    private static final String SETTINGS_ATTRIBUTION_FRAGMENT_VALUE = "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
+    private static final String SETTINGS_ATTRIBUTION_FRAGMENT_VALUE = "app.revanced.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
     private static final String SETTINGS_ATTRIBUTION_HEADER_KEY = ":android:no_headers";
     private static final int SETTINGS_ATTRIBUTION_HEADER_VALUE = 1;
 
     private static final String SHORTCUT_ACTION = "com.google.android.youtube.music.action.shortcut";
-    private static final String SHORTCUT_CLASS = "com.google.android.apps.youtube.music.activities.InternalMusicActivity";
+    private static final String SHORTCUT_CLASS = "app.revanced.android.apps.youtube.music.activities.InternalMusicActivity";
     private static final String SHORTCUT_TYPE = "com.google.android.youtube.music.action.shortcut_type";
     private static final String SHORTCUT_ID_SEARCH = "Eh4IBRDTnQEYmgMiEwiZn+H0r5WLAxVV5OcDHcHRBmPqpd25AQA=";
     private static final int SHORTCUT_TYPE_SEARCH = 1;
