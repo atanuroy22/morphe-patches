@@ -35,3 +35,7 @@ google-services.json
 
 # NPM modules
 node_modules/
+
+# Local profiles and IDE settings
+.openclaude-profile.json
+.vscode/
