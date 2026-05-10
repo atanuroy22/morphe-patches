@@ -2,9 +2,9 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "Morphe Patches"
-        description = "Patches for Morphe"
-        source = "git@github.com:MorpheApp/morphe-patches.git"
+        name = "Premium Youtube Patches"
+        description = "Patches for Premium Youtube"
+        source = "git@github.com:atanuroy22/morphe-patches.git"
         author = "MorpheApp"
         contact = "na"
         website = "https://morphe.software"
