@@ -5,9 +5,9 @@ patches {
         name = "Premium Youtube Patches"
         description = "Patches for Premium Youtube"
         source = "git@github.com:atanuroy22/morphe-patches.git"
-        author = "MorpheApp"
+        author = "atanuroy22"
         contact = "na"
-        website = "https://morphe.software"
+        website = "https://github.com/atanuroy22/morphe-patches"
         license = "GNU General Public License v3.0, with additional GPL section 7 requirements"
     }
 }

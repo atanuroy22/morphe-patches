@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 <resources>
     <!-- misc.settings.settingsPatch -->
 
-    <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+    <!-- In languages where "About" is ambiguous, translate this as "About Premium Youtube" (i.e., About this app). -->
     <string name="morphe_settings_screen_00_about_title">About</string>
     <string name="morphe_settings_screen_01_ads_title">Ads</string>
     <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative thumbnails</string>
@@ -874,7 +874,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Premium Youtube settings
 Tap and hold to open Premium Youtube settings"</string>
     <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tap to open YouTube settings
-Tap and hold to open Morphe settings"</string>
+Tap and hold to open Premium Youtube settings"</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -1239,7 +1239,7 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_ryd_toast_on_connection_error_summary_off">Notification is not shown if Return YouTube Dislike is not available</string>
     <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike.com</string>
     <string name="morphe_ryd_attribution_summary">Data is provided by the Return YouTube Dislike API. Tap here to learn more</string>
-    <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+    <!-- Statistic strings are shown in the settings only when Premium Youtube debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API response time, minimum</string>
@@ -1703,7 +1703,7 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow is temporarily not available</string>
 
     <!-- misc.announcements.announcementsPatch -->
-    <string name="morphe_announcements_title" translatable="false">Show Morphe announcements</string>
+    <string name="morphe_announcements_title" translatable="false">Show Premium Youtube announcements</string>
     <string name="morphe_announcements_summary_on" translatable="false">Announcements on startup are shown</string>
     <string name="morphe_announcements_summary_off" translatable="false">Announcements on startup are not shown</string>
     <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
