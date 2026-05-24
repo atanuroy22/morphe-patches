@@ -1,3 +1,9 @@
+## [1.28.1](https://github.com/atanuroy22/morphe-patches/compare/v1.28.0...v1.28.1) (2026-05-24)
+
+### 🐛 Bug Fixes
+
+* Bumped version to 1.28.1.
+
 ## [1.28.0](https://github.com/atanuroy22/morphe-patches/compare/v1.27.3...v1.28.0) (2026-05-24)
 
 ### 🐛 Bug Fixes
