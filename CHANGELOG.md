@@ -1,3 +1,9 @@
+## [1.28.3](https://github.com/atanuroy22/morphe-patches/compare/v1.28.2...v1.28.3) (2026-05-27)
+
+### 🐛 Bug Fixes
+
+* **youtube:** add summary for settings button action in strings.xml ([9cc6db7](https://github.com/atanuroy22/morphe-patches/commit/9cc6db7ecb1f516ee1a398bf993da3b3f2a69e9f))
+
 ## [1.28.2](https://github.com/atanuroy22/morphe-patches/compare/v1.28.1...v1.28.2) (2026-05-27)
 
 ### 🐛 Bug Fixes
