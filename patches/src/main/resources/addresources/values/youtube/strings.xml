@@ -558,6 +558,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_show_toolbar_settings_button_title">Show Settings button</string>
     <string name="morphe_show_toolbar_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary">Tap to open Premium Youtube settings when enabled, or YouTube settings when disabled</string>
     <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Premium Youtube settings
 Tap and hold to open Premium Youtube settings"</string>
     <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tap to open YouTube settings

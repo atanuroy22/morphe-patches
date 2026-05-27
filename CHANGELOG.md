@@ -6,6 +6,10 @@
 
 * Set preferred YouTube and YouTube Music defaults.
 
+### 🐛 Bug Fixes
+
+* Add missing toolbar settings summary resource.
+
 ## [1.28.1](https://github.com/atanuroy22/morphe-patches/compare/v1.28.0...v1.28.1) (2026-05-24)
 
 ### 🐛 Bug Fixes
