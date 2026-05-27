@@ -1,3 +1,9 @@
+## [1.28.2](https://github.com/atanuroy22/morphe-patches/compare/v1.28.1...v1.28.2) (2026-05-27)
+
+### 🐛 Bug Fixes
+
+* **youtube:** add missing settings button summary ([b471cc4](https://github.com/atanuroy22/morphe-patches/commit/b471cc4bd49ca8e54af6301b505eb35aafde63cd))
+
 ## [1.28.1](https://github.com/atanuroy22/morphe-patches/compare/v1.28.0...v1.28.1) (2026-05-27)
 
 ## [1.29.1](https://github.com/atanuroy22/morphe-patches/compare/v1.29.0...v1.29.1) (2026-05-27)
