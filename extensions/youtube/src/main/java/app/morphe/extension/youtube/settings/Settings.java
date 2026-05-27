@@ -255,8 +255,8 @@ public class Settings extends SharedYouTubeSettings {
     // External downloader
     public static final BooleanSetting EXTERNAL_DOWNLOADER = new BooleanSetting("morphe_external_downloader", TRUE);
     public static final BooleanSetting EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE);
-    public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.video.fun.app",
-            "com.deniscerri.ytdl" /* YTDLnis */, parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
+    public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name",
+                        "com.video.fun.app", parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
 
     // Comments
     public static final BooleanSetting HIDE_COMMENTS_CAROUSEL = new BooleanSetting("morphe_hide_comments_carousel", FALSE, "morphe_hide_comments_carousel_user_dialog_message");
@@ -498,7 +498,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SWIPE_SAVE_AND_RESTORE_BRIGHTNESS = new BooleanSetting("morphe_swipe_save_and_restore_brightness", TRUE, true,
             parent(SWIPE_BRIGHTNESS));
     public static final FloatSetting SWIPE_BRIGHTNESS_VALUE = new FloatSetting("morphe_swipe_brightness_value", -1f);
-    public static final BooleanSetting SWIPE_LOWEST_VALUE_ENABLE_AUTO_BRIGHTNESS = new BooleanSetting("morphe_swipe_lowest_value_enable_auto_brightness", FALSE, true,
+    public static final BooleanSetting SWIPE_LOWEST_VALUE_ENABLE_AUTO_BRIGHTNESS = new BooleanSetting("morphe_swipe_lowest_value_enable_auto_brightness", TRUE, true,
             parent(SWIPE_BRIGHTNESS));
 
     // ReturnYoutubeDislike

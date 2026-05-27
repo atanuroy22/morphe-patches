@@ -48,7 +48,11 @@ Second \"item\" text"</string>
     <string name="morphe_settings_search_empty_history_title">Search history is empty</string>
     <string name="morphe_settings_search_empty_history_summary">To save search history, type a search query and press Enter</string>
     <string name="morphe_settings_search_history_title">Show settings search history</string>
+    <string name="morphe_settings_search_history_summary_on">Settings search history is shown</string>
+    <string name="morphe_settings_search_history_summary_off">Settings search history is not shown</string>
     <string name="morphe_show_menu_icons_title">Show Premium Youtube setting icons</string>
+    <string name="morphe_show_menu_icons_summary_on">Setting icons are shown</string>
+    <string name="morphe_show_menu_icons_summary_off">Setting icons are not shown</string>
     <string name="morphe_language_title">Premium Youtube language</string>
     <string name="morphe_language_user_dialog_message">"Translations for some languages may be missing or incomplete.
 
@@ -90,9 +94,12 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_debug_title">Enable debug logging</string>
     <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
     <string name="morphe_debug_stacktrace_summary">Includes stack traces in debug logs to help identify errors</string>
+    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Premium Youtube error</string>
+    <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
+    <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Premium Youtube error notifications.
-
 You will not be notified of any unexpected events."</string>
     <string name="morphe_debug_export_logs_title">Export debug logs</string>
     <string name="morphe_debug_export_logs_summary">Export Premium Youtube debug logs</string>
