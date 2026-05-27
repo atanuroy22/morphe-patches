@@ -1,3 +1,5 @@
+## [1.28.1](https://github.com/atanuroy22/morphe-patches/compare/v1.28.0...v1.28.1) (2026-05-27)
+
 ## [1.29.1](https://github.com/atanuroy22/morphe-patches/compare/v1.29.0...v1.29.1) (2026-05-27)
 
 ### ♻️ Chores
