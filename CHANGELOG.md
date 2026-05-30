@@ -1,3 +1,9 @@
+## [1.30.2](https://github.com/atanuroy22/morphe-patches/compare/v1.30.1...v1.30.2) (2026-05-30)
+
+### 🐛 Bug Fixes
+
+* **CheckEnvironmentPatch:** resolve dangling block compilation failure ([2372121](https://github.com/atanuroy22/morphe-patches/commit/2372121f52d5ccdd414eeefc684b1e8e08149f5a))
+
 ## [1.30.1](https://github.com/atanuroy22/morphe-patches/compare/v1.30.0...v1.30.1) (2026-05-30)
 
 ## [1.26.0](https://github.com/atanuroy22/morphe-patches/compare/v1.25.0...v1.26.0) (2026-05-30)
