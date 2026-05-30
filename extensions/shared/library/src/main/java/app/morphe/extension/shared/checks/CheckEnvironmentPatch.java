@@ -263,8 +263,7 @@ public final class CheckEnvironmentPatch {
     public static void check(Activity context) {
         // Environment checks disabled.
         Check.disableForever();
-        return;
-    }
+        if (true) return;
 
         Utils.runOnBackgroundThread(() -> {
             try {
