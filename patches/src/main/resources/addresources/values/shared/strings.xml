@@ -16,8 +16,8 @@ Second \"item\" text"</string>
 -->
 <resources>
     <!-- misc.settings.settingsResourcePatch -->
-    <string name="morphe_settings_submenu_title">Settings</string>
-    <string name="morphe_settings_title" translatable="false">Morphe</string>
+    <string name="morphe_settings_submenu_title">Premium Settings</string>
+    <string name="morphe_settings_title" translatable="false">Extra Settings</string>
     <string name="morphe_settings_confirm_user_dialog_title">Are you sure you want to proceed?</string>
     <string name="morphe_settings_save">Save</string>
     <string name="morphe_settings_reset">Reset</string>
