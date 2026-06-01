@@ -83,6 +83,9 @@ YouTube Music defaults to enforce
    - Set custom branding entry 2 to YT Music Premium.
    - Set default icon style to Original.
 
+Crowdin-pull-push workflow
+1. Disable pull and push request completely in yml file.(crowdin_pull.yml, crowdin_push.yml)
+
 Expected files to modify
 - BaseSetting.java
 - Settings.java
