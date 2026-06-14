@@ -1,3 +1,15 @@
+## [Unreleased] - Fork Customizations (based on v1.31.0)
+
+### Fork Changes
+- Set preferred YouTube and YouTube Music defaults (package names, player settings, swipe controls, etc.)
+- Disabled environment check warning (CheckEnvironmentPatch)
+- Set YouTube package name to `com.google.android.apps.youtube.kids`
+- Set YT Music package name to `app.revanced.android.apps.youtube.music`
+- Custom branding: Premium Youtube (entry 2), Premium header logo, Original icon style
+- Enabled swipe controls, seekbar slide/tap, hide shorts on home feed
+- Disabled Crowdin pull/push workflows
+- Disabled announcements by default
+
 ## [1.31.0](https://github.com/MorpheApp/morphe-patches/compare/v1.30.0...v1.31.0) (2026-06-13)
 
 ### 🐛 Bug Fixes
