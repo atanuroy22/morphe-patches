@@ -1,3 +1,15 @@
+## [Fork] Sync with upstream v1.32.0 and apply preferred defaults (2026-06-24)
+
+### 🔧 Fork Customizations
+
+* Sync upstream MorpheApp/morphe-patches v1.32.0 into fork
+* Disable environment check warning (`CheckEnvironmentPatch.java`)
+* YouTube: set preferred defaults (YouTube Kids package, external downloader, player, video, navigation, shorts, seekbar, feed, swipe controls, miscellaneous)
+* YouTube Music: set preferred defaults (package name, custom branding)
+* Strings: Extra Settings / Premium Settings UI labels
+* Crowdin pull/push workflows remain disabled (`on: []`)
+* `patches-bundle.json` download URL points to fork releases
+
 ## [1.32.0](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0...v1.32.0) (2026-06-23)
 
 ### 🐛 Bug Fixes
