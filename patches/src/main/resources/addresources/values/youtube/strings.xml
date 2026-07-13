@@ -428,7 +428,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_swap_save_and_queue_actions_title">Swap Save and Queue actions</string>
     <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to watch later</string>
     <string name="morphe_queue_override_flyout_menu_title">Override feed flyout queue button</string>
-    <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
+    <string name="morphe_queue_override_flyout_menu_summary">Opens the Premium Youtube queue instead of the YouTube queue</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
     <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
     <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
@@ -442,7 +442,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
     <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
     <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
-    <string name="morphe_queue_manager_playlist_title">Morphe Queue</string>
+    <string name="morphe_queue_manager_playlist_title">Premium Youtube Queue</string>
     <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
     <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
     <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
@@ -644,7 +644,7 @@ Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpec
     <string name="morphe_show_settings_button_title">Show Settings button</string>
     <string name="morphe_show_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_settings_button_type_summary">Opens Morphe settings when enabled, or YouTube settings when disabled</string>
+    <string name="morphe_show_settings_button_type_summary">Opens Extra Settings when enabled, or YouTube settings when disabled</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary">If changing this setting does not take effect, try switching to Incognito mode</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
@@ -679,7 +679,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_show_toolbar_settings_button_title">Show Settings button</string>
     <string name="morphe_show_toolbar_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Extra Settings and long press opens YouTube settings, disable to swap</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -1044,8 +1044,8 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_seekbar_custom_color_invalid">Invalid seekbar color value</string>
 
     <!-- layout.branding.customBrandingPatch -->
-    <string name="morphe_custom_branding_name_entry_2" translatable="false">YouTube Morphe</string>
-    <string name="morphe_custom_branding_name_entry_3" translatable="false">YT Morphe</string>
+    <string name="morphe_custom_branding_name_entry_2" translatable="false">Premium Youtube</string>
+    <string name="morphe_custom_branding_name_entry_3" translatable="false">YT Premium</string>
     <string name="morphe_custom_branding_name_entry_4" translatable="false">YT</string>
 
     <!-- layout.branding.header.changeHeaderPatch -->
@@ -1053,7 +1053,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_header_logo_entry_1">Default</string>
     <string name="morphe_header_logo_entry_2">Regular</string>
     <string name="morphe_header_logo_entry_3" translatable="false">Premium</string>
-    <string name="morphe_header_logo_entry_4" translatable="false">Morphe</string>
+    <string name="morphe_header_logo_entry_4" translatable="false">Premium</string>
     <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
     <string name="morphe_header_logo_entry_5">Custom</string>
 
@@ -1097,7 +1097,7 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow is temporarily not available</string>
 
     <!-- misc.announcements.announcementsPatch -->
-    <string name="morphe_announcements_title" translatable="false">Show Morphe announcements</string>
+    <string name="morphe_announcements_title" translatable="false">Show Premium Youtube announcements</string>
     <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>

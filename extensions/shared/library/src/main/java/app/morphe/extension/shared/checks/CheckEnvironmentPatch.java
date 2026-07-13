@@ -261,10 +261,9 @@ public final class CheckEnvironmentPatch {
      * Injection point.
      */
     public static void check(Activity context) {
-        // If the warning was already issued twice, or if the check was successful in the past,
-        // do not run the checks again.
-        if (!Check.shouldRun() && !DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG) {
-            Logger.printDebug(() -> "Environment checks are disabled");
+        // Environment checks disabled.
+        Check.disableForever();
+        if (context != null) {
             return;
         }
 
