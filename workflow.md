@@ -104,6 +104,7 @@ Release process from fork
 3. GitHub Actions release workflow should:
    - Build patches.
    - Publish release assets using GITHUB_TOKEN.
+   - Fetch tags before semantic-release so the release notes and version detection see the full tag history.
    - Skip website deploy and FCM steps when related secrets/vars are missing.
    - Skip the `@cleyrop-org/semantic-release-backmerge` plugin (configured dynamically in `.releaserc.js`) to avoid git merge conflicts with the outdated local `dev` branch.
 4. Wait and fix until a successful release workflow run completes.

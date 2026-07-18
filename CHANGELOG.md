@@ -1,3 +1,10 @@
+# Unreleased
+
+### Changed
+
+* Skip release website and FCM steps when the fork does not provide the required secrets or vars, and fetch tags before semantic-release.
+* Update Premium Youtube Android VR import/export wording in the settings UI.
+
 ## [1.34.0](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0...v1.34.0) (2026-07-10)
 
 ### 🐛 Bug Fixes
