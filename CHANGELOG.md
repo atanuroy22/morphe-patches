@@ -1,3 +1,5 @@
+## [1.34.1](https://github.com/atanuroy22/morphe-patches/compare/v1.34.0...v1.34.1) (2026-07-18)
+
 # Unreleased
 
 ### Changed
