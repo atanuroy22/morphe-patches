@@ -10,10 +10,41 @@ Repository setup
    - origin: my fork
    - upstream: https://github.com/MorpheApp/morphe-patches.git
 2. Sync main:
-   - git fetch upstream
+   - git fetch upstream --tags
+   - git fetch origin --tags
    - git checkout main
-   - git merge --ff-only upstream/main
+   - git merge --ff-only origin/main   (pick up the last `chore: Release` commit made by CI)
+   - git merge upstream/main           (a plain merge is required; --ff-only fails because the fork carries its own commits)
    - git push origin main
+3. Push upstream's new stable tags to the fork BEFORE pushing main:
+   - git tag --merged main | grep -v -- "-dev" | sort -V   (compare against `git ls-remote --tags origin`)
+   - git push origin vX.Y.Z ...
+   - Why: semantic-release derives the next version from the newest stable tag present on origin.
+     Without upstream's tags the fork would re-release an already-used upstream version number and
+     the release notes would replay every upstream commit since the fork's last tag.
+   - Never push the `-dev` prerelease tags; the fork only releases from `main`.
+
+Recurring merge conflicts (and how they are resolved)
+- `.github/workflows/release.yml` — keep the fork's `github.repository == 'MorpheApp/morphe-patches'` +
+  `env.<SECRET> != ''` guards, take upstream's action version bumps.
+- `CHANGELOG.md` — take upstream's side wholesale, then prepend a fresh `# Unreleased` section
+  describing the fork changes. semantic-release prepends the generated notes above it.
+- `README.md`, `patches-list.json`, `patches-bundle.json` — take upstream's side; all three are
+  regenerated during the release.
+- `gradle.properties` — take upstream's `version`; `gradle-semantic-release-plugin` bumps it anyway.
+- Source/string conflicts — keep upstream's identifiers and structure, re-apply only the fork's
+  default values and display text. Example: upstream renamed
+  `morphe_external_downloader_flyout_button` to `morphe_external_downloader_flyout_menu`; the fork
+  keeps the new name and only re-applies `morphe_external_downloader = TRUE` and the
+  `com.video.fun.app` package default.
+
+Local build verification
+- `./gradlew build -PnoProguard` needs a token with the `read:packages` scope to resolve
+  `app.morphe.patches` from `https://maven.pkg.github.com/MorpheApp/registry`:
+  `export GITHUB_ACTOR=atanuroy22; export GITHUB_TOKEN=<PAT with read:packages>`
+- The default `gh auth token` does not carry `read:packages`, so a local build fails at
+  `settings.gradle.kts` plugin resolution. CI builds fine with its own `GITHUB_TOKEN`;
+  when no scoped PAT is available, rely on the release workflow run for build verification.
 
 Global patch behavior
 - Disable environment check warning in CheckEnvironmentPatch.java near:
