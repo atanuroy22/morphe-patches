@@ -11,6 +11,7 @@
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.VideoInformation.PLAYBACK_SPEED_MAXIMUM;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
@@ -27,8 +28,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.icu.text.NumberFormat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -53,15 +55,6 @@ import app.morphe.extension.youtube.shared.PipDismissHelper;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
-
-    /**
-     * Maximum playback speed, inclusive.  Custom speeds must be this or less.
-     * <p>
-     * Going over 8x does not increase the actual playback speed any higher,
-     * and the UI selector starts flickering and acting weird.
-     * Over 10x and the speeds show up out of order in the UI selector.
-     */
-    public static final float PLAYBACK_SPEED_MAXIMUM = 8;
 
     /**
      * How much +/- speed adjustment buttons change the current speed.
@@ -84,6 +77,11 @@ public class CustomPlaybackSpeedPatch {
     private static final float TAP_AND_HOLD_SPEED;
 
     /**
+     * Tap and hold speed label.
+     */
+    private static final String tapAndHoldEduText = str("speedmaster_edu_text");
+
+    /**
      * Custom playback speeds.
      */
     public static final float[] customPlaybackSpeeds;
@@ -98,16 +96,7 @@ public class CustomPlaybackSpeedPatch {
      */
     private static volatile long lastTimePlaybackMenuInvoked;
 
-    /**
-     * Formats speeds to UI strings.
-     */
-    private static final NumberFormat speedFormatter = NumberFormat.getNumberInstance();
-
     static {
-        // Use same 2 digit format as built in speed picker,
-        speedFormatter.setMinimumFractionDigits(2);
-        speedFormatter.setMaximumFractionDigits(2);
-
         final float holdSpeed = Settings.SPEED_TAP_AND_HOLD.get();
         DISABLE_TAP_AND_HOLD_SPEED = holdSpeed == 0;
 
@@ -154,6 +143,28 @@ public class CustomPlaybackSpeedPatch {
      */
     public static float getTapAndHoldSpeed() {
         return TAP_AND_HOLD_SPEED;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static CharSequence onSeekEduOverlayLoaded(Object context, CharSequence original) {
+        if (!DISABLE_TAP_AND_HOLD_SPEED && TextUtils.equals(tapAndHoldEduText, original)
+                && context instanceof ContextInterface contextInterface) {
+            try {
+                String identifier = contextInterface.patch_getIdentifier();
+                if (identifier != null && identifier.startsWith("seek_edu_overlay_v2.e")) {
+                    // 2.00x → 2x, 1.50x → 1.5x.
+                    return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED)
+                            .replace(".00x", "x")
+                            .replace("0x", "x") + ' ';
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "onSeekEduOverlayLoaded failed", ex);
+            }
+        }
+
+        return original;
     }
 
     private static void showInvalidCustomSpeedToast() {
@@ -309,8 +320,7 @@ public class CustomPlaybackSpeedPatch {
             // Display current playback speed.
             TextView currentSpeedText = new TextView(context);
             float currentSpeed = VideoInformation.getPlaybackSpeed();
-            // Initially show with only 0 minimum digits, so 1.0 shows as 1x.
-            currentSpeedText.setText(formatSpeedStringX(currentSpeed));
+            currentSpeedText.setText(VideoInformation.formatSpeedStringX(currentSpeed));
             currentSpeedText.setTextColor(Utils.getAppForegroundColor());
             currentSpeedText.setTextSize(16);
             currentSpeedText.setTypeface(Typeface.DEFAULT_BOLD);
@@ -360,11 +370,11 @@ public class CustomPlaybackSpeedPatch {
                     return null;
                 }
 
-                currentSpeedText.setText(formatSpeedStringX(roundedSpeed)); // Update display.
+                currentSpeedText.setText(VideoInformation.formatSpeedStringX(roundedSpeed)); // Update display.
                 speedSlider.setProgress(speedToProgressValue(roundedSpeed)); // Update slider.
 
                 RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
-                VideoInformation.overridePlaybackSpeed(roundedSpeed);
+                VideoInformation.changePlaybackSpeed(roundedSpeed);
                 return null;
             };
 
@@ -400,9 +410,6 @@ public class CustomPlaybackSpeedPatch {
             gridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12); // Speed buttons container.
             gridLayout.setLayoutParams(gridParams);
 
-            // For button use 1 digit minimum.
-            speedFormatter.setMinimumFractionDigits(1);
-
             // Add buttons for each preset playback speed.
             for (float speed : customPlaybackSpeeds) {
                 // Container for button and optional label.
@@ -418,7 +425,7 @@ public class CustomPlaybackSpeedPatch {
 
                 // Create speed button.
                 Button speedButton = new Button(context, null, 0);
-                speedButton.setText(speedFormatter.format(speed));
+                speedButton.setText(VideoInformation.formatSpeedStringX(speed, 1));
                 speedButton.setTextColor(Utils.getAppForegroundColor());
                 speedButton.setTextSize(12);
                 speedButton.setTypeface(Utils.appIsUsingBoldIcons()
@@ -464,9 +471,6 @@ public class CustomPlaybackSpeedPatch {
                 gridLayout.addView(buttonContainer);
             }
 
-            // Restore 2 digit minimum.
-            speedFormatter.setMinimumFractionDigits(2);
-
             // Add in-rows speed buttons layout to main layout.
             mainLayout.addView(gridLayout);
 
@@ -500,14 +504,6 @@ public class CustomPlaybackSpeedPatch {
         params.setMargins(Dim.dp8, 0, Dim.dp8, 0); // Set margins.
         button.setLayoutParams(params);
         return button;
-    }
-
-    /**
-     * @param speed The playback speed value to format.
-     * @return A string representation of the speed with 'x' (e.g. "1.25x" or "1.00x").
-     */
-    private static String formatSpeedStringX(float speed) {
-        return speedFormatter.format(speed) + 'x';
     }
 
     /**

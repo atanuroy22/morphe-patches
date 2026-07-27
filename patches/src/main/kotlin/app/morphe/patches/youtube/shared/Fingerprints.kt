@@ -72,6 +72,13 @@ internal object EngagementPanelControllerFingerprint : Fingerprint(
     )
 )
 
+internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
+    parameters = listOf("[L", "I"),
+    filters = listOf(
+        string("menu_item_playback_speed"),
+    )
+)
+
 internal object LayoutConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -158,14 +165,16 @@ internal object ToolBarButtonFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.ID, "menu_item_view"),
         methodCall(smali = "Landroid/view/MenuItem;->setShowAsAction(I)V"),
-        fieldAccess(
-            type = "I",
-            opcode = Opcode.IGET
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "L",
+            parameters = listOf("I")
         ),
-        opcode(Opcode.SGET_OBJECT),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
-            returnType = "I"
+            returnType = "I",
+            parameters = listOf("L")
         ),
         opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
         fieldAccess(
@@ -207,6 +216,35 @@ internal object PlaybackSpeedOnItemClickParentFingerprint : Fingerprint(
     }
 )
 
+internal object SpeedLimiterParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        string("Playback rate: %f"),
+        literal(0.25f),
+        literal(4.0f),
+    )
+)
+
+internal object SpeedLimiterFingerprint : Fingerprint(
+    classFingerprint = SpeedLimiterParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        literal(0.25f),
+        literal(4.0f),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("F"),
+            returnType = "V"
+        )
+    ),
+    custom = { method, _ ->
+        method.parameterTypes.firstOrNull() == "F"
+    }
+)
+
 internal object VideoQualityChangedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
@@ -228,6 +266,15 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
             type = "I",
             location = MatchAfterImmediately()
         )
+    )
+)
+
+internal object VideoStreamingDataToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("VideoStreamingData(itags=")
     )
 )
 
@@ -253,5 +300,24 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         ),
         literal(46659098L),
+    )
+)
+
+internal val VideoQualityBufferingFlagFingerprint = listOf(
+    Fingerprint( // Platypus
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+        returnType = "V",
+        filters = listOf(
+            literal(45624008L),
+            opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2))
+        )
+    ),
+    Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "Z",
+        parameters = listOf(),
+        filters = listOf(
+            literal(45408049L)
+        )
     )
 )

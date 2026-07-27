@@ -45,7 +45,7 @@ jobs:
         run: git fetch --tags --force
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 'lts/*'
           cache: 'npm'
@@ -93,7 +93,7 @@ jobs:
 
       - name: Setup Python for FCM
         if: steps.release.outputs.new_release_published == 'true' && (github.event_name == 'push' || inputs.send_fcm == true) && github.repository == 'MorpheApp/morphe-patches' && env.FCM_PROJECT_ID != '' && env.FCM_SERVICE_ACCOUNT_JSON != ''
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 

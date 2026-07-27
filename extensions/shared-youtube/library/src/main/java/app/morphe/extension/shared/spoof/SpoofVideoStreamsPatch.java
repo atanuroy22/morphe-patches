@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.spoof;
 
 import android.app.Activity;
@@ -13,11 +23,9 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
+import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -25,28 +33,12 @@ public class SpoofVideoStreamsPatch {
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS;
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS;
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS);
-        }
-    }
-
-    public static final class JavaScriptHashAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS &&
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE
-            );
         }
     }
 
@@ -67,23 +59,9 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
-    public static volatile Map<String, String> currentVideoRequestHeader;
-
-    public static boolean overrideSpoofStreamFlagsForHeaders = SPOOF_VIDEO_STREAMS;
-
-    @Nullable
-    private static volatile AppLanguage languageOverride;
-
-    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
+    private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
-
-    public static void setOverrideSpoofStreamFlagsForHeaders() {
-        if (!overrideSpoofStreamFlagsForHeaders) {
-            Logger.printDebug(() -> "Forcing override of spoof stream flags with spoofing off");
-            overrideSpoofStreamFlagsForHeaders = true;
-        }
-    }
 
     /**
      * Injection point.
@@ -103,21 +81,9 @@ public class SpoofVideoStreamsPatch {
         return false;  // Modified during patching.
     }
 
-    @Nullable
-    public static AppLanguage getLanguageOverride() {
-        return languageOverride;
-    }
-
-    /**
-     * @param language Language override for non-authenticated requests.
-     */
-    public static void setLanguageOverride(@Nullable AppLanguage language) {
-        languageOverride = language;
-    }
-
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamOrDetailsDataRequest.setClientOrderToUse(availableClients, client);
+        StreamingDataRequest.setClientOrderToUse(availableClients, client);
     }
 
     public static ClientType getPreferredClient() {
@@ -125,9 +91,12 @@ public class SpoofVideoStreamsPatch {
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
-        return isPatchIncluded()
-                && SPOOF_VIDEO_STREAMS
+        return isPatchIncluded() && SPOOF_VIDEO_STREAMS
                 && !preferredClient.supportsMultiAudioTracks;
+    }
+
+    public static boolean spoofingToClientWithSABROrSpoofingDisabled() {
+        return !isPatchIncluded() || !SPOOF_VIDEO_STREAMS || preferredClient.requireSABR;
     }
 
     /**
@@ -171,35 +140,6 @@ public class SpoofVideoStreamsPatch {
         }
 
         return playerRequestBuilder;
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Blocks /get_watch requests by returning an unreachable URI.
-     * /att/get requests are used to obtain a PoToken challenge.
-     * See: <a href="https://github.com/FreeTubeApp/FreeTube/blob/4b7208430bc1032019a35a35eb7c8a84987ddbd7/src/botGuardScript.js#L15">botGuardScript.js#L15</a>
-     * <p>
-     * Since the Spoof streaming data patch was implemented because a valid PoToken cannot be obtained,
-     * Blocking /att/get requests are not a problem.
-     */
-    public static String blockGetAttRequest(String originalUrlString) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                var originalUri = Uri.parse(originalUrlString);
-                String path = originalUri.getPath();
-
-                if (path != null && path.contains("att/get")) {
-                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI_STRING;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockGetAttRequest failure", ex);
-            }
-        }
-
-        return originalUrlString;
     }
 
     /**
@@ -249,7 +189,7 @@ public class SpoofVideoStreamsPatch {
      * Fix audio stuttering in YouTube Music.
      */
     public static boolean disableSABR() {
-        return SPOOF_VIDEO_STREAMS;
+        return SPOOF_VIDEO_STREAMS && !StreamingDataRequest.getLastSpoofedClientUseSABR();
     }
 
     /**
@@ -261,7 +201,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
         }
 
-        if (overrideSpoofStreamFlagsForHeaders) {
+        if (SPOOF_VIDEO_STREAMS) {
             return false;
         }
         return original;
@@ -276,10 +216,10 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "usePlaybackStartFeatureFlag is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -291,10 +231,10 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useReelItemWatchResponse is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -306,7 +246,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
         }
 
-        if (overrideSpoofStreamFlagsForHeaders) {
+        if (SPOOF_VIDEO_STREAMS) {
             return false;
         }
         return original;
@@ -316,22 +256,23 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static void fetchStreams(String url, Map<String, String> requestHeaders) {
-        currentVideoRequestHeader = requestHeaders;
-
         if (SPOOF_VIDEO_STREAMS) {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null || !path.contains("player")) {
+                if (path == null) {
                     return;
                 }
 
                 // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
-                // 'heartbeat' has no video  and appears to be only after playback has started.
+                // 'heartbeat' has no video and appears to be only after playback has started.
                 // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
                 // 'ad_break' has no video ID.
-                if (path.contains("get_drm_license") || path.contains("heartbeat")
-                        || path.contains("refresh") || path.contains("ad_break")) {
+                if (!path.contains("player") ||
+                        path.contains("get_drm_license") ||
+                        path.contains("heartbeat") ||
+                        path.contains("refresh") ||
+                        path.contains("ad_break")) {
                     Logger.printDebug(() -> "Ignoring path: " + path);
                     return;
                 }
@@ -342,7 +283,7 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                StreamOrDetailsDataRequest.fetchStreamRequest(id, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -358,10 +299,11 @@ public class SpoofVideoStreamsPatch {
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
-                    var stream = (byte[]) request.getStreamDetails();
-                    if (stream != null) {
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        byte[] stream = buffers.streamingData();
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
                         return stream;
                     }
@@ -376,8 +318,34 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
-        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
+    /**
+     * Injection point.
+     * Fix playback by replace the player config.
+     * Called after {@link #getStreamingData(String)}.
+     */
+    @Nullable
+    public static byte[] getPlayerConfig(String videoId) {
+        if (SPOOF_VIDEO_STREAMS) {
+            try {
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                if (request != null) {
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        byte[] config = buffers.playerConfig();
+                        if (config != null) {
+                            Logger.printDebug(() -> "Overriding player config: " + videoId);
+                            return config;
+                        }
+                    }
+                }
+
+                Logger.printDebug(() -> "Not overriding player config: " + videoId);
+            } catch (Exception ex) {
+                Logger.printException(() -> "getPlayerConfig failure", ex);
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -412,7 +380,7 @@ public class SpoofVideoStreamsPatch {
                     && !TextUtils.isEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamOrDetailsDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);

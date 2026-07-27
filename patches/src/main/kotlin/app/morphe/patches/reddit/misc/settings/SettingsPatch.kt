@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.Fingerprint
@@ -18,7 +19,6 @@ import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
-import app.morphe.patches.all.misc.updates.checkPatcherUpToDatePatch
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
@@ -41,7 +41,6 @@ val settingsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(
-        checkPatcherUpToDatePatch,
         sharedExtensionPatch,
         disablePlayStoreUpdatesPatch,
         spoofSignaturePatch,
