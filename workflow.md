@@ -96,19 +96,31 @@ YouTube defaults to enforce
 
 9. Swipe controls
    - Enable swipe to change videos.(morphe_swipe_change_video = true)
-   - Enable brightness gesture.(morphe_swipe_brightness = true)
-   - Enable volume gesture.(morphe_swipe_volume = true)
+   - Enable brightness gesture.(morphe_swipe_left_zone = SwipeZoneAction.BRIGHTNESS)
+   - Enable volume gesture.(morphe_swipe_right_zone = SwipeZoneAction.VOLUME)
    - Enable auto-brightness gesture.(morphe_swipe_lowest_value_enable_auto_brightness = true)
+   - Note: upstream v1.40.0 replaced the `morphe_swipe_brightness` / `morphe_swipe_volume` /
+     `morphe_swipe_speed` booleans with the three zone enums `morphe_swipe_left_zone` /
+     `morphe_swipe_right_zone` / `morphe_swipe_top_zone` (`SwipeZoneAction` = OFF | VOLUME |
+     BRIGHTNESS | SPEED). Leave the top zone OFF.
 
 10. Miscellaneous
    - Disable announcements by default.(morphe_announcements = false)
 
 11. About
-   - Hide the About section inside Morphe/Premium YouTube settings. ("About" preference to the top.)
+   - Hide the About section inside Premium Settings/Extra settings. ("About" button located above "Ads" button.i want to hide the button because it is not useful for me.)
+   - Implemented by deleting the `preferences += NonInteractivePreference("morphe_settings_screen_00_about", ...)`
+     block (and its now-unused `NonInteractivePreference` import) from
+     `patches/src/main/kotlin/app/morphe/patches/youtube/misc/settings/SettingsPatch.kt`.
+     Leave the `morphe_settings_screen_00_about*` drawables in the `copyResources` list; they are
+     harmless and removing them causes needless conflicts on every upstream merge.
 
 YouTube Music defaults to enforce
 1. YT Music package name
-   - Set targetPackage and morphe_music_package_name to app.revanced.android.apps.youtube.music in morphe-patches\patches\src\main\kotlin\app\morphe\patches\music\misc\gms\Constants.kt  and morphe-patches\extensions\youtube\src\main\java\app\morphe\extension\youtube\settings\Settings.java respectively.
+   - Set targetPackage and morphe_custom_music_package_name to app.revanced.android.apps.youtube.music in morphe-patches\patches\src\main\kotlin\app\morphe\patches\music\misc\gms\Constants.kt  and morphe-patches\extensions\youtube\src\main\java\app\morphe\extension\youtube\settings\Settings.java respectively.
+   - Note: upstream v1.40.0 renamed `morphe_music_package_name` (MORPHE_MUSIC_PACKAGE_NAME) to
+     `morphe_custom_music_package_name` (CUSTOM_MUSIC_PACKAGE_NAME) and changed its default to "".
+     The old key survives only as DEPRECATED_MORPHE_MUSIC_PACKAGE_NAME for migration.
 
 2. General
    - Set custom branding entry 2 to YT Music Premium.
@@ -126,6 +138,7 @@ Expected files to modify
 - BaseCustomBrandingPatch.kt
 - Constants.kt
 - CheckEnvironmentPatch.java
+- SettingsPatch.kt (YouTube - remove the About preference)
 - .releaserc.js
 
 Release process from fork

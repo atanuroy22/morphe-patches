@@ -18,7 +18,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
-import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesYouTube
@@ -36,7 +36,6 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -51,6 +50,7 @@ import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -208,16 +208,16 @@ val settingsPatch = bytecodePatch(
         settingsResourcePatch,
         addResourcesPatch,
         versionCheckPatch,
+        // Currently there is no easy way to make patches mandatory,
+        // so for now these are all dependents of this patch.
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
-        removeLinkVerification,
-        // Currently there is no easy way to make a mandatory patch,
-        // so for now this is a dependent of this patch.
-        checkEnvironmentPatch,
         addLicensePatch,
+        removeLinkVerification,
+        checkEnvironmentPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
             recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets.first { !it.isExperimental }.version!!
@@ -232,26 +232,16 @@ val settingsPatch = bytecodePatch(
         addAppResources("shared-youtube")
         addAppResources("youtube")
 
-        // Add an "About" preference to the top.
-        preferences += NonInteractivePreference(
-            key = "morphe_settings_screen_00_about",
-            icon = "@drawable/morphe_settings_screen_00_about",
-            iconBold = "@drawable/morphe_settings_screen_00_about_bold",
-            layout = "@layout/preference_with_icon",
-            summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
-            selectable = true
-        )
+        // Fork: the "About" preference is intentionally not added to the settings screen.
+
+        if (!is_21_30_or_greater) {
+            PreferenceScreen.GENERAL.addPreferences(
+                SwitchPreference("morphe_restore_old_settings_menus")
+            )
+        }
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_restore_old_settings_menus")
-        )
-
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history")
-        )
-
-        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_settings_search_history"),
             SwitchPreference("morphe_show_menu_icons")
         )
 
@@ -283,15 +273,18 @@ val settingsPatch = bytecodePatch(
         }
 
         // Add setting to force Cairo settings fragment on/off.
-        CairoFragmentConfigFingerprint.method.insertLiteralOverride(
-            CairoFragmentConfigFingerprint.instructionMatches.first().index,
-            "$YOUTUBE_ACTIVITY_HOOK_CLASS->useCairoSettingsFragment(Z)Z"
-        )
+        if (!is_21_30_or_greater) CairoFragmentConfigFingerprint.matchAll().forEach { match ->
+            // 21.30+ inlines the flag lookup and must patch ~15 places.
+            match.method.insertLiteralOverride(
+                match.instructionMatches.first().index,
+                "$YOUTUBE_ACTIVITY_HOOK_CLASS->useCairoSettingsFragment(Z)Z"
+            )
+        }
 
         // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
         // 20.31 is the first version that seems to have all the bold icons.
         if (is_20_31_or_greater) {
-            BoldIconsFeatureFlagFingerprint.let {
+            BoldIconsFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$YOUTUBE_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
