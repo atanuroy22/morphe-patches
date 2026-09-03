@@ -1,9 +1,12 @@
 name: Crowdin push from GitHub
 
-on: []
+on:
+  # Disabled in this fork: translations are managed upstream only.
+  workflow_dispatch:
 
 jobs:
   push:
+    if: false # Disabled in this fork.
     name: Push strings
     runs-on: ubuntu-latest
     steps:

@@ -1,7 +1,5 @@
 ## [1.41.1](https://github.com/atanuroy22/morphe-patches/compare/v1.41.0...v1.41.1) (2026-09-03)
 
-# Unreleased
-
 Fork changes on top of upstream `v1.41.0`:
 
 ### 🔧 Fork defaults re-applied after the upstream merge

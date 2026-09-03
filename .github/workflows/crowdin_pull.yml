@@ -1,8 +1,11 @@
 name: Crowdin pull and merge
-on: []
+on:
+  # Disabled in this fork: translations are managed upstream only.
+  workflow_dispatch:
 
 jobs:
   pull:
+    if: false # Disabled in this fork.
     name: Pull translations from Crowdin
     permissions:
       contents: write
@@ -31,7 +34,7 @@ jobs:
 
   merge:
     name: Squash merge Crowdin into Dev
-    if: github.event_name == 'workflow_dispatch'
+    if: false # Disabled in this fork.
     needs: pull
     permissions:
       contents: write

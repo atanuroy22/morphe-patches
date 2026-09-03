@@ -147,7 +147,13 @@ YouTube Music defaults to enforce
    - Set default icon style to Original.
 
 Crowdin-pull-push workflow
-1. Disable pull and push request completely in yml file.(crowdin_pull.yml, crowdin_push.yml)
+1. Disable pull and push completely in crowdin_pull.yml and crowdin_push.yml.
+2. Do NOT use `on: []` - GitHub rejects an empty trigger list as an invalid workflow file and
+   creates a failed run on every push. Use instead:
+     on:
+       workflow_dispatch:
+   plus `if: false` on every job, which is valid YAML, never triggers automatically and does
+   nothing even if someone dispatches it manually.
 
 Expected files to modify
 - SharedYouTubeSettings.java
