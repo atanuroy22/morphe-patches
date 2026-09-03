@@ -1,3 +1,23 @@
+# Unreleased
+
+Fork changes on top of upstream `v1.41.0`:
+
+### 🔧 Fork defaults re-applied after the upstream merge
+
+* **YouTube - Settings:** Upstream's new `Morphe settings name` option is left on `Default`, so the
+  settings entry keeps the fork's `Extra Settings` / `Premium Settings` naming.
+* **YouTube - Settings:** The new `Show Morphe setting icons` string is re-applied as
+  `Show Premium setting icons`.
+* **YouTube - Queue:** The new `Add to Morphe queue` flyout string is re-applied as
+  `Add to Premium Youtube queue`.
+* All other fork defaults (external downloader, end screen cards, remembered quality and speed,
+  header logo, Shorts, seekbar, feed, swipe zones, announcements, branding and package names)
+  carried over from `v1.40.1` unchanged.
+
+### 🗑️ Fork removals
+
+* **YouTube - Settings:** The `About` entry at the top of `Extra Settings` is still not added.
+
 ## [1.41.0](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0...v1.41.0) (2026-09-01)
 
 ### 🐛 Bug Fixes

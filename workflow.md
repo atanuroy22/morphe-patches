@@ -27,8 +27,10 @@ Repository setup
 Recurring merge conflicts (and how they are resolved)
 - `.github/workflows/release.yml` — keep the fork's `github.repository == 'MorpheApp/morphe-patches'` +
   `env.<SECRET> != ''` guards, take upstream's action version bumps.
-- `CHANGELOG.md` — take upstream's side wholesale, then prepend a fresh `# Unreleased` section
-  describing the fork changes. semantic-release prepends the generated notes above it.
+- `CHANGELOG.md` — take upstream's side, but keep the fork's own most recent `## [x.y.z]` section
+  (upstream does not have it) and place it in date order below upstream's new sections. Then prepend
+  a fresh `# Unreleased` section describing the fork changes; semantic-release prepends the generated
+  notes above it, and a follow-up `chore: Fold fork notes ... [skip ci]` commit merges the two.
 - `README.md`, `patches-list.json`, `patches-bundle.json` — take upstream's side; all three are
   regenerated during the release.
 - `gradle.properties` — take upstream's `version`; `gradle-semantic-release-plugin` bumps it anyway.
@@ -37,6 +39,12 @@ Recurring merge conflicts (and how they are resolved)
   `morphe_external_downloader_flyout_button` to `morphe_external_downloader_flyout_menu`; the fork
   keeps the new name and only re-applies `morphe_external_downloader = TRUE` and the
   `com.video.fun.app` package default.
+- `.releaserc` vs `.releaserc.js` — upstream ships `.releaserc` (JSON); the fork **deleted** it and
+  ships `.releaserc.js` instead so the backmerge plugin can be added conditionally. A plain merge
+  keeps the deletion silently as long as upstream leaves `.releaserc` untouched. If upstream ever
+  edits `.releaserc`, git raises a modify/delete conflict: keep the deletion (`git rm .releaserc`)
+  and port the upstream change into `.releaserc.js` by hand. cosmiconfig prefers `.releaserc` over
+  `.releaserc.js`, so the two files must never exist at the same time.
 
 Local build verification
 - `./gradlew build -PnoProguard` needs a token with the `read:packages` scope to resolve
@@ -47,12 +55,17 @@ Local build verification
   when no scoped PAT is available, rely on the release workflow run for build verification.
 
 Global patch behavior
-- Disable environment check warning in CheckEnvironmentPatch.java near:
-  if (!Check.shouldRun() && !DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG) { ... }
-- Use:
+- Disable environment check warning at the top of `check(Activity context)` in
+  `extensions/shared/library/src/main/java/app/morphe/extension/shared/checks/CheckEnvironmentPatch.java`
+  (note the path: `extensions/shared/`, not `extensions/shared-youtube/`):
   // Environment checks disabled.
   Check.disableForever();
-  return;
+  if (context != null) {
+      return;
+  }
+- As of upstream v1.41.0 the nag screen is also permanently disabled upstream
+  ("FIXME: Nag screen is permanently turned off"), so the fork edit is now belt-and-braces.
+  Keep it anyway - it costs nothing and survives if upstream re-enables the dialog.
 
 YouTube defaults to enforce
 1. MORPHE Youtube package name
@@ -91,7 +104,8 @@ YouTube defaults to enforce
    - Disable hide 'you may like' section button by default.(morphe_hide_you_may_like_section = false)
    - Disable hide 'notify me' button by default.(morphe_hide_notify_me_button = false)
    - Disable hide 'show more' button by default.(morphe_hide_show_more_button = false)
-   - Disable hide latest post button by default.(morphe_hide_latest_posts = false)
+   - (Obsolete) `morphe_hide_latest_posts` no longer exists upstream - the setting was removed,
+     so there is nothing to enforce. Kept here only so the item is not re-added by mistake.
    - Enable hide YouTube Doodles button by default.(morphe_hide_youtube_doodles = true)
 
 9. Swipe controls
@@ -107,7 +121,13 @@ YouTube defaults to enforce
 10. Miscellaneous
    - Disable announcements by default.(morphe_announcements = false)
 
-11. About
+11. Settings entry name (upstream v1.41.0)
+   - Upstream added `morphe_settings_name` (SharedSettings.SETTINGS_NAME, default "DEFAULT") plus the
+     `morphe_settings_name_*` strings, letting the user rename the settings entry at runtime.
+   - Leave the default at "DEFAULT": it falls back to `morphe_settings_title`, which the fork already
+     overrides to `Extra Settings`. No fork change is needed for this feature.
+
+12. About
    - Hide the About section inside Premium Settings/Extra settings. ("About" button located above "Ads" button.i want to hide the button because it is not useful for me.)
    - Implemented by deleting the `preferences += NonInteractivePreference("morphe_settings_screen_00_about", ...)`
      block (and its now-unused `NonInteractivePreference` import) from
@@ -134,10 +154,11 @@ Expected files to modify
 - Settings.java
 - strings.xml
   - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note, morphe_settings_title to Extra Settings, morphe_settings_submenu_title to Premium Settings)
-- CustomBrandingPatch.java
-- BaseCustomBrandingPatch.kt
+- CustomBrandingPatch.java (extensions/shared-youtube/.../patches/CustomBrandingPatch.java -
+  getDefaultAppNameIndex() = 2 and getDefaultIconStyle() = BrandingTheme.ORIGINAL; this one file
+  covers both YouTube and YouTube Music, so BaseCustomBrandingPatch.kt needs no fork edit any more)
 - Constants.kt
-- CheckEnvironmentPatch.java
+- CheckEnvironmentPatch.java (extensions/shared/library/...)
 - SettingsPatch.kt (YouTube - remove the About preference)
 - .releaserc.js
 
