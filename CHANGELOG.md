@@ -1,3 +1,5 @@
+## [1.41.3](https://github.com/atanuroy22/morphe-patches/compare/v1.41.2...v1.41.3) (2026-10-20)
+
 ## [1.41.2](https://github.com/atanuroy22/morphe-patches/compare/v1.41.1...v1.41.2) (2026-10-20)
 
 ### 🐛 Bug Fixes
