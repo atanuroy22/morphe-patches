@@ -1,5 +1,9 @@
 ## [1.41.3](https://github.com/atanuroy22/morphe-patches/compare/v1.41.2...v1.41.3) (2026-10-20)
 
+### 🐛 Bug Fixes
+
+* **branding:** default patch-time app icon to original in BaseCustomBrandingPatch ([5302b24](https://github.com/atanuroy22/morphe-patches/commit/5302b2439ba5e1d51a66ffc25b0906be4efb3436))
+
 ## [1.41.2](https://github.com/atanuroy22/morphe-patches/compare/v1.41.1...v1.41.2) (2026-10-20)
 
 ### 🐛 Bug Fixes
