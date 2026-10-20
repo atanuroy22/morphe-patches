@@ -352,6 +352,7 @@ public class CustomBrandingPatch {
         return 2;
     }
 
+    public static BrandingTheme getDefaultIconStyle() {
         return BrandingTheme.ORIGINAL;
     }
 
