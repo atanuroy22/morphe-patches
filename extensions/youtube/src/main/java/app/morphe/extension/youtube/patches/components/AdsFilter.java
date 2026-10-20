@@ -24,8 +24,11 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 
 @SuppressWarnings("unused")
 public final class AdsFilter extends Filter {
@@ -143,7 +146,8 @@ public final class AdsFilter extends Filter {
 
         productCard = new StringFilterGroup(
                 Settings.HIDE_SHOPPING_LINKS,
-                "expandable_metadata.e"
+                "expandable_metadata.e",
+                "inline_expander"
         );
 
         productCardBuffer = new ByteArrayFilterGroup(
@@ -204,7 +208,7 @@ public final class AdsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -223,7 +227,7 @@ public final class AdsFilter extends Filter {
         }
 
         if (matchedGroup == shortsPaidPromotionLabel) {
-            return path.contains("|button.e") && shortsPaidPromotionLabelBuffer.check(buffer).isFiltered();
+            return Utils.contains(path, "|button.e") && shortsPaidPromotionLabelBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);
@@ -257,7 +261,7 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideAds(boolean original) {
-        return (Settings.HIDE_GENERAL_ADS.get() && Settings.HIDE_VIDEO_ADS.get()) || original;
+        return (Settings.HIDE_GENERAL_ADS.get() && blockVideoAdsInRequests()) || original;
     }
 
     /**
@@ -335,14 +339,31 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideVideoAds() {
-        return Settings.HIDE_VIDEO_ADS.get();
+        if (!Settings.HIDE_VIDEO_ADS.get()) {
+            return false;
+        }
+
+        final boolean whitelisted = ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.ADS);
+        Logger.printDebug(() -> (whitelisted ? "Allowing" : "Hiding") + " video ads of channel: "
+                + VideoInformation.getChannelId());
+
+        return !whitelisted;
     }
 
     /**
      * Injection point.
      */
     public static String hideVideoAds(String osName) {
-        return SpoofOSNamePatch.getOSName(Settings.HIDE_VIDEO_ADS.get());
+        return SpoofOSNamePatch.getOSName(blockVideoAdsInRequests());
+    }
+
+    /**
+     * A request is built before its channel is known, so it cannot opt out of ads
+     * for a single channel. Any whitelisted channel therefore stops the requests
+     * from hiding ads, leaving {@link #hideVideoAds()} to block them per channel.
+     */
+    private static boolean blockVideoAdsInRequests() {
+        return Settings.HIDE_VIDEO_ADS.get() && ChannelWhitelist.isEmpty(WhitelistType.ADS);
     }
 
     /**

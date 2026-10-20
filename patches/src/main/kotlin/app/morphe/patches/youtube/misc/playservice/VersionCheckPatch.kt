@@ -89,11 +89,17 @@ var is_21_29_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_30_or_greater : Boolean by Delegates.notNull()
     private set
+var is_21_31_or_greater : Boolean by Delegates.notNull()
+    private set
 var is_21_32_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_33_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_35_or_greater : Boolean by Delegates.notNull()
+    private set
+var is_21_36_or_greater : Boolean by Delegates.notNull()
+    private set
+var is_21_39_or_greater : Boolean by Delegates.notNull()
     private set
 
 val versionCheckPatch = bytecodePatch {
@@ -121,7 +127,7 @@ val versionCheckPatch = bytecodePatch {
         is_20_46_or_greater = isEqualsOrGreaterThan("20.46.00")
         is_20_47_or_greater = isEqualsOrGreaterThan("20.47.00")
         is_20_49_or_greater = isEqualsOrGreaterThan("20.49.00")
-        is_21_02_or_greater = isEqualsOrGreaterThan("21.02.000")
+        is_21_02_or_greater = isEqualsOrGreaterThan("21.02.00")
         is_21_03_or_greater = isEqualsOrGreaterThan("21.03.000")
         is_21_04_or_greater = isEqualsOrGreaterThan("21.04.000")
         is_21_05_or_greater = isEqualsOrGreaterThan("21.05.000")
@@ -144,8 +150,11 @@ val versionCheckPatch = bytecodePatch {
         is_21_28_or_greater = isEqualsOrGreaterThan("21.28.000")
         is_21_29_or_greater = isEqualsOrGreaterThan("21.29.000")
         is_21_30_or_greater = isEqualsOrGreaterThan("21.30.000")
+        is_21_31_or_greater = isEqualsOrGreaterThan("21.31.000")
         is_21_32_or_greater = isEqualsOrGreaterThan("21.32.0")
         is_21_33_or_greater = isEqualsOrGreaterThan("21.33.000")
         is_21_35_or_greater = isEqualsOrGreaterThan("21.35.000")
+        is_21_36_or_greater = isEqualsOrGreaterThan("21.36.00")
+        is_21_39_or_greater = isEqualsOrGreaterThan("21.39.000")
     }
 }

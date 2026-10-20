@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Dodaje gumb za povećanje ili smanjenje ocjene segmenata</string>
   <string name="morphe_sb_square_layout_title">Koristi kvadratni izlog</string>
   <string name="morphe_sb_square_layout_summary">Koristi kvadratne kutove za SponsorBlock gumbe i kontrole</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Koristi kompaktni gumb za preskakanje</string>
   <string name="morphe_sb_compact_skip_button_summary">Smanjuje širinu gumba za preskakanje kako bi se uštedao prostor</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Automatski sakrij gumb za preskakanje</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adresa koju SponsorBlock koristi za pozive poslužitelju</string>
   <string name="morphe_sb_channel_whitelist_title">Bijela lista kanala</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock je onemogućen za kanale na bijeloj listi</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Trenutačni kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Dodaj na bijelu listu</string>
-  <string name="morphe_sb_channel_whitelist_remove">Ukloni</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Kanali na bijeloj listi</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nema kanala na bijeloj listi</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal dodan na bijelu listu</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal uklonjen s bijele liste</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Obavijesti o kanalu na bijeloj listi</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Prikazuje obavijest kada je SponsorBlock onemogućen za kanal na bijeloj listi</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock onemogućen za ovaj kanal</string>
@@ -236,8 +228,7 @@ Ako ne šaljete istaknuti dio, dodirnite Otkaži i označite drugu lokaciju"</st
   <string name="morphe_sb_stats_saved_second_format">%s sekunda</string>
   <string name="morphe_sb_color_opacity_label">Prozirnost</string>
   <string name="morphe_sb_color_dot_label">Boja</string>
-  <string name="morphe_sb_about_title">O aplikaciji</string>
-  <string name="morphe_sb_about_api_summary">"Podatke dostavlja SponsorBlock API
+  <string name="morphe_sb_about_api_summary">"SponsorBlock je javna baza podataka video segmenata koju stvara zajednica, poput sponzorstava, uvodnih i odjavnih špica te podsjetnika za pretplatu. Segmente prijavljuju i o njima glasuju članovi zajednice, a baza podataka je otvorena i besplatna za preuzimanje
 
-Dodirnite ovdje za otvaranje Sponsor.ajay.app i pregled preuzimanja za druge platforme"</string>
+ID videa koji gledate šalje se SponsorBlock API-ju kako bi se dobili njegovi segmenti"</string>
 </resources>

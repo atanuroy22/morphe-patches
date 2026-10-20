@@ -15,7 +15,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
 @SuppressWarnings("unused")
 public class LegacyPlayerControlsPatch {
@@ -28,7 +27,9 @@ public class LegacyPlayerControlsPatch {
     }
 
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS =
-            Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !YouTubeActivityHook.useBoldIcons(true);
+            Settings.RESTORE_OLD_PLAYER_BUTTONS.get()
+                    || !VersionCheckPatch.IS_20_31_OR_GREATER
+                    || SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
     /**
      * Injection point.
@@ -50,6 +51,37 @@ public class LegacyPlayerControlsPatch {
                 bottomGradientScrim.setVisibility(View.GONE);
             });
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean forcePlayerSeekbar(boolean original) {
+        if (!original) {
+            Logger.printDebug(() -> "Player seekbar feature flag is off");
+        }
+        return true;
+    }
+
+    /**
+     * The value the app has for the new player overlays flag, before it is forced off.
+     */
+    private static volatile boolean newPlayerOverlaysOriginal;
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableNewPlayerOverlays(boolean original) {
+        newPlayerOverlaysOriginal = original;
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Called right after the flag is read, so the value is the one just stored.
+     */
+    public static boolean getOriginalNewPlayerOverlays(boolean overridden) {
+        return newPlayerOverlaysOriginal;
     }
 
     /**

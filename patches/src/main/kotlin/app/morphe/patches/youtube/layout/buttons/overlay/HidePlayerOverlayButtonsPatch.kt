@@ -15,10 +15,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -45,14 +45,13 @@ private const val EXTENSION_CLASS =
 
 val hidePlayerOverlayButtonsPatch = bytecodePatch(
     name = "Hide player overlay buttons",
-    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player " +
-        "control buttons background.",
+    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, " +
+            "and to hide or change the opacity of the player control buttons background.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
         playerOverlayButtonsSettingsPatch,
-        resourceMappingPatch, // Used by fingerprints.
         versionCheckPatch
     )
 
@@ -69,6 +68,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
                 SwitchPreference("morphe_hide_player_previous_next_buttons"),
                 SwitchPreference("morphe_hide_settings_button"),
+            ),
+            NonInteractivePreference(
+                key = "morphe_player_control_buttons_background_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             )
         )
 
@@ -78,10 +81,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             it.clearMatch() // Fingerprint is shared with other patches.
 
             // Verify resources exist.
-            getResourceId(ResourceType.ID, "player_control_next_button_touch_area")
-            getResourceId(ResourceType.ID, "player_control_previous_button_touch_area")
-            getResourceId(ResourceType.ID, "player_overflow_button")
-            getResourceId(ResourceType.ID, "media_route_button")
+            resourceId(ResourceType.ID, "player_control_next_button_touch_area")
+            resourceId(ResourceType.ID, "player_control_previous_button_touch_area")
+            resourceId(ResourceType.ID, "player_overflow_button")
+            resourceId(ResourceType.ID, "media_route_button")
 
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
@@ -172,33 +175,6 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // endregion
 
-        // region Hide autoplay button.
-
-        LayoutConstructorFingerprint.method.apply {
-            val constIndex = indexOfFirstResourceIdOrThrow("autonav_toggle")
-            val constRegister = getInstruction<OneRegisterInstruction>(constIndex).registerA
-
-            // Add a conditional branch around the code that inflates and adds the auto-repeat button.
-            val gotoIndex = indexOfFirstInstructionOrThrow(constIndex) {
-                val parameterTypes = getReference<MethodReference>()?.parameterTypes
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                    parameterTypes?.size == 2 &&
-                    parameterTypes.first() == "Landroid/view/ViewStub;"
-            } + 1
-
-            addInstructionsWithLabels(
-                constIndex,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->hideAutoplayButton()Z
-                    move-result v$constRegister
-                    if-nez v$constRegister, :hidden
-                """,
-                ExternalLabel("hidden", getInstruction(gotoIndex)),
-            )
-        }
-
-        // endregion
-
         // region Hide collapse button.
 
         TitleAnchorFingerprint.let {
@@ -260,10 +236,37 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                         # The result of the inflate method is by default not moved to a register after the method is called.
                         # 21.21+ now uses the returned inflated view but the changes here still work.
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->hidePlayerControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
+                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->styleControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
                     """
                 )
             }
+        }
+
+        // endregion
+
+        // region Hide autoplay button.
+
+        LayoutConstructorFingerprint.method.apply {
+            val constIndex = indexOfFirstResourceIdOrThrow("autonav_toggle")
+            val constRegister = getInstruction<OneRegisterInstruction>(constIndex).registerA
+
+            // Add a conditional branch around the code that inflates and adds the auto-repeat button.
+            val gotoIndex = indexOfFirstInstructionOrThrow(constIndex) {
+                val parameterTypes = getReference<MethodReference>()?.parameterTypes
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        parameterTypes?.size == 2 &&
+                        parameterTypes.first() == "Landroid/view/ViewStub;"
+            } + 1
+
+            addInstructionsWithLabels(
+                constIndex,
+                """
+                    invoke-static {}, $EXTENSION_CLASS->hideAutoplayButton()Z
+                    move-result v$constRegister
+                    if-nez v$constRegister, :hidden
+                """,
+                ExternalLabel("hidden", getInstruction(gotoIndex)),
+            )
         }
 
         // endregion

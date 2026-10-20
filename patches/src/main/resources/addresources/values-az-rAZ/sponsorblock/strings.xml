@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Bölümlərə müsbət və ya mənfi səs vermək üçün düymə əlavə edir</string>
   <string name="morphe_sb_square_layout_title">Kvadrat düzümü istifadə et</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock düymələri və nəzarətçiləri üçün kvadrat künclər istifadə edir</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Yığcam Ötürmə düyməsini istifadə et</string>
   <string name="morphe_sb_compact_skip_button_summary">Yerə qənaət etmək üçün Ötürmə düyməsinin enini azaldır</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Ötürmə düyməsini avtomatik gizlət</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock-un serverlə əlaqə qurmaq üçün istifadə etdiyi ünvan</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal ağ siyahısı</string>
   <string name="morphe_sb_channel_whitelist_summary">Ağ siyahıya alınmış kanallar üçün SponsorBlock qapadılıb</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Hazırkı kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Ağ siyahıya əlavə et</string>
-  <string name="morphe_sb_channel_whitelist_remove">Sil</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Ağ siyahıya alınmış kanallar</string>
-  <string name="morphe_sb_channel_whitelist_empty">Ağ siyahıya alınmış kanallar yoxdur</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal ağ siyahıya əlavə olundu</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal ağ siyahıdan silindi</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ağ siyahıya alınmış kanalda bildiriş göndər</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Ağ siyahıya alınmış kanal üçün SponsorBlock qapadıldıqda bildiriş göstərir</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock bu kanal üçün qapadılıb</string>
@@ -236,8 +228,7 @@ Təqdim etməyə hazırdır?"</string>
   <string name="morphe_sb_stats_saved_second_format">%s saniyə</string>
   <string name="morphe_sb_color_opacity_label">Qeyri-şəffaflıq:</string>
   <string name="morphe_sb_color_dot_label">Rəng:</string>
-  <string name="morphe_sb_about_title">Haqqında</string>
-  <string name="morphe_sb_about_api_summary">"Məlumatlar SponsorBlock API tərəfindən təmin olunur
+  <string name="morphe_sb_about_api_summary">"SponsorBlock — sponsorlar, girişlər, sonluqlar və abunə olmaq xatırlatmaları kimi video bölümlərindən ibarət kütləvi toplanmış məlumatlar bazasıdır. Bölümlər icma tərəfindən təqdim edilir və səsverməyə qoyulur, məlumatlar bazası isə açıqdır və yükləmək üçün pulsuzdur
 
-Sponsor.ajay.app 'ı açmaq və digər platformalar üçün yükləmələrə baxmaq üçün buraya toxun"</string>
+​Baxdığınız videonun ID-si ​bölümləri əldə etmək üçün SponsorBlock API-yə göndərilir"</string>
 </resources>

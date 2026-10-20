@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animácia spustenia</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Vypnutý</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Farebná</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochrómny</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reštartujte aplikáciu, aby sa dokončila konfigurácia</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -65,6 +70,15 @@ Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná
   <string name="morphe_custom_branding_icon_entry_6">Morphe hra s čiernou</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Vlastná</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Toto zmení ikonu zobrazenú vo vašom spúšťači aplikácií.
+
+Toto nastavenie nezmení ikonu v žiadnom z týchto miest:
+• Zoznam aplikácií v systémových nastaveniach zariadenia
+• Niektoré push notifikácie
+• Výber aplikácie „Otvoriť pomocou“
+• Ikona Android Auto
+
+Ak chcete zmeniť ikonu všade, znova aplikujte záplatu a zmeňte možnosť záplaty „Ikona aplikácie“"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona upozornenia</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Zmeniť ikonu aplikácie</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe hra</string>
@@ -75,7 +89,6 @@ Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovanie toku videa</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurácia falšovania klienta na zabránenie problémom s prehrávaním</string>
-  <string name="morphe_spoof_video_streams_title">Falšovať tok videa</string>
   <string name="morphe_spoof_video_streams_summary">"Opravy problémov s prehrávaním pre väčšinu používateľov požiadaním o kompatibilný videostream.
 
 Ak ste používateľ YouTube Premium, toto nastavenie nemusí byť potrebné."</string>
@@ -95,10 +108,9 @@ Ak ste používateľ YouTube Premium, toto nastavenie nemusí byť potrebné."</
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prihlásenie do Android VR môže niektorým používateľom pomôcť pri problémoch s prehrávaním.
 
 Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovať</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásiť sa</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Pokyny</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivačný kód: %s
 
 1. Ťuknite na 'Otvoriť webstránku' nižšie, aby ste otvorili webstránku 'Pripojiť zariadenie'
@@ -106,7 +118,6 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 3. Ak budete vyzvaní prihláste sa do Google. Ak máte viacero účtov, vyberte tento účet YouTube
 4. Ťuknite na 'Povoliť YouTube VR' aby ste udelili prístup
 5. Vráťte sa do tejto aplikácie po zobrazení správy 'Zariadenie pripojené'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otvoriť webstránku</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nepodarilo sa vydať aktivačný kód</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nepodarilo sa vydať overovací token</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Prihlásenie úspešné</string>
@@ -123,6 +134,13 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie je možné prihlásiť sa do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlásené z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token prihlásenia VR, skúste sa znova prihlásiť do VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládacie prvky médií v oznámení</string>
+  <string name="morphe_notification_media_screen_summary">Prispôsobte si ovládacie prvky prehrávania zobrazené na uzamykacej obrazovke a v paneli s upozorneniami.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skryť predchádzajúce a nasledujúce tlačidlá.</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Skryje predchádzajúce a nasledujúce tlačidlá v mediálnom upozornení, na uzamykacej obrazovke a v ovládacích prvkoch slúchadiel.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázať posuvník.</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Zabraňuje pretiahnutiu posuvníka na uzamykacej obrazovke a v paneli s upozorneniami.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -130,6 +148,11 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
   <string name="morphe_force_original_audio_summary">Vždy prehráva pôvodnú zvukovu stopu videa namiesto nadabovanej verzie</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Preskočiť ticho</string>
+  <string name="morphe_skip_silence_summary">Automaticky preskakuje tiché pauzy vo videu</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimálna dĺžka pauzy</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Skracujú sa len pauzy aspoň tejto dĺžky. Prejaví sa to pri spustení ďalšieho videa</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Sieťový proxy</string>
   <string name="morphe_proxy_screen_summary">Smerujte podporované sieťové požiadavky cez proxy</string>
@@ -173,7 +196,6 @@ Zapnutie tohto nastavenia však zaznamená aj niektoré údaje o používateľov
   <string name="morphe_custom_filter_screen_title">Vlastný filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastné filtre na skrytie akejkoľvek zložky</string>
   <string name="morphe_custom_filter_title">Povoliť vlastný filter</string>
-  <string name="morphe_custom_filter_strings_title">Vlastný filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Zoznam reťazcov zostavovača cesty komponentu na filtrovanie, oddelených novými riadkami</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastný filter: %s</string>
@@ -227,19 +249,18 @@ Ak ju neskôr vypnete, odporúda sa vymazať dáta aplikácie, aby ste predišli
   <string name="morphe_ryd_failure_generic">Počet \'Nepáči sa mi\' nie je dostupný (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryté vlastníkom</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Toto video sa mi nepáči, spolu s %s ďalšími ľuďmi</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Toto video sa mi nepáči, %s hlasov je negatívnych</string>
   <string name="morphe_ryd_enabled_title">Povoliť Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Zobraziť počet \'Nepáči sa mi\' v percentách</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje počet \'Nepáči sa mi\' ako percentuálny podiel počtu \'Páči sa mi\' namiesto čísla</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Použiť kompaktné tlačidlo \'Páči sa mi\'</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmenšuje šírku tlačidla \'Páči sa mi\' pre úsporu miesta</string>
   <string name="morphe_ryd_estimated_like_title">Zobraziť odhadovaný počet \'Páči sa mi\'</string>
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet \'Páči sa mi\' na videách, kde autor zakázal hodnotenie</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovať upozornenia o chybách pripojenia</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazuje upozornenie, keď server Return YouTube Dislike nie je k dispozícii</string>
-  <string name="morphe_ryd_attribution_summary">"Údaje poskytuje API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovuje počty dislikov, ktoré YouTube skryl v roku 2021. Počty pochádzajú z údajov archivovaných pred odstránením a pre novšie videá sú odhadované na základe hlasov používateľov, takže sú približné a aktualizujú sa každých pár dní
 
-Ťuknite sem a otvorte ReturnYouTubeDislike.com"</string>
+ID videa, ktoré sledujete, sa posiela do Return YouTube Dislike API a vaše lajky a disliky sa odosielajú anonymne na zlepšenie odhadov"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Štatistiky API Return YouTube Dislike pre toto zariadenie</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Čas odozvy API, priemerný</string>

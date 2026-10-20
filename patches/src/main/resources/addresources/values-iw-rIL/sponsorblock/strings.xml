@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">מוסיף כפתור להצבעה בעד או נגד קטעים</string>
   <string name="morphe_sb_square_layout_title">השתמש בפריסה מרובעת</string>
   <string name="morphe_sb_square_layout_summary">משתמש בפינות מרובעות עבור כפתורי ובקרות SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">השתמש בלחצן דילוג קומפקטי</string>
   <string name="morphe_sb_compact_skip_button_summary">מקטין את רוחב כפתור \'דילוג\' כדי לחסוך במקום</string>
   <string name="morphe_sb_auto_hide_skip_button_title">הסתר לחצן דילוג באופן אוטומטי</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">הכתובת שבה SponsorBlock משתמש כדי לבצע קריאות לשרת</string>
   <string name="morphe_sb_channel_whitelist_title">רשימת הלבנה של ערוצים</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock מושבת עבור ערוצים ברשימת ההיתרים</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">ערוץ נוכחי:</string>
-  <string name="morphe_sb_channel_whitelist_add">הוסף לרשימה הלבנה</string>
-  <string name="morphe_sb_channel_whitelist_remove">הסר</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">ערוצים ברשימה הלבנה</string>
-  <string name="morphe_sb_channel_whitelist_empty">אין ערוצים ברשימה הלבנה</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">הערוץ נוסף לרשימה הלבנה</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">הערוץ הוסר מהרשימה הלבנה</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">התראה בערוץ ברשימת הלבנה</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">מציג התראה כאשר SponsorBlock מושבת עבור ערוץ ברשימה הלבנה</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock מושבת עבור ערוץ זה</string>
@@ -234,8 +226,5 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s שניות</string>
   <string name="morphe_sb_color_opacity_label">אטימות:</string>
   <string name="morphe_sb_color_dot_label">צבע:</string>
-  <string name="morphe_sb_about_title">אודות</string>
-  <string name="morphe_sb_about_api_summary">"הנתונים מסופקים על ידי ה-SponsorBlock API.
-
-הקש כאן כדי לפתוח את Sponsor.ajay.app ולראות הורדות עבור פלטפורמות אחרות"</string>
+  <string name="morphe_sb_about_api_summary">"SponsorBlock הוא מסד נתונים שיתופי של קטעי וידאו, כגון חסויות, פתיחים, סיומים ותזכורות להירשם. הקטעים מוגשים ומוצבעים על ידי הקהילה, ומסד הנתונים פתוח וחינמי להורדה\n\nמזהה הווידאו שאתה צופה בו נשלח ל-API של SponsorBlock כדי לקבל את הקטעים שלו"</string>
 </resources>

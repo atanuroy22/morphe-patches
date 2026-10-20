@@ -15,8 +15,8 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -90,7 +90,7 @@ internal object PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint : Finger
 
 internal object PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45686474L)
+        literal(45686474L) // 21.35 and older.
     )
 )
 
@@ -116,5 +116,25 @@ internal object PlayerCommentTeaserFeatureFlagFingerprint : Fingerprint(
 internal object RecycleViewScrollingFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45763727)
+    )
+)
+
+internal object NewPlayerOverlaysFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45752335L)
+    )
+)
+
+internal object AutonavEndscreenOverlayFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf("player_overlay_player_autonav_endscreen")
+)
+
+internal object PlayerSeekbarFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45698813)
     )
 )

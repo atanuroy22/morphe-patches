@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Добавляет кнопку для голосования за или против сегментов</string>
   <string name="morphe_sb_square_layout_title">Использовать квадратный макет</string>
   <string name="morphe_sb_square_layout_summary">Использует квадратные углы для кнопок и элементов управления SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Стиль кнопки пропуска</string>
   <string name="morphe_sb_compact_skip_button_summary">Уменьшает ширину кнопки «Пропустить», чтобы сэкономить место</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Автоскрытие кнопки пропуска</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Адрес, используемый SponsorBlock для вызовов на сервер</string>
   <string name="morphe_sb_channel_whitelist_title">Белый список каналов</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock отключен для каналов из белого списка</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Текущий канал:</string>
-  <string name="morphe_sb_channel_whitelist_add">Добавить в список разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_remove">Удалить</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Каналы в списке разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_empty">Нет каналов в списке разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Канал добавлен в список разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Канал удален из списка разрешенных</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Уведомлять о каналах из белого списка</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Показывать уведомление, когда SponsorBlock отключен для канала в списке разрешенных</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock отключен для этого канала</string>
@@ -237,8 +229,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s секунд</string>
   <string name="morphe_sb_color_opacity_label">Непрозрачность:</string>
   <string name="morphe_sb_color_dot_label">Цвет:</string>
-  <string name="morphe_sb_about_title">Об интеграции</string>
-  <string name="morphe_sb_about_api_summary">"Данные предоставлены API SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock — это краудсорсинговая база данных видеосегментов, таких как спонсоры, интро, аутро и напоминания о подписке. Сегменты добавляются и оцениваются сообществом, а база данных открыта и бесплатна для скачивания
 
-Нажмите здесь, чтобы открыть Sponsor.ajay.app и посмотреть загрузки для других платформ"</string>
+ID просматриваемого вами видео отправляется в API SponsorBlock для получения его сегментов"</string>
 </resources>

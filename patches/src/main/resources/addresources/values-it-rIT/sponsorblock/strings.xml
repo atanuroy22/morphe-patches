@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Aggiunge un pulsante per votare a favore o contro i segmenti</string>
   <string name="morphe_sb_square_layout_title">Usa layout squadrato</string>
   <string name="morphe_sb_square_layout_summary">Utilizza angoli squadrati per i pulsanti e i controlli SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Usa il pulsante Salta compatto</string>
   <string name="morphe_sb_compact_skip_button_summary">Riduce la larghezza del pulsante Salta per risparmiare spazio</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Nascondi automaticamente il pulsante Salta</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">L\'indirizzo SponsorBlock usato per contattare il server</string>
   <string name="morphe_sb_channel_whitelist_title">Lista canali consentiti</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock è disabilitato per i canali nella lista bianca</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Canale attuale:</string>
-  <string name="morphe_sb_channel_whitelist_add">Aggiungi alla whitelist</string>
-  <string name="morphe_sb_channel_whitelist_remove">Rimuovi</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canali nella whitelist</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nessun canale nella whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canale aggiunto alla whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canale rimosso dalla whitelist</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifica per canale consentito</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Mostra una notifica quando SponsorBlock è disabilitato per un canale nella whitelist</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock disabilitato per questo canale</string>
@@ -236,8 +228,7 @@ Se non stai inviando un momento saliente, tocca Annulla e contrassegna la second
   <string name="morphe_sb_stats_saved_second_format">%s secondi</string>
   <string name="morphe_sb_color_opacity_label">Opacità:</string>
   <string name="morphe_sb_color_dot_label">Colore:</string>
-  <string name="morphe_sb_about_title">Informazioni</string>
-  <string name="morphe_sb_about_api_summary">"I dati sono forniti dall'API SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock è un database crowdsourced di segmenti video, come sponsor, introduzioni, outro e promemoria per l'iscrizione. I segmenti vengono inviati e votati dalla community, e il database è aperto e gratuito da scaricare
 
-Tocca qui per aprire Sponsor.ajay.app e visualizzare i download per altre piattaforme"</string>
+L'ID del video che guardi viene inviato all'API di SponsorBlock per ottenere i suoi segmenti"</string>
 </resources>

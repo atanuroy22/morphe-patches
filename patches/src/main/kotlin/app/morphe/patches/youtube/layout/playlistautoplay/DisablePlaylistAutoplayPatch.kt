@@ -10,12 +10,12 @@ package app.morphe.patches.youtube.layout.playlistautoplay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -30,7 +30,6 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -60,13 +59,17 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
                 }
             }
         ).matchAll().forEach { match ->
-            val method = match.method
-            val freeRegister = method.findFreeRegister(0)
+            var method = match.method
+            if (method.implementation!!.registerCount <= 2) {
+                method = method.cloneParameters()
+            }
 
+            val freeRegister = method.findFreeRegister(0)
             method.addInstructionsWithLabels(
                 0,
                 """
-                    iget-object v$freeRegister, p1, $enumField
+                    move-object/from16 v$freeRegister, p1
+                    iget-object v$freeRegister, v$freeRegister, $enumField
                     invoke-static { v$freeRegister }, $EXTENSION_CLASS->shouldSkipPlaylistAutoplay(Ljava/lang/Enum;)Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :continue

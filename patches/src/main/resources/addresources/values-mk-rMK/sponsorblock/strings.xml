@@ -16,7 +16,6 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Поставете ја времетраењето за кое копчето Skip ќе остане видливо</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Поставете го времетраењето за кое зачувувањето на известување ќе биде видливо</string>
   <string name="morphe_sb_duration_1s">1 секунда</string>
@@ -34,7 +33,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">Веќе прочитано</string>
   <string name="morphe_sb_guidelines_popup_open">Покажи ми</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Прикажува известување кога серверот SponsorBlock не е достапен</string>
-  <string name="morphe_sb_channel_whitelist_remove">Отстрани</string>
   <string name="morphe_sb_api_url_reset">URL на API ресетиран</string>
   <string name="morphe_sb_api_url_invalid">URL на API е невалиден</string>
   <string name="morphe_sb_api_url_changed">URL на API променет</string>
@@ -185,5 +183,4 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s секунди</string>
   <string name="morphe_sb_color_opacity_label">Непровидност:</string>
   <string name="morphe_sb_color_dot_label">Боја:</string>
-  <string name="morphe_sb_about_title">Филмови</string>
 </resources>

@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Adaugă un buton pentru a aproba sau respinge segmentele</string>
   <string name="morphe_sb_square_layout_title">Utilizați aspectul pătrat</string>
   <string name="morphe_sb_square_layout_summary">Folosește colțuri pătrate pentru butoanele și controalele SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Utilizați butonul compact Skip</string>
   <string name="morphe_sb_compact_skip_button_summary">Reduce lățimea butonului „Treci” pentru a economisi spațiu</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Ascunde automat butonul Skip</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlocul de adresă utilizează pentru a efectua apeluri către server</string>
   <string name="morphe_sb_channel_whitelist_title">Listă albă de canale</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock este dezactivat pentru canalele din lista albă</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Canalul curent:</string>
-  <string name="morphe_sb_channel_whitelist_add">Adăugare la lista albă</string>
-  <string name="morphe_sb_channel_whitelist_remove">Elimină</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canale din lista albă</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nu există canale în lista albă</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canal adăugat în lista albă</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canal eliminat din lista albă</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifică la canalul din lista albă</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Afișează o notificare atunci când SponsorBlock este dezactivat pentru un canal din lista albă</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock dezactivat pentru acest canal</string>
@@ -236,8 +228,7 @@ Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locaț
   <string name="morphe_sb_stats_saved_second_format">%s secunde</string>
   <string name="morphe_sb_color_opacity_label">Opacitate:</string>
   <string name="morphe_sb_color_dot_label">Culoare:</string>
-  <string name="morphe_sb_about_title">Despre</string>
-  <string name="morphe_sb_about_api_summary">"Datele sunt furnizate de API-ul SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock este o bază de date colaborativă de segmente video, cum ar fi sponsorizări, intro-uri, outro-uri și memento-uri pentru abonare. Segmentele sunt trimise și votate de comunitate, iar baza de date este deschisă și gratuită pentru descărcare
 
-Atingeți aici pentru a deschide Sponsor.ajay.app și a vedea descărcările pentru alte platforme"</string>
+ID-ul videoclipului pe care îl urmărești este trimis către API-ul SponsorBlock pentru a obține segmentele sale"</string>
 </resources>

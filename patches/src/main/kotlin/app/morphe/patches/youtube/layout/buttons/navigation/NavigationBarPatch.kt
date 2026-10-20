@@ -17,14 +17,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -37,8 +39,7 @@ import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -47,10 +48,11 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.removeFromParent
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -66,16 +68,60 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 private const val EXTENSION_SETTING_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
 
+private const val EXTENSION_SUBSCRIPTIONS_CLASS =
+    "Lapp/morphe/extension/youtube/patches/ClassicSubscriptionsLayoutPatch;"
+
+private const val EXTENSION_PIVOT_BAR_ITEM_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/ClassicSubscriptionsLayoutPatch$PivotBarItemInterface;"
+
+private val hideSearchAppShortcutOption = booleanOption(
+    key = "hideSearchAppShortcut",
+    default = false,
+    title = "Hide Search app shortcut",
+    description = "Permanently hides the shortcut to open Search when long pressing the app icon in your launcher."
+)
+
+private val hideSubscriptionsAppShortcutOption = booleanOption(
+    key = "hideSubscriptionsAppShortcut",
+    default = false,
+    title = "Hide Subscriptions app shortcut",
+    description = "Permanently hides the shortcut to open Subscriptions when long pressing the app icon in your launcher."
+)
+
+private val navigationBarResourcePatch = resourcePatch {
+    execute {
+        val hideSearchAppShortcut by hideSearchAppShortcutOption
+        val hideSubscriptionsAppShortcut by hideSubscriptionsAppShortcutOption
+
+        // Verify the file has the expected nodes, even if the patch options are off.
+        document("res/xml/main_shortcuts.xml").use { document ->
+            mapOf(
+                "search-shortcut" to hideSearchAppShortcut,
+                "subscriptions-shortcut" to hideSubscriptionsAppShortcut
+            ).forEach { (shortcutId, hide) ->
+                val shortcut = document.childNodes.findElementByAttributeValueOrThrow(
+                    "android:shortcutId",
+                    shortcutId
+                )
+
+                if (hide == true) {
+                    shortcut.removeFromParent()
+                }
+            }
+        }
+    }
+}
+
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
-            + " and the upper navigation toolbar."
+            + "and the upper navigation toolbar."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -85,9 +131,13 @@ val navigationBarPatch = bytecodePatch(
         clientContextHookPatch,
         toolBarHookPatch,
         fixProtoLibraryPatch,
+        navigationBarResourcePatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
+
+    hideSearchAppShortcutOption()
+    hideSubscriptionsAppShortcutOption()
 
     execute {
         val navPreferences = mutableSetOf(
@@ -105,6 +155,8 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_navigation_bar"),
             SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_button_labels"),
+            SwitchPreference("morphe_disable_icon_only_navigation_buttons", summary = true),
+            SwitchPreference("morphe_hide_navigation_new_content_dot"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
             SwitchPreference("morphe_disable_translucent_navigation", summary = true)
         )
@@ -148,79 +200,10 @@ val navigationBarPatch = bytecodePatch(
         // Hide navigation bar
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
-        // Force on/off translucent effect on status bar and navigation buttons.
-        if (is_20_31_or_greater) {
-            val translucentStatusBarFilter = if (is_21_30_or_greater) {
-                TRANSLUCENT_STATUS_BAR_FILTER
-            } else {
-                methodCall(TranslucentNavigationStatusBarFeatureFlagFingerprint.originalMethod)
-            }
-
-            arrayOf(
-                translucentImmersiveFingerprint(translucentStatusBarFilter),
-                translucentCheckOnTextFingerprint(translucentStatusBarFilter),
-                translucentYouTabFingerprint(translucentStatusBarFilter),
-                translucentUpdateStatusBarFingerprint(translucentStatusBarFilter)
-            ).forEach { fingerprint ->
-                fingerprint.matchAll().forEach {
-                    if (is_21_30_or_greater) {
-                        it.method.insertLiteralOverride(
-                            it.instructionMatches.last().index,
-                            "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-                        )
-                        return@forEach
-                    }
-
-                    it.method.apply {
-                        findInstructionIndicesReversedOrThrow(translucentStatusBarFilter).forEach { index ->
-                            val instruction = getInstruction(index + 1)
-                            if (instruction.opcode != Opcode.MOVE_RESULT) {
-                                return@forEach
-                            }
-                            val register = (instruction as OneRegisterInstruction).registerA
-                            addInstructions(
-                                index + 2,
-                                """
-                                    invoke-static { v$register }, $EXTENSION_CLASS->useTranslucentNavigation(Z)Z
-                                    move-result v$register
-                                """
-                            )
-                        }
-                    }
-                }
-            }
-        } else {
-            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-                )
-            }
-        }
-
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
-        }
-
-        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
-        }
-
-        if (is_20_46_or_greater) {
-            // Feature interferes with translucent status bar and must be forced off.
-            CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"
-                )
-            }
-        }
+        // Paint over the translucent status bar and navigation bar, instead of turning off the
+        // feature flags that drive them. Those flags also switch the app out of edge to edge, which
+        // moves the whole window layout and breaks everything measuring against it.
+        addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
 
         AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
@@ -283,6 +266,13 @@ val navigationBarPatch = bytecodePatch(
                             "searchQueryViewLoaded(Landroid/widget/TextView;)V"
                 )
             }
+        }
+
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
+            )
         }
 
         PivotBarRendererFingerprint.let {
@@ -367,13 +357,167 @@ val navigationBarPatch = bytecodePatch(
                         # If there are objects copied to the extension, they are added to the list.
                         invoke-static { v$insertRegister }, $EXTENSION_CLASS->getPivotBarRendererList(Ljava/util/List;)Ljava/util/List;
                         move-result-object v$insertRegister
-                        
+
                         # Convert to proto list.
                         invoke-static { v$insertRegister }, $protoListBuilderMethod
                         move-result-object v$insertRegister
                     """
                 )
+
+                if (is_21_35_or_greater) {
+                    // Add back the Subscriptions button, if the server moved it to a tab of Home.
+                    // The proto is created with the method used for the navigation bar shown
+                    // before the guide response is loaded, so the browse endpoint extension is set.
+                    // Inserted at the same index as above, so the button is added before the Search
+                    // and Settings buttons.
+                    val iconType = PivotBarItemProtoFactoryFingerprint.method.parameterTypes[2].toString()
+                    // Enum constant names are obfuscated, so the icon type is found by its value.
+                    val iconTypeLookupMethod = Fingerprint(
+                        definingClass = iconType,
+                        returnType = iconType,
+                        parameters = listOf("I"),
+                        custom = { method, _ ->
+                            AccessFlags.STATIC.isSet(method.accessFlags)
+                        }
+                    ).originalMethod
+
+                    val pivotBarItemOptionalType = PivotBarRendererFingerprint.method.returnType
+                    // Non range invoke instructions, so 4-bit registers are required.
+                    val freeRegisters = getFreeRegisterProvider(insertIndex, 4)
+                    val browseIdRegister = freeRegisters.getFreeRegister4Bit()
+                    val labelRegister = freeRegisters.getFreeRegister4Bit()
+                    val iconRegister = freeRegisters.getFreeRegister4Bit()
+                    val iconOnlyRegister = freeRegisters.getFreeRegister4Bit()
+
+                    addInstructionsWithLabels(
+                        insertIndex,
+                        """
+                            # Add the Subscriptions button, if the server removed it.
+                            invoke-static { v$insertRegister }, $EXTENSION_SUBSCRIPTIONS_CLASS->needsSubscriptionsPivotBarItem(Ljava/util/List;)Z
+                            move-result v$browseIdRegister
+                            if-eqz v$browseIdRegister, :skip_subscriptions
+
+                            const-string v$browseIdRegister, "FEsubscriptions"
+                            invoke-static { }, $EXTENSION_SUBSCRIPTIONS_CLASS->getSubscriptionsLabel()Ljava/lang/String;
+                            move-result-object v$labelRegister
+                            invoke-static { }, $EXTENSION_SUBSCRIPTIONS_CLASS->getSubscriptionsIconType()I
+                            move-result v$iconRegister
+                            invoke-static { v$iconRegister }, $iconTypeLookupMethod
+                            move-result-object v$iconRegister
+                            const/4 v$iconOnlyRegister, 0x0
+                            invoke-static { v$browseIdRegister, v$labelRegister, v$iconRegister, v$iconOnlyRegister }, ${PivotBarItemProtoFactoryFingerprint.method}
+                            move-result-object v$browseIdRegister
+                            invoke-static { v$browseIdRegister }, ${PivotBarRendererFingerprint.method}
+                            move-result-object v$browseIdRegister
+                            const/4 v$labelRegister, 0x0
+                            invoke-virtual { v$browseIdRegister, v$labelRegister }, $pivotBarItemOptionalType->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+                            move-result-object v$browseIdRegister
+
+                            invoke-static { v$insertRegister, v$browseIdRegister }, $EXTENSION_SUBSCRIPTIONS_CLASS->addSubscriptionsPivotBarItem(Ljava/util/List;Ljava/lang/Object;)Ljava/util/List;
+                            move-result-object v$insertRegister
+                            :skip_subscriptions
+                            nop
+                        """
+                    )
+                }
             }
+        }
+
+        //
+        // Disable the A/B layout with Subscriptions as a tab of Home.
+        //
+
+        if (is_21_35_or_greater) {
+            // Allow the extension to read the proto of navigation bar items.
+            PivotBarRendererFingerprint.classDef.apply {
+                val messageLiteField = fields.first { field ->
+                    field.type == "Lcom/google/protobuf/MessageLite;"
+                }
+                // The field can also be PivotBarIconOnlyItemRenderer or other renderers.
+                val pivotBarItemRendererType = PivotBarRendererFingerprint.instructionMatches[2]
+                    .instruction.getReference<TypeReference>()!!.type
+
+                interfaces.add(EXTENSION_PIVOT_BAR_ITEM_INTERFACE)
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getPivotBarItemRenderer",
+                        listOf(),
+                        "Lcom/google/protobuf/MessageLite;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(3),
+                    ).toMutable().apply {
+                        addInstructionsWithLabels(
+                            0,
+                            """
+                                iget-object v0, p0, $messageLiteField
+                                instance-of v1, v0, $pivotBarItemRendererType
+                                if-nez v1, :return
+                                const/4 v0, 0x0
+                                :return
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
+
+            // Show only the selected tab of the Home and Subscriptions feeds.
+            // The tab protos are filtered instead of the browse response,
+            // because the response would lose the proto extensions if it's parsed again.
+            BrowseResponseTabsFingerprint.let {
+                it.method.apply {
+                    val streamIndex = it.instructionMatches[1].index
+                    val tabsRegister = getInstruction<FiveRegisterInstruction>(streamIndex).registerC
+
+                    addInstructions(
+                        streamIndex,
+                        """
+                            invoke-static { v$tabsRegister }, $EXTENSION_SUBSCRIPTIONS_CLASS->filterBrowseTabs(Ljava/util/List;)Ljava/util/List;
+                            move-result-object v$tabsRegister
+                        """
+                    )
+                }
+            }
+
+            OfflineNavigationBarSubscriptionsFeatureFlagFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_SUBSCRIPTIONS_CLASS->hideOfflineSubscriptionsButton(Z)Z"
+                )
+            }
+        }
+
+        //
+        // Disable the A/B layout with navigation buttons without labels.
+        //
+
+        // Inserted at the start of the method after the other hooks of the method,
+        // so the instruction indexes of their matches are still valid.
+        PivotBarRendererFingerprint.method.apply {
+            val pivotBarItemType = parameterTypes.first().toString()
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    # The parameter register can be higher than 15.
+                    invoke-static/range { p0 .. p0 }, $EXTENSION_SUBSCRIPTIONS_CLASS->convertIconOnlyPivotBarItem(Lcom/google/protobuf/MessageLite;)[B
+                    move-result-object v0
+                    if-eqz v0, :not_icon_only
+
+                    # The endpoints are extensions, which are lost if parsed without the registry.
+                    sget-object v1, $pivotBarItemType->a:$pivotBarItemType
+                    invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                    move-result-object v2
+                    invoke-static { v1, v0, v2 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                    move-result-object p0
+                    check-cast p0, $pivotBarItemType
+                    :not_icon_only
+                    nop
+                """
+            )
         }
 
         TopBarRendererPrimaryFilterFingerprint.let {
@@ -402,13 +546,13 @@ val navigationBarPatch = bytecodePatch(
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_toolbar_cast_button"),
             SwitchPreference("morphe_hide_toolbar_chat_button"),
-            SwitchPreference("morphe_hide_toolbar_create_button"),
+            SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
-            SwitchPreference("morphe_hide_toolbar_notification_button"),
+            SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
-            SwitchPreference("morphe_show_toolbar_settings_button"),
-            ListPreference("morphe_show_toolbar_settings_button_index"),
-            SwitchPreference("morphe_show_toolbar_settings_button_type", summary = true)
+            SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
+            ListPreference("morphe_show_toolbar_settings_button_index", titleKey = "morphe_show_settings_button_index_title"),
+            SwitchPreference("morphe_show_toolbar_settings_button_type", titleKey = "morphe_show_settings_button_type_title", summary = true)
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -574,6 +718,33 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        //
+        // Toolbar create button upload
+        //
+
+        // The commands of the toolbar buttons are extensions, which are parsed only with the extension registry.
+        GetGeneratedRegistryFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                move-result-object v0
+                return-object v0
+            """
+        )
+
+        parseByteArrayWithRegistryMethodRef.get()!!.let { parseMethod ->
+            ParseWithRegistryFingerprint.method.addInstructions(
+                0,
+                """
+                    check-cast p0, ${parseMethod.parameterTypes.first()}
+                    invoke-static { p0, p1, p2 }, $parseMethod
+                    move-result-object p0
+                    check-cast p0, Lcom/google/protobuf/MessageLite;
+                    return-object p0
+                """
+            )
+        }
+
         TopBarRendererSecondaryFilterFingerprint.let {
             it.method.apply {
                 var buttonsClass: String? = null
@@ -604,6 +775,9 @@ val navigationBarPatch = bytecodePatch(
                         # If mutable, copy the ProtoList.
                         invoke-static { v$protoListRegister }, ${mutableCopyMethodRef.get()}
                         move-result-object v$protoListRegister
+                        
+                        # Replace the create button whose video button has an endpoint the app does not handle.
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->fixToolbarCreateButtonUpload(Ljava/util/List;)V
                         
                         # Generate Settings Button Bytes (BEFORE modifying list)
                         invoke-static { v$protoListRegister }, $EXTENSION_CLASS->createToolbarSettingsButton(Ljava/util/List;)[B

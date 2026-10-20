@@ -16,6 +16,12 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- layout.theme.splashAnimationPatch -->
+    <string name="morphe_splash_screen_animation_style_title">Startup animation</string>
+    <string name="morphe_splash_screen_animation_style_entry_1">Disabled</string>
+    <string name="morphe_splash_screen_animation_style_entry_2">Color</string>
+    <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
+
     <!-- misc.initialization.initializationPatch -->
     <string name="morphe_restart_first_run">Restart to finish setting up</string>
 
@@ -70,6 +76,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
     <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
     <string name="morphe_custom_branding_icon_entry_7">Custom</string>
+    <string name="morphe_custom_branding_icon_user_dialog_message">"This changes the icon shown in your app launcher.
+
+This setting will not change the icon in any of these locations:
+• Device system settings app list
+• Certain push notifications
+• 'Open with' app picker
+• Android Auto icon
+
+To change the icon everywhere, patch again and change the 'App icon' patch option"</string>
     <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Match app icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_2" translatable="false">Morphe</string>
@@ -83,7 +98,6 @@ Verify the package name is correct and the app is installed"</string>
     <!-- misc.spoof.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
     <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
-    <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
     <string name="morphe_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
 
 If you are a YouTube Premium user, this setting may not be required"</string>
@@ -103,10 +117,9 @@ If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
 
 To sign in, press continue below"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
-    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+    <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
 1. Tap \'Open website\' below to open the \'Connect a device\' website
@@ -114,7 +127,6 @@ To sign in, press continue below"</string>
 3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
 4. Tap \'Allow YouTube VR\' access
 5. Return to this app after reaching the \'Device connected\' message"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
@@ -132,6 +144,14 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
 
+    <!-- misc.medianotification.mediaNotificationControlsPatch -->
+    <string name="morphe_notification_media_screen_title">Notification media controls</string>
+    <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
+    <string name="morphe_hide_notification_media_prev_next_title">Hide Previous &amp; Next buttons</string>
+    <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
+    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
+    <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
+
     <!-- misc.quic.disableQUICProtocolPatch -->
     <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
 
@@ -141,6 +161,12 @@ To sign in, press continue below"</string>
     <!-- misc.audio.tracks.forceOriginalAudioPatch -->
     <string name="morphe_force_original_audio_title">Force original audio language</string>
     <string name="morphe_force_original_audio_summary">Always plays the video\'s original audio track instead of a dubbed version</string>
+
+    <!-- misc.audio.silence.skipSilencePatch -->
+    <string name="morphe_skip_silence_title">Skip silence</string>
+    <string name="morphe_skip_silence_summary">Automatically skips silent pauses in video audio</string>
+    <string name="morphe_skip_silence_minimum_pause_title">Minimum pause length</string>
+    <string name="morphe_skip_silence_minimum_pause_summary">Only pauses at least this long are shortened. Takes effect when the next video starts</string>
 
     <!-- misc.proxy.networkProxyPatch -->
     <string name="morphe_proxy_screen_title">Network proxy</string>
@@ -190,7 +216,6 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_custom_filter_screen_title">Custom filter</string>
     <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
     <string name="morphe_custom_filter_title">Enable custom filter</string>
-    <string name="morphe_custom_filter_strings_title">Custom filter</string>
     <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
     <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
     <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
@@ -251,20 +276,18 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_ryd_failure_generic">Dislikes are not available (%s)</string>
     <!-- Video likes have been set to hidden by the video uploader. -->
     <string name="morphe_ryd_video_likes_hidden_by_video_owner">Hidden by owner</string>
+    <string name="morphe_ryd_accessibility_dislike_count">Dislike this video, along with %s other people</string>
+    <string name="morphe_ryd_accessibility_dislike_percentage">Dislike this video, %s of votes are dislikes</string>
     <string name="morphe_ryd_enabled_title">Enable Return YouTube Dislike</string>
     <string name="morphe_ryd_dislike_percentage_title">Show dislikes as percentage</string>
     <string name="morphe_ryd_dislike_percentage_summary">Shows dislikes as a percentage of likes instead of a number</string>
-    <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-    <string name="morphe_ryd_compact_layout_title">Use compact Like button</string>
-    <string name="morphe_ryd_compact_layout_summary">Reduces the width of the Like button to save space</string>
     <string name="morphe_ryd_estimated_like_title">Show estimated likes</string>
     <string name="morphe_ryd_estimated_like_summary">Shows an estimated like count on videos where the creator has disabled likes</string>
     <string name="morphe_ryd_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_ryd_toast_on_connection_error_summary">Shows a notification when the Return YouTube Dislike server is unavailable</string>
-    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike</string>
-    <string name="morphe_ryd_attribution_summary">"Data is provided by the Return YouTube Dislike API
+    <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restores the dislike counts YouTube hid in 2021. Counts come from data archived before the removal and are estimated for newer videos from the votes of its users, so they are approximate and update every few days
 
-Tap here to open ReturnYouTubeDislike.com"</string>
+The ID of the video you watch is sent to the Return YouTube Dislike API, and your likes and dislikes are sent anonymously to improve the estimates"</string>
     <string name="morphe_ryd_screen_title" translatable="false">Return YouTube Dislike</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>

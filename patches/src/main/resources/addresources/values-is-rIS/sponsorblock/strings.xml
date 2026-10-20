@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Bætir við hnappi til að gefa atkvæði á eða niður á hluta</string>
   <string name="morphe_sb_square_layout_title">Notaðu ferkantað útlit</string>
   <string name="morphe_sb_square_layout_summary">Notar ferkantaða horn fyrir SponsorBlock hnappa og stjórnaelementa</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Notaðu þéttan sleppa hnapp</string>
   <string name="morphe_sb_compact_skip_button_summary">Minnkar breidd sleppa hnapps til að spara pláss</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Sjálfvirklega felja sleppa hnapp</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Heitið sem SponsorBlock notar til að gera köll til netþjónsins</string>
   <string name="morphe_sb_channel_whitelist_title">Rásarhvíttlisti</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock er óvirkur fyrir hvítlistaða rásir</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Núverandi rás:</string>
-  <string name="morphe_sb_channel_whitelist_add">Bæta við á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_remove">Fjarlægja</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Hvítlistaðar rásir</string>
-  <string name="morphe_sb_channel_whitelist_empty">Engar rásir á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Rás bætt við á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Rás fjarlægð úr hvítlista</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Láta vita um hvíttlistu rás</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Sýnir tilkynningu þegar SponsorBlock er óvirkur fyrir hvítlistaða rás</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock óvirkur fyrir þessa rás</string>
@@ -236,8 +228,7 @@ Ef þú ert ekki að senda dull, bancrið og mörkið dulirð"</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekúndur</string>
   <string name="morphe_sb_color_opacity_label">Ógegnsæni:</string>
   <string name="morphe_sb_color_dot_label">Litur:</string>
-  <string name="morphe_sb_about_title">Um</string>
-  <string name="morphe_sb_about_api_summary">"Gagnin eru veitt af SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock er gagnagrunnur sem byggist á framlögum notenda og inniheldur myndbandahluta, svo sem styrktahluta, upphafs- og lokahluta og áminningar um að gerast áskrifandi. Hlutir eru sendir inn og kosið er um þá af samfélaginu, og gagnagrunnurinn er opinn og ókeypis til niðurhals
 
-Bankaðu hér til að opna Sponsor.ajay.app og skoða niðurhal fyrir önnur kerfi"</string>
+Auðkenni myndbandsins sem þú horfir á er sent til SponsorBlock API til að sækja hluta þess"</string>
 </resources>

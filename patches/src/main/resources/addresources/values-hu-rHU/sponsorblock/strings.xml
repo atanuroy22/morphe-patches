@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Szavazógombok hozzáadása szegmensek értékeléséhez (fel- vagy le)</string>
   <string name="morphe_sb_square_layout_title">Négyzetes elrendezés használata</string>
   <string name="morphe_sb_square_layout_summary">Négyzetes sarkokat használ a SponsorBlock gombokhoz és vezérlőelemekhez</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Kompakt Átugrás gomb használata</string>
   <string name="morphe_sb_compact_skip_button_summary">Csökkenti a Skip gomb szélességét a hely megtakarítása érdekében</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Az Átugrás gomb automatikus elrejtése</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Az a cím, amelyet a SponsorBlock a szervere eléréséhez használ</string>
   <string name="morphe_sb_channel_whitelist_title">Csatorna fehérlista</string>
   <string name="morphe_sb_channel_whitelist_summary">A SponsorBlock le van tiltva a fehérlistázott csatornákhoz.</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Jelenlegi csatorna:</string>
-  <string name="morphe_sb_channel_whitelist_add">Hozzáadás a fehérlistához</string>
-  <string name="morphe_sb_channel_whitelist_remove">Eltávolítás</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Fehérlistázott csatornák</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nincs fehérlistázott csatorna</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">A csatorna hozzáadva a fehérlistához</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">A csatorna eltávolítva a fehérlistáról</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Értesítés bekapcsolása fehérlistázott csatornán</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Értesítést jelenít meg, amikor a SponsorBlock deaktiválva van egy fehérlistázott csatornán</string>
   <string name="morphe_sb_channel_whitelisted_toast">A SponsorBlock le van tiltva ezen a csatornán</string>
@@ -235,8 +227,7 @@ Ha nem szeretne kiemelést küldeni, nyomja meg a Mégse gombot, és jelölje me
   <string name="morphe_sb_stats_saved_second_format">%s másodperc</string>
   <string name="morphe_sb_color_opacity_label">Áttetszőség:</string>
   <string name="morphe_sb_color_dot_label">Szín:</string>
-  <string name="morphe_sb_about_title">Rólunk</string>
-  <string name="morphe_sb_about_api_summary">"Az adatokat a SponsorBlock API biztosítja.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock egy közösségi adatbázis, amely videórészleteket tartalmaz, például szponzorokat, intrókat, extrókat és feliratkozási emlékeztetőket. A szegmenseket a közösség küldi be és szavazza meg, az adatbázis pedig nyílt és ingyenesen letölthető
 
-Érintse meg ide a Sponsor.ajay.app megnyitásához, és tekintse meg a letöltéseket más platformokra"</string>
+A megtekintett videó azonosítója elküldésre kerül a SponsorBlock API-nak, hogy lekérje a videó szegmenseit"</string>
 </resources>

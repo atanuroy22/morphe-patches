@@ -17,6 +17,7 @@ import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.Utils
 import app.morphe.extension.shared.settings.Setting
 import app.morphe.extension.shared.settings.StringSetting
+import app.morphe.extension.shared.settings.preference.SeekBarPreference
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.shared.PlayerType
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.ClassicSwipeController
@@ -188,19 +189,53 @@ class SwipeControlsConfigurationProvider {
     val swipeMagnitudeThreshold = Settings.SWIPE_MAGNITUDE_THRESHOLD.get()
 
     /**
-     * The sensitivity of volume swipe gestures, determining how much volume changes per swipe.
+     * The swipe distance of a single volume step, in dp.
      * Resets to default if set to 0, as it would disable swiping.
      */
-    val volumeSwipeSensitivity: Int
+    val volumeSwipeDistance: Int
         get() {
-            val sensitivity = Settings.SWIPE_VOLUME_SENSITIVITY.get()
+            val distance = Settings.SWIPE_VOLUME_DISTANCE.get()
 
-            if (sensitivity < 1) {
-                return Settings.SWIPE_VOLUME_SENSITIVITY.resetToDefault()
+            if (distance < 1) {
+                return Settings.SWIPE_VOLUME_DISTANCE.resetToDefault()
             }
 
-            return sensitivity
+            return distance
         }
+
+    /**
+     * Number of steps the volume range is divided into.
+     * Devices that expose a fine-grained volume stream (such as 150 indices) otherwise
+     * adjust the volume by a tenth of what the device volume UI does.
+     */
+    @Suppress("unused")
+    enum class SwipeVolumeSteps(val steps: Int) {
+        DEVICE_DEFAULT(0),
+        STEPS_5(5),
+        STEPS_10(10),
+        STEPS_15(15),
+        STEPS_20(20),
+        STEPS_30(30),
+        STEPS_50(50),
+    }
+
+    /**
+     * The number of volume steps to use, or 0 to use the raw steps of the device volume stream.
+     */
+    val volumeStepCount: Int
+        get() = Settings.SWIPE_VOLUME_STEPS.get().steps
+
+    companion object {
+        /**
+         * The volume change of a single step, in stream index units.
+         *
+         * @param maxVolume The number of indices the device volume stream has.
+         * @param stepCount The number of steps to split the stream into, or 0 for the raw indices.
+         */
+        @JvmStatic
+        fun volumeStepSize(maxVolume: Int, stepCount: Int) =
+            if (stepCount < 1) 1 else maxOf(1, maxVolume / stepCount)
+    }
 
     /**
      * The sensitivity of brightness swipe gestures, determining how much brightness changes per swipe.
@@ -259,18 +294,10 @@ class SwipeControlsConfigurationProvider {
 
     /**
      * The background opacity of the overlay, converted from a percentage (0-100) to an alpha value (0-255).
-     * Resets to default and shows a toast if the value is out of range.
      */
     val overlayBackgroundOpacity: Int
         get() {
-            var opacity = Settings.SWIPE_OVERLAY_OPACITY.get()
-
-            if (opacity !in 0..100) {
-                Utils.showToastLong(str("morphe_swipe_overlay_background_opacity_invalid_toast"))
-                opacity = Settings.SWIPE_OVERLAY_OPACITY.resetToDefault()
-            }
-
-            opacity = opacity * 255 / 100
+            val opacity = SeekBarPreference.clampToRange(Settings.SWIPE_OVERLAY_OPACITY) * 255 / 100
             return Color.argb(opacity, 0, 0, 0)
         }
 
@@ -321,17 +348,9 @@ class SwipeControlsConfigurationProvider {
 
     /**
      * The text size in the overlay, in density-independent pixels (dp).
-     * Must be between 1 and 30 dp; resets to default and shows a toast if invalid.
      */
     val overlayTextSize: Int
-        get() {
-            val size = Settings.SWIPE_OVERLAY_TEXT_SIZE.get()
-            if (size !in 1..30) {
-                Utils.showToastLong(str("morphe_swipe_text_overlay_size_invalid_toast"))
-                return Settings.SWIPE_OVERLAY_TEXT_SIZE.resetToDefault()
-            }
-            return size
-        }
+        get() = SeekBarPreference.clampToRange(Settings.SWIPE_OVERLAY_TEXT_SIZE)
 
     /**
      * Defines the style of the swipe controls overlay, determining its layout and appearance.

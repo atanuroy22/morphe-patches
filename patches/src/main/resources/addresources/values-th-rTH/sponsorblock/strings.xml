@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">เพิ่มปุ่มเพื่อโหวตให้หรือไม่ชอบส่วนต่างๆ ของวิดีโอ</string>
   <string name="morphe_sb_square_layout_title">ใช้เลย์เอาต์สี่เหลี่ยมจัตุรัส</string>
   <string name="morphe_sb_square_layout_summary">ใช้มุมเหลี่ยมสำหรับปุ่มและส่วนควบคุม SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">ใช้ปุ่มข้ามขนาดกะทัดรัด</string>
   <string name="morphe_sb_compact_skip_button_summary">ลดความกว้างของปุ่มข้ามเพื่อประหยัดพื้นที่</string>
   <string name="morphe_sb_auto_hide_skip_button_title">ซ่อนปุ่มข้ามโดยอัตโนมัติ</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">ที่อยู่ที่ SponsorBlock ใช้ในการโทรหาเซิร์ฟเวอร์</string>
   <string name="morphe_sb_channel_whitelist_title">รายการช่องที่อนุญาต</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ถูกปิดใช้งานสำหรับช่องที่อนุญาตแล้ว</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">ช่องปัจจุบัน:</string>
-  <string name="morphe_sb_channel_whitelist_add">เพิ่มลงในรายการที่อนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_remove">นำออก</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">ช่องที่อนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_empty">ยังไม่มีช่องใดถูกอนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">ช่องถูกเพิ่มลงในรายการที่อนุญาตแล้ว</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">ช่องถูกนำออกจากรายการที่อนุญาตแล้ว</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">แจ้งเตือนเมื่ออยู่ในช่องที่อนุญาต</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">แสดงการแจ้งเตือนเมื่อ SponsorBlock ถูกปิดใช้งานสำหรับช่องในรายการที่อนุญาต</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ถูกปิดใช้งานสำหรับช่องนี้</string>
@@ -233,8 +225,7 @@ ID ผู้ใช้ของคุณเหมือนกับรหัส�
   <string name="morphe_sb_stats_saved_second_format">%s วินาที</string>
   <string name="morphe_sb_color_opacity_label">ความทึบ:</string>
   <string name="morphe_sb_color_dot_label">สี:</string>
-  <string name="morphe_sb_about_title">เกี่ยวกับ</string>
-  <string name="morphe_sb_about_api_summary">"ข้อมูลนี้จัดทำโดย SponsorBlock API
+  <string name="morphe_sb_about_api_summary">"SponsorBlock เป็นฐานข้อมูลที่มาจากชุมชนของช่วงวิดีโอ เช่น โฆษณา ช่วงเปิด ช่วงปิด และการแจ้งเตือนให้สมัครสมาชิก ช่วงต่างๆ ถูกส่งและโหวตโดยชุมชน และฐานข้อมูลเปิดให้ดาวน์โหลดฟรี
 
-แตะที่นี่เพื่อเปิด Sponsor.ajay.app และดูการดาวน์โหลดสำหรับแพลตฟอร์มอื่น ๆ"</string>
+ID ของวิดีโอที่คุณดูจะถูกส่งไปยัง API ของ SponsorBlock เพื่อรับช่วงต่างๆ"</string>
 </resources>

@@ -14,11 +14,11 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -154,18 +154,56 @@ internal object PlayerConfigBuilderFingerprint : Fingerprint(
 internal object BuildMediaDataSourceFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
-    parameters = listOf(
-        "Landroid/net/Uri;",
-        "J",
-        "I",
-        "[B",
-        "Ljava/util/Map;",
-        "J",
-        "J",
-        "Ljava/lang/String;",
-        "I",
-        "Ljava/lang/Object;",
-    )
+    filters = listOf(
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/net/Uri;"
+        ),
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IPUT,
+            type = "I"
+        ),
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IPUT_OBJECT,
+            type = "[B"
+        ),
+        opcode(Opcode.RETURN_VOID)
+    ),
+    custom = { method, _ ->
+        parametersMatch(
+            method.parameters,
+            listOf(
+                "Landroid/net/Uri;",
+                "J",
+                "I",
+                "[B",
+                "Ljava/util/Map;",
+                "J",
+                "J",
+                "Ljava/lang/String;",
+                "I",
+                "Ljava/lang/Object;",
+            )
+        ) || parametersMatch(
+            method.parameters,
+            listOf( // YT 21.37+
+                "Landroid/net/Uri;",
+                "J",
+                "Ljava/lang/String;",
+                "I",
+                "[B",
+                "Ljava/util/Map;",
+                "J",
+                "J",
+                "Ljava/lang/String;",
+                "I",
+                "Ljava/lang/Object;",
+            )
+        )
+    }
 )
 
 internal object HlsCurrentTimeFingerprint : Fingerprint(
@@ -205,17 +243,9 @@ internal object MediaFetchHotConfigFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterWithin(3)
         ),
-        anyInstruction(
-            opcode(
-                opcode = Opcode.IF_EQZ,
-                location = MatchAfterWithin(5)
-            ),
-            // Only for YouTube Music 7.29.52
-            fieldAccess(
-                opcode = Opcode.IPUT_BOOLEAN,
-                definingClass = "this",
-                location = MatchAfterWithin(5)
-            )
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterWithin(5)
         )
     )
 )

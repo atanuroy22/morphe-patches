@@ -10,15 +10,12 @@
 
 package app.morphe.extension.shared.spoof;
 
-import android.app.Activity;
-import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -62,25 +59,15 @@ public class SpoofVideoStreamsPatch {
     private static final String INTERNET_CONNECTION_CHECK_URI_STRING = "https://www.google.com/gen_204";
     private static final Uri INTERNET_CONNECTION_CHECK_URI = Uri.parse(INTERNET_CONNECTION_CHECK_URI_STRING);
 
-    private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
+    private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded()
+            && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
     @NonNull
     private static volatile Locale localeOverride = AppLanguage.DEFAULT.getLocale();
 
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
-    private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
-
-    /**
-     * Injection point.
-     */
-    public static void setMainActivity(Activity activity) {
-        mainActivityRef = new WeakReference<>(activity.getApplication());
-    }
-
-    public static Application getApplication() {
-        return mainActivityRef.get();
-    }
+    private static volatile boolean forceAVC;
 
     /**
      * @return If this patch was included during patching.
@@ -106,9 +93,9 @@ public class SpoofVideoStreamsPatch {
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
 
-        if (SPOOF_VIDEO_STREAMS) {
-            StreamingDataRequest.setClientOrderToUse(availableClients, client);
+        StreamingDataRequest.setClientOrderToUse(availableClients, client);
 
+        if (SPOOF_VIDEO_STREAMS) {
             // Prefetch visitorId for default client.
             Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
         }
@@ -116,6 +103,17 @@ public class SpoofVideoStreamsPatch {
 
     public static ClientType getPreferredClient() {
         return preferredClient;
+    }
+
+    /**
+     * @param force If the app is set to play only AVC, so the VP9 formats of a spoofed stream are removed.
+     */
+    public static void setForceAVC(boolean force) {
+        forceAVC = force;
+    }
+
+    public static boolean getForceAVC() {
+        return forceAVC;
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
@@ -226,7 +224,7 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Only invoked when playing a livestream on an Apple client.
+     * Only invoked when playing a live stream on an Apple client.
      */
     public static boolean fixHLSCurrentTime(boolean original) {
         if (SPOOF_VIDEO_STREAMS) {
@@ -317,7 +315,7 @@ public class SpoofVideoStreamsPatch {
 
                 // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
                 // 'heartbeat' has no video and appears to be only after playback has started.
-                // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
+                // 'refresh' has no video ID and appears to happen when waiting for a live stream to start.
                 // 'ad_break' has no video ID.
                 if (path.contains("get_drm_license") ||
                         path.contains("heartbeat") ||

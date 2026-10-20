@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Legger til en knapp for å stemme opp eller ned segmenter</string>
   <string name="morphe_sb_square_layout_title">Bruk firkantet layout</string>
   <string name="morphe_sb_square_layout_summary">Bruker firkantede hjørner for SponsorBlock-knapper og -kontroller</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Bruk kompakt hoppeknapp</string>
   <string name="morphe_sb_compact_skip_button_summary">Reduserer bredden på hoppeknappen for å spare plass</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Skjul hoppeknapp automatisk</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adressen SponsorBlock bruker for å foreta kall til serveren</string>
   <string name="morphe_sb_channel_whitelist_title">Kanalliste</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock er deaktivert for kanaler på hvitelisten</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Aktuell kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Legg til i hvitelisten</string>
-  <string name="morphe_sb_channel_whitelist_remove">Fjern</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Hviteliste-kanaler</string>
-  <string name="morphe_sb_channel_whitelist_empty">Ingen kanaler er hvitelistet</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal lagt til i hvitelisten</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal fjernet fra hvitelisten</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Varsle om kanalen er på hvitelisten</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Viser et varsel når SponsorBlock er deaktivert for en hvitelistet kanal</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock deaktivert for denne kanalen</string>
@@ -236,8 +228,7 @@ Hvis du ikke sender inn et utvalg, trykk Avbryt og marker det andre stedet"</str
   <string name="morphe_sb_stats_saved_second_format">%s sekunder</string>
   <string name="morphe_sb_color_opacity_label">Opasitet:</string>
   <string name="morphe_sb_color_dot_label">Farge:</string>
-  <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">"Data leveres av SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock er en crowdsourced database med videosegmenter som sponsorer, intros, outros og påminnelser om å abonnere. Segmenter sendes inn og stemmes på av fellesskapet, og databasen er åpen og gratis å laste ned
 
-Trykk her for å åpne Sponsor.ajay.app og se nedlastinger for andre plattformer"</string>
+ID-en til videoen du ser på, sendes til SponsorBlock API for å hente dens segmenter"</string>
 </resources>

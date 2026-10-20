@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Cuireann cnaipe leis chun codanna a vótáil suas nó síos</string>
   <string name="morphe_sb_square_layout_title">Úsáid leagan amach cearnach</string>
   <string name="morphe_sb_square_layout_summary">Úsáideann sé coirnéil chearnacha le haghaidh cnaipí agus rialuithe SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Úsáid an cnaipe Scipeáil dlúth</string>
   <string name="morphe_sb_compact_skip_button_summary">Laghdaíonn sé leithead an chnaipe Scipeáil chun spás a shábháil</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Folaigh an cnaipe Scipeáil go huathoibríoch</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">An seoladh a úsáideann SponsorBlock chun glaonna a dhéanamh chuig an bhfreastalaí</string>
   <string name="morphe_sb_channel_whitelist_title">Liosta bán cainéal</string>
   <string name="morphe_sb_channel_whitelist_summary">Tá UrraitheoirBloc díchumasaithe do chainéil atá ar an liosta bán</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Cainéal reatha:</string>
-  <string name="morphe_sb_channel_whitelist_add">Cuir leis an liosta bán</string>
-  <string name="morphe_sb_channel_whitelist_remove">Bain</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Cainéil ar an liosta bán</string>
-  <string name="morphe_sb_channel_whitelist_empty">Níl aon chainéil ar an liosta bán</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Cainéal curtha leis an liosta bán</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Baineadh an cainéal den liosta bán</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Fógra ar chainéal ar an liosta bán</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Taispeánann sé fógra nuair a bhíonn SponsorBlock díchumasaithe do chainéal atá ar an liosta bán</string>
   <string name="morphe_sb_channel_whitelisted_toast">Tá SponsorBlock díchumasaithe don chainéal seo</string>
@@ -236,8 +228,7 @@ Mura bhfuil buaicphointe á chur isteach agat, tapáil Cealaigh agus marcáil an
   <string name="morphe_sb_stats_saved_second_format">%s soicind</string>
   <string name="morphe_sb_color_opacity_label">Teimhneacht:</string>
   <string name="morphe_sb_color_dot_label">Dath:</string>
-  <string name="morphe_sb_about_title">Maidir</string>
-  <string name="morphe_sb_about_api_summary">"Cuirtear sonraí ar fáil ag API SponsorBlock
+  <string name="morphe_sb_about_api_summary">"Is bunachar sonraí ón bpobal é SponsorBlock a bhfuil codanna físeáin ann, ar nós urraitheoirí, réamhrá, críoch agus meabhrúcháin chun liostáil. Cuireann an pobal codanna isteach agus vótálann sé orthu, agus tá an bunachar oscailte agus saor le híoslódáil
 
-Tapáil anseo chun Sponsor.ajay.app a oscailt agus íoslódálacha le haghaidh ardáin eile a fheiceáil"</string>
+Seoltar aitheantas an fhíseáin a bhfuil tú ag féachaint air chuig API SponsorBlock chun na codanna a fháil."</string>
 </resources>

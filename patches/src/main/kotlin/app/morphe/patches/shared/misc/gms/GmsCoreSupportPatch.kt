@@ -11,7 +11,7 @@
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionFilter
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
@@ -28,6 +28,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.gms.gmsCorePackageQueriesPatch
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
@@ -36,6 +37,7 @@ import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.getReference
 import app.morphe.util.matchAllMethodIndicesForEach
+import app.morphe.util.matchSingle
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
@@ -97,6 +99,8 @@ fun gmsCoreSupportPatch(
     )
 
     execute {
+        GooglePlayUtilityFingerprint.method.returnEarly(0)
+
         val toPackageName = setOrGetFallbackPackageName(toPackageNameDefault)
 
         // Exact string replacements.
@@ -118,8 +122,6 @@ fun gmsCoreSupportPatch(
         arrayOf(
             "com.google" to GMS_CORE_VENDOR_GROUP_ID,
             "com.google.android.gms" to "$GMS_CORE_VENDOR_GROUP_ID.android.gms",
-            // No vendor prefix for whatever reason...
-            "subscribedfeeds" to "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds",
 
             // Package names.
             "$fromPackageName.SuggestionProvider" to "$toPackageName.SuggestionProvider",
@@ -135,24 +137,16 @@ fun gmsCoreSupportPatch(
             )
         }
 
+        val authoritiesPrefix = AUTHORITIES.map { it to "content://$it" }
         fun contentUrisTransform(str: String): String? {
             // only when content:// URI
-            if (str.startsWith("content://")) {
-                // check if matches any authority
-                for (authority in AUTHORITIES) {
-                    val uriPrefix = "content://$authority"
-                    if (str.startsWith(uriPrefix)) {
-                        return str.replace(
-                            uriPrefix,
-                            "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)}",
-                        )
-                    }
-                }
-
-                // gms also has a 'subscribedfeeds' authority, check for that one too
-                val subFeedsUriPrefix = "content://subscribedfeeds"
-                if (str.startsWith(subFeedsUriPrefix)) {
-                    return str.replace(subFeedsUriPrefix, "content://$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds")
+            // check if matches any authority
+            for ((authority, uriPrefix) in authoritiesPrefix) {
+                if (str.startsWith(uriPrefix)) {
+                    return str.replace(
+                        uriPrefix,
+                        "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)}",
+                    )
                 }
             }
 
@@ -176,25 +170,22 @@ fun gmsCoreSupportPatch(
 
         // endregion
 
-        val contentUriFilter = InstructionFilter { _, instruction ->
-            if (instruction.opcode != Opcode.CONST_STRING) return@InstructionFilter false
-            val stringRef = (instruction as? ReferenceInstruction)?.reference as? StringReference ?: return@InstructionFilter false
-            contentUrisTransform(stringRef.string) != null
-        }
-
-        contentUriFilter.matchAllMethodIndicesForEach(requireMatches = false) { index ->
+        string(
+            "content://", StringComparisonType.STARTS_WITH
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = getInstruction<ReferenceInstruction>(index)
             val string = (instruction.reference as StringReference).string
-            val transformedString = contentUrisTransform(string)!!
-
-            replaceInstruction(
-                index,
-                BuilderInstruction21c(
-                    Opcode.CONST_STRING,
-                    (instruction as OneRegisterInstruction).registerA,
-                    ImmutableStringReference(transformedString),
+            val transformedString = contentUrisTransform(string)
+            if (transformedString != null) {
+                replaceInstruction(
+                    index,
+                    BuilderInstruction21c(
+                        Opcode.CONST_STRING,
+                        (instruction as OneRegisterInstruction).registerA,
+                        ImmutableStringReference(transformedString),
+                    )
                 )
-            )
+            }
         }
 
         // Specific method that needs to be patched.
@@ -211,7 +202,6 @@ fun gmsCoreSupportPatch(
             }
         }
         ServiceCheckFingerprint.method.returnEarly()
-        GooglePlayUtilityFingerprint.method.returnEarly(0)
 
         // Set original and patched package names for extension to use.
         OriginalPackageNameExtensionFingerprint.method.returnEarly(fromPackageName)
@@ -227,6 +217,19 @@ fun gmsCoreSupportPatch(
         GmsCoreSupportFingerprint.method.returnEarly(
             GMS_CORE_VENDOR_GROUP_ID
         )
+
+        // GNP expects the original Google package even when the installed app is renamed.
+        GnpRegistrationTargetFingerprint.matchSingle().let { match ->
+            val result = match.instructionMatches[1]
+            match.method.replaceInstruction(
+                result.index,
+                BuilderInstruction21c(
+                    Opcode.CONST_STRING,
+                    (result.instruction as OneRegisterInstruction).registerA,
+                    ImmutableStringReference(fromPackageName),
+                ),
+            )
+        }
 
         executeBlock()
     }
@@ -268,7 +271,6 @@ private object Constants {
     val ACTIONS = setOf(
         "com.google.android.c2dm.intent.RECEIVE",
         "com.google.android.c2dm.intent.REGISTER",
-        "com.google.android.c2dm.intent.REGISTRATION",
         "com.google.android.c2dm.intent.UNREGISTER",
         "com.google.android.contextmanager.service.ContextManagerService.START",
         "com.google.android.gcm.intent.SEND",
@@ -285,7 +287,6 @@ private object Constants {
         "com.google.android.gms.ads.service.CONSENT_LOOKUP",
         "com.google.android.gms.ads.service.HTTP",
         "com.google.android.gms.analytics.service.START",
-        "com.google.android.gms.app.settings.GoogleSettingsLink",
         "com.google.android.gms.appstate.service.START",
         "com.google.android.gms.appusage.service.START",
         "com.google.android.gms.asterism.service.START",
@@ -392,6 +393,7 @@ private object Constants {
         "com.google.android.gms.location.reporting.service.START",
         "com.google.android.gms.location.settings.LOCATION_HISTORY",
         "com.google.android.gms.location.settings.LOCATION_REPORTING_SETTINGS",
+        "com.google.android.location.internal.GoogleLocationManagerService",
         "com.google.android.gms.locationsharing.api.START",
         "com.google.android.gms.locationsharingreporter.service.START",
         "com.google.android.gms.lockbox.service.START",
@@ -469,6 +471,7 @@ private object Constants {
         "com.google.android.gms.vehicle.cabin.service.START",
         "com.google.android.gms.vehicle.climate.service.START",
         "com.google.android.gms.vehicle.info.service.START",
+        "com.google.android.gms.wallet.firstparty.ACTION_PURCHASE_MANAGER",
         "com.google.android.gms.wallet.service.BIND",
         "com.google.android.gms.walletp2p.service.firstparty.BIND",
         "com.google.android.gms.walletp2p.service.zeroparty.BIND",
@@ -483,8 +486,6 @@ private object Constants {
         "com.google.android.mdh.service.listener.START",
         "com.google.android.mdh.service.START",
         "com.google.android.mobstore.service.START",
-        "com.google.firebase.auth.api.gms.service.START",
-        "com.google.firebase.dynamiclinks.service.START",
         "com.google.iid.TOKEN_REQUEST",
         "com.google.android.gms.location.places.ui.PICK_PLACE",
     )
@@ -498,6 +499,7 @@ private object Constants {
         "com.google.android.gms.fonts",
         "com.google.android.gms.phenotype",
         "com.google.android.gsf.gservices",
+        "com.google.android.gsf.subscribedfeeds",
         "com.google.settings",
     )
 }
@@ -523,6 +525,7 @@ fun gmsCoreSupportResourcePatch(
 ) = resourcePatch {
     dependsOn(
         cloneAppPatch,
+        gmsCorePackageQueriesPatch,
         linkHandlingPatch(fromPackageName, screen)
     )
 
@@ -577,7 +580,9 @@ fun gmsCoreSupportResourcePatch(
                 "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$toPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
-                "</queries>" to "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/></queries>",
+                // Allow the app to request uninstall of conflicting MicroG / GMS variants on Android 14+.
+                // The variants are made visible to the package manager by gmsCorePackageQueriesPatch.
+                "</queries>" to "</queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
             )
 
             val manifest = get("AndroidManifest.xml")

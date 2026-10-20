@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Додає кнопку для позитивної або негативної оцінки сегментів</string>
   <string name="morphe_sb_square_layout_title">Використовувати квадратний макет</string>
   <string name="morphe_sb_square_layout_summary">Використовує квадратні кути для кнопок та елементів керування SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Компактна кнопка пропуску</string>
   <string name="morphe_sb_compact_skip_button_summary">Зменшує ширину кнопки \"Пропустити\" для економії місця</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Приховувати кнопку пропуску</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Адреса сервера, яку SponsorBlock використовує для запитів</string>
   <string name="morphe_sb_channel_whitelist_title">Білий список каналів</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock вимкнено для каналів у білому списку</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Поточний канал:</string>
-  <string name="morphe_sb_channel_whitelist_add">Додати до білого списку</string>
-  <string name="morphe_sb_channel_whitelist_remove">Видалити</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Канали в білому списку</string>
-  <string name="morphe_sb_channel_whitelist_empty">Немає каналів у білому списку</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Канал додано до білого списку</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Канал видалено з білого списку</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Сповіщати про канал у білому списку</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Показує сповіщення, коли SponsorBlock вимкнено для каналу з білого списку</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock вимкнено для цього каналу</string>
@@ -236,8 +228,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s секунд</string>
   <string name="morphe_sb_color_opacity_label">Непрозорість:</string>
   <string name="morphe_sb_color_dot_label">Колір:</string>
-  <string name="morphe_sb_about_title">Про інтеграцію</string>
-  <string name="morphe_sb_about_api_summary">"Дані надаються API SponsorBlock
+  <string name="morphe_sb_about_api_summary">"SponsorBlock - це краудсорсингова база сегментів відео, як-от спонсорські вставки, інтро, аутро та нагадування підписатися. Сегменти надсилають і оцінюють голосуванням користувачі, а сама база відкрита й безкоштовна для завантаження
 
-Торкніться тут, щоб відкрити Sponsor.ajay.app та переглянути завантаження для інших платформ"</string>
+Ідентифікатор відео, яке ви дивитеся, надсилається до API SponsorBlock для отримання його сегментів"</string>
 </resources>

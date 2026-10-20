@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Segmentlarga ovoz berish yoki pastga tushirish uchun tugma qo\'shadi</string>
   <string name="morphe_sb_square_layout_title">Kvadratli tartibni ishlatish</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock tugmalar va boshqaruvlar uchun kvadrat burchaklar ishlatadi</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Kichikroq \'O\'tkazib yuborish\' tugmasidan foydalanish</string>
   <string name="morphe_sb_compact_skip_button_summary">Joyni tejash uchun \'O\'tkazib yuborish\' tugmasining kengligini kamaytiradi</string>
   <string name="morphe_sb_auto_hide_skip_button_title">\'O\'tkazib yuborish\' tugmasini avtomatik ravishda yashirish</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock serverga qo\'ng\'iroq qilish uchun foydalanadigan manzil</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal oq ro\'yxati</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock oq ro\'yxatdagi kanallar uchun o\'chirib qo\'yilgan</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Hozirgi kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Oq ro\'yxatga qo\'shish</string>
-  <string name="morphe_sb_channel_whitelist_remove">Olib tashlash</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Oq ro\'yxatdagi kanallar</string>
-  <string name="morphe_sb_channel_whitelist_empty">Oq ro\'yxatga kiritilgan kanallar yo\'q</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal oq ro\'yxatga qo\'shildi</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal oq ro\'yxatdan o\'chirildi</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Oq ro\'yxatdagi kanal uchun bildirishnoma</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">SponsorBlock oq ro\'yxatdagi kanal uchun o\'chirib qo\'yilganda bildirishnoma ko\'rsatadi</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ushbu kanal uchun o\'chirib qo\'yildi</string>
@@ -235,8 +227,4 @@ Agar siz muhim qismini jo'natmoqchi bo'lsangiz, Bekor tugmasini bosing va ikkinc
   <string name="morphe_sb_stats_saved_second_format">%s soniya</string>
   <string name="morphe_sb_color_opacity_label">Shaffoflik:</string>
   <string name="morphe_sb_color_dot_label">Rang:</string>
-  <string name="morphe_sb_about_title">Haqida</string>
-  <string name="morphe_sb_about_api_summary">"Ma'lumotlar SponsorBlock API tomonidan taqdim etiladi
-
-Sponsor.ajay.app ni ochish uchun bering va boshqa platformalar uchun yuklab olishlarni ko'ring"</string>
 </resources>

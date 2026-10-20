@@ -17,13 +17,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">啟用 SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock 是一個眾包系統，用於跳過 YouTube 影片中惱人的部分</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock 是一個眾包系統，用於跳過 YouTube 影片中惱人的部份</string>
   <string name="morphe_sb_appearance_category_title">外觀</string>
   <string name="morphe_sb_voting_button_title">顯示「投票」按鈕</string>
   <string name="morphe_sb_voting_button_summary">新增按鈕以對影片片段投下贊成或反對票</string>
   <string name="morphe_sb_square_layout_title">使用方形版面配置</string>
-  <string name="morphe_sb_square_layout_summary">為贊助商區塊按鈕和控制項使用方形角落</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_square_layout_summary">SponsorBlock 按鈕和控制項使用方角</string>
   <string name="morphe_sb_compact_skip_button_title">使用精簡「跳過」按鈕</string>
   <string name="morphe_sb_compact_skip_button_summary">縮小「跳過」按鈕的寬度以節省空間</string>
   <string name="morphe_sb_auto_hide_skip_button_title">自動隱藏「略過」按鈕</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock 用來和伺服器互動的位址</string>
   <string name="morphe_sb_channel_whitelist_title">頻道白名單</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock 已為白名單頻道停用</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">目前頻道：</string>
-  <string name="morphe_sb_channel_whitelist_add">加入白名單</string>
-  <string name="morphe_sb_channel_whitelist_remove">刪除</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">已加入白名單的頻道</string>
-  <string name="morphe_sb_channel_whitelist_empty">沒有已加入白名單的頻道</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">頻道已加入白名單</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">頻道已從白名單中移除</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">在白名單頻道上發出通知</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">當為已加入白名單的頻道停用 SponsorBlock 時顯示通知</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock 已為此頻道停用</string>
@@ -111,11 +103,11 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_outro">片尾資訊卡/鳴謝</string>
   <string name="morphe_sb_segments_outro_summary">鳴謝或 YouTube 片尾資訊卡出現時。不適用於含有資訊的結論。</string>
   <string name="morphe_sb_segments_hook">開場白 / 問候</string>
-  <string name="morphe_sb_segments_hook_summary">即將推出的影片的旁白預告片、問候語和告別語。不包含增加額外內容的部分</string>
+  <string name="morphe_sb_segments_hook_summary">即將推出的影片的旁白預告片、問候語和告別語。不包含增加額外內容的部份</string>
   <string name="morphe_sb_segments_preview">預覽 / 回顧</string>
   <string name="morphe_sb_segments_preview_summary">展示影片或系列影片中即將到來或已發生的內容片段合輯，且所有資訊在其他地方重複出現。</string>
   <string name="morphe_sb_segments_filler">離題 / 笑話</string>
-  <string name="morphe_sb_segments_filler_summary">離題的場景或笑話，這些內容並非理解影片主要內容所必需的。不包括提供背景或詳細資訊的部分</string>
+  <string name="morphe_sb_segments_filler_summary">離題的場景或笑話，這些內容並非理解影片主要內容所必需的。不包括提供背景或詳細資訊的部份</string>
   <string name="morphe_sb_segments_nomusic">音樂：非音樂片段</string>
   <string name="morphe_sb_segments_nomusic_summary">僅適用於音樂影片。音樂影片中沒有音樂，且不屬於其他類別的段落。</string>
   <string name="morphe_sb_skip_button_compact">跳過</string>
@@ -148,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_preview_middle">已跳過預覽</string>
   <string name="morphe_sb_skipped_preview_end">已跳過回顧</string>
   <string name="morphe_sb_skipped_filler">已跳過不相關內容</string>
-  <string name="morphe_sb_skipped_nomusic">已跳過非音樂部分</string>
+  <string name="morphe_sb_skipped_nomusic">已跳過非音樂部份</string>
   <string name="morphe_sb_skipped_unsubmitted">跳過了未提交的片段</string>
   <string name="morphe_sb_skipped_multiple_segments">已跳過多個片段</string>
   <string name="morphe_sb_skip_automatically">自動跳過</string>
@@ -235,8 +227,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s 秒</string>
   <string name="morphe_sb_color_opacity_label">不透明度：</string>
   <string name="morphe_sb_color_dot_label">顏色：</string>
-  <string name="morphe_sb_about_title">關於</string>
-  <string name="morphe_sb_about_api_summary">"資料由 SponsorBlock API 提供。
+  <string name="morphe_sb_about_api_summary">"SponsorBlock 是一個群眾外包的影片片段資料庫，包含贊助商、開場、片尾和訂閱提醒等片段。這些片段由社群提交並投票表決，且資料庫開放並可免費下載
 
-點擊這裡打開 Sponsor.ajay.app，以查看其他平台的下載"</string>
+您觀看影片的 ID 會傳送至 SponsorBlock API 以取得其片段"</string>
 </resources>

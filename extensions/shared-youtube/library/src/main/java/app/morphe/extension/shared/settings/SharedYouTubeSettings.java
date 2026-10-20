@@ -13,6 +13,8 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderAvailability;
+import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
+import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
 import app.morphe.extension.shared.theme.ThemeColorPatch.ThemeColorChangeForegroundAvailability;
@@ -46,11 +48,17 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+    public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
+    public static final EnumSetting<MinimumPause> SKIP_SILENCE_MINIMUM_PAUSE = new EnumSetting<>("morphe_skip_silence_minimum_pause", MinimumPause.MS_700, true, parent(SKIP_SILENCE));
 
     // Ads
     public static final BooleanSetting HIDE_FULLSCREEN_ADS = new BooleanSetting("morphe_hide_fullscreen_ads", TRUE);
 
     public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE, true);
+
+    // Media notification controls
+    public static final BooleanSetting DISABLE_NOTIFICATION_MEDIA_SEEKBAR = new BooleanSetting("morphe_disable_notification_media_seekbar", FALSE, true);
+    public static final BooleanSetting HIDE_NOTIFICATION_MEDIA_PREV_NEXT = new BooleanSetting("morphe_hide_notification_media_prev_next", FALSE, true);
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
@@ -63,9 +71,11 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting THEME_LAST_USED_DARK_MODE = new BooleanSetting("morphe_theme_last_used_dark_mode", Utils.isDarkModeEnabled(), false, false);
 
     // Custom branding
-    public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
+    public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
+    public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true, "morphe_custom_branding_icon_user_dialog_message");
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
+    public static final StringSetting CUSTOM_BRANDING_ICON_PATCHED = new StringSetting("morphe_custom_branding_icon_patched", "", false, false);
 
     // Miscellaneous
     public static final BooleanSetting DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, "morphe_debug_protobuffer_user_dialog_message", parent(DEBUG));
@@ -104,12 +114,13 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
     // Return YouTube Dislike
-    public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE);
+    public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE, true);
     public static final StringSetting RYD_USER_ID = new StringSetting("morphe_ryd_user_id", "", false, false);
-    public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("morphe_ryd_dislike_percentage", FALSE, true, parent(RYD_ENABLED));
-    public static final BooleanSetting RYD_COMPACT_LAYOUT = new BooleanSetting("morphe_ryd_compact_layout", FALSE, true, parent(RYD_ENABLED));
+    public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("morphe_ryd_dislike_percentage", FALSE, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_ESTIMATED_LIKE = new BooleanSetting("morphe_ryd_estimated_like", TRUE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_ryd_toast_on_connection_error", TRUE, parent(RYD_ENABLED));
+    public static final StringSetting GMS_CORE_IGNORED_VERSION = new StringSetting("morphe_gms_core_update_dialog_ignored_version", "", false, false);
+    public static final StringSetting GMS_CORE_IGNORED_CONFLICTS = new StringSetting("morphe_gms_core_conflict_dialog_ignored", "", false, false);
 
     // Migration
     private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);

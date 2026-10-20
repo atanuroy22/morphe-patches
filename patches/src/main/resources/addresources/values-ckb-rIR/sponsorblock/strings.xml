@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">دوگمەیەک زیاد دەکات بۆ دەنگدان بە پەسەندکردن یان ناپەسەندکردنی بەشەکان</string>
   <string name="morphe_sb_square_layout_title">شێوازی چوارگۆشە بەکاربهێنە</string>
   <string name="morphe_sb_square_layout_summary">بەکارهێنانی گۆشە چوارگۆشەییەکان بۆ دووگمەکان و کۆنترۆڵەکانی SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">بەکارهێنانی دوگمەی Skipی بچووککراوە</string>
   <string name="morphe_sb_compact_skip_button_summary">پانایی دوگمەی Skip کەم دەکاتەوە بۆ ئەوەی شوێنەکە کەم بکاتەوە</string>
   <string name="morphe_sb_auto_hide_skip_button_title">به‌گشتی دکۆی نه‌شه‌وه‌ قایپ بکه</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">ئەو ناونیشانەی SponsorBlock بەکاری دەهێنێت بۆ پەیوەندیکردن بە سێرڤەر</string>
   <string name="morphe_sb_channel_whitelist_title">لیستی کەناڵە ڕێگەپێدراوەکان</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock بۆ کەناڵەکانی لیستی سپی لەکارخراوە</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">کەناڵی ئێستا:</string>
-  <string name="morphe_sb_channel_whitelist_add">زیادکردن بۆ لیستی ڕێگەپێدراو</string>
-  <string name="morphe_sb_channel_whitelist_remove">لابردن</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">کەناڵەکانی لیستی ڕێگەپێدراو</string>
-  <string name="morphe_sb_channel_whitelist_empty">هیچ کاناڵێک لە لیستی ڕێگەپێدراودا نییە</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">کەناڵ زیادکرا بۆ لیستی ڕێگەپێدراو</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">کەناڵ لە لیستی ڕێگەپێدراوەکان لابرا</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">ئاگادارکردنەوە لە کەناڵی ڕێگەپێدراو</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">ئاگادارکردنەوەیەک پیشان دەدات کاتێک SponsorBlock بۆ کەناڵێکی لیستی سپی لەکارخراوە</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock بۆ ئەم کەناڵە لەکارکەوتووە</string>
@@ -234,8 +226,4 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s چرکە</string>
   <string name="morphe_sb_color_opacity_label">ناوەڕاستی:</string>
   <string name="morphe_sb_color_dot_label">ڕەنگ:</string>
-  <string name="morphe_sb_about_title">دربارە</string>
-  <string name="morphe_sb_about_api_summary">"داتاکان لەلایەن API ی SponsorBlock دابین دەکرێن
-
-کرتە لێرە بکە بۆ کردنەوەی Sponsor.ajay.app و بینینی داگرتنەکان بۆ پلاتفۆرمەکانی تر"</string>
 </resources>

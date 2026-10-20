@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.sponsorblock;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
@@ -39,6 +38,8 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 import kotlin.Unit;
 
 /**
@@ -247,7 +248,6 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
         @Override public void showSkipHighlightButton(@NonNull SponsorSegment segment) { SponsorBlockViewController.showSkipHighlightButton(segment); }
         @Override public void hideSkipHighlightButton()                                { SponsorBlockViewController.hideSkipHighlightButton(); }
         @Override public void hideAll()                                                { SponsorBlockViewController.hideAll(); }
-        @Override public @Nullable Context overlayContext()                            { return SponsorBlockViewController.getOverLaysViewGroupContext(); }
         @Override public void showErrorDialog(@NonNull String message)                 { SponsorBlockUtils.showErrorDialog(message); }
         @Override public void notifyNewSegmentPreviewed()                              { SponsorBlockUtils.setNewSponsorSegmentPreviewed(); }
         @Override public void clearUnsubmittedSegmentTimes()                           { SponsorBlockUtils.clearUnsubmittedSegmentTimes(); }
@@ -255,10 +255,10 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
 
     private static final ChannelWhitelistAdapter YT_CHANNEL_WHITELIST = new ChannelWhitelistAdapter() {
         @Override public boolean isChannelWhitelisted(@Nullable String channelId) {
-            return channelId != null && SponsorBlockChannelWhitelist.isChannelWhitelisted(channelId);
+            return ChannelWhitelist.isChannelWhitelisted(WhitelistType.SPONSOR_BLOCK, channelId);
         }
         @Override public boolean isCurrentChannelWhitelisted() {
-            return SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted();
+            return ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.SPONSOR_BLOCK);
         }
     };
 }

@@ -23,6 +23,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriFingerprint
+import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriLegacyFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.request.buildRequestPatch
@@ -33,7 +34,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -51,6 +51,16 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
+
+context(patchContext: BytecodePatchContext)
+internal fun addMediaSessionOverride(extension: String) {
+    MediaSessionFeatureFlagFingerprint.matchAll().forEach {
+        it.method.insertLiteralOverride(
+            it.instructionMatches.first().index,
+            extension
+        )
+    }
+}
 
 private val spoofVideoStreamsResourcePatch = resourcePatch {
     execute {
@@ -75,12 +85,14 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
-    mainActivityOnCreateFingerprint: Fingerprint,
+    mainActivityOnCreateFingerprints: List<Fingerprint>,
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     restoreMissingCuepointMethod: BytecodePatchBuilder.() -> Boolean,
+    patchProtoRequest: BytecodePatchBuilder.() -> Boolean,
+    patchProtoRequestLegacy: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -96,13 +108,12 @@ internal fun spoofVideoStreamsPatch(
     )
 
     execute {
-        mainActivityOnCreateFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V       
-                invoke-static { }, $extensionClass->setClientOrderToUse()V   
-            """
-        )
+        mainActivityOnCreateFingerprints.forEach { fingerprint ->
+            fingerprint.method.addInstruction(
+                0,
+                "invoke-static { }, $extensionClass->setClientOrderToUse()V"
+            )
+        }
 
         // region Enable extension helper method used by other patches
 
@@ -130,20 +141,29 @@ internal fun spoofVideoStreamsPatch(
         // endregion
 
         // region Block /get_watch requests to fall back to /player requests.
+        val uriFingerprints = mutableListOf<Fingerprint>()
+        if (patchProtoRequest()) {
+            uriFingerprints += BuildInnerTubeProtoRequestUriFingerprint
+        }
+        if (patchProtoRequestLegacy()) {
+            uriFingerprints += BuildInnerTubeProtoRequestUriLegacyFingerprint
+        }
 
-        BuildInnerTubeProtoRequestUriFingerprint.let {
-            it.method.apply {
-                val match = it.instructionMatches.last()
-                val index = match.index
-                val register = match.instruction.registersUsed[0]
+        uriFingerprints.forEach { fingerprint ->
+            fingerprint.let {
+                it.method.apply {
+                    val match = it.instructionMatches.last()
+                    val index = match.index
+                    val register = match.instruction.registersUsed[0]
 
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    $$"""
-                        invoke-static { v$$register }, $$EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri$Builder;)Landroid/net/Uri$Builder;
-                        move-result-object v$$register
-                    """
-                )
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        $$"""
+                            invoke-static { v$$register }, $$EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri$Builder;)Landroid/net/Uri$Builder;
+                            move-result-object v$$register
+                        """
+                    )
+                }
             }
         }
 
@@ -316,25 +336,25 @@ internal fun spoofVideoStreamsPatch(
         // Requesting streams intended for other platforms with a body tuned for Android could be the cause of 400 errors.
         // A proper fix may include modifying the request body to match the platforms expected body.
 
-        BuildMediaDataSourceFingerprint.method.apply {
-            val targetIndex =
-                indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
+        BuildMediaDataSourceFingerprint.let {
+            val urlField = it.instructionMatches[0].getFieldAccessed()
+            val httpMethodField = it.instructionMatches[1].getFieldAccessed()
+            val httpBodyField = it.instructionMatches[2].getFieldAccessed()
+            val index = it.instructionMatches.last().index
 
-            // Instructions are added just before the method returns,
-            // so there's no concern of clobbering in-use registers.
-            addInstructions(
-                targetIndex,
+            it.method.addInstructions(
+                index,
                 """
                     # Field a: Stream uri.
-                    # Field c: Http method.
-                    # Field d: Post data.
+                    # Field $httpMethodField: Http method.
+                    # Field $httpBodyField: Post data.
                     move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
-                    iget-object v1, v0, $definingClass->a:Landroid/net/Uri;
-                    iget v2, v0, $definingClass->c:I
-                    iget-object v3, v0, $definingClass->d:[B
+                    iget-object v1, v0, $urlField
+                    iget v2, v0, $httpMethodField
+                    iget-object v3, v0, $httpBodyField
                     invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
                     move-result-object v1
-                    iput-object v1, v0, $definingClass->d:[B
+                    iput-object v1, v0, $httpBodyField
                 """
             )
         }
@@ -359,7 +379,7 @@ internal fun spoofVideoStreamsPatch(
 
         // endregion
 
-        // region Fix iOS livestream current time.
+        // region Fix iOS live stream current time.
 
         HlsCurrentTimeFingerprint.method.apply {
             // Flag can exist in multiple places in the method.
@@ -439,12 +459,7 @@ internal fun spoofVideoStreamsPatch(
         }
 
         if (fixMediaSessionFeatureFlag()) {
-            MediaSessionFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z"
-                )
-            }
+            addMediaSessionOverride("$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z")
         }
 
         if (fixReelItemWatchResponseFeatureFlag()) {

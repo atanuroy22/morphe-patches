@@ -16,9 +16,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +27,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
 import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
@@ -36,14 +37,27 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationEntrySheetEndpoint;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMode;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesCommand;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRendererHolder;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
@@ -52,10 +66,6 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
-
-    public static boolean isPatchIncluded() {
-        return false;
-    }
 
     private static final Map<NavigationBar.NavigationButton, Boolean> shouldHideMap =
             new EnumMap<>(NavigationBar.NavigationButton.class) {
@@ -77,6 +87,16 @@ public final class NavigationBarPatch {
     private static final boolean DISABLE_AUTO_HIDE_NAVIGATION_BAR = Settings.DISABLE_AUTO_HIDE_NAVIGATION_BAR.get();
 
     private static final boolean HIDE_NAVIGATION_BAR = Settings.HIDE_NAVIGATION_BAR.get();
+
+    private static final boolean HIDE_NAVIGATION_NEW_CONTENT_DOT = Settings.HIDE_NAVIGATION_NEW_CONTENT_DOT.get();
+
+    private static final int newContentDotId = HIDE_NAVIGATION_NEW_CONTENT_DOT
+            ? ResourceUtils.getIdentifier(ResourceType.ID, "new_content_dot")
+            : 0;
+
+    public static boolean isPatchIncluded() {
+        return false;
+    }
 
     /**
      * Injection point.
@@ -105,6 +125,10 @@ public final class NavigationBarPatch {
             return;
         }
 
+        if (HIDE_NAVIGATION_NEW_CONTENT_DOT) {
+            hideNewContentDot(tabView);
+        }
+
         if (Boolean.TRUE.equals(shouldHideMap.get(button))) {
             tabView.setVisibility(View.GONE);
         }
@@ -115,6 +139,29 @@ public final class NavigationBarPatch {
      */
     public static void hideNavigationButtonLabels(TextView navigationLabelsView) {
         Utils.hideViewUnderCondition(Settings.HIDE_NAVIGATION_BUTTON_LABELS, navigationLabelsView);
+    }
+
+    /**
+     * The dot is a stub that is inflated when the tab has new content, and the app shows and
+     * hides it again later. It is hidden right before every draw, so no frame shows it. The
+     * theme patch keeps the color of the dot the same way.
+     */
+    private static void hideNewContentDot(View tabView) {
+        try {
+            if (newContentDotId == 0) {
+                return;
+            }
+
+            tabView.getViewTreeObserver().addOnPreDrawListener(() -> {
+                View dot = tabView.findViewById(newContentDotId);
+                if (dot != null && !(dot instanceof ViewStub) && dot.getVisibility() == View.VISIBLE) {
+                    dot.setVisibility(View.INVISIBLE);
+                }
+                return true;
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideNewContentDot failure", ex);
+        }
     }
 
     /**
@@ -147,26 +194,18 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     *
+     * @param bottomBarContainer The container of the navigation bar, which also covers the area
+     *                           behind the system navigation buttons or gesture handle.
      */
-    public static boolean allowCollapsingToolbarLayout(boolean original) {
-        if (DISABLE_TRANSLUCENT_NAVIGATION) return false;
-        return original;
-    }
+    public static void setNavigationBarOpaque(View bottomBarContainer) {
+        if (!DISABLE_TRANSLUCENT_NAVIGATION) return;
 
-    /**
-     * Injection point.
-     */
-    public static boolean useTranslucentNavigation(boolean original) {
-        // Must check Android version, as forcing this on Android 11 or lower causes app hang and crash.
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            return original;
+        try {
+            OpaqueSystemBars.apply(bottomBarContainer);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setNavigationBarOpaque failure", ex);
         }
-
-        if (DISABLE_TRANSLUCENT_NAVIGATION) {
-            return false;
-        }
-
-        return original;
     }
 
     // Navigation search and settings button
@@ -234,6 +273,17 @@ public final class NavigationBarPatch {
                 Logger.printException(() -> "Failed to set search bar OnClickListener", ex);
             }
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean useTranslucentNavigation(boolean original) {
+        if (DISABLE_TRANSLUCENT_NAVIGATION) {
+            return false;
+        }
+
+        return original;
     }
 
     /**
@@ -473,6 +523,120 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     * <p>
+     * The toolbar create button of the Android Automotive layout, which swaps the create button with the
+     * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
+     * handles only in the creation modes. The upload endpoint is opened in the creation modes instead,
+     * as the create button of the phone layout does.
+     */
+    public static void fixToolbarCreateButtonUpload(List<MessageLite> rawButtonList) {
+        if (HIDE_TOOLBAR_CREATE_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return;
+
+        try {
+            for (int i = 0, size = rawButtonList.size(); i < size; i++) {
+                MessageLite rawButtons = rawButtonList.get(i);
+                Buttons buttons = Buttons.parseFrom(rawButtons.toByteArray());
+                if (!buttons.hasButtonRenderer() || !buttons.getButtonRenderer().hasIcon()
+                        || !Utils.equalsAny(buttons.getButtonRenderer().getIcon().getYtIconType().name(),
+                        CREATE_BUTTON_ENUMS)) {
+                    continue;
+                }
+
+                ButtonRenderer createButton = openUploadInCreationModes(buttons.getButtonRenderer());
+                if (createButton == null) {
+                    return;
+                }
+                rawButtonList.set(i, parseWithRegistry(rawButtons,
+                        buttons.toBuilder().setButtonRenderer(createButton).build().toByteArray(),
+                        getGeneratedRegistry()));
+                Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
+                return;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "fixToolbarCreateButtonUpload failure", ex);
+        }
+    }
+
+    /**
+     * Parses a message with the extension registry. The commands of the buttons are extensions,
+     * which are lost if the message is parsed without the registry.
+     *
+     * @param message Message of the class to parse.
+     */
+    private static MessageLite parseWithRegistry(MessageLite message, byte[] bytes, ExtensionRegistryLite registry) {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return The extension registry of the app.
+     */
+    private static ExtensionRegistryLite getGeneratedRegistry() {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return The create button whose upload buttons open the upload endpoint in the creation modes,
+     *         or null if the create button has no upload button.
+     */
+    @Nullable
+    private static ButtonRenderer openUploadInCreationModes(ButtonRenderer createButton) {
+        NavigationEndpoint endpoint = createButton.getNavigationEndpoint();
+        if (!endpoint.hasCreationEntrySheetEndpoint()) {
+            return null;
+        }
+        CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
+        ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
+        ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
+        boolean replaced = false;
+
+        for (int i = 0, count = sheet.getButtonsCount(); i < count; i++) {
+            Buttons button = sheet.getButtons(i);
+            ButtonRenderer buttonRenderer = button.getButtonRenderer();
+            NavigationEndpoint uploadEndpoint = buttonRenderer.getNavigationEndpoint();
+            if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
+                continue;
+            }
+
+            // The only mode button of the creation modes opens the upload endpoint.
+            ButtonRenderer modeButton = buttonRenderer.toBuilder()
+                    .clearNavigationEndpoint()
+                    .setCommand(uploadEndpoint)
+                    .build();
+            CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
+                    .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
+                    .addModes(CreationMode.CREATION_MODE_UPLOADS)
+                    .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
+                    .build();
+            CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
+                    .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
+                            .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
+                                    .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
+                                            .setCreationModesSwitcherRenderer(switcher))))
+                    .build();
+
+            NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
+                    .clearShortsCreationEndpoint()
+                    .setCreationModesCommand(creationModesCommand)
+                    .build();
+            sheetBuilder.setButtons(i, button.toBuilder().setButtonRenderer(
+                    buttonRenderer.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
+            replaced = true;
+        }
+        if (!replaced) {
+            return null;
+        }
+
+        CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
+                .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
+                        .setButtonSheetRenderer(sheetBuilder))
+                .build();
+        return createButton.toBuilder()
+                .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
+                .build();
+    }
+
+    /**
+     * Injection point.
      */
     public static void modifyToolbarButtons(List<MessageLite> rawButtonList) {
         if (rawButtonList == null || rawButtonList.isEmpty()) return;
@@ -515,8 +679,12 @@ public final class NavigationBarPatch {
                     if (originalButtons.hasButtonRenderer() && originalButtons.getButtonRenderer().hasIcon()) {
                         ButtonRenderer.Builder renderer = originalButtons.getButtonRenderer().toBuilder();
 
-                        renderer.clearButtonRendererAccessibilityData();
-                        renderer.clearRendererAccessibilityData();
+                        // Replace the accessibility label of the copied button.
+                        ButtonRendererAccessibilityData accessibilityData = ButtonRendererAccessibilityData
+                                .newBuilder().setLabel(str("morphe_settings_submenu_title")).build();
+                        renderer.setButtonRendererAccessibilityData(accessibilityData);
+                        renderer.setRendererAccessibilityData(RendererAccessibilityData.newBuilder()
+                                .setButtonRendererAccessibilityData(accessibilityData).build());
 
                         renderer.clearIcon();
                         renderer.setIcon(Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build());

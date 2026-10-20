@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Añade un botón para votar positivamente o negativamente los segmentos</string>
   <string name="morphe_sb_square_layout_title">Usar diseño cuadrado</string>
   <string name="morphe_sb_square_layout_summary">Utiliza esquinas cuadradas para los botones y controles de SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Usar botón compacto Omitir</string>
   <string name="morphe_sb_compact_skip_button_summary">Reduce el ancho del botón Omitir para ahorrar espacio</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Ocultar automáticamente el botón Omitir</string>
@@ -71,17 +70,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">El ID de usuario privado debe tener al menos 30 caracteres</string>
   <string name="morphe_sb_api_url_title">Cambiar URL de la API</string>
   <string name="morphe_sb_api_url_summary">La dirección que utiliza SponsorBlock para hacer llamadas al servidor</string>
-  <string name="morphe_sb_channel_whitelist_title">Lista de canales permitidos</string>
-  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock se desactiva para los canales en la lista de permitidos</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Canal actual:</string>
-  <string name="morphe_sb_channel_whitelist_add">Agregar a la lista de permitidos</string>
-  <string name="morphe_sb_channel_whitelist_remove">Quitar</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canales en la lista de permitidos</string>
-  <string name="morphe_sb_channel_whitelist_empty">No hay canales en la lista de permitidos</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canal agregado a la lista de permitidos</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canal eliminado de la lista de permitidos</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar en canales de la lista de permitidos</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Muestra una notificación cuando SponsorBlock está desactivado para un canal en la lista de permitidos</string>
+  <string name="morphe_sb_channel_whitelist_title">Lista de excepción de canales</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock está desactivado para los canales en la lista de excepción</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar en canales de la lista de excepción</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Muestra una notificación cuando SponsorBlock está desactivado para un canal en la lista de excepción</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock desactivado para este canal</string>
   <string name="morphe_sb_api_url_reset">Se ha restablecido la URL de la API</string>
   <string name="morphe_sb_api_url_invalid">La URL de la API no es válida</string>
@@ -236,8 +228,7 @@ Si no vas a enviar un destacado, pulsa Cancelar y marca la segunda ubicación."<
   <string name="morphe_sb_stats_saved_second_format">%s segundos</string>
   <string name="morphe_sb_color_opacity_label">Opacidad:</string>
   <string name="morphe_sb_color_dot_label">Color:</string>
-  <string name="morphe_sb_about_title">Acerca de</string>
-  <string name="morphe_sb_about_api_summary">"Los datos los proporciona la API de SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock es una base de datos colaborativa de segmentos de video, como patrocinios, intros, outros y recordatorios para suscribirse. Los segmentos son enviados y votados por la comunidad, y la base de datos es abierta y gratuita para descargar
 
-Pulsa aquí para abrir Sponsor.ajay.app y ver las descargas para otras plataformas"</string>
+El ID del video que ves se envía a la API de SponsorBlock para obtener sus segmentos"</string>
 </resources>

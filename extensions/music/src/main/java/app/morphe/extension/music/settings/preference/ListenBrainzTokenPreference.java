@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -136,7 +136,9 @@ public class ListenBrainzTokenPreference extends Preference {
                                 if (!validation.valid) {
                                     Utils.showToastLong(str("morphe_music_listenbrainz_token_toast_invalid_warning"));
                                 }
-                            } catch (Exception ignored) {}
+                            } catch (Exception ex) {
+                                Logger.printDebug(() -> "ListenBrainz validateToken failure", ex);
+                            }
                         });
                     }
                 },
@@ -154,7 +156,7 @@ public class ListenBrainzTokenPreference extends Preference {
         LinearLayout mainLayout = dialogPair.second;
 
         Button getBtn = CustomDialog.createButton(context, null,
-                str("morphe_music_listenbrainz_token_dialog_get_token"),
+                str("morphe_music_token_dialog_get_token"),
                 () -> {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));

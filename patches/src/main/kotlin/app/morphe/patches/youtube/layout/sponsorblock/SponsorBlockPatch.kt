@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.sponsorblock
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -7,7 +17,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -16,11 +25,16 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.disableNewPlayerControlsFeatureFlag
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -29,6 +43,7 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -42,6 +57,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsorblock.preferences"
+private const val YOUTUBE_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.settings.preference"
 private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
     "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
 
@@ -51,7 +67,6 @@ fun categoryPreference(settingKey: String): BasePreference =
 private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        resourceMappingPatch,
         legacyPlayerControlsPatch,
         addResourcesPatch
     )
@@ -133,7 +148,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                     ),
                     NonInteractivePreference(
                         key = "morphe_sb_channel_whitelist",
-                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
+                        tag = "$YOUTUBE_PREFERENCES_PACKAGE.ChannelWhitelistPreference",
                         selectable = true
                     ),
                     SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),
@@ -151,12 +166,12 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 preferences = emptySet(), // Preferences are added by custom class at runtime.
                 tag = "app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockStatsPreferenceCategory"
             ),
-            PreferenceCategory(
+            screenInfoPreferenceCategory(
                 key = "morphe_sb_about",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_sb_about_api",
+                        titleKey = null,
                         tag = "app.morphe.extension.shared.sponsorblock.ui.SponsorBlockAboutPreference",
                         selectable = true
                     )
@@ -164,35 +179,27 @@ private val sponsorBlockResourcePatch = resourcePatch {
             )
         )
 
-        arrayOf(
+        copyResources(
+            "sponsorblock",
             ResourceGroup(
                 "layout",
                 "morphe_sb_inline_sponsor_overlay.xml",
                 "morphe_sb_new_segment.xml",
                 "morphe_sb_skip_sponsor_button.xml"
-            ),
-            ResourceGroup(
-                "drawable",
-                "morphe_sb_adjust.xml",
-                "morphe_sb_adjust_bold.xml",
-                "morphe_sb_backward.xml",
-                "morphe_sb_backward_bold.xml",
-                "morphe_sb_compare.xml",
-                "morphe_sb_compare_bold.xml",
-                "morphe_sb_edit.xml",
-                "morphe_sb_edit_bold.xml",
-                "morphe_sb_forward.xml",
-                "morphe_sb_forward_bold.xml",
-                "morphe_sb_logo.xml",
-                "morphe_sb_logo_bold.xml",
-                "morphe_sb_publish.xml",
-                "morphe_sb_publish_bold.xml",
-                "morphe_sb_voting.xml",
-                "morphe_sb_voting_bold.xml"
             )
-        ).forEach { resourceGroup ->
-            copyResources("sponsorblock", resourceGroup)
-        }
+        )
+
+        copyPlayerButtonIcons(
+            "sponsorblock",
+            "morphe_sb_adjust",
+            "morphe_sb_backward",
+            "morphe_sb_compare",
+            "morphe_sb_edit",
+            "morphe_sb_forward",
+            "morphe_sb_logo",
+            "morphe_sb_publish",
+            "morphe_sb_voting"
+        )
 
         addTopControl(
             "sponsorblock",
@@ -218,12 +225,12 @@ val sponsorBlockPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        resourceMappingPatch,
         videoIdPatch,
         videoInformationPatch,
         playerTypeHookPatch,
         legacyPlayerControlsPatch,
-        sponsorBlockResourcePatch
+        sponsorBlockResourcePatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -236,6 +243,11 @@ val sponsorBlockPatch = bytecodePatch(
         )
 
         hookBackgroundPlayVideoId(
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
+                    "->setCurrentVideoId(Ljava/lang/String;)V"
+        )
+        // Some app versions do not reach the background play hook for regular playback.
+        hookVideoId(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
                     "->setCurrentVideoId(Ljava/lang/String;)V"
         )
@@ -322,6 +334,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.let {
+            it.clearMatch() // Parent fingerprint is shared and may have changed.
             it.method.apply {
                 val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
@@ -342,6 +355,12 @@ val sponsorBlockPatch = bytecodePatch(
                     "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setAdProgressTextVisibility(I)V"
                 )
             }
+        }
+
+        // FIXME: Skip buttons do not show in new player controls layout.
+        //        Skip buttons may need to be added at runtime like other overlay buttons.
+        if (is_21_36_or_greater) {
+            disableNewPlayerControlsFeatureFlag()
         }
     }
 }

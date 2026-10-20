@@ -17,6 +17,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">Оневозможено</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Боја</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Рестартирај за да завршиш со поставување</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -47,7 +50,6 @@ Second \"item\" text"</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Лажирај видео стримови</string>
   <string name="morphe_spoof_video_streams_screen_summary">Конфигурирај лажирање на клиенти за да спречиш проблеми со репродукцијата</string>
-  <string name="morphe_spoof_video_streams_title">Лажирај видео стримови</string>
   <string name="morphe_spoof_video_streams_summary">"Ги отстранува проблемите со репродукцијата за повеќето корисници со барање на компатибилен видео стрим
 
 Ако сте корисник на YouTube Premium, можеби нема да ви треба оваа поставка."</string>
@@ -67,10 +69,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Најавувањето во Android VR може да реши проблеми со репродукцијата за некои корисници
 
 За да се најавите, притиснете продолжете подолу"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продолжи</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави се</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код за активирање: %s
 
 1. Допрете „Отвори веб-страница“ подолу за да ја отворите веб-страницата „Поврзи уред“.
@@ -78,7 +79,6 @@ Second \"item\" text"</string>
 3. Најавете се на Google ако се побара. Ако имате повеќе сметки, изберете ја оваа YouTube сметка.
 4. Допрете „Дозволи пристап до YouTube VR“.
 5. Вратете се во оваа апликација откако ќе стигнете до пораката „Уредот е поврзан“."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори веб-страница</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно да се издаде код за активирање</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно да се издаде токен за одобрување</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно најавен</string>
@@ -95,6 +95,7 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се најавите во VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјавени од Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за пријава во VR, обидете се да се најавите во VR повторно</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Исклучи QUIC протокол</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -102,6 +103,7 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудно оригинално аудио</string>
   <string name="morphe_force_original_audio_summary">Секогаш пуштај оригинален аудио трак за видео наместо добликан верзија</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
   <!-- misc.proxy.networkProxyPatch -->
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скриј реклами со целоцен екран</string>
@@ -129,6 +131,5 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
 </resources>

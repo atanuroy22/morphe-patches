@@ -55,6 +55,18 @@
         <item>SUBSCRIPTIONS</item>
     </string-array>
 
+    <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+    <string-array name="morphe_music_playlist_track_tap_action_entries">
+        <item>@string/morphe_music_playlist_track_tap_action_entry_default</item>
+        <item>@string/morphe_music_playlist_track_tap_action_entry_play_single_track</item>
+        <item>@string/morphe_music_playlist_track_tap_action_entry_add_to_queue</item>
+    </string-array>
+    <string-array name="morphe_music_playlist_track_tap_action_entry_values">
+        <item>DEFAULT</item>
+        <item>PLAY_SINGLE_TRACK</item>
+        <item>ADD_TO_QUEUE</item>
+    </string-array>
+
     <!-- layout.branding.header.changeHeaderPatch -->
     <string-array name="morphe_header_logo_entries">
         <item>@string/morphe_header_logo_entry_1</item>
@@ -152,14 +164,4 @@
         <item>9.13.51</item>
     </string-array>
 
-    <string-array name="morphe_music_lyrics_source_entries">
-        <item>@string/morphe_music_lyrics_source_entry_lrclib_then_kugou</item>
-        <item>@string/morphe_music_lyrics_source_entry_lrclib</item>
-        <item>@string/morphe_music_lyrics_source_entry_kugou</item>
-    </string-array>
-    <string-array name="morphe_music_lyrics_source_entry_values">
-        <item>LRCLIB_THEN_KUGOU</item>
-        <item>LRCLIB</item>
-        <item>KUGOU</item>
-    </string-array>
 </resources>

@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Voeg \'n knoppie by om segmentte te stem</string>
   <string name="morphe_sb_square_layout_title">Gebruik vierkantige uitleg</string>
   <string name="morphe_sb_square_layout_summary">Gebruik vierkantige hoeke vir SponsorBlock-knoppies en -kontroles</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Gebruik kompakte Oorslaan-knoppie</string>
   <string name="morphe_sb_compact_skip_button_summary">Verminder die wydte van die Oorslaan-knoppie om spasie te bespaar</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Verberg Oorslaan-knoppie outomaties</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Die adres wat SponsorBlock gebruik om oproepe na die bediener te maak</string>
   <string name="morphe_sb_channel_whitelist_title">Kanaliewitlys</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock is afgeskakel vir gekanaliseerde kanale op die witlys</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Huidige kanaal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Voeg toe aan witlys</string>
-  <string name="morphe_sb_channel_whitelist_remove">Verwyder</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Witgelyste kanale</string>
-  <string name="morphe_sb_channel_whitelist_empty">Geen kanale op die witlys</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanaal by witlys gevoeg</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanaal van witlys verwyder</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Kennisgewing op witgelys kanaal</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Wys \'n kennisgewing wanneer SponsorBlock vir \'n witgelyste kanaal afgeskakel is</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock afgeskakel vir hierdie kanaal</string>
@@ -236,8 +228,7 @@ As jy nie 'n hoogtepunt indien nie, tik Kanselleer en merk die tweede plek"</str
   <string name="morphe_sb_stats_saved_second_format">%s sekondes</string>
   <string name="morphe_sb_color_opacity_label">Dekking:</string>
   <string name="morphe_sb_color_dot_label">Kleur:</string>
-  <string name="morphe_sb_about_title">Oor</string>
-  <string name="morphe_sb_about_api_summary">"Data word verskaf deur die SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock is 'n gemeenskapsgedrewe databasis van videosegmente soos borge, intros, outros en herinneringe om te abonneer. Segmente word deur die gemeenskap ingedien en daarop gestem, en die databasis is oop en gratis om af te laai
 
-Tik hier om Sponsor.ajay.app oop te maak en laai aflaai vir ander platforms"</string>
+Die ID van die video wat jy kyk, word na die SponsorBlock API gestuur om die segmente te kry"</string>
 </resources>

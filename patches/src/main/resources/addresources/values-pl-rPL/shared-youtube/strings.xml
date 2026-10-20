@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animacja startowa</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Wyłączona</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Kolorowa</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochromatyczna</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -32,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_13">Ciemnożółty</string>
   <string name="morphe_theme_color_dark_entry_14">Ciemnopomarańczowy</string>
   <string name="morphe_theme_color_dark_entry_15">Ciemnoczerwony</string>
-  <string name="morphe_theme_color_dark_custom_title">Niestandardowe ciemne tło</string>
+  <string name="morphe_theme_color_dark_custom_title">Własne ciemne tło</string>
   <string name="morphe_theme_color_dark_custom_summary">Ustaw kolor tła dla ciemnego motywu</string>
   <string name="morphe_theme_color_entry_1">Domyślne aplikacji</string>
   <string name="morphe_theme_color_entry_4">Material You (Neutralny)</string>
@@ -65,6 +70,15 @@ Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana
   <string name="morphe_custom_branding_icon_entry_6">Morphe Play czarna</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Własna</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"To zmienia ikonę wyświetlaną w launcherze.
+
+To ustawienie nie zmieni ikony w następujących miejscach:
+• Lista aplikacji w ustawieniach systemu
+• Niektóre powiadomienia push
+• Selektor \"Otwórz za pomocą\"
+• Ikona Android Auto
+
+Aby zmienić ikonę wszędzie, zmodyfikuj ponownie i zmień opcję modyfikacji \"Ikona aplikacji\""</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona powiadomienia</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Zgodna z ikoną aplikacji</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
@@ -75,7 +89,6 @@ Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Fałszowanie strumieni filmów</string>
   <string name="morphe_spoof_video_streams_screen_summary">Skonfiguruj fałszowanie klienta, aby zapobiec problemom z odtwarzaniem</string>
-  <string name="morphe_spoof_video_streams_title">Fałszuj strumienie filmów</string>
   <string name="morphe_spoof_video_streams_summary">"Naprawia problemy z odtwarzaniem u większości użytkowników, wymuszając zgodny strumień filmów
 
 Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
@@ -95,10 +108,9 @@ Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Zalogowanie się do Android VR może rozwiązać problemy z odtwarzaniem u niektórych użytkowników
 
 Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Kontynuuj</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Wyloguj się</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrukcja</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod aktywacyjny: %s
 
 1. Dotknij \"Otwórz stronę\" poniżej, aby przejść do strony \"Połącz urządzenie\"
@@ -106,7 +118,6 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 3. Zaloguj się na konto Google, jeśli pojawi się taki komunikat. Jeśli masz wiele kont Google, użyj tego, którego używasz w YouTube
 4. Dotknij \"Zezwól\" na dostęp YouTube VR
 5. Wróć do aplikacji po zobaczeniu \"Urządzenie połączone\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otwórz stronę</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nie udało się wygenerować kodu aktywacyjnego</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nie udało się wygenerować tokenu autoryzacji</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Zalogowano pomyślnie</string>
@@ -123,6 +134,13 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Sterowanie multimediami</string>
+  <string name="morphe_notification_media_screen_summary">Dostosuj elementy sterujące odtwarzaniem wyświetlane na ekranie blokady i w panelu powiadomień</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ukryj przyciski Poprzedni i Następny</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Ukrywa przyciski Poprzedni i Następny w powiadomieniu o multimediach, na ekranie blokady i w sterowaniu słuchawkami</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Wyłącz pasek postępu</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Zapobiega przeciąganiu paska postępu na ekranie blokady i w panelu powiadomień</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Wyłącz protokół QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -130,6 +148,11 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Wymuś oryginalny język dźwięku</string>
   <string name="morphe_force_original_audio_summary">Zawsze odtwarza oryginalną ścieżkę dźwiękową filmu zamiast wersji z dubbingiem</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Pomijaj ciszę</string>
+  <string name="morphe_skip_silence_summary">Automatycznie pomija ciche fragmenty w dźwięku filmu</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimalna długość pauzy</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Skracane są tylko pauzy trwające co najmniej tak długo. Zmiana wejdzie w życie po uruchomieniu kolejnego filmu</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Serwer proxy</string>
   <string name="morphe_proxy_screen_summary">Kieruj obsługiwane żądania sieciowe przez serwer proxy</string>
@@ -173,7 +196,6 @@ Pamiętaj jednak, że rejestrowane będą również niektóre dane użytkownika,
   <string name="morphe_custom_filter_screen_title">Własny filtr</string>
   <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>
   <string name="morphe_custom_filter_title">Włącz własny filtr</string>
-  <string name="morphe_custom_filter_strings_title">Ścieżki do ukrycia</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista ścieżek elementów do ukrycia, każda w nowej linii</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Nieprawidłowy własny filtr: %s</string>
@@ -227,19 +249,18 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_ryd_failure_generic">Łapki w dół są niedostępne (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ukryte przez właściciela</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Ten film nie podoba się mi i %s innym osobom</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Ten film nie podoba się mi, %s głosów to oceny negatywne</string>
   <string name="morphe_ryd_enabled_title">Włącz Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Pokaż łapki w dół jako procent</string>
   <string name="morphe_ryd_dislike_percentage_summary">Wyświetla łapki w dół jako procent polubień zamiast konkretnej liczby</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Użyj kompaktowego przycisku Lubię</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmniejsza szerokość przycisku Lubię, aby zaoszczędzić miejsce</string>
   <string name="morphe_ryd_estimated_like_title">Pokaż szacowaną liczbę polubień</string>
   <string name="morphe_ryd_estimated_like_summary">Wyświetla przybliżoną liczbę polubień w filmach, w których twórca ukrył statystyki</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wyświetla powiadomienie, gdy serwer Return YouTube Dislike jest niedostępny</string>
-  <string name="morphe_ryd_attribution_summary">"Dane są dostarczane przez API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike przywraca licznik łapek w dół, który YouTube ukrył w 2021 roku. Liczby pochodzą z danych zarchiwizowanych przed usunięciem, a dla nowszych filmów są szacowane na podstawie głosów użytkowników rozszerzenia, dlatego są to wartości przybliżone i aktualizują się co kilka dni
 
-Dotknij tutaj, aby otworzyć ReturnYouTubeDislike.com"</string>
+Identyfikator oglądanego filmu jest wysyłany do API Return YouTube Dislike, a Twoje oceny są przesyłane anonimowo w celu poprawy szacunków"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statystyki API Return YouTube Dislike tego urządzenia</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Średni czas odpowiedzi API</string>

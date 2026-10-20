@@ -17,14 +17,45 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     filters = listOf(
         literal(45412406L)
+    )
+)
+
+internal object LithoImageColorFilterFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        name = "draw",
+        parameters = listOf("Landroid/graphics/Canvas;"),
+        returnType = "V",
+        filters = listOf(
+            methodCall(
+                smali = $$"Landroid/graphics/BitmapShader;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V"
+            ),
+            methodCall(
+                smali = "Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V"
+            )
+        )
+    ),
+    name = "setColorFilter",
+    parameters = listOf("Landroid/graphics/ColorFilter;"),
+    returnType = "V"
+)
+
+internal object LottieLayerColorFingerprint : Fingerprint(
+    parameters = listOf(
+        "Landroid/graphics/Canvas;",
+        "Landroid/graphics/Matrix;",
+        "I"
+    ),
+    returnType = "V",
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V")
     )
 )
 
@@ -65,18 +96,15 @@ internal object ShowSplashScreenFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterImmediately()
         ),
-        opcode(
-            opcode = Opcode.IF_EQZ,
+        anyInstruction(
+            opcode(Opcode.IF_EQZ),
+            opcode(Opcode.IF_NEZ),
             location = MatchAfterImmediately()
-        ),
-        opcode(
-            opcode = Opcode.GOTO,
-            location = MatchAfterWithin(2)
         ),
         anyInstruction(
             opcode(Opcode.CONST_4),
             opcode(Opcode.CONST_16),
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(3)
         ),
         opcode(
             opcode = Opcode.IF_NE,

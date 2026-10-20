@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">يضيف زرًا للتصويت على المقاطع بـ موافقة أو رفض</string>
   <string name="morphe_sb_square_layout_title">استخدام التخطيط المربع</string>
   <string name="morphe_sb_square_layout_summary">يستخدم زوايا مربعة لأزرار وعناصر تحكم SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">استخدام زر التخطي المُصَغَّر</string>
   <string name="morphe_sb_compact_skip_button_summary">يقلل من عرض زر التخطي لتوفير المساحة</string>
   <string name="morphe_sb_auto_hide_skip_button_title">إخفاء زر التخطي تلقائيًا</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">العنوان الذي يستخدمه SponsorBlock لإجراء اتصالات إلى الخادم</string>
   <string name="morphe_sb_channel_whitelist_title">قائمة القنوات المسموح بها</string>
   <string name="morphe_sb_channel_whitelist_summary">تم تعطيل SponsorBlock للقنوات الموجودة في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">القناة الحالية:</string>
-  <string name="morphe_sb_channel_whitelist_add">إضافة إلى القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_remove">إزالة</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">القنوات المدرجة في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_empty">لا توجد قنوات في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">إشعار عند وجود قناة في القائمة المسموح بها</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">يعرض إشعارًا عندما يتم تعطيل SponsorBlock لقناة في القائمة المسموح بها</string>
   <string name="morphe_sb_channel_whitelisted_toast">تم تعطيل SponsorBlock لهذه القناة</string>
@@ -238,8 +230,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s ثانية</string>
   <string name="morphe_sb_color_opacity_label">الشفافية:</string>
   <string name="morphe_sb_color_dot_label">اللون:</string>
-  <string name="morphe_sb_about_title">لمحة</string>
-  <string name="morphe_sb_about_api_summary">"يتم توفير البيانات بواسطة SponsorBlock API
+  <string name="morphe_sb_about_api_summary">"SponsorBlock هو قاعدة بيانات جماعية لمقاطع الفيديو مثل الرعاة، المقدمات، النهايات، والتذكيرات بالاشتراك. يتم تقديم المقاطع والتصويت عليها من قبل المجتمع، وقاعدة البيانات مفتوحة ومجانية للتنزيل
 
-انقر هنا لفتح Sponsor.ajay.app والاطلاع على التنزيلات المتاحة للمنصات الأخرى"</string>
+يتم إرسال معرف الفيديو الذي تشاهده إلى واجهة برمجة تطبيقات SponsorBlock للحصول على مقاطعه"</string>
 </resources>

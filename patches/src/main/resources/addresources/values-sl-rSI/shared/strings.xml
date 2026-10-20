@@ -32,11 +32,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Nastavitve Morphe</string>
   <string name="morphe_settings_import_success">Uvožene %d nastavitve</string>
   <string name="morphe_settings_import_failure_parse">Uvoz je spodletel: %s</string>
+  <string name="morphe_settings_navigate_up">Pomakni se nazaj</string>
   <string name="morphe_settings_search_hint">Iskanje nastavitev</string>
+  <string name="morphe_settings_screen_info_title">O nas</string>
   <string name="morphe_settings_search_no_results_title">Ni rezultatov za \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Poskusite z drugo ključno besedo</string>
   <string name="morphe_settings_search_recent_searches">Nedavna iskanja</string>
   <string name="morphe_settings_search_remove_message">Odstrani iz zgodovine iskanj?</string>
+  <string name="morphe_settings_search_remove">Odstrani iz zgodovine iskanj</string>
   <string name="morphe_settings_search_clear_history">Počisti zgodovino iskanj</string>
   <string name="morphe_settings_search_clear_history_message">Ali res želite izbrisati celotno zgodovino iskanj?</string>
   <string name="morphe_settings_search_tips_title">Nasveti za iskanje</string>
@@ -103,7 +106,6 @@ Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite
 Pričakujete dogodke."</string>
   <string name="morphe_debug_export_logs_title">Izvozi strežilnik za hrošče</string>
   <string name="morphe_debug_export_logs_summary">Izvozi strežilnik za hrošče Morphe</string>
-  <string name="morphe_debug_export_logs_file">Izvozi v datoteko</string>
   <string name="morphe_debug_export_logs_success">Strežilnik za hrošče je bil uspešno izvožen</string>
   <string name="morphe_debug_export_logs_failed">Izvoz strežilnika za hrošče je spodletel</string>
   <string name="morphe_debug_logs_search_hint">Išči v zapisih za odpravljanje napak…</string>
@@ -179,6 +181,17 @@ Vedenje je med iskanjem izginilo že prej, zato je lahko vpletenih več zastavic
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ni nameščen. Namestite ga.</string>
   <string name="gms_core_dialog_title">Akcija potrebna</string>
+  <string name="gms_core_dialog_outdated_message">"Vaš MicroG v%1s je zastarel in lahko povzroča težave.
+
+Prosimo, posodobite MicroG na najnovejšo različico v%2s."</string>
+  <string name="gms_core_dialog_update_text">Posodobi</string>
+  <string name="gms_core_dialog_ignore_text">Prezri</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe ne priporoča nameščenega MicroG:
+
+%1s
+
+Tapnite, da ga odstranite, nato znova odprite to aplikacijo in namestite MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Odstrani</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nima dovoljenja za delovanje v ozadju.
 
@@ -216,4 +229,7 @@ Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
 Če želite najbolj brezhibno izkušnjo, potem &lt;b&gt;odinstalirajte&lt;/b&gt; to in posodobite priporočeno različico aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalno</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilno</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Dnevnik zrušitve shranjen v uporabniške dokumente: %s</string>
+  <string name="morphe_crash_log_saved">Dnevnik zrušitve shranjen: %s</string>
 </resources>

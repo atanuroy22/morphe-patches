@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Adiciona um botão para votar nos segmentos de forma positiva ou negativa</string>
   <string name="morphe_sb_square_layout_title">Usar layout quadrado</string>
   <string name="morphe_sb_square_layout_summary">Usa cantos quadrados para botões e controles do SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Usar botão de pular compacto</string>
   <string name="morphe_sb_compact_skip_button_summary">Reduz a largura do botão Pular para economizar espaço</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Ocultar automaticamente o botão Pular</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock usa esse endereço para fazer chamadas ao servidor</string>
   <string name="morphe_sb_channel_whitelist_title">Lista branca de canais</string>
   <string name="morphe_sb_channel_whitelist_summary">O SponsorBlock está desativado para canais na lista branca</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Canal atual:</string>
-  <string name="morphe_sb_channel_whitelist_add">Adicionar à lista branca</string>
-  <string name="morphe_sb_channel_whitelist_remove">Remover</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canais na lista branca</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nenhum canal na lista branca</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canal adicionado à lista branca</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canal removido da lista branca</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar sobre canais na lista branca</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Mostra uma notificação quando o SponsorBlock é desativado para um canal na lista branca</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock desativado para este canal</string>
@@ -103,7 +95,7 @@ Seu ID de usuário é como uma senha e nunca deve ser compartilhado."</string>
   <string name="morphe_sb_segments_selfpromo">Não-pago/Auto promoção</string>
   <string name="morphe_sb_segments_selfpromo_summary">Semelhante a Patrocinador, exceto para promoção não paga ou automopromoção. Inclui seções sobre mercadorias, doações ou informações sobre com quem colaboraram</string>
   <string name="morphe_sb_segments_interaction">Lembrete de interação (inscrever-se)</string>
-  <string name="morphe_sb_segments_interaction_summary">Um breve lembrete para curtir, se inscrever ou segui-los no meio do conteúdo. Se for longo ou sobre algo específico, deve estar sob autopromoção</string>
+  <string name="morphe_sb_segments_interaction_summary">Um lembrete rápido para dar \"Gostei\", inscrever-se ou seguir o criador no meio do conteúdo. Se for longo ou sobre algo específico, deve ser categorizado como autopromoção.</string>
   <string name="morphe_sb_segments_highlight">Destaque</string>
   <string name="morphe_sb_segments_highlight_summary">A parte do vídeo que a maioria das pessoas está procurando</string>
   <string name="morphe_sb_segments_intro">Introdução/Intervalo Animado</string>
@@ -234,8 +226,7 @@ Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda
   <string name="morphe_sb_stats_saved_second_format">%s segundos</string>
   <string name="morphe_sb_color_opacity_label">Opacidade:</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
-  <string name="morphe_sb_about_title">Sobre</string>
-  <string name="morphe_sb_about_api_summary">"Os dados são fornecidos pela API do SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock é um banco de dados colaborativo de segmentos de vídeo, como patrocinadores, intros, outros e lembretes para se inscrever. Os segmentos são enviados e votados pela comunidade, e o banco de dados é aberto e gratuito para download
 
-Toque aqui para abrir Sponsor.ajay.app e veja downloads para outras plataformas"</string>
+O ID do vídeo que você assiste é enviado para a API do SponsorBlock para obter seus segmentos"</string>
 </resources>

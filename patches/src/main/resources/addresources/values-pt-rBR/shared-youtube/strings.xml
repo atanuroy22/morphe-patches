@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animação de inicialização</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monocromático</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicie para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -65,6 +70,15 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe play preto</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Isso altera o ícone exibido no seu lançador de aplicativos.
+
+Essa configuração não alterará o ícone em nenhum destes locais:
+• Lista de aplicativos nas configurações do sistema do dispositivo
+• Determinadas notificações push
+• Seletor de aplicativos \"Abrir com\"
+• Ícone do Android Auto
+
+Para alterar o ícone em todos os locais, aplique o patch novamente e altere a opção de patch \"Ícone do aplicativo\""</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Combinar com o ícone do aplicativo</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
@@ -75,7 +89,6 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Simular streams de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configure a simulação de cliente para evitar problemas de reprodução</string>
-  <string name="morphe_spoof_video_streams_title">Simular streams de vídeo</string>
   <string name="morphe_spoof_video_streams_summary">"Corrige problemas de reprodução para a maioria dos usuários solicitando um stream de vídeo compatível.
 
 Se você for um usuário do YouTube Premium, esta configuração pode não ser necessária"</string>
@@ -95,10 +108,9 @@ Se você for um usuário do YouTube Premium, esta configuração pode não ser n
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Fazer login no Android VR pode corrigir problemas de reprodução para alguns usuários
 
 Para fazer login, pressione continuar abaixo"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sair</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruções</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Código de ativação: %s
 
 1. Toque em \"Abrir site\" abaixo para abrir o site \"Conectar um dispositivo\"
@@ -106,7 +118,6 @@ Para fazer login, pressione continuar abaixo"</string>
 3. Faça login no Google, se solicitado. Se você tiver várias contas, escolha esta conta do YouTube
 4. Toque em \"Permitir acesso ao YouTube VR\"
 5. Retorne a este aplicativo após chegar à mensagem \"Dispositivo conectado\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Abrir site</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Falha ao emitir código de ativação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Falha ao emitir um token de autenticação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Login realizado com sucesso</string>
@@ -123,6 +134,13 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Deslogado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controles de mídia da notificação</string>
+  <string name="morphe_notification_media_screen_summary">Personalize os controles de reprodução exibidos na tela de bloqueio e no painel de notificações.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botões Anterior e Próximo na notificação de mídia, na tela de bloqueio e nos controles de fone de ouvido.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de progresso</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Impede o arrasto da barra de progresso na tela de bloqueio e no painel de notificação</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -130,6 +148,11 @@ Para fazer login, pressione continuar abaixo"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forçar idioma do áudio original</string>
   <string name="morphe_force_original_audio_summary">Sempre reproduz a faixa de áudio original do vídeo, em vez de uma versão dublada</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Pular silêncio</string>
+  <string name="morphe_skip_silence_summary">Pula automaticamente pausas silenciosas no áudio do vídeo</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Duração mínima da pausa</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Somente pausas com pelo menos essa duração são reduzidas. Entra em vigor quando o próximo vídeo começar</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de rede</string>
   <string name="morphe_proxy_screen_summary">Roteie as solicitações de rede com suporte por meio de um proxy</string>
@@ -173,7 +196,6 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configure filtros personalizados para ocultar qualquer componente</string>
   <string name="morphe_custom_filter_title">Ativar filtro personalizado</string>
-  <string name="morphe_custom_filter_strings_title">Filtro personalizado</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de strings de componente de construção de caminhos para filtrar, separadas por novas linhas</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
@@ -182,7 +204,7 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abra a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de discrição do espectador</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Remover aviso de conteúdo sensível</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Isso não ignora a restrição de idade. Apenas a aceita automaticamente</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">Provedor de PoToken</string>
@@ -227,26 +249,25 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_failure_generic">Não gostei indisponível (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto pelo proprietário</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Descurta este vídeo, assim como outras %s pessoas</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Descurta este vídeo, %s dos votos são de desaprovação</string>
   <string name="morphe_ryd_enabled_title">Ativar o Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botão Curtir compacto</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Curtir para economizar espaço</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar uma estimativa de \'Gostei\'</string>
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem de \'Gostei\' estimada em vídeos onde o criador os desativou</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor do Return YouTube Dislike estiver indisponível</string>
-  <string name="morphe_ryd_attribution_summary">"Dados fornecidos pela API do Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura as contagens de dislikes que o YouTube escondeu em 2021. As contagens vêm de dados arquivados antes da remoção e são estimadas para vídeos mais novos a partir dos votos dos seus usuários, por isso são aproximadas e atualizadas a cada poucos dias
 
-Toque aqui para abrir ReturnYouTubeDislike.com"</string>
+O ID do vídeo que você assiste é enviado para a API do Return YouTube Dislike, e seus likes e dislikes são enviados anonimamente para melhorar as estimativas"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API do Return YouTube Dislike deste dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Tempo de resposta da API, mínimo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Tempo de resposta da API, máximo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Tempo de resposta da API, mídia mais recente</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Deslikes temporariamente indisponíveis - Limite de taxa da API do cliente em efeito</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">A contagem de \"Não gostei\" está temporariamente indisponível — Limite de requisições da API do cliente em vigor</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API de busca de votos, número de chamadas</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nenhuma chamada de rede feita</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d chamadas de rede realizadas</string>

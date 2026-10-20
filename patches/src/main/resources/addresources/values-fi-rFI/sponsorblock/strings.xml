@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Lisää painike segmenttien arvioimiseksi ylös- tai alaspäin</string>
   <string name="morphe_sb_square_layout_title">Käytä nelikulmaista asettelua</string>
   <string name="morphe_sb_square_layout_summary">Käyttää SponsorBlock-painikkeiden ja -hallintojen neliömäisiä kulmia</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Käytä kompaktia ohita-painiketta</string>
   <string name="morphe_sb_compact_skip_button_summary">Pienentää Ohita-painikkeen leveyttä tilan säästämiseksi</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Piilota ohita-painike automaattisesti</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Osoite, jota SponsorBlock käyttää kutsujen lähettämiseen palvelimelle</string>
   <string name="morphe_sb_channel_whitelist_title">Kanavien sallittujen listojen luettelo</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock on poistettu käytöstä kanavilta, jotka ovat sallittujen listalla</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Nykyinen kanava:</string>
-  <string name="morphe_sb_channel_whitelist_add">Lisää valkolistalle</string>
-  <string name="morphe_sb_channel_whitelist_remove">Poista</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Valkolistatut kanavat</string>
-  <string name="morphe_sb_channel_whitelist_empty">Kanavia ei ole valkolistattu</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanava lisätty valkolistalle</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanava poistettu valkolistalta</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ilmoita sallitun kanavan kohdalla</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Näyttää ilmoituksen, kun SponsorBlock on poistettu käytöstä valkolistatulla kanavalla</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock on poistettu käytöstä tässä kanavassa</string>
@@ -235,8 +227,7 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_sb_stats_saved_second_format">%s sekuntia</string>
   <string name="morphe_sb_color_opacity_label">Läpikuultamattomuus:</string>
   <string name="morphe_sb_color_dot_label">Väri:</string>
-  <string name="morphe_sb_about_title">Tietoja</string>
-  <string name="morphe_sb_about_api_summary">"Tiedot tarjoaa SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock on joukkoistettu tietokanta videosegmenteistä, kuten sponsoreista, introista, outroista ja tilausmuistutuksista. Segmentit lähetetään ja niistä äänestetään yhteisön toimesta, ja tietokanta on avoin ja ilmainen ladattavaksi
 
-Napauta tästä avataksesi Sponsor.ajay.app ja nähdäksesi lataukset muille alustoille"</string>
+Katsomasi videon tunnus lähetetään SponsorBlock-API:lle segmenttien hakemiseksi"</string>
 </resources>

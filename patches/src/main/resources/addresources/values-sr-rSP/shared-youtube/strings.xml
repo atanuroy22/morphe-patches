@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Анимација покретања</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Онемогућен</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Боја</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Монохромно</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -65,6 +70,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Морфе плеј црно</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Обичај</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Ово мења иконицу приказану у вашем покретачу апликација.
+
+Ово подешавање неће променити иконицу ни на једној од ових локација:
+• Листа апликација у системским подешавањима уређаја
+• Одређена push обавештења
+• Бирач апликација „Отвори помоћу“
+• Иконица у Android Auto-у
+
+Да бисте променили иконицу свуда, поново примените патч и у њему промените опцију „Иконица апликације“."</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Усклади икона апликације</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe плеј</string>
@@ -75,7 +89,6 @@ Second \"item\" text"</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Лажирани видео стримови</string>
   <string name="morphe_spoof_video_streams_screen_summary">Конфигуришите лажирање клијента да бисте избегли проблеме са репродукцијом</string>
-  <string name="morphe_spoof_video_streams_title">Лажирани видео стримови</string>
   <string name="morphe_spoof_video_streams_summary">"Решава проблеме са репродукцијом за већину корисника захтевајући компатибилан видео стрим
 
 Ако сте корисник YouTube Premium-а, ова поставка вам можда неће бити потребна."</string>
@@ -95,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavljivanje na Android VR može popraviti problema sa reprodukcijom za neke korisnike
 
 Da bi se prijavili, pritisnite nastavak ispod"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Настави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкције</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Активациони код: %s
 
 1. Кликните на 'Отвори веб страницу' испод за отварање веб приступача 'Прикључи приступао'
@@ -106,7 +118,6 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
 3. Пријавите се на Google ако је упито. Ако имате више налога, изaberите овај YouTube налог
 4. Кликните на 'Дозволи приступ YouTube VR'
 5. Вратите се у ово апликацију након пролaska поруке 'Уређај је прикључен'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори веб-сајт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно је издат активациони код</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно је издат дозволни пречкод</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно пријављен</string>
@@ -123,6 +134,13 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може се ући у VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Контроле медија у обавештењу</string>
+  <string name="morphe_notification_media_screen_summary">Прилагодите контроле репродукције приказане на закључаном екрану и панелу обавештења</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Сакриј дугмад за претходну и следећу нумеру</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Сакрива дугмад за претходну и следећу нумеру у медијском обавештењу, на закључаном екрану и у контролама слушалица</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Онемогући траку за премотавање</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Спречава превлачење траке за премотавање на закључаном екрану и панелу обавештења</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Oнемогући протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -130,6 +148,11 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Присили оригинални језик звука</string>
   <string name="morphe_force_original_audio_summary">Увек пушта оригиналну аудио нумеру видеа уместо синхронизоване верзије.</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Прескочи тишину</string>
+  <string name="morphe_skip_silence_summary">Аутоматски прескаче тихе паузе у аудио запису видеа</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Минимална дужина паузе</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Скраћују се само паузе које су најмање ове дужине. Ступа на снагу када почне следећи видео</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Мрежни прокси</string>
   <string name="morphe_proxy_screen_summary">Усмеравање подржаних мрежних захтева преко проксија</string>
@@ -173,7 +196,6 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_custom_filter_screen_title">Прилагођени филтер</string>
   <string name="morphe_custom_filter_screen_summary">Конфигуришите прилагођене филтере да бисте сакрили било коју компоненту</string>
   <string name="morphe_custom_filter_title">Омогући прилагођени филтер</string>
-  <string name="morphe_custom_filter_strings_title">Прилагођени филтер</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Листа стрингова за изградњу путање компоненти за филтрирање, одвојена новим редовима</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Неважећи прилагођени филтер: %s</string>
@@ -227,19 +249,18 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_ryd_failure_generic">Несвиђања нису доступна (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скривено од стране власника</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не свиђа ми се овај видео, као ни %s осталих</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не свиђа ми се овај видео, %s гласова су не свиђања </string>
   <string name="morphe_ryd_enabled_title">Омогући Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Прикажи несвиђања као проценат</string>
   <string name="morphe_ryd_dislike_percentage_summary">Приказује несвиђања као проценат свиђања уместо броја</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Користи компактно дугме „Свиђа ми се“</string>
-  <string name="morphe_ryd_compact_layout_summary">Смањује ширину дугмета „Свиђа ми се“ како би се уштедело место</string>
   <string name="morphe_ryd_estimated_like_title">Прикажи процењени број свиђања</string>
   <string name="morphe_ryd_estimated_like_summary">Приказује процењену прегледаност на видео снимцима на којем је креатор искључио прегледаност</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Приказуј упозорења о грешци у вези са повезивањем</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Приказује обавештење када је сервер Return YouTube Dislike недоступан</string>
-  <string name="morphe_ryd_attribution_summary">"Подаци су пружени од стране Return YouTube Dislike API-ја
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike vraća broj dislajkova koji je YouTube sakrio 2021. Brojevi dolaze iz podataka arhiviranih pre uklanjanja i procenjeni su za novije video snimke na osnovu glasova korisnika, pa su približni i ažuriraju se svakih nekoliko dana.
 
-Додирните овде да бисте отворили ReturnYouTubeDislike.com"</string>
+ID video snimka koji gledate šalje se Return YouTube Dislike API-ju, a vaši lajkovi i dislajkovi se šalju anonimno kako bi se poboljšale procene.}],"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика Return YouTube Dislike API-ја за овај уређај</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време одговора API-ја, просек</string>

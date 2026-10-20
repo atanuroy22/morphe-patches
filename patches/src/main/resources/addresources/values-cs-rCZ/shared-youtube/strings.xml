@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animace při spuštění</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Vypnuto</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Barva</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochromatický</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Restartovat pro dokončení nastavení</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -65,6 +70,15 @@ Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</s
   <string name="morphe_custom_branding_icon_entry_6">Morphe play černá</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Vlastní</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Tím se změní ikona zobrazená ve vašem spouštěči aplikací.
+
+Toto nastavení nezmění ikonu v žádném z těchto umístění:
+• Seznam aplikací v systémovém nastavení zařízení
+• Některá oznámení push
+• Výběr aplikace „Otevřít pomocí“
+• Ikona Android Auto
+
+Pokud chcete ikonu změnit všude, aplikujte záplatu znovu a změňte volbu záplaty „Ikona aplikace“"</string>
   <string name="morphe_custom_branding_notification_icon_title">Oznámení</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Přizpůsob ikonu aplikace</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe přehrávání</string>
@@ -75,7 +89,6 @@ Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</s
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovat video streamy</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurace maskování klienta pro prevenci problémů s přehráváním</string>
-  <string name="morphe_spoof_video_streams_title">Falšovat video streamy</string>
   <string name="morphe_spoof_video_streams_summary">"Opravuje problémy s přehráváním pro většinu uživatelů požadavkem na kompatibilní video stream.
 
 Pokud jste uživatel YouTube Premium, toto nastavení nemusí být potřeba."</string>
@@ -95,10 +108,9 @@ Pokud jste uživatel YouTube Premium, toto nastavení nemusí být potřeba."</s
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Přihlášení do Android VR může vyřešit problémy s přehráváním pro některé uživatele
 
 Pro přihlášení stiskněte pokračovat níže"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovat</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásit se</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Nálepky</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kód pro aktivaci: %s
 
 1. Stiskněte Otevřít web níže, aby otevřeli webovou stránku Connect a device (Připojit zařízení)
@@ -106,7 +118,6 @@ Pro přihlášení stiskněte pokračovat níže"</string>
 3. Přihlašte se do Googlu, pokud bude požadováno. Pokud máte několik účtů, zvolte tento účet YouTube
 4. Stiskněte Povolit přístup YouTube VR
 5. Po dosažení zprávy Device connected (Zařízení připojeno) vraťte se do této aplikace."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otevřít web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Selhalo vydání kódu pro aktivaci</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Selhalo přidání ověřovacího tokenu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Přihlášení bylo úspěšné</string>
@@ -123,6 +134,13 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládací prvky médií v oznámení</string>
+  <string name="morphe_notification_media_screen_summary">Přizpůsobte ovládací prvky přehrávání zobrazené na zamykací obrazovce a v panelu oznámení</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrýt tlačítka Předchozí &amp; Další</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Skrývá tlačítka Předchozí a Další v oznámení o médiích, na zamykací obrazovce a v ovládacích prvcích sluchátek.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázat posuvník</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Zabrání přetahování posuvníku na zamykací obrazovce a v panelu oznámení</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -130,6 +148,11 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary">Vždy přehrává původní zvukovou stopu videa namísto dabované verze</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Přeskočit ticho</string>
+  <string name="morphe_skip_silence_summary">Automaticky přeskakuje tiché pauzy ve zvuku videa</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimální délka pauzy</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Zkracují se pouze pauzy trvající alespoň tak dlouho. Projeví se při spuštění dalšího videa</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Síťový proxy</string>
   <string name="morphe_proxy_screen_summary">Směrování síťových požadavků přes proxy</string>
@@ -173,7 +196,6 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
   <string name="morphe_custom_filter_title">Povolit vlastní filtr</string>
-  <string name="morphe_custom_filter_strings_title">Vlastní filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Seznam řetězců builderu cest komponent oddělených novými řádky</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastní filtr: %s</string>
@@ -227,19 +249,20 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_ryd_failure_generic">Nelíbí se se nedají použít (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryto vlastníkem</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Toto video se mi nelíbí, spolu s %s dalšími lidmi</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Toto video se mi nelíbí, %s hlasů je negativních.</string>
   <string name="morphe_ryd_enabled_title">Povolit Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Zobrazit nelíbí se v procentech</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje nelíbí se jako procento lajků místo čísla</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Použít kompaktní tlačítko Lajk</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmenšuje šířku tlačítka Lajk pro úsporu místa</string>
   <string name="morphe_ryd_estimated_like_title">Zobrazit odhadované počty To se mi líbí</string>
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků u videí, kde tvůrce zakázal lajky</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovat upozornění na chyby připojení</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazí se upozornění, pokud server Return YouTube Dislike není dostupný</string>
-  <string name="morphe_ryd_attribution_summary">"Data jsou poskytována rozhraním Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovuje počty disliků, které YouTube skryl v roce 2021.
 
-Klepněte sem pro otevření ReturnYouTubeDislike.com"</string>
+Počty pocházejí z dat archivovaných před odstraněním a pro novější videa jsou odhadovány na základě hlasů uživatelů, takže jsou přibližné a aktualizují se každých pár dní.
+
+ID videa, které sledujete, je odesláno do API Return YouTube Dislike a vaše likes a dislikes jsou odesílány anonymně pro zlepšení odhadů"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiky Return YouTube Dislike pro toto zařízení</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Doba odezvy API, průměr</string>

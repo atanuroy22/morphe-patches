@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Bi kurtike rojkirin an kêmkirina beşan deşt bike</string>
   <string name="morphe_sb_square_layout_title">Layouta qereqîşan bikar bîne</string>
   <string name="morphe_sb_square_layout_summary">Bi kêşanên çînî ji bo butonên SponsorBlock û kontrolan bikar tîne</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Butona bi kurtike ya kompak bikar bîne</string>
   <string name="morphe_sb_compact_skip_button_summary">Firehiya butona bi kurtike kêm bike da ku cî bibigire</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Butona bi kurtike bi xweber veşêre</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adresa ku SponsorBlock ji bo kirinê li ser serverê bikartîne</string>
   <string name="morphe_sb_channel_whitelist_title">Lîsteya spî ya kanalê</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock bo kanalên di lîsteya spî de neçar e</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Kanalê niha:</string>
-  <string name="morphe_sb_channel_whitelist_add">Tê bikirin listeya spî</string>
-  <string name="morphe_sb_channel_whitelist_remove">Lêkirin</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Kanalên di listeya spî de</string>
-  <string name="morphe_sb_channel_whitelist_empty">Hêç kanalek di listeya spî de heye</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanalê li listeya spî de hat zêdekirin</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanalê ji listeya spî de hat lêkirin</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Agahdarkirina kanalê li ser lîsteya spî</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Nîşan dide agahîyekê dema ku SponsorBlock ji bo kanala di listeya spî de nehatî çalak kirin</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ji bo vê kanalê nehatî çalak kirin</string>
@@ -237,8 +229,4 @@ Ger hûn ne dixwin ronahîyek, bikirtînin Betal kirin û cîhê duyemîn nîşa
   <string name="morphe_sb_stats_saved_second_format">%s sekund</string>
   <string name="morphe_sb_color_opacity_label">Astorî:</string>
   <string name="morphe_sb_color_dot_label">Reng:</string>
-  <string name="morphe_sb_about_title">Derbarê</string>
-  <string name="morphe_sb_about_api_summary">"Daneyan ji aliyê API-ya SponsorBlock-ê ve hatine peyda kirin.
-
-Bike li vir da vekirina Sponsor.ajay.app û dîsa dîtina platformên din"</string>
 </resources>

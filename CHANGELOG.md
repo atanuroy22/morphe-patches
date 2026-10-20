@@ -1,3 +1,1333 @@
+# Unreleased
+
+### 🔧 Fork defaults re-applied after the upstream merge
+
+* Re-applied all fork defaults and preferences on top of upstream v1.47.0.
+
+## [1.47.0](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0) (2026-10-11)
+
+### 🐛 Bug Fixes
+
+* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))
+* **Settings:** Search hint and tips ignore the Morphe language override ([a532649](https://github.com/MorpheApp/morphe-patches/commit/a5326492f7bd7ae8b1228a1f6603716c002b2433))
+* **Spoof video streams:** PoToken generation can stall and show "Failed to generate PoToken" ([#3663](https://github.com/MorpheApp/morphe-patches/issues/3663)) ([32fec71](https://github.com/MorpheApp/morphe-patches/commit/32fec713a9e7e555150b75078d476ddb6a6ba238))
+* **Spoof video streams:** Widgets may not play correctly ([#3656](https://github.com/MorpheApp/morphe-patches/issues/3656)) ([a60a3b6](https://github.com/MorpheApp/morphe-patches/commit/a60a3b6725ac8c984e2aa68bd50b3c9358df299f))
+* **YouTube - Background playback:** Respect server value of automatic pause and resume flags ([2fa79ef](https://github.com/MorpheApp/morphe-patches/commit/2fa79efa841870b13e18c61e0a54fad057e16b9c))
+* **YouTube - Channel search:** Searching again from same channel page may not show channel results ([14ec664](https://github.com/MorpheApp/morphe-patches/commit/14ec664125b49e139d553ec1b55384ecc722a468))
+* **YouTube - FlyoutUtils:** Correctly resize feed flyout ([c129aa2](https://github.com/MorpheApp/morphe-patches/commit/c129aa293203a676461016a9bd4ad13e237d9add))
+* **YouTube - Force AVC:** Removed VP9 formats with enabled setting ([bb3e3ff](https://github.com/MorpheApp/morphe-patches/commit/bb3e3ff01dc2fcdf7debc4969fb6037b18eefc94))
+* **YouTube - Hide layout components:** Hide new type of video labels ([#3641](https://github.com/MorpheApp/morphe-patches/issues/3641)) ([4a7efd1](https://github.com/MorpheApp/morphe-patches/commit/4a7efd1c124c86cc169eb38fd50c311cdec923c7))
+* **YouTube - Hide layout components:** History shelf hidden after fullscreen on You tab ([91d9b2d](https://github.com/MorpheApp/morphe-patches/commit/91d9b2daccb9242a02f4fbaa7dcd408a09c5a28a))
+* **YouTube - Hide layout components:** Horizontal shelves show again after entering fullscreen ([#3618](https://github.com/MorpheApp/morphe-patches/issues/3618)) ([be4fffa](https://github.com/MorpheApp/morphe-patches/commit/be4fffa02de9d1d9258e148aae4617735c0c244e))
+* **YouTube - Hide player flyout menu components:** Add separate Shorts settings for the Captions and Audio Track menus ([963982d](https://github.com/MorpheApp/morphe-patches/commit/963982d54af7c0a10d840e7e940dca29438423d3))
+* **YouTube - Legacy player controls:** Autoplay end screen is broken in the miniplayer on 21.36+ ([#3649](https://github.com/MorpheApp/morphe-patches/issues/3649)) ([c3431a3](https://github.com/MorpheApp/morphe-patches/commit/c3431a3476c7d2508308c18d4f7ee8cfdde687ca))
+* **YouTube - Litho relayout:** Keep tracking texts after the relayout ([0ee99ca](https://github.com/MorpheApp/morphe-patches/commit/0ee99ca69059ce0648aec12c8a72aba8ae482d0f))
+* **YouTube - Minimal miniplayer:** Collapse straight into the bar after the keyboard closed under the expanded player ([3e62423](https://github.com/MorpheApp/morphe-patches/commit/3e62423d0c889714cae97da64270b8d7d04586ee))
+* **YouTube - Miniplayer:** Fixed incorrect check to prevent title/channel name overwriting ([#3576](https://github.com/MorpheApp/morphe-patches/issues/3576)) ([1671904](https://github.com/MorpheApp/morphe-patches/commit/1671904e728a69c3545c2b6e73ea077b8a67d8d4))
+* **YouTube - Miniplayer:** Improved check to prevent title/channel name overwriting ([ce2e1c5](https://github.com/MorpheApp/morphe-patches/commit/ce2e1c5484d96a769684cb6062364619b542ef2a))
+* **YouTube - Navigation bar:** Added a setting to disable A/B navigation buttons layout ([2c3f5c8](https://github.com/MorpheApp/morphe-patches/commit/2c3f5c83131eb479c66a28d1a1c0ffbc810f19ac))
+* **YouTube - Picture-in-picture button:** Do not load the flyout icon when the patch is not included ([0902326](https://github.com/MorpheApp/morphe-patches/commit/09023263cd73e85a3a0ea975c5ec514e0aa116f9))
+* **YouTube - Playback speed:** Audio pitch controls not working on some devices ([44cf78b](https://github.com/MorpheApp/morphe-patches/commit/44cf78bcb556c2567511524e05e88308dc268486))
+* **YouTube - Playback speed:** Fix patching old experimental targets ([99a9851](https://github.com/MorpheApp/morphe-patches/commit/99a9851bf853f4d350e5411381c49a7340b42022))
+* **YouTube - Restore original titles:** Find the description by its body instead of the longest text ([3f72696](https://github.com/MorpheApp/morphe-patches/commit/3f726964b9896c12711f578469bc6e522d84474e))
+* **YouTube - Restore original titles:** Replace the title in the fullscreen swipe-up panel ([9a966a9](https://github.com/MorpheApp/morphe-patches/commit/9a966a9d2c2f5fb0519218fd408d74653f2e89c7))
+* **YouTube - Restore original titles:** Titles of videos searched in different languages ​​were not restored ([41eee25](https://github.com/MorpheApp/morphe-patches/commit/41eee25b9ee9863ba0aed5762f802c91aeb0a6c5))
+* **YouTube - Restore video titles:** Do not depend on the TextClassifier to restore titles ([1bbfc37](https://github.com/MorpheApp/morphe-patches/commit/1bbfc370cb407e68303c13368217c2f01cf81b95))
+* **YouTube - Settings:** Disable player flyout menu toggles when "Hide Settings button" is enabled ([e67af2e](https://github.com/MorpheApp/morphe-patches/commit/e67af2e19555cdc119c2d3ae5692313145b14fed))
+* **YouTube - Skip silence:** Adapt the silence threshold to the audio level ([672830e](https://github.com/MorpheApp/morphe-patches/commit/672830e18c8fe47aedd6079bd8eb7b3441e0939d))
+* **YouTube - Spoof video streams:** Legacy app targets may not work correctly ([ddfd5e0](https://github.com/MorpheApp/morphe-patches/commit/ddfd5e0921faae04161cfbe8833f60be74f3ac11))
+* **YouTube - Spoof video streams:** Stream spoofing can show "Failed to obtain poToken" error ([c04605b](https://github.com/MorpheApp/morphe-patches/commit/c04605b743a1cd5a9de9d17a86abcfdcef359431))
+* **YouTube Music - Third-party lyrics:** App may crash when viewing lyrics ([#3569](https://github.com/MorpheApp/morphe-patches/issues/3569)) ([fe546ad](https://github.com/MorpheApp/morphe-patches/commit/fe546ad518d30833af7b7148f8a9b974088174a7))
+* **YouTube:** 'Minimal' miniplayer video area is empty in Arabic (RTL) ([c4f7eb9](https://github.com/MorpheApp/morphe-patches/commit/c4f7eb925e51c6cd91337ae9d4f9c23b7c95d4f2))
+* **YouTube:** Allow video upload/live with toolbar create button ([a8fb76a](https://github.com/MorpheApp/morphe-patches/commit/a8fb76ae2162bfab09af383013ee4e2717c3ef38))
+* **YouTube:** Audio pitch resets after playback speed ([696c2e4](https://github.com/MorpheApp/morphe-patches/commit/696c2e40bce52706cb5e99c9caa2a96f67a60c37))
+* **YouTube:** Decouple flyout buttons and shared hooks from unrelated patches ([#3567](https://github.com/MorpheApp/morphe-patches/issues/3567)) ([dad074a](https://github.com/MorpheApp/morphe-patches/commit/dad074a50b01775881b1054571fdf08b11bfa012))
+* **YouTube:** Fix crash when exiting fullscreen with the new player UI ([5651020](https://github.com/MorpheApp/morphe-patches/commit/56510203e25b8dc4619670a756e65c9439fdf66b))
+* **YouTube:** Hide microphone at lower right corner of search not working ([d18708b](https://github.com/MorpheApp/morphe-patches/commit/d18708b39d693abd765e98c735296fe2404308e1))
+* **YouTube:** Live chat input field is obscured by Android navigation bar on live streams ([f9f5d58](https://github.com/MorpheApp/morphe-patches/commit/f9f5d587eb796f3abc0686c753f8f0ef605633ba))
+
+### ✨ New Features
+
+* Automatically save crash reports to user documents folder ([#3570](https://github.com/MorpheApp/morphe-patches/issues/3570)) ([f633697](https://github.com/MorpheApp/morphe-patches/commit/f63369780d8a69cd0fb868711ca97e148a650d56))
+* **Settings:** Show screen descriptions in a dialog from the toolbar info button ([a62ecc7](https://github.com/MorpheApp/morphe-patches/commit/a62ecc7dd3551a0b0954256a0797723d661bc32a))
+* **Spoof video streams:** Add Wii U TV client as a fallback for TV ([#3655](https://github.com/MorpheApp/morphe-patches/issues/3655)) ([28ea7f9](https://github.com/MorpheApp/morphe-patches/commit/28ea7f9fe44d45a1869603086ce6e6adb89e4f48))
+* **YouTube - Captions:** Add an option to select preferred caption language ([#3566](https://github.com/MorpheApp/morphe-patches/issues/3566)) ([435aa17](https://github.com/MorpheApp/morphe-patches/commit/435aa171aa30942530efae48159e9a61a94ccc8f))
+* **YouTube - Channel search:** Add a separate channel page button to search within channels ([#3572](https://github.com/MorpheApp/morphe-patches/issues/3572)) ([639908f](https://github.com/MorpheApp/morphe-patches/commit/639908fd12eb8126171b7a275eb63a3f564c8239))
+* **YouTube - DeArrow:** Add "Casual mode" setting ([#3668](https://github.com/MorpheApp/morphe-patches/issues/3668)) ([a13c11b](https://github.com/MorpheApp/morphe-patches/commit/a13c11b26b5a2b264d3fe4d0937e5814f18d2488))
+* **YouTube - DeArrow:** Add more fine-grained settings for showing DeArrow titles ([#3573](https://github.com/MorpheApp/morphe-patches/issues/3573)) ([4aa01d6](https://github.com/MorpheApp/morphe-patches/commit/4aa01d6068722f343857c16ae9d5b9bc08e57c27))
+* **YouTube - Hide layout components:** Add "Hide 'Ask Gemini' button" setting  ([#3662](https://github.com/MorpheApp/morphe-patches/issues/3662)) ([3da93d5](https://github.com/MorpheApp/morphe-patches/commit/3da93d5ac7d4abb22712f4725fe12cb8be5f1454))
+* **YouTube - Hide layout components:** Add "Hide tap and hold gradient" setting ([#3586](https://github.com/MorpheApp/morphe-patches/issues/3586)) ([bf43c38](https://github.com/MorpheApp/morphe-patches/commit/bf43c38ab1bcc2c0966f3cbd12411313ce2f2323))
+* **YouTube - Restore original titles:** Added original titles fetching retries ([c1543f0](https://github.com/MorpheApp/morphe-patches/commit/c1543f0b9d3b9982d2c132afbf5609ba34699ff2))
+* **YouTube - Restore original titles:** Added support for media notification ([#3640](https://github.com/MorpheApp/morphe-patches/issues/3640)) ([a9ebf92](https://github.com/MorpheApp/morphe-patches/commit/a9ebf92c985e09fb551f9921c403478fd712ddf0))
+* **YouTube Music - Crossfade:** Support newer versions ([#3635](https://github.com/MorpheApp/morphe-patches/issues/3635)) ([68988d4](https://github.com/MorpheApp/morphe-patches/commit/68988d4ed5af8c079e44da3562de4cb85f3d18a4))
+* **YouTube Music - Settings:** Add a shortcut to change the app language on Android 13+ ([b3b5c11](https://github.com/MorpheApp/morphe-patches/commit/b3b5c11b85e2ddc15e18da2b3e27f1e35b70dfd5))
+* **YouTube Music - Third-party lyrics:** SponsorBlock segments as lyrics offset ([#3575](https://github.com/MorpheApp/morphe-patches/issues/3575)) ([a900dfa](https://github.com/MorpheApp/morphe-patches/commit/a900dfa93b330f5a6c4ecc81a47fe2e09fa378fe))
+* **YouTube Music:** Add `Enable audio/video switch` patch ([#3471](https://github.com/MorpheApp/morphe-patches/issues/3471)) ([87942b7](https://github.com/MorpheApp/morphe-patches/commit/87942b73da43a5fb1f8bf1bc46aea092badc12cb))
+* **YouTube Music:** Add `Playlist track tap action` patch ([#3446](https://github.com/MorpheApp/morphe-patches/issues/3446)) ([66b7e78](https://github.com/MorpheApp/morphe-patches/commit/66b7e7817fb56938a2b6e7bd5a06a4cb2e52e409))
+* **YouTube:** Add `Copy text` patch ([#3592](https://github.com/MorpheApp/morphe-patches/issues/3592)) ([f5312eb](https://github.com/MorpheApp/morphe-patches/commit/f5312eb35e275bddddd49696ae277f09d11efbeb))
+* **YouTube:** Add `Disable continue watching prompt` patch ([#3580](https://github.com/MorpheApp/morphe-patches/issues/3580)) ([255d917](https://github.com/MorpheApp/morphe-patches/commit/255d917abc874f12382943edff0340425053ef83))
+* **YouTube:** Add `Force system font` patch ([#3579](https://github.com/MorpheApp/morphe-patches/issues/3579)) ([3968284](https://github.com/MorpheApp/morphe-patches/commit/3968284900ab15a9d04575b359272759891d19c8))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.41.0` ([4e56069](https://github.com/MorpheApp/morphe-patches/commit/4e56069f64125347959f7a8b1efeffa3e8fac1d6))
+* **YouTube:** Add support for `21.20.405` ([4cb3bd8](https://github.com/MorpheApp/morphe-patches/commit/4cb3bd872d57f036dce22692dcfb76f80df5ec20))
+
+## [1.47.0-dev.25](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.24...v1.47.0-dev.25) (2026-10-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Audio pitch controls not working on some devices ([44cf78b](https://github.com/MorpheApp/morphe-patches/commit/44cf78bcb556c2567511524e05e88308dc268486))
+
+## [1.47.0-dev.24](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.23...v1.47.0-dev.24) (2026-10-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** History shelf hidden after fullscreen on You tab ([91d9b2d](https://github.com/MorpheApp/morphe-patches/commit/91d9b2daccb9242a02f4fbaa7dcd408a09c5a28a))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide 'Ask Gemini' button" setting  ([#3662](https://github.com/MorpheApp/morphe-patches/issues/3662)) ([3da93d5](https://github.com/MorpheApp/morphe-patches/commit/3da93d5ac7d4abb22712f4725fe12cb8be5f1454))
+
+## [1.47.0-dev.23](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.22...v1.47.0-dev.23) (2026-10-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Navigation bar:** Added a setting to disable A/B navigation buttons layout ([2c3f5c8](https://github.com/MorpheApp/morphe-patches/commit/2c3f5c83131eb479c66a28d1a1c0ffbc810f19ac))
+* **YouTube:** Audio pitch resets after playback speed ([696c2e4](https://github.com/MorpheApp/morphe-patches/commit/696c2e40bce52706cb5e99c9caa2a96f67a60c37))
+* **YouTube:** Hide microphone at lower right corner of search not working ([d18708b](https://github.com/MorpheApp/morphe-patches/commit/d18708b39d693abd765e98c735296fe2404308e1))
+
+## [1.47.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.21...v1.47.0-dev.22) (2026-10-10)
+
+### ✨ New Features
+
+* **YouTube:** Add `Force system font` patch ([#3579](https://github.com/MorpheApp/morphe-patches/issues/3579)) ([3968284](https://github.com/MorpheApp/morphe-patches/commit/3968284900ab15a9d04575b359272759891d19c8))
+
+## [1.47.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.20...v1.47.0-dev.21) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** PoToken generation can stall and show "Failed to generate PoToken" ([#3663](https://github.com/MorpheApp/morphe-patches/issues/3663)) ([32fec71](https://github.com/MorpheApp/morphe-patches/commit/32fec713a9e7e555150b75078d476ddb6a6ba238))
+
+### ✨ New Features
+
+* **YouTube - DeArrow:** Add "Casual mode" setting ([#3668](https://github.com/MorpheApp/morphe-patches/issues/3668)) ([a13c11b](https://github.com/MorpheApp/morphe-patches/commit/a13c11b26b5a2b264d3fe4d0937e5814f18d2488))
+
+## [1.47.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.19...v1.47.0-dev.20) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Skip silence:** Adapt the silence threshold to the audio level ([672830e](https://github.com/MorpheApp/morphe-patches/commit/672830e18c8fe47aedd6079bd8eb7b3441e0939d))
+
+## [1.47.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.18...v1.47.0-dev.19) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Live chat input field is obscured by Android navigation bar on live streams ([f9f5d58](https://github.com/MorpheApp/morphe-patches/commit/f9f5d587eb796f3abc0686c753f8f0ef605633ba))
+
+## [1.47.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.17...v1.47.0-dev.18) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** Widgets may not play correctly ([#3656](https://github.com/MorpheApp/morphe-patches/issues/3656)) ([a60a3b6](https://github.com/MorpheApp/morphe-patches/commit/a60a3b6725ac8c984e2aa68bd50b3c9358df299f))
+
+### ✨ New Features
+
+* **Spoof video streams:** Add Wii U TV client as a fallback for TV ([#3655](https://github.com/MorpheApp/morphe-patches/issues/3655)) ([28ea7f9](https://github.com/MorpheApp/morphe-patches/commit/28ea7f9fe44d45a1869603086ce6e6adb89e4f48))
+
+## [1.47.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.16...v1.47.0-dev.17) (2026-10-10)
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.41.0` ([4e56069](https://github.com/MorpheApp/morphe-patches/commit/4e56069f64125347959f7a8b1efeffa3e8fac1d6))
+
+## [1.47.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.15...v1.47.0-dev.16) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Legacy player controls:** Autoplay end screen is broken in the miniplayer on 21.36+ ([#3649](https://github.com/MorpheApp/morphe-patches/issues/3649)) ([c3431a3](https://github.com/MorpheApp/morphe-patches/commit/c3431a3476c7d2508308c18d4f7ee8cfdde687ca))
+
+## [1.47.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.14...v1.47.0-dev.15) (2026-10-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Restore original titles:** Replace the title in the fullscreen swipe-up panel ([9a966a9](https://github.com/MorpheApp/morphe-patches/commit/9a966a9d2c2f5fb0519218fd408d74653f2e89c7))
+
+## [1.47.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.13...v1.47.0-dev.14) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **Settings:** Search hint and tips ignore the Morphe language override ([a532649](https://github.com/MorpheApp/morphe-patches/commit/a5326492f7bd7ae8b1228a1f6603716c002b2433))
+* **YouTube - Force AVC:** Removed VP9 formats with enabled setting ([bb3e3ff](https://github.com/MorpheApp/morphe-patches/commit/bb3e3ff01dc2fcdf7debc4969fb6037b18eefc94))
+
+### ✨ New Features
+
+* **YouTube - Restore original titles:** Added support for media notification ([#3640](https://github.com/MorpheApp/morphe-patches/issues/3640)) ([a9ebf92](https://github.com/MorpheApp/morphe-patches/commit/a9ebf92c985e09fb551f9921c403478fd712ddf0))
+* **YouTube Music - Settings:** Add a shortcut to change the app language on Android 13+ ([b3b5c11](https://github.com/MorpheApp/morphe-patches/commit/b3b5c11b85e2ddc15e18da2b3e27f1e35b70dfd5))
+
+## [1.47.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.12...v1.47.0-dev.13) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide new type of video labels ([#3641](https://github.com/MorpheApp/morphe-patches/issues/3641)) ([4a7efd1](https://github.com/MorpheApp/morphe-patches/commit/4a7efd1c124c86cc169eb38fd50c311cdec923c7))
+* **YouTube - Settings:** Disable player flyout menu toggles when "Hide Settings button" is enabled ([e67af2e](https://github.com/MorpheApp/morphe-patches/commit/e67af2e19555cdc119c2d3ae5692313145b14fed))
+* **YouTube:** 'Minimal' miniplayer video area is empty in Arabic (RTL) ([c4f7eb9](https://github.com/MorpheApp/morphe-patches/commit/c4f7eb925e51c6cd91337ae9d4f9c23b7c95d4f2))
+
+### ✨ New Features
+
+* **Settings:** Show screen descriptions in a dialog from the toolbar info button ([a62ecc7](https://github.com/MorpheApp/morphe-patches/commit/a62ecc7dd3551a0b0954256a0797723d661bc32a))
+
+## [1.47.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.11...v1.47.0-dev.12) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel search:** Searching again from same channel page may not show channel results ([14ec664](https://github.com/MorpheApp/morphe-patches/commit/14ec664125b49e139d553ec1b55384ecc722a468))
+
+## [1.47.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.10...v1.47.0-dev.11) (2026-10-09)
+
+### ✨ New Features
+
+* **YouTube Music - Crossfade:** Support newer versions ([#3635](https://github.com/MorpheApp/morphe-patches/issues/3635)) ([68988d4](https://github.com/MorpheApp/morphe-patches/commit/68988d4ed5af8c079e44da3562de4cb85f3d18a4))
+
+## [1.47.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.9...v1.47.0-dev.10) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Horizontal shelves show again after entering fullscreen ([#3618](https://github.com/MorpheApp/morphe-patches/issues/3618)) ([be4fffa](https://github.com/MorpheApp/morphe-patches/commit/be4fffa02de9d1d9258e148aae4617735c0c244e))
+
+## [1.47.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.8...v1.47.0-dev.9) (2026-10-09)
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add support for `21.20.405` ([4cb3bd8](https://github.com/MorpheApp/morphe-patches/commit/4cb3bd872d57f036dce22692dcfb76f80df5ec20))
+
+## [1.47.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.7...v1.47.0-dev.8) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Fix patching old experimental targets ([99a9851](https://github.com/MorpheApp/morphe-patches/commit/99a9851bf853f4d350e5411381c49a7340b42022))
+
+## [1.47.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.6...v1.47.0-dev.7) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Fix crash when exiting fullscreen with the new player UI ([5651020](https://github.com/MorpheApp/morphe-patches/commit/56510203e25b8dc4619670a756e65c9439fdf66b))
+
+## [1.47.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.5...v1.47.0-dev.6) (2026-10-09)
+
+### 🐛 Bug Fixes
+
+* **Custom branding:** Use the branded notification icon for playback notifications of mounted installs ([90210ad](https://github.com/MorpheApp/morphe-patches/commit/90210ade0028c1c410c021ba350911cbc212efc4))
+* **YouTube - Minimal miniplayer:** Collapse straight into the bar after the keyboard closed under the expanded player ([3e62423](https://github.com/MorpheApp/morphe-patches/commit/3e62423d0c889714cae97da64270b8d7d04586ee))
+* **YouTube - Miniplayer:** Improved check to prevent title/channel name overwriting ([ce2e1c5](https://github.com/MorpheApp/morphe-patches/commit/ce2e1c5484d96a769684cb6062364619b542ef2a))
+* **YouTube - Restore original titles:** Find the description by its body instead of the longest text ([3f72696](https://github.com/MorpheApp/morphe-patches/commit/3f726964b9896c12711f578469bc6e522d84474e))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide tap and hold gradient" setting ([#3586](https://github.com/MorpheApp/morphe-patches/issues/3586)) ([bf43c38](https://github.com/MorpheApp/morphe-patches/commit/bf43c38ab1bcc2c0966f3cbd12411313ce2f2323))
+* **YouTube - Restore original titles:** Added original titles fetching retries ([c1543f0](https://github.com/MorpheApp/morphe-patches/commit/c1543f0b9d3b9982d2c132afbf5609ba34699ff2))
+
+## [1.47.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.4...v1.47.0-dev.5) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Correctly resize feed flyout ([c129aa2](https://github.com/MorpheApp/morphe-patches/commit/c129aa293203a676461016a9bd4ad13e237d9add))
+* **YouTube - Litho relayout:** Keep tracking texts after the relayout ([0ee99ca](https://github.com/MorpheApp/morphe-patches/commit/0ee99ca69059ce0648aec12c8a72aba8ae482d0f))
+* **YouTube - Restore video titles:** Do not depend on the TextClassifier to restore titles ([1bbfc37](https://github.com/MorpheApp/morphe-patches/commit/1bbfc370cb407e68303c13368217c2f01cf81b95))
+
+### ✨ New Features
+
+* **YouTube - Captions:** Add an option to select preferred caption language ([#3566](https://github.com/MorpheApp/morphe-patches/issues/3566)) ([435aa17](https://github.com/MorpheApp/morphe-patches/commit/435aa171aa30942530efae48159e9a61a94ccc8f))
+* **YouTube:** Add `Disable continue watching prompt` patch ([#3580](https://github.com/MorpheApp/morphe-patches/issues/3580)) ([255d917](https://github.com/MorpheApp/morphe-patches/commit/255d917abc874f12382943edff0340425053ef83))
+
+## [1.47.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.3...v1.47.0-dev.4) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Spoof video streams:** Stream spoofing can show "Failed to obtain poToken" error ([c04605b](https://github.com/MorpheApp/morphe-patches/commit/c04605b743a1cd5a9de9d17a86abcfdcef359431))
+
+## [1.47.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.2...v1.47.0-dev.3) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Spoof video streams:** Legacy app targets may not work correctly ([ddfd5e0](https://github.com/MorpheApp/morphe-patches/commit/ddfd5e0921faae04161cfbe8833f60be74f3ac11))
+
+## [1.47.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.47.0-dev.1...v1.47.0-dev.2) (2026-10-08)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Background playback:** Respect server value of automatic pause and resume flags ([2fa79ef](https://github.com/MorpheApp/morphe-patches/commit/2fa79efa841870b13e18c61e0a54fad057e16b9c))
+* **YouTube - Hide player flyout menu components:** Add separate Shorts settings for the Captions and Audio Track menus ([963982d](https://github.com/MorpheApp/morphe-patches/commit/963982d54af7c0a10d840e7e940dca29438423d3))
+* **YouTube - Miniplayer:** Fixed incorrect check to prevent title/channel name overwriting ([#3576](https://github.com/MorpheApp/morphe-patches/issues/3576)) ([1671904](https://github.com/MorpheApp/morphe-patches/commit/1671904e728a69c3545c2b6e73ea077b8a67d8d4))
+* **YouTube - Restore original titles:** Titles of videos searched in different languages ​​were not restored ([41eee25](https://github.com/MorpheApp/morphe-patches/commit/41eee25b9ee9863ba0aed5762f802c91aeb0a6c5))
+* **YouTube:** Allow video upload/live with toolbar create button ([a8fb76a](https://github.com/MorpheApp/morphe-patches/commit/a8fb76ae2162bfab09af383013ee4e2717c3ef38))
+
+### ✨ New Features
+
+* **YouTube - Channel search:** Add a separate channel page button to search within channels ([#3572](https://github.com/MorpheApp/morphe-patches/issues/3572)) ([639908f](https://github.com/MorpheApp/morphe-patches/commit/639908fd12eb8126171b7a275eb63a3f564c8239))
+* **YouTube Music - Third-party lyrics:** SponsorBlock segments as lyrics offset ([#3575](https://github.com/MorpheApp/morphe-patches/issues/3575)) ([a900dfa](https://github.com/MorpheApp/morphe-patches/commit/a900dfa93b330f5a6c4ecc81a47fe2e09fa378fe))
+* **YouTube:** Add `Copy text` patch ([#3592](https://github.com/MorpheApp/morphe-patches/issues/3592)) ([f5312eb](https://github.com/MorpheApp/morphe-patches/commit/f5312eb35e275bddddd49696ae277f09d11efbeb))
+
+## [1.47.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0...v1.47.0-dev.1) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Picture-in-picture button:** Do not load the flyout icon when the patch is not included ([0902326](https://github.com/MorpheApp/morphe-patches/commit/09023263cd73e85a3a0ea975c5ec514e0aa116f9))
+* **YouTube Music - Third-party lyrics:** App may crash when viewing lyrics ([#3569](https://github.com/MorpheApp/morphe-patches/issues/3569)) ([fe546ad](https://github.com/MorpheApp/morphe-patches/commit/fe546ad518d30833af7b7148f8a9b974088174a7))
+* **YouTube:** Decouple flyout buttons and shared hooks from unrelated patches ([#3567](https://github.com/MorpheApp/morphe-patches/issues/3567)) ([dad074a](https://github.com/MorpheApp/morphe-patches/commit/dad074a50b01775881b1054571fdf08b11bfa012))
+
+### ✨ New Features
+
+* Automatically save crash reports to user documents folder ([#3570](https://github.com/MorpheApp/morphe-patches/issues/3570)) ([f633697](https://github.com/MorpheApp/morphe-patches/commit/f63369780d8a69cd0fb868711ca97e148a650d56))
+* **YouTube - DeArrow:** Add more fine-grained settings for showing DeArrow titles ([#3573](https://github.com/MorpheApp/morphe-patches/issues/3573)) ([4aa01d6](https://github.com/MorpheApp/morphe-patches/commit/4aa01d6068722f343857c16ae9d5b9bc08e57c27))
+* **YouTube Music:** Add `Enable audio/video switch` patch ([#3471](https://github.com/MorpheApp/morphe-patches/issues/3471)) ([87942b7](https://github.com/MorpheApp/morphe-patches/commit/87942b73da43a5fb1f8bf1bc46aea092badc12cb))
+* **YouTube Music:** Add `Playlist track tap action` patch ([#3446](https://github.com/MorpheApp/morphe-patches/issues/3446)) ([66b7e78](https://github.com/MorpheApp/morphe-patches/commit/66b7e7817fb56938a2b6e7bd5a06a4cb2e52e409))
+
+## [1.46.0](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0...v1.46.0) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* **Clone app:** Change update permission and update provider to default on ([296aadc](https://github.com/MorpheApp/morphe-patches/commit/296aadc68a930e8e67cb6a382c83b45b417d8ef1))
+* **DeArrow:** Always use high quality still images without checking if still exists ([632f5a6](https://github.com/MorpheApp/morphe-patches/commit/632f5a64ba493fd2883729c8bce15dc1773ac91e))
+* **DeArrow:** Fix patching `21.16.256` ([035ebd2](https://github.com/MorpheApp/morphe-patches/commit/035ebd217c515685714ee805b2d78967ac37874c))
+* **YouTube - DeArrow:** "DeArrow & original thumbnails" sometimes shows still images when no crowdsourced thumbnails exist ([#3531](https://github.com/MorpheApp/morphe-patches/issues/3531)) ([fdfc35d](https://github.com/MorpheApp/morphe-patches/commit/fdfc35d6e2e3c41454421ac7a2c7f7d767a1765f))
+* **YouTube - FlyoutUtils:** Separated the fetching of the playlist ID in the header from that of the feed page ([a18724b](https://github.com/MorpheApp/morphe-patches/commit/a18724b2625d28f786dcc4ce07a93f08378723fc))
+* **YouTube - FlyoutUtils:** Sets the height of the injected buttons container based on the available display free space ([3da0837](https://github.com/MorpheApp/morphe-patches/commit/3da0837b0360011f5f18c810c91653082dedbc6d))
+* **YouTube - Hide Layout components:** Add more navigation tabs to back button or gesture filtering rule ([#3546](https://github.com/MorpheApp/morphe-patches/issues/3546)) ([4420d96](https://github.com/MorpheApp/morphe-patches/commit/4420d96a28e7b258e62e882b474bd77ca0e5f4a4))
+* **YouTube - Hide layout components:** Allow filtering in miniplayer mode ([13df501](https://github.com/MorpheApp/morphe-patches/commit/13df5012977a0436fc86f15de9b478c05a25935c))
+* **YouTube - Hide layout components:** Hide new type of attributes section in video description ([#3532](https://github.com/MorpheApp/morphe-patches/issues/3532)) ([b051959](https://github.com/MorpheApp/morphe-patches/commit/b05195975b54ad5e981bb0d099fbe6e9f750c7fa))
+* **YouTube - Hide layout components:** Hide the chapter title next to the timestamp ([#3475](https://github.com/MorpheApp/morphe-patches/issues/3475)) ([a940c2a](https://github.com/MorpheApp/morphe-patches/commit/a940c2a714acb847494ea8f1b3f2ddf050b24f4e))
+* **YouTube - Hide layout components:** Some filters don't work after switching to the "You" tab and using the Back button or gesture ([#3542](https://github.com/MorpheApp/morphe-patches/issues/3542)) ([332c6b2](https://github.com/MorpheApp/morphe-patches/commit/332c6b2a96dc441d160dd746c512f013e766e9ba))
+* **YouTube - Hide status bar:** Added top margin and extended the patch to the app settings ([4a0a726](https://github.com/MorpheApp/morphe-patches/commit/4a0a7263b0dbdcd30f98a18a6199d662f1933fdc))
+* **YouTube - Minimal miniplayer:** Both video and channel titles are overwritten by those of the short video currently playing ([0da4d71](https://github.com/MorpheApp/morphe-patches/commit/0da4d71a7e5e7d5945fe6c082f3c829eae034ffa))
+* **YouTube - Navigation bar:** Disable new toolbar navigation tabs layout ([#3433](https://github.com/MorpheApp/morphe-patches/issues/3433)) ([165dbea](https://github.com/MorpheApp/morphe-patches/commit/165dbea673aae9bc6e11a1fa0e11230bcacd5988))
+* **YouTube - Navigation bar:** Experimental targets shows startup error ([3465138](https://github.com/MorpheApp/morphe-patches/commit/3465138af7b0032dac11f9b97a1e6eba2083fb9f))
+* **YouTube - PiP button:** Wrong flyout drawable ([#3448](https://github.com/MorpheApp/morphe-patches/issues/3448)) ([88e23e1](https://github.com/MorpheApp/morphe-patches/commit/88e23e11a5fbb7aa860a7341267641951d2dc94f))
+* **YouTube - Restore original titles:** Handle titles of videos with disabled embedding ([#3539](https://github.com/MorpheApp/morphe-patches/issues/3539)) ([8612dd1](https://github.com/MorpheApp/morphe-patches/commit/8612dd107f9e723d48327c929558f10afb01faab))
+* **YouTube - Save to Watch later:** Flyout menu icons are thin with old player button style ([4e9d7e7](https://github.com/MorpheApp/morphe-patches/commit/4e9d7e79c1dae18552762bf6e99d629b3d55ed9a))
+* **YouTube - SponsorBlock:** Keep the segment opacity when importing settings and simplify the SponsorBlock code ([9e6e464](https://github.com/MorpheApp/morphe-patches/commit/9e6e464682f03347467e31e3acee2b41de214b04))
+* **YouTube - SponsorBlock:** Undo skip toast blocks touches on some devices ([503606a](https://github.com/MorpheApp/morphe-patches/commit/503606ac9a6ff404984a313034922e6ac543c174))
+* **YouTube - SponsorBlock:** Video length without segments is sometimes not shown ([fb7a029](https://github.com/MorpheApp/morphe-patches/commit/fb7a0297049b3397b6b89be919ab0d2cf005b89b))
+* **YouTube - System share sheet:** Community posts or in-playlists links cannot be shared ([cca505f](https://github.com/MorpheApp/morphe-patches/commit/cca505f2f45d6466e5a24713a5d13ca3762730cb))
+* **YouTube - System share sheet:** In-playlist id searching interfering with videoId sharing ([85207ea](https://github.com/MorpheApp/morphe-patches/commit/85207eab86b6ec1511ef13b6471367a5fa176d9b))
+* **YouTube & YT Music - GmsCore support:** Fix notification registration for patched apps ([#3481](https://github.com/MorpheApp/morphe-patches/issues/3481)) ([db5eb58](https://github.com/MorpheApp/morphe-patches/commit/db5eb58fdca24a701e37811fb7c57fba9cebbebc))
+* **YouTube Music - Hide buttons:** Only hide the notification button with Hide Notification button ([#3473](https://github.com/MorpheApp/morphe-patches/issues/3473)) ([d0242f3](https://github.com/MorpheApp/morphe-patches/commit/d0242f39f40d3b57eb28b79f3349368ad1ac25b7))
+* **YouTube Music - Third-party lyrics:** Validate lyric candidates and display results promptly ([#3518](https://github.com/MorpheApp/morphe-patches/issues/3518)) ([9fca678](https://github.com/MorpheApp/morphe-patches/commit/9fca678be31f7577990bf667784d7db60269787e))
+* **YouTube:** Change `20.31.42` support to `20.51.39` ([1438ba6](https://github.com/MorpheApp/morphe-patches/commit/1438ba62892fa042d8a01745b2b5f252a276dc66))
+* **YouTube:** Chapters error when selecting ([501e66e](https://github.com/MorpheApp/morphe-patches/commit/501e66ec5d941f9d688481992621d291f7bf66f0))
+* **YouTube:** Player flyout menu not scrollable in landscape mode ([e3bfa8b](https://github.com/MorpheApp/morphe-patches/commit/e3bfa8b70c1176c2932811dbc0b48483403c4aba))
+
+### ✨ New Features
+
+* **DeArrow:** Add setting to show DeArrow icon on crowdsourced video titles ([#3510](https://github.com/MorpheApp/morphe-patches/issues/3510)) ([0db7baa](https://github.com/MorpheApp/morphe-patches/commit/0db7baada9d7748acde8646d39f1b85334e60f77))
+* **SponsorBlock:** Show the skip behavior on the category preference ([38925c8](https://github.com/MorpheApp/morphe-patches/commit/38925c8e219daf38e85408beba4a001d74b18c2f))
+* **YouTube - Hide layout components:** Add Hide channel handle in You tab ([#3459](https://github.com/MorpheApp/morphe-patches/issues/3459)) ([acd4ab7](https://github.com/MorpheApp/morphe-patches/commit/acd4ab725c4f6dc022587740338d4b36a2aca4a0))
+* **YouTube - Hide layout components:** Add Hide Help & feedback in menus ([#3476](https://github.com/MorpheApp/morphe-patches/issues/3476)) ([2311fed](https://github.com/MorpheApp/morphe-patches/commit/2311fed4d4deac9ed0f27093924eb703bec2ec8a))
+* **YouTube - Player icon style:** Apply the icon style to the player's own controls ([#3451](https://github.com/MorpheApp/morphe-patches/issues/3451)) ([415bf3c](https://github.com/MorpheApp/morphe-patches/commit/415bf3c5f7c9753eb00a9b4924dcbfe15af427cd))
+* **YouTube - Player icon style:** Style the cast button and add the missing Ionicons icons ([f721305](https://github.com/MorpheApp/morphe-patches/commit/f721305ee34225fdacd41ebcfbb17546058b7ec6))
+* **YouTube Music:** Add `Android Auto` patch ([#3341](https://github.com/MorpheApp/morphe-patches/issues/3341)) ([a6d2dae](https://github.com/MorpheApp/morphe-patches/commit/a6d2dae48732917e834a800bc83e68afc9c6a09f))
+* **YouTube:** Add `Skip silence` patch ([#3467](https://github.com/MorpheApp/morphe-patches/issues/3467)) ([7a702fc](https://github.com/MorpheApp/morphe-patches/commit/7a702fcddad7a1ef48a84672fe2567b71ade14d5))
+* **YouTube:** Add DeArrow crowdsourced feed video titles, rename `Alternative thumbnails` patch to `DeArrow` ([#3447](https://github.com/MorpheApp/morphe-patches/issues/3447)) ([e6b598d](https://github.com/MorpheApp/morphe-patches/commit/e6b598d2e7d9055d62c3c651d705ca0c774dd6e6))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.40.0` ([2362e48](https://github.com/MorpheApp/morphe-patches/commit/2362e48e932720a668f2e93ae383a2d607e5682e))
+* **YouTube Music:** Add experimental support for `9.39.52` ([cfc0435](https://github.com/MorpheApp/morphe-patches/commit/cfc0435c8f1c4ca09ad76734daae8e4a5acfe4ca))
+* **YouTube Music:** Add experimental support for `9.40.51` ([60f840d](https://github.com/MorpheApp/morphe-patches/commit/60f840d6b003ba0f5febc037143fe28748e6e899))
+* **YouTube Music:** Add support for `9.20.53` ([edd808c](https://github.com/MorpheApp/morphe-patches/commit/edd808c1e954f6c43e2d4c7226c2689f7ae17da7))
+* **YouTube:** Add experimental support for `21.40.161` ([#3457](https://github.com/MorpheApp/morphe-patches/issues/3457)) ([30ab48c](https://github.com/MorpheApp/morphe-patches/commit/30ab48c3537d0b642525ea6b2a6c0bf9aba64e73))
+
+## [1.46.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.9...v1.46.0-dev.10) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Sets the height of the injected buttons container based on the available display free space ([3da0837](https://github.com/MorpheApp/morphe-patches/commit/3da0837b0360011f5f18c810c91653082dedbc6d))
+* **YouTube:** Change `20.31.42` support to `20.51.39` ([1438ba6](https://github.com/MorpheApp/morphe-patches/commit/1438ba62892fa042d8a01745b2b5f252a276dc66))
+
+## [1.46.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.8...v1.46.0-dev.9) (2026-10-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Separated the fetching of the playlist ID in the header from that of the feed page ([a18724b](https://github.com/MorpheApp/morphe-patches/commit/a18724b2625d28f786dcc4ce07a93f08378723fc))
+* **YouTube - Hide Layout components:** Add more navigation tabs to back button or gesture filtering rule ([#3546](https://github.com/MorpheApp/morphe-patches/issues/3546)) ([4420d96](https://github.com/MorpheApp/morphe-patches/commit/4420d96a28e7b258e62e882b474bd77ca0e5f4a4))
+* **YouTube - Hide layout components:** Allow filtering in miniplayer mode ([13df501](https://github.com/MorpheApp/morphe-patches/commit/13df5012977a0436fc86f15de9b478c05a25935c))
+* **YouTube Music - Third-party lyrics:** Validate lyric candidates and display results promptly ([#3518](https://github.com/MorpheApp/morphe-patches/issues/3518)) ([9fca678](https://github.com/MorpheApp/morphe-patches/commit/9fca678be31f7577990bf667784d7db60269787e))
+
+## [1.46.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.7...v1.46.0-dev.8) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide new type of attributes section in video description ([#3532](https://github.com/MorpheApp/morphe-patches/issues/3532)) ([b051959](https://github.com/MorpheApp/morphe-patches/commit/b05195975b54ad5e981bb0d099fbe6e9f750c7fa))
+* **YouTube - Hide layout components:** Some filters don't work after switching to the "You" tab and using the Back button or gesture ([#3542](https://github.com/MorpheApp/morphe-patches/issues/3542)) ([332c6b2](https://github.com/MorpheApp/morphe-patches/commit/332c6b2a96dc441d160dd746c512f013e766e9ba))
+* **YouTube - Restore original titles:** Handle titles of videos with disabled embedding ([#3539](https://github.com/MorpheApp/morphe-patches/issues/3539)) ([8612dd1](https://github.com/MorpheApp/morphe-patches/commit/8612dd107f9e723d48327c929558f10afb01faab))
+
+## [1.46.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.6...v1.46.0-dev.7) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - DeArrow:** "DeArrow & original thumbnails" sometimes shows still images when no crowdsourced thumbnails exist ([#3531](https://github.com/MorpheApp/morphe-patches/issues/3531)) ([fdfc35d](https://github.com/MorpheApp/morphe-patches/commit/fdfc35d6e2e3c41454421ac7a2c7f7d767a1765f))
+* **YouTube - System share sheet:** In-playlist id searching interfering with videoId sharing ([85207ea](https://github.com/MorpheApp/morphe-patches/commit/85207eab86b6ec1511ef13b6471367a5fa176d9b))
+
+## [1.46.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.5...v1.46.0-dev.6) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Navigation bar:** Experimental targets shows startup error ([3465138](https://github.com/MorpheApp/morphe-patches/commit/3465138af7b0032dac11f9b97a1e6eba2083fb9f))
+
+## [1.46.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.4...v1.46.0-dev.5) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **DeArrow:** Fix patching `21.16.256` ([035ebd2](https://github.com/MorpheApp/morphe-patches/commit/035ebd217c515685714ee805b2d78967ac37874c))
+* **YouTube - Navigation bar:** Disable new toolbar navigation tabs layout ([#3433](https://github.com/MorpheApp/morphe-patches/issues/3433)) ([165dbea](https://github.com/MorpheApp/morphe-patches/commit/165dbea673aae9bc6e11a1fa0e11230bcacd5988))
+
+## [1.46.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.3...v1.46.0-dev.4) (2026-10-05)
+
+### 🐛 Bug Fixes
+
+* **DeArrow:** Always use high quality still images without checking if still exists ([632f5a6](https://github.com/MorpheApp/morphe-patches/commit/632f5a64ba493fd2883729c8bce15dc1773ac91e))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.40.51` ([60f840d](https://github.com/MorpheApp/morphe-patches/commit/60f840d6b003ba0f5febc037143fe28748e6e899))
+
+## [1.46.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.2...v1.46.0-dev.3) (2026-10-04)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Both video and channel titles are overwritten by those of the short video currently playing ([0da4d71](https://github.com/MorpheApp/morphe-patches/commit/0da4d71a7e5e7d5945fe6c082f3c829eae034ffa))
+
+### ✨ New Features
+
+* **DeArrow:** Add setting to show DeArrow icon on crowdsourced video titles ([#3510](https://github.com/MorpheApp/morphe-patches/issues/3510)) ([0db7baa](https://github.com/MorpheApp/morphe-patches/commit/0db7baada9d7748acde8646d39f1b85334e60f77))
+* **YouTube:** Add DeArrow crowdsourced feed video titles, rename `Alternative thumbnails` patch to `DeArrow` ([#3447](https://github.com/MorpheApp/morphe-patches/issues/3447)) ([e6b598d](https://github.com/MorpheApp/morphe-patches/commit/e6b598d2e7d9055d62c3c651d705ca0c774dd6e6))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.40.161` ([#3457](https://github.com/MorpheApp/morphe-patches/issues/3457)) ([30ab48c](https://github.com/MorpheApp/morphe-patches/commit/30ab48c3537d0b642525ea6b2a6c0bf9aba64e73))
+
+## [1.46.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.46.0-dev.1...v1.46.0-dev.2) (2026-10-04)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide the chapter title next to the timestamp ([#3475](https://github.com/MorpheApp/morphe-patches/issues/3475)) ([a940c2a](https://github.com/MorpheApp/morphe-patches/commit/a940c2a714acb847494ea8f1b3f2ddf050b24f4e))
+* **YouTube - Hide status bar:** Added top margin and extended the patch to the app settings ([4a0a726](https://github.com/MorpheApp/morphe-patches/commit/4a0a7263b0dbdcd30f98a18a6199d662f1933fdc))
+* **YouTube - Save to Watch later:** Flyout menu icons are thin with old player button style ([4e9d7e7](https://github.com/MorpheApp/morphe-patches/commit/4e9d7e79c1dae18552762bf6e99d629b3d55ed9a))
+* **YouTube - System share sheet:** Community posts or in-playlists links cannot be shared ([cca505f](https://github.com/MorpheApp/morphe-patches/commit/cca505f2f45d6466e5a24713a5d13ca3762730cb))
+* **YouTube & YT Music - GmsCore support:** Fix notification registration for patched apps ([#3481](https://github.com/MorpheApp/morphe-patches/issues/3481)) ([db5eb58](https://github.com/MorpheApp/morphe-patches/commit/db5eb58fdca24a701e37811fb7c57fba9cebbebc))
+* **YouTube Music - Hide buttons:** Only hide the notification button with Hide Notification button ([#3473](https://github.com/MorpheApp/morphe-patches/issues/3473)) ([d0242f3](https://github.com/MorpheApp/morphe-patches/commit/d0242f39f40d3b57eb28b79f3349368ad1ac25b7))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add Hide Help & feedback in menus ([#3476](https://github.com/MorpheApp/morphe-patches/issues/3476)) ([2311fed](https://github.com/MorpheApp/morphe-patches/commit/2311fed4d4deac9ed0f27093924eb703bec2ec8a))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.40.0` ([2362e48](https://github.com/MorpheApp/morphe-patches/commit/2362e48e932720a668f2e93ae383a2d607e5682e))
+
+## [1.46.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0...v1.46.0-dev.1) (2026-10-03)
+
+### 🐛 Bug Fixes
+
+* **Clone app:** Change update permission and update provider to default on ([296aadc](https://github.com/MorpheApp/morphe-patches/commit/296aadc68a930e8e67cb6a382c83b45b417d8ef1))
+* **YouTube - PiP button:** Wrong flyout drawable ([#3448](https://github.com/MorpheApp/morphe-patches/issues/3448)) ([88e23e1](https://github.com/MorpheApp/morphe-patches/commit/88e23e11a5fbb7aa860a7341267641951d2dc94f))
+* **YouTube - SponsorBlock:** Keep the segment opacity when importing settings and simplify the SponsorBlock code ([9e6e464](https://github.com/MorpheApp/morphe-patches/commit/9e6e464682f03347467e31e3acee2b41de214b04))
+* **YouTube - SponsorBlock:** Undo skip toast blocks touches on some devices ([503606a](https://github.com/MorpheApp/morphe-patches/commit/503606ac9a6ff404984a313034922e6ac543c174))
+* **YouTube - SponsorBlock:** Video length without segments is sometimes not shown ([fb7a029](https://github.com/MorpheApp/morphe-patches/commit/fb7a0297049b3397b6b89be919ab0d2cf005b89b))
+* **YouTube:** Chapters error when selecting ([501e66e](https://github.com/MorpheApp/morphe-patches/commit/501e66ec5d941f9d688481992621d291f7bf66f0))
+* **YouTube:** Player flyout menu not scrollable in landscape mode ([e3bfa8b](https://github.com/MorpheApp/morphe-patches/commit/e3bfa8b70c1176c2932811dbc0b48483403c4aba))
+
+### ✨ New Features
+
+* **SponsorBlock:** Show the skip behavior on the category preference ([38925c8](https://github.com/MorpheApp/morphe-patches/commit/38925c8e219daf38e85408beba4a001d74b18c2f))
+* **YouTube - Hide layout components:** Add Hide channel handle in You tab ([#3459](https://github.com/MorpheApp/morphe-patches/issues/3459)) ([acd4ab7](https://github.com/MorpheApp/morphe-patches/commit/acd4ab725c4f6dc022587740338d4b36a2aca4a0))
+* **YouTube - Player icon style:** Apply the icon style to the player's own controls ([#3451](https://github.com/MorpheApp/morphe-patches/issues/3451)) ([415bf3c](https://github.com/MorpheApp/morphe-patches/commit/415bf3c5f7c9753eb00a9b4924dcbfe15af427cd))
+* **YouTube - Player icon style:** Style the cast button and add the missing Ionicons icons ([f721305](https://github.com/MorpheApp/morphe-patches/commit/f721305ee34225fdacd41ebcfbb17546058b7ec6))
+* **YouTube Music:** Add `Android Auto` patch ([#3341](https://github.com/MorpheApp/morphe-patches/issues/3341)) ([a6d2dae](https://github.com/MorpheApp/morphe-patches/commit/a6d2dae48732917e834a800bc83e68afc9c6a09f))
+* **YouTube:** Add `Skip silence` patch ([#3467](https://github.com/MorpheApp/morphe-patches/issues/3467)) ([7a702fc](https://github.com/MorpheApp/morphe-patches/commit/7a702fcddad7a1ef48a84672fe2567b71ade14d5))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.39.52` ([cfc0435](https://github.com/MorpheApp/morphe-patches/commit/cfc0435c8f1c4ca09ad76734daae8e4a5acfe4ca))
+* **YouTube Music:** Add support for `9.20.53` ([edd808c](https://github.com/MorpheApp/morphe-patches/commit/edd808c1e954f6c43e2d4c7226c2689f7ae17da7))
+
+## [1.45.0](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0...v1.45.0) (2026-10-02)
+
+### 🐛 Bug Fixes
+
+* **GmsCore support:** Omit empty intent data ([#3170](https://github.com/MorpheApp/morphe-patches/issues/3170)) ([f03894a](https://github.com/MorpheApp/morphe-patches/commit/f03894a8663fdb19a3ff48765d0cb928bcbc36a3))
+* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))
+* Resolve startup crash for older Android devices ([b3391b4](https://github.com/MorpheApp/morphe-patches/commit/b3391b423dba14ceedccf5b6ae5e1abebcc80c5d))
+* **YouTube  - Voice over translation:** Add missing accessibility labels and Voice over translation button state ([#3203](https://github.com/MorpheApp/morphe-patches/issues/3203)) ([d99679b](https://github.com/MorpheApp/morphe-patches/commit/d99679b50dc6f19a2feffaa7f5a8940a9d83da94))
+* **YouTube - Captions:** Make "Always show" override a manual caption-off ([#3421](https://github.com/MorpheApp/morphe-patches/issues/3421)) ([a92b8ed](https://github.com/MorpheApp/morphe-patches/commit/a92b8edc30e31e16ca61e072540ac722a2616ff9))
+* **YouTube - Channel Id Routes:** Straight requests videoDetails field ([60f640e](https://github.com/MorpheApp/morphe-patches/commit/60f640e2a7bd793623ed127b7c3900459ba73bf7))
+* **YouTube - Channel search:** Show a channel search hint in the search box ([#3262](https://github.com/MorpheApp/morphe-patches/issues/3262)) ([c5cce56](https://github.com/MorpheApp/morphe-patches/commit/c5cce56d16581024c2ee7dafdd4232e8383c922d))
+* **YouTube - Comments filter:** Restored chat button page indicator ([5644496](https://github.com/MorpheApp/morphe-patches/commit/5644496b457b29cad2799c3c2cbc19cb422f0cab))
+* **YouTube - Custom branding:** Do not ask which app to use for app shortcut actions ([#3204](https://github.com/MorpheApp/morphe-patches/issues/3204)) ([0a2f0e0](https://github.com/MorpheApp/morphe-patches/commit/0a2f0e0f487512d6fd5f0c97ca83ad061859988c))
+* **YouTube - Hide layout components:** Open the correct channel tab when channel tabs are hidden ([#3200](https://github.com/MorpheApp/morphe-patches/issues/3200)) ([53cc35b](https://github.com/MorpheApp/morphe-patches/commit/53cc35b0552b59d0ff34ed057e4c167cb8881322))
+* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))
+* **YouTube - Hide player flyout menu components:** Hide the Audio Track item in the Shorts flyout menu ([#3297](https://github.com/MorpheApp/morphe-patches/issues/3297)) ([09de4d2](https://github.com/MorpheApp/morphe-patches/commit/09de4d2332b4e499435bf7a3032381faf51893c3))
+* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))
+* **YouTube - Legacy player controls:** Preserve end screen on 21.36+ ([#3121](https://github.com/MorpheApp/morphe-patches/issues/3121)) ([b895285](https://github.com/MorpheApp/morphe-patches/commit/b895285b2aa0e4cab6bb23226e129c62d517c670))
+* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))
+* **YouTube - Media notification controls:** Remove Previous & Next buttons on Android 12 and lower ([#3332](https://github.com/MorpheApp/morphe-patches/issues/3332)) ([df6c914](https://github.com/MorpheApp/morphe-patches/commit/df6c91407abdb93ea81e9c8a57ddf9ba865f626c))
+* **YouTube - Minimal miniplayer:** Fixed Type 2 aspect ratio by hooking video format size ([551490f](https://github.com/MorpheApp/morphe-patches/commit/551490f50127c8ea02725848eab7a16ffec9d487))
+* **YouTube - Minimal miniplayer:** Restored interpolate minimizing transitions ([#3280](https://github.com/MorpheApp/morphe-patches/issues/3280)) ([dff3749](https://github.com/MorpheApp/morphe-patches/commit/dff3749d6b665b2669a4ccc9b1b8f70985b1c358))
+* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))
+* **YouTube - Playback speed:** Prevent speed leak into Shorts ([#3169](https://github.com/MorpheApp/morphe-patches/issues/3169)) ([ff35586](https://github.com/MorpheApp/morphe-patches/commit/ff35586e14b339e24a06d32cb77b57234c942fe2))
+* **YouTube - Player controls:** Decouple legacy buttons from settings UI ([#3171](https://github.com/MorpheApp/morphe-patches/issues/3171)) ([dfeeb64](https://github.com/MorpheApp/morphe-patches/commit/dfeeb64c54bd2aa49fdbc3653f5ba2f81558d558))
+* **YouTube - Player overlay buttons:** Fix startup crash with a partial patch selection ([#3228](https://github.com/MorpheApp/morphe-patches/issues/3228)) ([aee4774](https://github.com/MorpheApp/morphe-patches/commit/aee47746643c948191b25435a8f1b4e96ffb6df7))
+* **YouTube - Restore old video action bar:** Do not hide newly posted comments ([#3324](https://github.com/MorpheApp/morphe-patches/issues/3324)) ([37b43f7](https://github.com/MorpheApp/morphe-patches/commit/37b43f7dd36133b6b3a7e76b8489f788e5b46727))
+* **YouTube - Return YouTube Dislike:** Do not show dislikes on the share and comment buttons of community posts ([31b657c](https://github.com/MorpheApp/morphe-patches/commit/31b657c5482def040a368b1d4661db704249db50))
+* **YouTube - Return YouTube Dislike:** Show dislikes on tablet layout ([#3153](https://github.com/MorpheApp/morphe-patches/issues/3153)) ([7835519](https://github.com/MorpheApp/morphe-patches/commit/7835519c42a656c2d30122dcd97fb27dd12b0b87))
+* **YouTube - SponsorBlock:** Preserve exact video end for segment markers ([#3157](https://github.com/MorpheApp/morphe-patches/issues/3157)) ([a860f5b](https://github.com/MorpheApp/morphe-patches/commit/a860f5bdbce792254617fb31d424c02521c62c6f))
+* **YouTube - SponsorBlock:** Segments may not load for some versions of YouTube ([#3328](https://github.com/MorpheApp/morphe-patches/issues/3328)) ([3d8c748](https://github.com/MorpheApp/morphe-patches/commit/3d8c748ae7f9ce9b9f21f97a041e60923673e728))
+* **YouTube - Video quality:** Do not give a regular video the Shorts quality after leaving Shorts ([#3322](https://github.com/MorpheApp/morphe-patches/issues/3322)) ([aaa2bc1](https://github.com/MorpheApp/morphe-patches/commit/aaa2bc1f6d22db827b73ea064ce1c1c3cf89061e))
+* **YouTube - Video quality:** Keep Shorts quality after closing a live stream opened from Shorts ([#3333](https://github.com/MorpheApp/morphe-patches/issues/3333)) ([0a94e0e](https://github.com/MorpheApp/morphe-patches/commit/0a94e0e5714af91c7250a2be66bee3ba6fe7cb17))
+* **YouTube Music - Custom branding:** Keep the startup animation on screen until it ends ([6043416](https://github.com/MorpheApp/morphe-patches/commit/6043416854f9d0c3dc2201229fae62a4828a52f7))
+* **YouTube Music - Disable dislike redirection:** Fix patch on 9.35+ ([#3226](https://github.com/MorpheApp/morphe-patches/issues/3226)) ([703ddde](https://github.com/MorpheApp/morphe-patches/commit/703ddde1733d3514993ae689dedd1795bf696d82))
+* **YouTube Music - Download in app:** Expose offline audio session ([#3167](https://github.com/MorpheApp/morphe-patches/issues/3167)) ([b4fb0e9](https://github.com/MorpheApp/morphe-patches/commit/b4fb0e9d00a2e876b30ce64da66ee459ad974abc))
+* **YouTube Music - Downloads:** Fix patching failure "Could not find conversion context field" ([#3231](https://github.com/MorpheApp/morphe-patches/issues/3231)) ([b4f2d7d](https://github.com/MorpheApp/morphe-patches/commit/b4f2d7d83c234b1f71ff4a6c8298a59ffe6ad240))
+* **YouTube Music - Hide flyout menu components:** Hide nested download items ([#3165](https://github.com/MorpheApp/morphe-patches/issues/3165)) ([fd2b325](https://github.com/MorpheApp/morphe-patches/commit/fd2b325a655819233d6bdb0ded83ba08b0cb5295))
+* **YouTube Music - Play albums songs:** Do not play the first track's song for every track of a queued album ([#3319](https://github.com/MorpheApp/morphe-patches/issues/3319)) ([cd82092](https://github.com/MorpheApp/morphe-patches/commit/cd820925387333b3b45516479c4c4880a450452b))
+* **YouTube Music - Return YouTube Dislike:** Dislike count is black when the device uses the light theme ([7e7e15d](https://github.com/MorpheApp/morphe-patches/commit/7e7e15d8e0796a96d615e26ea66ac771fa068321))
+* **YouTube Music - Return YouTube Dislike:** Fix dislike counter color ([#3161](https://github.com/MorpheApp/morphe-patches/issues/3161)) ([1404b8b](https://github.com/MorpheApp/morphe-patches/commit/1404b8bc7a09216b468e112c40b3298bf9cb2136))
+* **YouTube Music - Third-party lyrics:** Crash while trimming the lyrics cache ([#3272](https://github.com/MorpheApp/morphe-patches/issues/3272)) ([e450b7a](https://github.com/MorpheApp/morphe-patches/commit/e450b7a073b3d0b2c83d37509a7443f40a7b6369))
+* **YouTube Music - Third-party lyrics:** Do not cover comments panel ([#3155](https://github.com/MorpheApp/morphe-patches/issues/3155)) ([50e4e65](https://github.com/MorpheApp/morphe-patches/commit/50e4e65ef15e28586ec55fae51da0bb03ae392d9))
+* **YouTube Music - Third-party lyrics:** Keep the screen on after the track changes ([#3246](https://github.com/MorpheApp/morphe-patches/issues/3246)) ([e730ebf](https://github.com/MorpheApp/morphe-patches/commit/e730ebfa8be5b689e484eefa33b380554884a862))
+* **YouTube Music - Third-party lyrics:** Keep the token dialog buttons on screen with long cookies ([#3245](https://github.com/MorpheApp/morphe-patches/issues/3245)) ([1cf6be0](https://github.com/MorpheApp/morphe-patches/commit/1cf6be0051247409030199b54d864540f9e3f55a))
+* **YouTube Music - Third-party lyrics:** minor bug fixes ([#3323](https://github.com/MorpheApp/morphe-patches/issues/3323)) ([292d78b](https://github.com/MorpheApp/morphe-patches/commit/292d78bb3c9b52796a54c68b4797c8db77496b28))
+* **YouTube Music - Third-party lyrics:** Reload lyrics when video changes ([#3148](https://github.com/MorpheApp/morphe-patches/issues/3148)) ([2920175](https://github.com/MorpheApp/morphe-patches/commit/29201754faeec713fa2fc43725527062160f8c0c))
+* **YouTube:** "Hide preview comment" breaks comment section text box ([#3187](https://github.com/MorpheApp/morphe-patches/issues/3187)) ([d592804](https://github.com/MorpheApp/morphe-patches/commit/d5928043b7982326a102aafa2993e3cb8872eaf7))
+* **YouTube:** "Restore old video action bar" hides newly posted comments ([#3216](https://github.com/MorpheApp/morphe-patches/issues/3216)) ([24d5823](https://github.com/MorpheApp/morphe-patches/commit/24d582398b812f96e23bc374c3c77c4dd5506eb4))
+* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))
+* **YouTube:** Do not include hide layout settings indirectly ([d3b678a](https://github.com/MorpheApp/morphe-patches/commit/d3b678a8aff9d10a4f748d81d390c95de00d37f9))
+* **YouTube:** Fix patching non-experimental targets ([4625872](https://github.com/MorpheApp/morphe-patches/commit/46258727492fb31cd60db65e9322602408dd32a8))
+* **YouTube:** Hidden preview comment still has clickable timestamps ([#3268](https://github.com/MorpheApp/morphe-patches/issues/3268)) ([1dfd537](https://github.com/MorpheApp/morphe-patches/commit/1dfd537aa48d56f050556e262c8547de619f88ea))
+* **YouTube:** Hide new community/subscribe buttons on channel page ([#3315](https://github.com/MorpheApp/morphe-patches/issues/3315)) ([5fb37df](https://github.com/MorpheApp/morphe-patches/commit/5fb37dfbc5df6a18914302d4e4a5a5c0b2d8f0b9))
+* **YouTube:** Search bar becomes invisible with Hide Status Bar enabled ([b0492b5](https://github.com/MorpheApp/morphe-patches/commit/b0492b552c0fe9b760bd6e00c56f6ec3bbd005c0))
+
+### ✨ New Features
+
+* Add universal `Spoof signature` patch ([#3330](https://github.com/MorpheApp/morphe-patches/issues/3330)) ([77117f6](https://github.com/MorpheApp/morphe-patches/commit/77117f61d312b23f42b74e838c3a2e902be90029))
+* **Custom branding:** Animate the Morphe logo at startup ([#3178](https://github.com/MorpheApp/morphe-patches/issues/3178)) ([70e8a9d](https://github.com/MorpheApp/morphe-patches/commit/70e8a9de9fc16efb830e2594dc6ba37ef49653c8))
+* **YouTube - Channel search:** Add channel search result sorting ([#3298](https://github.com/MorpheApp/morphe-patches/issues/3298)) ([baadcf7](https://github.com/MorpheApp/morphe-patches/commit/baadcf7ef177c8dc07cbc61670d8d475869f934c))
+* **YouTube - Hide layout components:** Add "Hide channel names in subscribed channels bar" ([#3274](https://github.com/MorpheApp/morphe-patches/issues/3274)) ([f8b330f](https://github.com/MorpheApp/morphe-patches/commit/f8b330f7d317632766cb0eeb8b98f64f0c974b0a))
+* **YouTube - Hide layout components:** Add "Hide Dislike button" to comments ([#3293](https://github.com/MorpheApp/morphe-patches/issues/3293)) ([bd43ccf](https://github.com/MorpheApp/morphe-patches/commit/bd43ccf58d622b0ed66d3cd739351644de9c8295))
+* **YouTube - Hide layout components:** Add "Hide History shelf" ([#3277](https://github.com/MorpheApp/morphe-patches/issues/3277)) ([50c4f34](https://github.com/MorpheApp/morphe-patches/commit/50c4f34ae3728e318d2e61512674167616fedc0c))
+* **YouTube - Hide layout components:** Add "Hide live streams" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))
+* **YouTube - Hide layout components:** Add "Hide Menu button" for comments ([#3253](https://github.com/MorpheApp/morphe-patches/issues/3253)) ([9b30447](https://github.com/MorpheApp/morphe-patches/commit/9b30447302de598bd51e612610a858c7a6de9dfb))
+* **YouTube - Hide layout components:** Add "Hide Translate button" setting  ([#3265](https://github.com/MorpheApp/morphe-patches/issues/3265)) ([16894f1](https://github.com/MorpheApp/morphe-patches/commit/16894f1ecb93ffdbe8269b0b04aced6a6805da55))
+* **YouTube - Hide video action buttons:** Add "Hide channel and Subscribe button" ([#3289](https://github.com/MorpheApp/morphe-patches/issues/3289)) ([0c7cd56](https://github.com/MorpheApp/morphe-patches/commit/0c7cd56bd24c693b59aa3efd472730cee5df72c2))
+* **YouTube - Hide video action buttons:** Add Hide Subscribe button option ([#3326](https://github.com/MorpheApp/morphe-patches/issues/3326)) ([a94ccdb](https://github.com/MorpheApp/morphe-patches/commit/a94ccdb354d4aad25c60c25dffea130681924d35))
+* **YouTube - Navigation bar:** Add "Hide new content dot" setting  ([#3269](https://github.com/MorpheApp/morphe-patches/issues/3269)) ([c8d440d](https://github.com/MorpheApp/morphe-patches/commit/c8d440d309550c8d41e31238b61ecdc99e993b42))
+* **YouTube - Navigation bar:** Add patch options to hide the Search and Subscriptions app shortcuts ([#3270](https://github.com/MorpheApp/morphe-patches/issues/3270)) ([37585d1](https://github.com/MorpheApp/morphe-patches/commit/37585d17d1afdc9cd6c0d371664e5cf585c88043))
+* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))
+* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))
+* **YouTube - Player icons:** Add icon styles for overlay player buttons, swipe controls and Shorts ([#3287](https://github.com/MorpheApp/morphe-patches/issues/3287)) ([cca4ce0](https://github.com/MorpheApp/morphe-patches/commit/cca4ce0d186d415a651a8c1744afb9cb37a6dc3b))
+* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))
+* **YouTube - Swipe controls:** Add "Volume boost" setting ([#3412](https://github.com/MorpheApp/morphe-patches/issues/3412)) ([9e393e5](https://github.com/MorpheApp/morphe-patches/commit/9e393e542cb8de29edacba412acf127dfc0e775c))
+* **YouTube Music - Hide buttons:** Add "Hide New button" setting  ([#3264](https://github.com/MorpheApp/morphe-patches/issues/3264)) ([d535e8d](https://github.com/MorpheApp/morphe-patches/commit/d535e8daa7119f86f1a7bd92f16c8ed1aba23d2a))
+* **YouTube Music - Hide buttons:** Add "Hide Voice search button" and "Hide Sound search button" ([#3250](https://github.com/MorpheApp/morphe-patches/issues/3250)) ([cfc880b](https://github.com/MorpheApp/morphe-patches/commit/cfc880bbba4b2ef9451c537fcdb4751e2ce09caa))
+* **YouTube Music - Hide layout components:** Add "Hide podcast episode Download button" ([#3251](https://github.com/MorpheApp/morphe-patches/issues/3251)) ([d94ca13](https://github.com/MorpheApp/morphe-patches/commit/d94ca13031d57b80edce4a872d633ffcffdae002))
+* **YouTube Music - Third-party lyrics:** Add new provider ([#3174](https://github.com/MorpheApp/morphe-patches/issues/3174)) ([1bc710e](https://github.com/MorpheApp/morphe-patches/commit/1bc710e371eb89e663acaadb415c497b7829fe1e))
+* **YouTube Music - Third-party lyrics:** Add Translation / Romanization only modes ([#3252](https://github.com/MorpheApp/morphe-patches/issues/3252)) ([1c6e6cd](https://github.com/MorpheApp/morphe-patches/commit/1c6e6cdbdacdd33088293c27e56c4fa6cc4f4049))
+* **YouTube Music - Third-party lyrics:** Add translation language ([#3128](https://github.com/MorpheApp/morphe-patches/issues/3128)) ([7349cb6](https://github.com/MorpheApp/morphe-patches/commit/7349cb691635e2a506163aa9fd5813f0b73c4e3f))
+* **YouTube Music - Third-party lyrics:** Keep screen on while viewing lyrics ([#3127](https://github.com/MorpheApp/morphe-patches/issues/3127)) ([cb4df9a](https://github.com/MorpheApp/morphe-patches/commit/cb4df9acf11249de66477ce9764ff29fbe41f9ca))
+* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))
+* **YouTube Music:** Add `Force portrait orientation` patch ([#3291](https://github.com/MorpheApp/morphe-patches/issues/3291)) ([143726e](https://github.com/MorpheApp/morphe-patches/commit/143726ed161e493e5a827654f7f5a1465e2ff53f))
+* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))
+* **YouTube Music:** Add `Media notification controls` patch ([#3288](https://github.com/MorpheApp/morphe-patches/issues/3288)) ([7c4431b](https://github.com/MorpheApp/morphe-patches/commit/7c4431b3b854cb145c540459fbde314b1a4d035a))
+* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))
+* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))
+* **YouTube:** Add `Hide status bar` patch ([#3337](https://github.com/MorpheApp/morphe-patches/issues/3337)) ([05c1597](https://github.com/MorpheApp/morphe-patches/commit/05c1597e97ebd428a0d9b0e0a7ae2cbd05442735))
+* **YouTube:** Add `Picture-in-picture button` patch ([#3397](https://github.com/MorpheApp/morphe-patches/issues/3397)) ([6c94728](https://github.com/MorpheApp/morphe-patches/commit/6c947288a3fc75105ef7e1c02d37a324dc20dc76))
+* **YouTube:** Added "Minimal comments button" setting ([916f228](https://github.com/MorpheApp/morphe-patches/commit/916f228495509ac2af2780a93502e0b872f61aa8))
+* **YouTube:** Added "Restore original videos title and description" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.39.0` ([755bf21](https://github.com/MorpheApp/morphe-patches/commit/755bf216267521a3d206d19be0cb230d8034ebb8))
+* **Reddit:** Add support for `2026.24.0` ([707ba5e](https://github.com/MorpheApp/morphe-patches/commit/707ba5ed71d4713d213126db9477e8dde9fd2493))
+* **YouTube Music:** Add experimental support for `9.38.51` ([314116f](https://github.com/MorpheApp/morphe-patches/commit/314116f3bad8eb4b42773651da7b663a2fcf759c))
+* **YouTube:** Add experimental support for `21.39.522` ([#3290](https://github.com/MorpheApp/morphe-patches/issues/3290)) ([5687e86](https://github.com/MorpheApp/morphe-patches/commit/5687e86075418094937fbb7449e79406f7400ca9))
+
+## [1.45.0-dev.23](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.22...v1.45.0-dev.23) (2026-10-01)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Captions:** Make "Always show" override a manual caption-off ([#3421](https://github.com/MorpheApp/morphe-patches/issues/3421)) ([a92b8ed](https://github.com/MorpheApp/morphe-patches/commit/a92b8edc30e31e16ca61e072540ac722a2616ff9))
+* **YouTube:** Search bar becomes invisible with Hide Status Bar enabled ([b0492b5](https://github.com/MorpheApp/morphe-patches/commit/b0492b552c0fe9b760bd6e00c56f6ec3bbd005c0))
+
+### ✨ New Features
+
+* **YouTube - Swipe controls:** Add "Volume boost" setting ([#3412](https://github.com/MorpheApp/morphe-patches/issues/3412)) ([9e393e5](https://github.com/MorpheApp/morphe-patches/commit/9e393e542cb8de29edacba412acf127dfc0e775c))
+* **YouTube:** Add `Picture-in-picture button` patch ([#3397](https://github.com/MorpheApp/morphe-patches/issues/3397)) ([6c94728](https://github.com/MorpheApp/morphe-patches/commit/6c947288a3fc75105ef7e1c02d37a324dc20dc76))
+
+## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide live streams" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))
+* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))
+* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))
+* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))
+
+## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))
+
+### ✨ New Features
+
+* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))
+* **YouTube:** Added "Restore original videos title and description" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))
+
+## [1.45.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.19...v1.45.0-dev.20) (2026-09-29)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))
+
+### ✨ New Features
+
+* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))
+
+## [1.45.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.18...v1.45.0-dev.19) (2026-09-28)
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))
+* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))
+
+## [1.45.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.17...v1.45.0-dev.18) (2026-09-27)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Media notification controls:** Remove Previous & Next buttons on Android 12 and lower ([#3332](https://github.com/MorpheApp/morphe-patches/issues/3332)) ([df6c914](https://github.com/MorpheApp/morphe-patches/commit/df6c91407abdb93ea81e9c8a57ddf9ba865f626c))
+* **YouTube - Restore old video action bar:** Do not hide newly posted comments ([#3324](https://github.com/MorpheApp/morphe-patches/issues/3324)) ([37b43f7](https://github.com/MorpheApp/morphe-patches/commit/37b43f7dd36133b6b3a7e76b8489f788e5b46727))
+* **YouTube - SponsorBlock:** Segments may not load for some versions of YouTube ([#3328](https://github.com/MorpheApp/morphe-patches/issues/3328)) ([3d8c748](https://github.com/MorpheApp/morphe-patches/commit/3d8c748ae7f9ce9b9f21f97a041e60923673e728))
+* **YouTube - Video quality:** Do not give a regular video the Shorts quality after leaving Shorts ([#3322](https://github.com/MorpheApp/morphe-patches/issues/3322)) ([aaa2bc1](https://github.com/MorpheApp/morphe-patches/commit/aaa2bc1f6d22db827b73ea064ce1c1c3cf89061e))
+* **YouTube - Video quality:** Keep Shorts quality after closing a live stream opened from Shorts ([#3333](https://github.com/MorpheApp/morphe-patches/issues/3333)) ([0a94e0e](https://github.com/MorpheApp/morphe-patches/commit/0a94e0e5714af91c7250a2be66bee3ba6fe7cb17))
+* **YouTube Music - Play albums songs:** Do not play the first track's song for every track of a queued album ([#3319](https://github.com/MorpheApp/morphe-patches/issues/3319)) ([cd82092](https://github.com/MorpheApp/morphe-patches/commit/cd820925387333b3b45516479c4c4880a450452b))
+* **YouTube Music - Third-party lyrics:** minor bug fixes ([#3323](https://github.com/MorpheApp/morphe-patches/issues/3323)) ([292d78b](https://github.com/MorpheApp/morphe-patches/commit/292d78bb3c9b52796a54c68b4797c8db77496b28))
+* **YouTube:** Hide new community/subscribe buttons on channel page ([#3315](https://github.com/MorpheApp/morphe-patches/issues/3315)) ([5fb37df](https://github.com/MorpheApp/morphe-patches/commit/5fb37dfbc5df6a18914302d4e4a5a5c0b2d8f0b9))
+
+### ✨ New Features
+
+* Add universal `Spoof signature` patch ([#3330](https://github.com/MorpheApp/morphe-patches/issues/3330)) ([77117f6](https://github.com/MorpheApp/morphe-patches/commit/77117f61d312b23f42b74e838c3a2e902be90029))
+* **YouTube - Hide video action buttons:** Add Hide Subscribe button option ([#3326](https://github.com/MorpheApp/morphe-patches/issues/3326)) ([a94ccdb](https://github.com/MorpheApp/morphe-patches/commit/a94ccdb354d4aad25c60c25dffea130681924d35))
+* **YouTube Music:** Add `Force portrait orientation` patch ([#3291](https://github.com/MorpheApp/morphe-patches/issues/3291)) ([143726e](https://github.com/MorpheApp/morphe-patches/commit/143726ed161e493e5a827654f7f5a1465e2ff53f))
+* **YouTube:** Add `Hide status bar` patch ([#3337](https://github.com/MorpheApp/morphe-patches/issues/3337)) ([05c1597](https://github.com/MorpheApp/morphe-patches/commit/05c1597e97ebd428a0d9b0e0a7ae2cbd05442735))
+
+## [1.45.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.16...v1.45.0-dev.17) (2026-09-26)
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.39.522` ([#3290](https://github.com/MorpheApp/morphe-patches/issues/3290)) ([5687e86](https://github.com/MorpheApp/morphe-patches/commit/5687e86075418094937fbb7449e79406f7400ca9))
+
+## [1.45.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.15...v1.45.0-dev.16) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide player flyout menu components:** Hide the Audio Track item in the Shorts flyout menu ([#3297](https://github.com/MorpheApp/morphe-patches/issues/3297)) ([09de4d2](https://github.com/MorpheApp/morphe-patches/commit/09de4d2332b4e499435bf7a3032381faf51893c3))
+* **YouTube - Minimal miniplayer:** Fixed Type 2 aspect ratio by hooking video format size ([551490f](https://github.com/MorpheApp/morphe-patches/commit/551490f50127c8ea02725848eab7a16ffec9d487))
+
+### ✨ New Features
+
+* **YouTube - Channel search:** Add channel search result sorting ([#3298](https://github.com/MorpheApp/morphe-patches/issues/3298)) ([baadcf7](https://github.com/MorpheApp/morphe-patches/commit/baadcf7ef177c8dc07cbc61670d8d475869f934c))
+* **YouTube - Hide layout components:** Add "Hide Dislike button" to comments ([#3293](https://github.com/MorpheApp/morphe-patches/issues/3293)) ([bd43ccf](https://github.com/MorpheApp/morphe-patches/commit/bd43ccf58d622b0ed66d3cd739351644de9c8295))
+* **YouTube - Player icons:** Add icon styles for overlay player buttons, swipe controls and Shorts ([#3287](https://github.com/MorpheApp/morphe-patches/issues/3287)) ([cca4ce0](https://github.com/MorpheApp/morphe-patches/commit/cca4ce0d186d415a651a8c1744afb9cb37a6dc3b))
+* **YouTube Music - Third-party lyrics:** Add Translation / Romanization only modes ([#3252](https://github.com/MorpheApp/morphe-patches/issues/3252)) ([1c6e6cd](https://github.com/MorpheApp/morphe-patches/commit/1c6e6cdbdacdd33088293c27e56c4fa6cc4f4049))
+
+## [1.45.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.14...v1.45.0-dev.15) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel Id Routes:** Straight requests videoDetails field ([60f640e](https://github.com/MorpheApp/morphe-patches/commit/60f640e2a7bd793623ed127b7c3900459ba73bf7))
+
+### ✨ New Features
+
+* **YouTube - Hide video action buttons:** Add "Hide channel and Subscribe button" ([#3289](https://github.com/MorpheApp/morphe-patches/issues/3289)) ([0c7cd56](https://github.com/MorpheApp/morphe-patches/commit/0c7cd56bd24c693b59aa3efd472730cee5df72c2))
+* **YouTube - Navigation bar:** Add patch options to hide the Search and Subscriptions app shortcuts ([#3270](https://github.com/MorpheApp/morphe-patches/issues/3270)) ([37585d1](https://github.com/MorpheApp/morphe-patches/commit/37585d17d1afdc9cd6c0d371664e5cf585c88043))
+* **YouTube Music:** Add `Media notification controls` patch ([#3288](https://github.com/MorpheApp/morphe-patches/issues/3288)) ([7c4431b](https://github.com/MorpheApp/morphe-patches/commit/7c4431b3b854cb145c540459fbde314b1a4d035a))
+
+## [1.45.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.13...v1.45.0-dev.14) (2026-09-25)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Restored interpolate minimizing transitions ([#3280](https://github.com/MorpheApp/morphe-patches/issues/3280)) ([dff3749](https://github.com/MorpheApp/morphe-patches/commit/dff3749d6b665b2669a4ccc9b1b8f70985b1c358))
+* **YouTube:** Hidden preview comment still has clickable timestamps ([#3268](https://github.com/MorpheApp/morphe-patches/issues/3268)) ([1dfd537](https://github.com/MorpheApp/morphe-patches/commit/1dfd537aa48d56f050556e262c8547de619f88ea))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide channel names in subscribed channels bar" ([#3274](https://github.com/MorpheApp/morphe-patches/issues/3274)) ([f8b330f](https://github.com/MorpheApp/morphe-patches/commit/f8b330f7d317632766cb0eeb8b98f64f0c974b0a))
+* **YouTube - Hide layout components:** Add "Hide History shelf" ([#3277](https://github.com/MorpheApp/morphe-patches/issues/3277)) ([50c4f34](https://github.com/MorpheApp/morphe-patches/commit/50c4f34ae3728e318d2e61512674167616fedc0c))
+* **YouTube - Hide layout components:** Add "Hide Translate button" setting  ([#3265](https://github.com/MorpheApp/morphe-patches/issues/3265)) ([16894f1](https://github.com/MorpheApp/morphe-patches/commit/16894f1ecb93ffdbe8269b0b04aced6a6805da55))
+* **YouTube - Navigation bar:** Add "Hide new content dot" setting  ([#3269](https://github.com/MorpheApp/morphe-patches/issues/3269)) ([c8d440d](https://github.com/MorpheApp/morphe-patches/commit/c8d440d309550c8d41e31238b61ecdc99e993b42))
+* **YouTube Music - Hide buttons:** Add "Hide New button" setting  ([#3264](https://github.com/MorpheApp/morphe-patches/issues/3264)) ([d535e8d](https://github.com/MorpheApp/morphe-patches/commit/d535e8daa7119f86f1a7bd92f16c8ed1aba23d2a))
+* **YouTube:** Added "Minimal comments button" setting ([916f228](https://github.com/MorpheApp/morphe-patches/commit/916f228495509ac2af2780a93502e0b872f61aa8))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.39.0` ([755bf21](https://github.com/MorpheApp/morphe-patches/commit/755bf216267521a3d206d19be0cb230d8034ebb8))
+* **Reddit:** Add support for `2026.24.0` ([707ba5e](https://github.com/MorpheApp/morphe-patches/commit/707ba5ed71d4713d213126db9477e8dde9fd2493))
+
+## [1.45.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.12...v1.45.0-dev.13) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel search:** Show a channel search hint in the search box ([#3262](https://github.com/MorpheApp/morphe-patches/issues/3262)) ([c5cce56](https://github.com/MorpheApp/morphe-patches/commit/c5cce56d16581024c2ee7dafdd4232e8383c922d))
+* **YouTube Music - Custom branding:** Keep the startup animation on screen until it ends ([6043416](https://github.com/MorpheApp/morphe-patches/commit/6043416854f9d0c3dc2201229fae62a4828a52f7))
+* **YouTube Music - Third-party lyrics:** Crash while trimming the lyrics cache ([#3272](https://github.com/MorpheApp/morphe-patches/issues/3272)) ([e450b7a](https://github.com/MorpheApp/morphe-patches/commit/e450b7a073b3d0b2c83d37509a7443f40a7b6369))
+
+## [1.45.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.11...v1.45.0-dev.12) (2026-09-24)
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide Menu button" for comments ([#3253](https://github.com/MorpheApp/morphe-patches/issues/3253)) ([9b30447](https://github.com/MorpheApp/morphe-patches/commit/9b30447302de598bd51e612610a858c7a6de9dfb))
+* **YouTube Music - Hide buttons:** Add "Hide Voice search button" and "Hide Sound search button" ([#3250](https://github.com/MorpheApp/morphe-patches/issues/3250)) ([cfc880b](https://github.com/MorpheApp/morphe-patches/commit/cfc880bbba4b2ef9451c537fcdb4751e2ce09caa))
+* **YouTube Music - Hide layout components:** Add "Hide podcast episode Download button" ([#3251](https://github.com/MorpheApp/morphe-patches/issues/3251)) ([d94ca13](https://github.com/MorpheApp/morphe-patches/commit/d94ca13031d57b80edce4a872d633ffcffdae002))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.38.51` ([314116f](https://github.com/MorpheApp/morphe-patches/commit/314116f3bad8eb4b42773651da7b663a2fcf759c))
+
+## [1.45.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.10...v1.45.0-dev.11) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Fix patching non-experimental targets ([4625872](https://github.com/MorpheApp/morphe-patches/commit/46258727492fb31cd60db65e9322602408dd32a8))
+
+## [1.45.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.9...v1.45.0-dev.10) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Open the correct channel tab when channel tabs are hidden ([#3200](https://github.com/MorpheApp/morphe-patches/issues/3200)) ([53cc35b](https://github.com/MorpheApp/morphe-patches/commit/53cc35b0552b59d0ff34ed057e4c167cb8881322))
+* **YouTube Music - Third-party lyrics:** Keep the token dialog buttons on screen with long cookies ([#3245](https://github.com/MorpheApp/morphe-patches/issues/3245)) ([1cf6be0](https://github.com/MorpheApp/morphe-patches/commit/1cf6be0051247409030199b54d864540f9e3f55a))
+
+## [1.45.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.8...v1.45.0-dev.9) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Player overlay buttons:** Fix startup crash with a partial patch selection ([#3228](https://github.com/MorpheApp/morphe-patches/issues/3228)) ([aee4774](https://github.com/MorpheApp/morphe-patches/commit/aee47746643c948191b25435a8f1b4e96ffb6df7))
+* **YouTube Music - Third-party lyrics:** Keep the screen on after the track changes ([#3246](https://github.com/MorpheApp/morphe-patches/issues/3246)) ([e730ebf](https://github.com/MorpheApp/morphe-patches/commit/e730ebfa8be5b689e484eefa33b380554884a862))
+
+## [1.45.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.7...v1.45.0-dev.8) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music - Disable dislike redirection:** Fix patch on 9.35+ ([#3226](https://github.com/MorpheApp/morphe-patches/issues/3226)) ([703ddde](https://github.com/MorpheApp/morphe-patches/commit/703ddde1733d3514993ae689dedd1795bf696d82))
+* **YouTube Music - Downloads:** Fix patching failure "Could not find conversion context field" ([#3231](https://github.com/MorpheApp/morphe-patches/issues/3231)) ([b4f2d7d](https://github.com/MorpheApp/morphe-patches/commit/b4f2d7d83c234b1f71ff4a6c8298a59ffe6ad240))
+
+## [1.45.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.6...v1.45.0-dev.7) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* Resolve startup crash for older Android devices ([b3391b4](https://github.com/MorpheApp/morphe-patches/commit/b3391b423dba14ceedccf5b6ae5e1abebcc80c5d))
+* **YouTube:** "Hide preview comment" breaks comment section text box ([#3187](https://github.com/MorpheApp/morphe-patches/issues/3187)) ([d592804](https://github.com/MorpheApp/morphe-patches/commit/d5928043b7982326a102aafa2993e3cb8872eaf7))
+
+## [1.45.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.5...v1.45.0-dev.6) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** "Restore old video action bar" hides newly posted comments ([#3216](https://github.com/MorpheApp/morphe-patches/issues/3216)) ([24d5823](https://github.com/MorpheApp/morphe-patches/commit/24d582398b812f96e23bc374c3c77c4dd5506eb4))
+
+### ✨ New Features
+
+* **Custom branding:** Animate the Morphe logo at startup ([#3178](https://github.com/MorpheApp/morphe-patches/issues/3178)) ([70e8a9d](https://github.com/MorpheApp/morphe-patches/commit/70e8a9de9fc16efb830e2594dc6ba37ef49653c8))
+
+## [1.45.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.4...v1.45.0-dev.5) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))
+
+## [1.45.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.3...v1.45.0-dev.4) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube  - Voice over translation:** Add missing accessibility labels and Voice over translation button state ([#3203](https://github.com/MorpheApp/morphe-patches/issues/3203)) ([d99679b](https://github.com/MorpheApp/morphe-patches/commit/d99679b50dc6f19a2feffaa7f5a8940a9d83da94))
+* **YouTube - Custom branding:** Do not ask which app to use for app shortcut actions ([#3204](https://github.com/MorpheApp/morphe-patches/issues/3204)) ([0a2f0e0](https://github.com/MorpheApp/morphe-patches/commit/0a2f0e0f487512d6fd5f0c97ca83ad061859988c))
+* **YouTube - Return YouTube Dislike:** Do not show dislikes on the share and comment buttons of community posts ([31b657c](https://github.com/MorpheApp/morphe-patches/commit/31b657c5482def040a368b1d4661db704249db50))
+* **YouTube Music - Return YouTube Dislike:** Dislike count is black when the device uses the light theme ([7e7e15d](https://github.com/MorpheApp/morphe-patches/commit/7e7e15d8e0796a96d615e26ea66ac771fa068321))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add new provider ([#3174](https://github.com/MorpheApp/morphe-patches/issues/3174)) ([1bc710e](https://github.com/MorpheApp/morphe-patches/commit/1bc710e371eb89e663acaadb415c497b7829fe1e))
+
+## [1.45.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.2...v1.45.0-dev.3) (2026-09-22)
+
+### 🐛 Bug Fixes
+
+* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))
+* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))
+
+## [1.45.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.1...v1.45.0-dev.2) (2026-09-22)
+
+### 🐛 Bug Fixes
+
+* **GmsCore support:** Omit empty intent data ([#3170](https://github.com/MorpheApp/morphe-patches/issues/3170)) ([f03894a](https://github.com/MorpheApp/morphe-patches/commit/f03894a8663fdb19a3ff48765d0cb928bcbc36a3))
+* **YouTube - Playback speed:** Prevent speed leak into Shorts ([#3169](https://github.com/MorpheApp/morphe-patches/issues/3169)) ([ff35586](https://github.com/MorpheApp/morphe-patches/commit/ff35586e14b339e24a06d32cb77b57234c942fe2))
+* **YouTube - Player controls:** Decouple legacy buttons from settings UI ([#3171](https://github.com/MorpheApp/morphe-patches/issues/3171)) ([dfeeb64](https://github.com/MorpheApp/morphe-patches/commit/dfeeb64c54bd2aa49fdbc3653f5ba2f81558d558))
+* **YouTube Music - Download in app:** Expose offline audio session ([#3167](https://github.com/MorpheApp/morphe-patches/issues/3167)) ([b4fb0e9](https://github.com/MorpheApp/morphe-patches/commit/b4fb0e9d00a2e876b30ce64da66ee459ad974abc))
+* **YouTube Music - Hide flyout menu components:** Hide nested download items ([#3165](https://github.com/MorpheApp/morphe-patches/issues/3165)) ([fd2b325](https://github.com/MorpheApp/morphe-patches/commit/fd2b325a655819233d6bdb0ded83ba08b0cb5295))
+* **YouTube Music - Return YouTube Dislike:** Fix dislike counter color ([#3161](https://github.com/MorpheApp/morphe-patches/issues/3161)) ([1404b8b](https://github.com/MorpheApp/morphe-patches/commit/1404b8bc7a09216b468e112c40b3298bf9cb2136))
+* **YouTube:** Do not include hide layout settings indirectly ([d3b678a](https://github.com/MorpheApp/morphe-patches/commit/d3b678a8aff9d10a4f748d81d390c95de00d37f9))
+
+## [1.45.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0...v1.45.0-dev.1) (2026-09-22)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Comments filter:** Restored chat button page indicator ([5644496](https://github.com/MorpheApp/morphe-patches/commit/5644496b457b29cad2799c3c2cbc19cb422f0cab))
+* **YouTube - Legacy player controls:** Preserve end screen on 21.36+ ([#3121](https://github.com/MorpheApp/morphe-patches/issues/3121)) ([b895285](https://github.com/MorpheApp/morphe-patches/commit/b895285b2aa0e4cab6bb23226e129c62d517c670))
+* **YouTube - Return YouTube Dislike:** Show dislikes on tablet layout ([#3153](https://github.com/MorpheApp/morphe-patches/issues/3153)) ([7835519](https://github.com/MorpheApp/morphe-patches/commit/7835519c42a656c2d30122dcd97fb27dd12b0b87))
+* **YouTube - SponsorBlock:** Preserve exact video end for segment markers ([#3157](https://github.com/MorpheApp/morphe-patches/issues/3157)) ([a860f5b](https://github.com/MorpheApp/morphe-patches/commit/a860f5bdbce792254617fb31d424c02521c62c6f))
+* **YouTube Music - Third-party lyrics:** Do not cover comments panel ([#3155](https://github.com/MorpheApp/morphe-patches/issues/3155)) ([50e4e65](https://github.com/MorpheApp/morphe-patches/commit/50e4e65ef15e28586ec55fae51da0bb03ae392d9))
+* **YouTube Music - Third-party lyrics:** Reload lyrics when video changes ([#3148](https://github.com/MorpheApp/morphe-patches/issues/3148)) ([2920175](https://github.com/MorpheApp/morphe-patches/commit/29201754faeec713fa2fc43725527062160f8c0c))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add translation language ([#3128](https://github.com/MorpheApp/morphe-patches/issues/3128)) ([7349cb6](https://github.com/MorpheApp/morphe-patches/commit/7349cb691635e2a506163aa9fd5813f0b73c4e3f))
+* **YouTube Music - Third-party lyrics:** Keep screen on while viewing lyrics ([#3127](https://github.com/MorpheApp/morphe-patches/issues/3127)) ([cb4df9a](https://github.com/MorpheApp/morphe-patches/commit/cb4df9acf11249de66477ce9764ff29fbe41f9ca))
+
+## [1.44.0](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **Reddit - App icon:** Support changing icon on cloned installs ([22c4443](https://github.com/MorpheApp/morphe-patches/commit/22c4443912d60641e710a7a12c4dfc0c88ab8100))
+* **YouTube - Channel search:** Search is scoped to a channel after leaving its page ([#2997](https://github.com/MorpheApp/morphe-patches/issues/2997)) ([3cc051b](https://github.com/MorpheApp/morphe-patches/commit/3cc051bfffaaee21a579a059a9be198b6d887f74))
+* **YouTube - Comments:** Hide new comments carousel ([#3110](https://github.com/MorpheApp/morphe-patches/issues/3110)) ([b733f2e](https://github.com/MorpheApp/morphe-patches/commit/b733f2ef05ff798d4b9caba0e6f6c90e67bbc6f3))
+* **YouTube - GmsCore support:** "Play Protect certification" screen is shown on startup ([#2977](https://github.com/MorpheApp/morphe-patches/issues/2977)) ([e250326](https://github.com/MorpheApp/morphe-patches/commit/e25032649908890ae848ee012befbb266deb08e8))
+* **YouTube - Hide ads:** Hide new product cards ([#3103](https://github.com/MorpheApp/morphe-patches/issues/3103)) ([ea4a310](https://github.com/MorpheApp/morphe-patches/commit/ea4a310f1a06bf60804d774fcd40219a2a93aaca))
+* **YouTube - Hide layout components:** Hide Auto-dubbed label in feed ([#3101](https://github.com/MorpheApp/morphe-patches/issues/3101)) ([5e2af7f](https://github.com/MorpheApp/morphe-patches/commit/5e2af7fbed2e35123c4a4a82c47b0dbb4bd46bbb))
+* **YouTube - Hide layout components:** Hide Community button in search ([#3112](https://github.com/MorpheApp/morphe-patches/issues/3112)) ([9b3d122](https://github.com/MorpheApp/morphe-patches/commit/9b3d1222cd9199532835dfe9224c738a96fd0a84))
+* **YouTube - Hide layout components:** Hide movie shelf in search results ([#2933](https://github.com/MorpheApp/morphe-patches/issues/2933)) ([032e0f5](https://github.com/MorpheApp/morphe-patches/commit/032e0f51f6ccf2ebbaff0c4d57f2f12b32bd8be8))
+* **YouTube - Hide layout components:** Hide new expandable cards ([#3102](https://github.com/MorpheApp/morphe-patches/issues/3102)) ([1f79c62](https://github.com/MorpheApp/morphe-patches/commit/1f79c62e2dc3f0210cf73f29b65e1c94b3c105ec))
+* **YouTube - Hide layout components:** Hide Shorts surveys ([#3113](https://github.com/MorpheApp/morphe-patches/issues/3113)) ([18e54f6](https://github.com/MorpheApp/morphe-patches/commit/18e54f6adafeaaad62b970ef9d02186c52ecec33))
+* **YouTube - Hide layout components:** Preserve live chat replay ([#3115](https://github.com/MorpheApp/morphe-patches/issues/3115)) ([dff81a7](https://github.com/MorpheApp/morphe-patches/commit/dff81a79b0fc1a7f193cfb59c2903467dd4ecdc2))
+* **YouTube - Minimal miniplayer:** Controls fade-in animation doesn't work ([396a0bc](https://github.com/MorpheApp/morphe-patches/commit/396a0bcd333423bb17cbe501599e70d80591f8d0))
+* **YouTube - Minimal miniplayer:** Dim the Minimal 2 video less and hide the channel together with the title ([5f8f5e1](https://github.com/MorpheApp/morphe-patches/commit/5f8f5e1894e64de6a7ff605e88e24b3e8fd12b68))
+* **YouTube - Minimal miniplayer:** Fully expand the player width during the minimization animation. ([aaa1211](https://github.com/MorpheApp/morphe-patches/commit/aaa1211855d245b44940575dc8f9e3428593bde5))
+* **YouTube - Minimal miniplayer:** Improved type 2 bar UI ([299af68](https://github.com/MorpheApp/morphe-patches/commit/299af68d5e90326a76febbaa0a28bbe7b7600986))
+* **YouTube - Minimal miniplayer:** Interpolate minimizing transitions. ([13e653a](https://github.com/MorpheApp/morphe-patches/commit/13e653a68943b548728d85042e6785058b3cedb2))
+* **YouTube - Minimal miniplayer:** Keep the gap above an opaque navigation bar after a system theme change ([05eff03](https://github.com/MorpheApp/morphe-patches/commit/05eff034bd03d6279b0928da7e56a6b0661b89f0))
+* **YouTube - Minimal miniplayer:** Remove one frame flicker when minimizing and missing play/pause icon with an app language set ([10e9c9f](https://github.com/MorpheApp/morphe-patches/commit/10e9c9f9084ea8c7e0f04e77f995a4c28ab98411))
+* **YouTube - Minimal miniplayer:** Restored commit [#6e1ca28](https://github.com/MorpheApp/morphe-patches/issues/6e1ca28) ([33595a2](https://github.com/MorpheApp/morphe-patches/commit/33595a279bd0ee2870d390152f86a9615a99153c))
+* **YouTube - Minimal miniplayer:** Restored commit [#6e1ca28](https://github.com/MorpheApp/morphe-patches/issues/6e1ca28) ([1101cad](https://github.com/MorpheApp/morphe-patches/commit/1101cad85f4213eec2cfb6c420e018854fa208b0))
+* **YouTube - Minimal miniplayer:** Reverted last changes to commit [#aaa1211](https://github.com/MorpheApp/morphe-patches/issues/aaa1211) ([64caec5](https://github.com/MorpheApp/morphe-patches/commit/64caec55020841014dea23c5a773b4372e6883e6))
+* **YouTube - Minimal miniplayer:** Slide the bar clear of the screen when closing it ([680ef54](https://github.com/MorpheApp/morphe-patches/commit/680ef54c555b829ddf0bf8cb17637734478563ac))
+* **YouTube - Minimal miniplayer:** Span the type 2 bar with the video at any aspect ratio ([4ed999f](https://github.com/MorpheApp/morphe-patches/commit/4ed999f243a18ee859279fddf40c80a9a2b1123b))
+* **YouTube - Miniplayer:** Default size setting is not grayed out with modern minimal ([aa9bc8e](https://github.com/MorpheApp/morphe-patches/commit/aa9bc8e6b51f81b9dc497f006372efb0a13f798b))
+* **YouTube - Navigation bar:** Use black system bars in Shorts ([#3088](https://github.com/MorpheApp/morphe-patches/issues/3088)) ([e88ec7d](https://github.com/MorpheApp/morphe-patches/commit/e88ec7db71993dd412f656a2c5d988edc07e00a1))
+* **YouTube - Override YouTube Music buttons:** App can crash on devices with an OEM media route provider ([#3025](https://github.com/MorpheApp/morphe-patches/issues/3025)) ([ef5652d](https://github.com/MorpheApp/morphe-patches/commit/ef5652d610fa4613b2dee327ca562ab89c25d78d))
+* **YouTube - Remove background playback restrictions:** Auto pause when video is loading ([#3060](https://github.com/MorpheApp/morphe-patches/issues/3060)) ([cbffcf3](https://github.com/MorpheApp/morphe-patches/commit/cbffcf3c09bde19ac1e16921cd5f359d1b9430be))
+* **YouTube - Return YouTube Dislike:** Dislike vertical text alignment may not be correct ([320aca2](https://github.com/MorpheApp/morphe-patches/commit/320aca2d9785305e81fea17967a3eb5ed39bff9a))
+* **YouTube - Return YouTube Dislike:** Dislikes are not shown on the old action bar of some devices ([258cbe6](https://github.com/MorpheApp/morphe-patches/commit/258cbe6fe66f432156aa7ef6bcb73f5932a9d672))
+* **YouTube - Return YouTube Dislike:** Estimated likes are not shown on the segmented like button ([bf58420](https://github.com/MorpheApp/morphe-patches/commit/bf5842044a46a53263f178624c5fa1a59f18eecc))
+* **YouTube - Return YouTube Dislike:** Show dislikes of the old action bar at every screen density and match the like count spacing ([0ce1259](https://github.com/MorpheApp/morphe-patches/commit/0ce1259bd1d455932c4f9bf0d2dba37d6e5de21b))
+* **YouTube - Return YouTube Dislike:** Show dislikes on the segmented like button of tablets and do not widen matching nodes in the feed ([d8717cd](https://github.com/MorpheApp/morphe-patches/commit/d8717cd9a5c67668c928e410d70b28b974ee08e5))
+* **YouTube - Return YouTube Dislike:** Show estimated likes on the compact action bar when the like count is hidden ([a6efacf](https://github.com/MorpheApp/morphe-patches/commit/a6efacfd0cdb0c8aa11312c33900a4ab70689ae1))
+* **YouTube - Settings:** Fix crash opening settings after the app process is restarted ([#2958](https://github.com/MorpheApp/morphe-patches/issues/2958)) ([89b7bb0](https://github.com/MorpheApp/morphe-patches/commit/89b7bb0cf8bc0553afa56c982bdf234f8ac68298))
+* **YouTube - SponsorBlock:** Auto-hide skip button is sometimes shown when not inside a skippable segment ([2655af1](https://github.com/MorpheApp/morphe-patches/commit/2655af1d4240f5cd35844676fad82b489e7597c5))
+* **YouTube - Theme:** Experimental app targets can show white Shorts seekbar ([aaeca6a](https://github.com/MorpheApp/morphe-patches/commit/aaeca6a75bf7d1e14e6c31fbbeffa50bda55ac0f))
+* **YouTube - Voice over translation:** Add button accessibility label ([#3099](https://github.com/MorpheApp/morphe-patches/issues/3099)) ([1c6f2dd](https://github.com/MorpheApp/morphe-patches/commit/1c6f2ddd178212cca2cbc33ff5cc495822da0607))
+* **YouTube Music - Download in app:** Downloads fail when 'Spoof video streams' is turned off ([#3034](https://github.com/MorpheApp/morphe-patches/issues/3034)) ([64249b8](https://github.com/MorpheApp/morphe-patches/commit/64249b8471dd508351b9e7cfb13586812525993e))
+* **YouTube Music - Hide ads:** Premium promotion banners are not hidden ([5529b68](https://github.com/MorpheApp/morphe-patches/commit/5529b6887aac2728fafef8fe39c1b011742e03d7))
+* **YouTube Music - Return YouTube Dislike:** Show dislikes beside the dislike icon like YouTube does ([#3107](https://github.com/MorpheApp/morphe-patches/issues/3107)) ([ca839ce](https://github.com/MorpheApp/morphe-patches/commit/ca839ce4c46c20e0ae3ca0977511993b87031d5f))
+* **YouTube Music - Third-party lyrics:** Lyrics are not shown in a panel that has no heading ([#3033](https://github.com/MorpheApp/morphe-patches/issues/3033)) ([4d5988b](https://github.com/MorpheApp/morphe-patches/commit/4d5988b0eff3bce79b2ab3301d203f27e1318b43))
+* **YouTube Music - Third-party lyrics:** Musixmatch cannot be turned on and Deezer returns no lyrics ([f6c0213](https://github.com/MorpheApp/morphe-patches/commit/f6c021343a3aa9ddf62c1cc0ec168765cfc57882))
+* **YouTube Music - Third-party lyrics:** Right to left lyrics are garbled while being highlighted ([72798cb](https://github.com/MorpheApp/morphe-patches/commit/72798cb704b886cdd5606e6a29298e8338f5f312))
+* **YouTube:** Deprecated componentHost extension ([c42f07d](https://github.com/MorpheApp/morphe-patches/commit/c42f07df385805aa22744fd2bc169f77b24a77c0))
+* **YouTube:** Hide player time bar backgrounds ([#3030](https://github.com/MorpheApp/morphe-patches/issues/3030)) ([a11b9b1](https://github.com/MorpheApp/morphe-patches/commit/a11b9b1248b0f4232b7892ad4dbe4de19caa4d2b))
+* **YouTube:** Hide Shorts captions flyout item ([#3082](https://github.com/MorpheApp/morphe-patches/issues/3082)) ([a0d8171](https://github.com/MorpheApp/morphe-patches/commit/a0d8171790c2f6f50dfb8588d973697f731785c8))
+* **YouTube:** Player seekbar is not shown for some users ([bb2b91e](https://github.com/MorpheApp/morphe-patches/commit/bb2b91e118f1d3e6766340226e4697c758e8efe3))
+* **YouTube:** Preserve fullscreen button when scale button is hidden ([#3027](https://github.com/MorpheApp/morphe-patches/issues/3027)) ([7d4ab61](https://github.com/MorpheApp/morphe-patches/commit/7d4ab619163fba7c20dd4666ca0fe2240eb16380))
+* **YouTube:** Support Unicode AISList channel handles ([#3028](https://github.com/MorpheApp/morphe-patches/issues/3028)) ([fcf415f](https://github.com/MorpheApp/morphe-patches/commit/fcf415f43d78cb6833e2ae14db245989240f7f5e))
+
+### ✨ New Features
+
+* **Custom branding:** Warn that the app icon setting only changes the launcher icon ([8607c76](https://github.com/MorpheApp/morphe-patches/commit/8607c76d33e931fc0931de8e2a52d5ac9b4d3dc6))
+* **Reddit:** Add `Start as guest` patch ([#3109](https://github.com/MorpheApp/morphe-patches/issues/3109)) ([c720c2a](https://github.com/MorpheApp/morphe-patches/commit/c720c2af26ea30423fcd0a96341fe916fdef1477))
+* **YouTube - Channel search:** Show the searched channel in the results header ([c0e49d4](https://github.com/MorpheApp/morphe-patches/commit/c0e49d4ba97a5ca79033e379f3f581a395cda7a4))
+* **YouTube - Miniplayer:** Add option to hide Minimal 2 miniplayer title ([#3087](https://github.com/MorpheApp/morphe-patches/issues/3087)) ([6e1ca28](https://github.com/MorpheApp/morphe-patches/commit/6e1ca285e43094004fa6b828d4482ddab6949ff6))
+* **YouTube - Return YouTube Dislike:** Show like and dislike counts on the icon only video action bar ([#3075](https://github.com/MorpheApp/morphe-patches/issues/3075)) ([6934e0c](https://github.com/MorpheApp/morphe-patches/commit/6934e0c06dc8e6797f3217e8d609f7a6823b12c9))
+* **YouTube - Save to Watch later:** Add support for Shorts ([#2934](https://github.com/MorpheApp/morphe-patches/issues/2934)) ([b4540c9](https://github.com/MorpheApp/morphe-patches/commit/b4540c91b1ae361f5184b96438d8f3a627a8367a))
+* **YouTube Music - Third-party lyrics:** Add new lyric providers ([#3041](https://github.com/MorpheApp/morphe-patches/issues/3041)) ([d5b00ae](https://github.com/MorpheApp/morphe-patches/commit/d5b00aed59fe2f333e2e155637a50ffae208f6de))
+* **YouTube Music - Third-party lyrics:** Add syllable lyrics, new providers, romanized lyrics, mediasession lyrics, miniplayer lyrics ([#2625](https://github.com/MorpheApp/morphe-patches/issues/2625)) ([ea883b3](https://github.com/MorpheApp/morphe-patches/commit/ea883b34f6a750eb3f6b954742d41088b6b99879))
+* **YouTube Music - Third-party lyrics:** Animate the panel buttons between their states ([abec544](https://github.com/MorpheApp/morphe-patches/commit/abec5445a13bb366a63109a003d8a9444f96cdf7))
+* **YouTube Music:** Add offline audio downloads ([#2528](https://github.com/MorpheApp/morphe-patches/issues/2528)) ([d9999ca](https://github.com/MorpheApp/morphe-patches/commit/d9999ca6695be270461b46bf41ee6e5e6ca3d0e6))
+* **YouTube:** Add `Channel search` patch ([#2964](https://github.com/MorpheApp/morphe-patches/issues/2964)) ([acd856c](https://github.com/MorpheApp/morphe-patches/commit/acd856cc27dde7f33042ddced67c8ee6a8c31e30))
+* **YouTube:** Add `Force fullscreen landscape mode` patch ([#2431](https://github.com/MorpheApp/morphe-patches/issues/2431)) ([a037335](https://github.com/MorpheApp/morphe-patches/commit/a03733538e5a56957b525a17668253eb5da404da))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.38.0` ([404fc59](https://github.com/MorpheApp/morphe-patches/commit/404fc599fa082fd958780450a1ec57476295c712))
+* **YouTube Music:** Add experimental support for `9.37.54` ([04f67ae](https://github.com/MorpheApp/morphe-patches/commit/04f67ae150d23b1c888061e9d723459736f8f52c))
+* **YouTube:** Add experimental support for `21.38.123` ([#3053](https://github.com/MorpheApp/morphe-patches/issues/3053)) ([fd4a726](https://github.com/MorpheApp/morphe-patches/commit/fd4a72611ea561f605085fc1512a91b8084410fe))
+* **YouTube:** Add experimental support for `21.47.42` ([#2962](https://github.com/MorpheApp/morphe-patches/issues/2962)) ([9418faa](https://github.com/MorpheApp/morphe-patches/commit/9418faaf46610875781a4952a379523c09a462db))
+* **YouTube:** Add support for `21.16.256` ([900575c](https://github.com/MorpheApp/morphe-patches/commit/900575ccc97cb8faf831786afd693c30d28e4f9f))
+
+## [1.44.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.18...v1.44.0-dev.19) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide Shorts surveys ([#3113](https://github.com/MorpheApp/morphe-patches/issues/3113)) ([18e54f6](https://github.com/MorpheApp/morphe-patches/commit/18e54f6adafeaaad62b970ef9d02186c52ecec33))
+
+### ✨ New Features
+
+* **Reddit:** Add `Start as guest` patch ([#3109](https://github.com/MorpheApp/morphe-patches/issues/3109)) ([c720c2a](https://github.com/MorpheApp/morphe-patches/commit/c720c2af26ea30423fcd0a96341fe916fdef1477))
+
+## [1.44.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.17...v1.44.0-dev.18) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Comments:** Hide new comments carousel ([#3110](https://github.com/MorpheApp/morphe-patches/issues/3110)) ([b733f2e](https://github.com/MorpheApp/morphe-patches/commit/b733f2ef05ff798d4b9caba0e6f6c90e67bbc6f3))
+* **YouTube - Hide layout components:** Hide Community button in search ([#3112](https://github.com/MorpheApp/morphe-patches/issues/3112)) ([9b3d122](https://github.com/MorpheApp/morphe-patches/commit/9b3d1222cd9199532835dfe9224c738a96fd0a84))
+* **YouTube - Hide layout components:** Preserve live chat replay ([#3115](https://github.com/MorpheApp/morphe-patches/issues/3115)) ([dff81a7](https://github.com/MorpheApp/morphe-patches/commit/dff81a79b0fc1a7f193cfb59c2903467dd4ecdc2))
+* **YouTube - Minimal miniplayer:** Dim the Minimal 2 video less and hide the channel together with the title ([5f8f5e1](https://github.com/MorpheApp/morphe-patches/commit/5f8f5e1894e64de6a7ff605e88e24b3e8fd12b68))
+* **YouTube - Minimal miniplayer:** Keep the gap above an opaque navigation bar after a system theme change ([05eff03](https://github.com/MorpheApp/morphe-patches/commit/05eff034bd03d6279b0928da7e56a6b0661b89f0))
+* **YouTube Music - Return YouTube Dislike:** Show dislikes beside the dislike icon like YouTube does ([#3107](https://github.com/MorpheApp/morphe-patches/issues/3107)) ([ca839ce](https://github.com/MorpheApp/morphe-patches/commit/ca839ce4c46c20e0ae3ca0977511993b87031d5f))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add new lyric providers ([#3041](https://github.com/MorpheApp/morphe-patches/issues/3041)) ([d5b00ae](https://github.com/MorpheApp/morphe-patches/commit/d5b00aed59fe2f333e2e155637a50ffae208f6de))
+
+## [1.44.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.16...v1.44.0-dev.17) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Remove one frame flicker when minimizing and missing play/pause icon with an app language set ([10e9c9f](https://github.com/MorpheApp/morphe-patches/commit/10e9c9f9084ea8c7e0f04e77f995a4c28ab98411))
+
+## [1.44.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.15...v1.44.0-dev.16) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide ads:** Hide new product cards ([#3103](https://github.com/MorpheApp/morphe-patches/issues/3103)) ([ea4a310](https://github.com/MorpheApp/morphe-patches/commit/ea4a310f1a06bf60804d774fcd40219a2a93aaca))
+* **YouTube - Hide layout components:** Hide new expandable cards ([#3102](https://github.com/MorpheApp/morphe-patches/issues/3102)) ([1f79c62](https://github.com/MorpheApp/morphe-patches/commit/1f79c62e2dc3f0210cf73f29b65e1c94b3c105ec))
+* **YouTube - Return YouTube Dislike:** Dislikes are not shown on the old action bar of some devices ([258cbe6](https://github.com/MorpheApp/morphe-patches/commit/258cbe6fe66f432156aa7ef6bcb73f5932a9d672))
+* **YouTube - Return YouTube Dislike:** Estimated likes are not shown on the segmented like button ([bf58420](https://github.com/MorpheApp/morphe-patches/commit/bf5842044a46a53263f178624c5fa1a59f18eecc))
+* **YouTube - Return YouTube Dislike:** Show dislikes on the segmented like button of tablets and do not widen matching nodes in the feed ([d8717cd](https://github.com/MorpheApp/morphe-patches/commit/d8717cd9a5c67668c928e410d70b28b974ee08e5))
+* **YouTube - Return YouTube Dislike:** Show estimated likes on the compact action bar when the like count is hidden ([a6efacf](https://github.com/MorpheApp/morphe-patches/commit/a6efacfd0cdb0c8aa11312c33900a4ab70689ae1))
+
+## [1.44.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.14...v1.44.0-dev.15) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide Auto-dubbed label in feed ([#3101](https://github.com/MorpheApp/morphe-patches/issues/3101)) ([5e2af7f](https://github.com/MorpheApp/morphe-patches/commit/5e2af7fbed2e35123c4a4a82c47b0dbb4bd46bbb))
+* **YouTube - Return YouTube Dislike:** Show dislikes of the old action bar at every screen density and match the like count spacing ([0ce1259](https://github.com/MorpheApp/morphe-patches/commit/0ce1259bd1d455932c4f9bf0d2dba37d6e5de21b))
+* **YouTube - Voice over translation:** Add button accessibility label ([#3099](https://github.com/MorpheApp/morphe-patches/issues/3099)) ([1c6f2dd](https://github.com/MorpheApp/morphe-patches/commit/1c6f2ddd178212cca2cbc33ff5cc495822da0607))
+
+## [1.44.0-dev.14](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.13...v1.44.0-dev.14) (2026-09-21)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Restored commit [#6e1ca28](https://github.com/MorpheApp/morphe-patches/issues/6e1ca28) ([33595a2](https://github.com/MorpheApp/morphe-patches/commit/33595a279bd0ee2870d390152f86a9615a99153c))
+* **YouTube - Minimal miniplayer:** Restored commit [#6e1ca28](https://github.com/MorpheApp/morphe-patches/issues/6e1ca28) ([1101cad](https://github.com/MorpheApp/morphe-patches/commit/1101cad85f4213eec2cfb6c420e018854fa208b0))
+* **YouTube - Minimal miniplayer:** Reverted last changes to commit [#aaa1211](https://github.com/MorpheApp/morphe-patches/issues/aaa1211) ([64caec5](https://github.com/MorpheApp/morphe-patches/commit/64caec55020841014dea23c5a773b4372e6883e6))
+* **YouTube - Return YouTube Dislike:** Dislike vertical text alignment may not be correct ([320aca2](https://github.com/MorpheApp/morphe-patches/commit/320aca2d9785305e81fea17967a3eb5ed39bff9a))
+
+## [1.44.0-dev.13](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.12...v1.44.0-dev.13) (2026-09-20)
+
+### ✨ New Features
+
+* **YouTube - Return YouTube Dislike:** Show like and dislike counts on the icon only video action bar ([#3075](https://github.com/MorpheApp/morphe-patches/issues/3075)) ([6934e0c](https://github.com/MorpheApp/morphe-patches/commit/6934e0c06dc8e6797f3217e8d609f7a6823b12c9))
+
+## [1.44.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.11...v1.44.0-dev.12) (2026-09-20)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Navigation bar:** Use black system bars in Shorts ([#3088](https://github.com/MorpheApp/morphe-patches/issues/3088)) ([e88ec7d](https://github.com/MorpheApp/morphe-patches/commit/e88ec7db71993dd412f656a2c5d988edc07e00a1))
+* **YouTube:** Hide Shorts captions flyout item ([#3082](https://github.com/MorpheApp/morphe-patches/issues/3082)) ([a0d8171](https://github.com/MorpheApp/morphe-patches/commit/a0d8171790c2f6f50dfb8588d973697f731785c8))
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Add option to hide Minimal 2 miniplayer title ([#3087](https://github.com/MorpheApp/morphe-patches/issues/3087)) ([6e1ca28](https://github.com/MorpheApp/morphe-patches/commit/6e1ca285e43094004fa6b828d4482ddab6949ff6))
+
+## [1.44.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.10...v1.44.0-dev.11) (2026-09-19)
+
+### ✨ New Features
+
+* **YouTube - Channel search:** Show the searched channel in the results header ([c0e49d4](https://github.com/MorpheApp/morphe-patches/commit/c0e49d4ba97a5ca79033e379f3f581a395cda7a4))
+
+## [1.44.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.9...v1.44.0-dev.10) (2026-09-19)
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.37.54` ([04f67ae](https://github.com/MorpheApp/morphe-patches/commit/04f67ae150d23b1c888061e9d723459736f8f52c))
+
+## [1.44.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.8...v1.44.0-dev.9) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Controls fade-in animation doesn't work ([396a0bc](https://github.com/MorpheApp/morphe-patches/commit/396a0bcd333423bb17cbe501599e70d80591f8d0))
+* **YouTube - Minimal miniplayer:** Interpolate minimizing transitions. ([13e653a](https://github.com/MorpheApp/morphe-patches/commit/13e653a68943b548728d85042e6785058b3cedb2))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.38.0` ([404fc59](https://github.com/MorpheApp/morphe-patches/commit/404fc599fa082fd958780450a1ec57476295c712))
+
+## [1.44.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.7...v1.44.0-dev.8) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Theme:** Experimental app targets can show white Shorts seekbar ([aaeca6a](https://github.com/MorpheApp/morphe-patches/commit/aaeca6a75bf7d1e14e6c31fbbeffa50bda55ac0f))
+
+## [1.44.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.6...v1.44.0-dev.7) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Fully expand the player width during the minimization animation. ([aaa1211](https://github.com/MorpheApp/morphe-patches/commit/aaa1211855d245b44940575dc8f9e3428593bde5))
+* **YouTube - Remove background playback restrictions:** Auto pause when video is loading ([#3060](https://github.com/MorpheApp/morphe-patches/issues/3060)) ([cbffcf3](https://github.com/MorpheApp/morphe-patches/commit/cbffcf3c09bde19ac1e16921cd5f359d1b9430be))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.38.123` ([#3053](https://github.com/MorpheApp/morphe-patches/issues/3053)) ([fd4a726](https://github.com/MorpheApp/morphe-patches/commit/fd4a72611ea561f605085fc1512a91b8084410fe))
+
+## [1.44.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.5...v1.44.0-dev.6) (2026-09-18)
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add support for `21.16.256` ([900575c](https://github.com/MorpheApp/morphe-patches/commit/900575ccc97cb8faf831786afd693c30d28e4f9f))
+
+## [1.44.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.4...v1.44.0-dev.5) (2026-09-18)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music - Download in app:** Downloads fail when 'Spoof video streams' is turned off ([#3034](https://github.com/MorpheApp/morphe-patches/issues/3034)) ([64249b8](https://github.com/MorpheApp/morphe-patches/commit/64249b8471dd508351b9e7cfb13586812525993e))
+* **YouTube Music - Third-party lyrics:** Lyrics are not shown in a panel that has no heading ([#3033](https://github.com/MorpheApp/morphe-patches/issues/3033)) ([4d5988b](https://github.com/MorpheApp/morphe-patches/commit/4d5988b0eff3bce79b2ab3301d203f27e1318b43))
+* **YouTube Music - Third-party lyrics:** Musixmatch cannot be turned on and Deezer returns no lyrics ([f6c0213](https://github.com/MorpheApp/morphe-patches/commit/f6c021343a3aa9ddf62c1cc0ec168765cfc57882))
+* **YouTube Music - Third-party lyrics:** Right to left lyrics are garbled while being highlighted ([72798cb](https://github.com/MorpheApp/morphe-patches/commit/72798cb704b886cdd5606e6a29298e8338f5f312))
+* **YouTube:** Hide player time bar backgrounds ([#3030](https://github.com/MorpheApp/morphe-patches/issues/3030)) ([a11b9b1](https://github.com/MorpheApp/morphe-patches/commit/a11b9b1248b0f4232b7892ad4dbe4de19caa4d2b))
+* **YouTube:** Preserve fullscreen button when scale button is hidden ([#3027](https://github.com/MorpheApp/morphe-patches/issues/3027)) ([7d4ab61](https://github.com/MorpheApp/morphe-patches/commit/7d4ab619163fba7c20dd4666ca0fe2240eb16380))
+* **YouTube:** Support Unicode AISList channel handles ([#3028](https://github.com/MorpheApp/morphe-patches/issues/3028)) ([fcf415f](https://github.com/MorpheApp/morphe-patches/commit/fcf415f43d78cb6833e2ae14db245989240f7f5e))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Animate the panel buttons between their states ([abec544](https://github.com/MorpheApp/morphe-patches/commit/abec5445a13bb366a63109a003d8a9444f96cdf7))
+* **YouTube:** Add `Force fullscreen landscape mode` patch ([#2431](https://github.com/MorpheApp/morphe-patches/issues/2431)) ([a037335](https://github.com/MorpheApp/morphe-patches/commit/a03733538e5a56957b525a17668253eb5da404da))
+
+## [1.44.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.3...v1.44.0-dev.4) (2026-09-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Override YouTube Music buttons:** App can crash on devices with an OEM media route provider ([#3025](https://github.com/MorpheApp/morphe-patches/issues/3025)) ([ef5652d](https://github.com/MorpheApp/morphe-patches/commit/ef5652d610fa4613b2dee327ca562ab89c25d78d))
+
+## [1.44.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.2...v1.44.0-dev.3) (2026-09-17)
+
+### 🐛 Bug Fixes
+
+* **YouTube - SponsorBlock:** Auto-hide skip button is sometimes shown when not inside a skippable segment ([2655af1](https://github.com/MorpheApp/morphe-patches/commit/2655af1d4240f5cd35844676fad82b489e7597c5))
+* **YouTube Music - Hide ads:** Premium promotion banners are not hidden ([5529b68](https://github.com/MorpheApp/morphe-patches/commit/5529b6887aac2728fafef8fe39c1b011742e03d7))
+
+### ✨ New Features
+
+* **YouTube - Save to Watch later:** Add support for Shorts ([#2934](https://github.com/MorpheApp/morphe-patches/issues/2934)) ([b4540c9](https://github.com/MorpheApp/morphe-patches/commit/b4540c91b1ae361f5184b96438d8f3a627a8367a))
+* **YouTube Music:** Add offline audio downloads ([#2528](https://github.com/MorpheApp/morphe-patches/issues/2528)) ([d9999ca](https://github.com/MorpheApp/morphe-patches/commit/d9999ca6695be270461b46bf41ee6e5e6ca3d0e6))
+
+## [1.44.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.1...v1.44.0-dev.2) (2026-09-16)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel search:** Search is scoped to a channel after leaving its page ([#2997](https://github.com/MorpheApp/morphe-patches/issues/2997)) ([3cc051b](https://github.com/MorpheApp/morphe-patches/commit/3cc051bfffaaee21a579a059a9be198b6d887f74))
+* **YouTube - Hide layout components:** Hide movie shelf in search results ([#2933](https://github.com/MorpheApp/morphe-patches/issues/2933)) ([032e0f5](https://github.com/MorpheApp/morphe-patches/commit/032e0f51f6ccf2ebbaff0c4d57f2f12b32bd8be8))
+* **YouTube:** Player seekbar is not shown for some users ([bb2b91e](https://github.com/MorpheApp/morphe-patches/commit/bb2b91e118f1d3e6766340226e4697c758e8efe3))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add syllable lyrics, new providers, romanized lyrics, mediasession lyrics, miniplayer lyrics ([#2625](https://github.com/MorpheApp/morphe-patches/issues/2625)) ([ea883b3](https://github.com/MorpheApp/morphe-patches/commit/ea883b34f6a750eb3f6b954742d41088b6b99879))
+
+## [1.44.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.43.1-dev.2...v1.44.0-dev.1) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **YouTube - GmsCore support:** "Play Protect certification" screen is shown on startup ([#2977](https://github.com/MorpheApp/morphe-patches/issues/2977)) ([e250326](https://github.com/MorpheApp/morphe-patches/commit/e25032649908890ae848ee012befbb266deb08e8))
+
+### ✨ New Features
+
+* **Custom branding:** Warn that the app icon setting only changes the launcher icon ([8607c76](https://github.com/MorpheApp/morphe-patches/commit/8607c76d33e931fc0931de8e2a52d5ac9b4d3dc6))
+* **YouTube:** Add `Channel search` patch ([#2964](https://github.com/MorpheApp/morphe-patches/issues/2964)) ([acd856c](https://github.com/MorpheApp/morphe-patches/commit/acd856cc27dde7f33042ddced67c8ee6a8c31e30))
+
+## [1.43.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.43.1-dev.1...v1.43.1-dev.2) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Improved type 2 bar UI ([299af68](https://github.com/MorpheApp/morphe-patches/commit/299af68d5e90326a76febbaa0a28bbe7b7600986))
+* **YouTube - Miniplayer:** Default size setting is not grayed out with modern minimal ([aa9bc8e](https://github.com/MorpheApp/morphe-patches/commit/aa9bc8e6b51f81b9dc497f006372efb0a13f798b))
+* **YouTube:** Deprecated componentHost extension ([c42f07d](https://github.com/MorpheApp/morphe-patches/commit/c42f07df385805aa22744fd2bc169f77b24a77c0))
+
+## [1.43.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0...v1.43.1-dev.1) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **Reddit - App icon:** Support changing icon on cloned installs ([22c4443](https://github.com/MorpheApp/morphe-patches/commit/22c4443912d60641e710a7a12c4dfc0c88ab8100))
+* **YouTube - Minimal miniplayer:** Slide the bar clear of the screen when closing it ([680ef54](https://github.com/MorpheApp/morphe-patches/commit/680ef54c555b829ddf0bf8cb17637734478563ac))
+* **YouTube - Minimal miniplayer:** Span the type 2 bar with the video at any aspect ratio ([4ed999f](https://github.com/MorpheApp/morphe-patches/commit/4ed999f243a18ee859279fddf40c80a9a2b1123b))
+* **YouTube - Settings:** Fix crash opening settings after the app process is restarted ([#2958](https://github.com/MorpheApp/morphe-patches/issues/2958)) ([89b7bb0](https://github.com/MorpheApp/morphe-patches/commit/89b7bb0cf8bc0553afa56c982bdf234f8ac68298))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.37.42` ([#2962](https://github.com/MorpheApp/morphe-patches/issues/2962)) ([9418faa](https://github.com/MorpheApp/morphe-patches/commit/9418faaf46610875781a4952a379523c09a462db))
+
+## [1.43.0](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0...v1.43.0) (2026-09-14)
+
+### 🐛 Bug Fixes
+
+* **Theme:** Show the color the app draws when a color the user picked needs an overlay the app cannot register ([a4c1539](https://github.com/MorpheApp/morphe-patches/commit/a4c1539ac45233862f2b7594f322328a33b5d218))
+* **Theme:** Use the nearest palette color when the app is not given an overlay manager ([#2926](https://github.com/MorpheApp/morphe-patches/issues/2926)) ([86e146c](https://github.com/MorpheApp/morphe-patches/commit/86e146c54bad8450265f2ac2d734722fd682794c))
+* **YouTube - Change header:** Apply custom header logo to explore menu ([#2910](https://github.com/MorpheApp/morphe-patches/issues/2910)) ([e549894](https://github.com/MorpheApp/morphe-patches/commit/e549894d1c8dd2e9909a5c773c3c9c81a4df64a5))
+* **YouTube - Disable fullscreen gestures:** Restore pinch-to-zoom past fill on `21.36`+ ([#2876](https://github.com/MorpheApp/morphe-patches/issues/2876)) ([dd76cc1](https://github.com/MorpheApp/morphe-patches/commit/dd76cc1198fffb42d99f993ae03bd6e6cdcb4cf7))
+* **YouTube - FlyoutUtils:** Check typo ([66be4ae](https://github.com/MorpheApp/morphe-patches/commit/66be4aeb48d1bf81e82ef0b3dfb7992d572299f5))
+* **YouTube - FlyoutUtils:** Fetch element description straight from ViewGroup instead componentHost ([7565b9d](https://github.com/MorpheApp/morphe-patches/commit/7565b9d4409d20cf58075fb7d53eca081d2ac282))
+* **YouTube - FlyoutUtils:** Injected buttons are shown in collaborators panel ([#2867](https://github.com/MorpheApp/morphe-patches/issues/2867)) ([b595f8d](https://github.com/MorpheApp/morphe-patches/commit/b595f8d60023b127a67c4238bf285e12ebeee427))
+* **YouTube - Fullscreen video scale:** Restore UI after leaving fullscreen on tablet/foldable landscape ([#2874](https://github.com/MorpheApp/morphe-patches/issues/2874)) ([75f477f](https://github.com/MorpheApp/morphe-patches/commit/75f477f5c8834bd30cb27f66cc13b7f9c1f4c981))
+* **YouTube - Hide layout components:** Fix UI padding in comment replies and incognito search ([#2891](https://github.com/MorpheApp/morphe-patches/issues/2891)) ([59485db](https://github.com/MorpheApp/morphe-patches/commit/59485db96f29c9fa458ceca5f29e1754197220f4))
+* **YouTube - Hide layout components:** Patch failing on `20.21.37` ([41d89ef](https://github.com/MorpheApp/morphe-patches/commit/41d89ef38ae4feb744054656a6b6a8a653f14eaa))
+* **YouTube - Loop video:** Respect sleep timer end of video state ([#2890](https://github.com/MorpheApp/morphe-patches/issues/2890)) ([9f4f2a8](https://github.com/MorpheApp/morphe-patches/commit/9f4f2a8a6a8bef2627f8809cdec5b9b40773855a))
+* **YouTube - Navigation bar:** Keep the app edge to edge when the translucent navigation bar is disabled ([7f2153d](https://github.com/MorpheApp/morphe-patches/commit/7f2153d58830debfe44b9feb94d4a064dd6f56d5))
+* **YouTube - Spoof video streams:** Show AV1 toggle when 'Android VR' client is selected ([19f2325](https://github.com/MorpheApp/morphe-patches/commit/19f232578d8f65c77a90de6da021c5bea59f31d9))
+* **YouTube - Video quality:** Prevent infinite loading when opening videos from Shorts ([#2871](https://github.com/MorpheApp/morphe-patches/issues/2871)) ([8fb3e31](https://github.com/MorpheApp/morphe-patches/commit/8fb3e318dc19fa25f96c85b1759c1d534a7a931f))
+* **YouTube Music - Remember shuffle state:** Prevent continuous queue shuffling ([#2870](https://github.com/MorpheApp/morphe-patches/issues/2870)) ([b58019c](https://github.com/MorpheApp/morphe-patches/commit/b58019c16a54b315533cc5f61f6f8718c6d66651))
+* **YouTube:** Remove "Restore old player button style" from `21.36` and later experimental targets ([8cc2f54](https://github.com/MorpheApp/morphe-patches/commit/8cc2f549833219384320bf5d43128702bbc1b2bb))
+
+### ✨ New Features
+
+* **Custom branding:** Add an app icon patch option and support mounted installations ([#2518](https://github.com/MorpheApp/morphe-patches/issues/2518)) ([e7a508f](https://github.com/MorpheApp/morphe-patches/commit/e7a508f2b1b629066e49776254e5c2e2f625976a))
+* **GmsCore support:** Handle conflicting MicroG installs ([#2907](https://github.com/MorpheApp/morphe-patches/issues/2907)) ([31a66d9](https://github.com/MorpheApp/morphe-patches/commit/31a66d95932f6ccf4e39a5804c750af72a606d15))
+* **Reddit:** Add `Custom app icon` patch ([#2937](https://github.com/MorpheApp/morphe-patches/issues/2937)) ([c17f699](https://github.com/MorpheApp/morphe-patches/commit/c17f6990a6d3ed5f8041f07eb3cb129a939e529e))
+* **YouTube - Fullscreen video scale:** Add option to show scale button only in fullscreen ([#2878](https://github.com/MorpheApp/morphe-patches/issues/2878)) ([f4bb073](https://github.com/MorpheApp/morphe-patches/commit/f4bb07318ee181502b00eb8e009aed7df42b78bc))
+* **YouTube - Miniplayer:** Add "Minimal 2" miniplayer type ([#2928](https://github.com/MorpheApp/morphe-patches/issues/2928)) ([3ae8dd1](https://github.com/MorpheApp/morphe-patches/commit/3ae8dd17d0b1ad543a994dbb3bf1b076e1eb7301))
+* **YouTube - Miniplayer:** Restore the minimal miniplayer on 21.29+ ([#2911](https://github.com/MorpheApp/morphe-patches/issues/2911)) ([af1a457](https://github.com/MorpheApp/morphe-patches/commit/af1a457e6c62888c1d5de81a54ceefe8edff9abc))
+* **YouTube - Spoof app version:** Add "Restore old captions behavior" spoof target ([eea2f2a](https://github.com/MorpheApp/morphe-patches/commit/eea2f2a052bb64bbf763a0eaa8323f95506c9faa))
+* **YouTube - Swipe controls:** Add a volume steps option and set the swipe distance per step ([#2938](https://github.com/MorpheApp/morphe-patches/issues/2938)) ([f06d565](https://github.com/MorpheApp/morphe-patches/commit/f06d565ad899c022370237d9694aa29fbe22e95b))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.36.0` & `2026.37.0` ([596c812](https://github.com/MorpheApp/morphe-patches/commit/596c81283a2666cbb3568786fdb40d587a0bb986))
+* **YouTube Music:** Add experimental support for `9.36.50` ([da8c85d](https://github.com/MorpheApp/morphe-patches/commit/da8c85d88a3c34597426525f5a81f69a4efdcd75))
+
+## [1.43.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.6...v1.43.0-dev.7) (2026-09-14)
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Add "Minimal 2" miniplayer type ([#2928](https://github.com/MorpheApp/morphe-patches/issues/2928)) ([3ae8dd1](https://github.com/MorpheApp/morphe-patches/commit/3ae8dd17d0b1ad543a994dbb3bf1b076e1eb7301))
+
+## [1.43.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.5...v1.43.0-dev.6) (2026-09-14)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Fetch element description straight from ViewGroup instead componentHost ([7565b9d](https://github.com/MorpheApp/morphe-patches/commit/7565b9d4409d20cf58075fb7d53eca081d2ac282))
+
+## [1.43.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.4...v1.43.0-dev.5) (2026-09-13)
+
+### ✨ New Features
+
+* **YouTube - Swipe controls:** Add a volume steps option and set the swipe distance per step ([#2938](https://github.com/MorpheApp/morphe-patches/issues/2938)) ([f06d565](https://github.com/MorpheApp/morphe-patches/commit/f06d565ad899c022370237d9694aa29fbe22e95b))
+
+## [1.43.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.3...v1.43.0-dev.4) (2026-09-13)
+
+### ✨ New Features
+
+* **Custom branding:** Add an app icon patch option and support mounted installations ([#2518](https://github.com/MorpheApp/morphe-patches/issues/2518)) ([e7a508f](https://github.com/MorpheApp/morphe-patches/commit/e7a508f2b1b629066e49776254e5c2e2f625976a))
+* **Reddit:** Add `App icon` patch ([#2937](https://github.com/MorpheApp/morphe-patches/issues/2937)) ([c17f699](https://github.com/MorpheApp/morphe-patches/commit/c17f6990a6d3ed5f8041f07eb3cb129a939e529e))
+
+## [1.43.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.2...v1.43.0-dev.3) (2026-09-13)
+
+### 🐛 Bug Fixes
+
+* **Theme:** Show the color the app draws when a color the user picked needs an overlay the app cannot register ([a4c1539](https://github.com/MorpheApp/morphe-patches/commit/a4c1539ac45233862f2b7594f322328a33b5d218))
+* **Theme:** Use the nearest palette color when the app is not given an overlay manager ([#2926](https://github.com/MorpheApp/morphe-patches/issues/2926)) ([86e146c](https://github.com/MorpheApp/morphe-patches/commit/86e146c54bad8450265f2ac2d734722fd682794c))
+* **YouTube - Disable fullscreen gestures:** Restore pinch-to-zoom past fill on `21.36`+ ([#2876](https://github.com/MorpheApp/morphe-patches/issues/2876)) ([dd76cc1](https://github.com/MorpheApp/morphe-patches/commit/dd76cc1198fffb42d99f993ae03bd6e6cdcb4cf7))
+
+### ✨ New Features
+
+* **YouTube - Fullscreen video scale:** Add option to show scale button only in fullscreen ([#2878](https://github.com/MorpheApp/morphe-patches/issues/2878)) ([f4bb073](https://github.com/MorpheApp/morphe-patches/commit/f4bb07318ee181502b00eb8e009aed7df42b78bc))
+* **YouTube - Spoof app version:** Add "Restore old captions behavior" spoof target ([eea2f2a](https://github.com/MorpheApp/morphe-patches/commit/eea2f2a052bb64bbf763a0eaa8323f95506c9faa))
+
+## [1.43.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.1...v1.43.0-dev.2) (2026-09-12)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Change header:** Apply custom header logo to explore menu ([#2910](https://github.com/MorpheApp/morphe-patches/issues/2910)) ([e549894](https://github.com/MorpheApp/morphe-patches/commit/e549894d1c8dd2e9909a5c773c3c9c81a4df64a5))
+* **YouTube - Navigation bar:** Keep the app edge to edge when the translucent navigation bar is disabled ([7f2153d](https://github.com/MorpheApp/morphe-patches/commit/7f2153d58830debfe44b9feb94d4a064dd6f56d5))
+* **YouTube - Spoof video streams:** Show AV1 toggle when 'Android VR' client is selected ([19f2325](https://github.com/MorpheApp/morphe-patches/commit/19f232578d8f65c77a90de6da021c5bea59f31d9))
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Restore the minimal miniplayer on 21.29+ ([#2911](https://github.com/MorpheApp/morphe-patches/issues/2911)) ([af1a457](https://github.com/MorpheApp/morphe-patches/commit/af1a457e6c62888c1d5de81a54ceefe8edff9abc))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.36.0` & `2026.37.0` ([596c812](https://github.com/MorpheApp/morphe-patches/commit/596c81283a2666cbb3568786fdb40d587a0bb986))
+
+## [1.43.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.3...v1.43.0-dev.1) (2026-09-12)
+
+### ✨ New Features
+
+* **GmsCore support:** Handle conflicting MicroG installs ([#2907](https://github.com/MorpheApp/morphe-patches/issues/2907)) ([31a66d9](https://github.com/MorpheApp/morphe-patches/commit/31a66d95932f6ccf4e39a5804c750af72a606d15))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.36.50` ([da8c85d](https://github.com/MorpheApp/morphe-patches/commit/da8c85d88a3c34597426525f5a81f69a4efdcd75))
+
+## [1.42.1-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.2...v1.42.1-dev.3) (2026-09-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Patch failing on `20.21.37` ([41d89ef](https://github.com/MorpheApp/morphe-patches/commit/41d89ef38ae4feb744054656a6b6a8a653f14eaa))
+
+## [1.42.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.1...v1.42.1-dev.2) (2026-09-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Injected buttons are shown in collaborators panel ([#2867](https://github.com/MorpheApp/morphe-patches/issues/2867)) ([b595f8d](https://github.com/MorpheApp/morphe-patches/commit/b595f8d60023b127a67c4238bf285e12ebeee427))
+* **YouTube - Hide layout components:** Fix UI padding in comment replies and incognito search ([#2891](https://github.com/MorpheApp/morphe-patches/issues/2891)) ([59485db](https://github.com/MorpheApp/morphe-patches/commit/59485db96f29c9fa458ceca5f29e1754197220f4))
+* **YouTube - Loop video:** Respect sleep timer end of video state ([#2890](https://github.com/MorpheApp/morphe-patches/issues/2890)) ([9f4f2a8](https://github.com/MorpheApp/morphe-patches/commit/9f4f2a8a6a8bef2627f8809cdec5b9b40773855a))
+
+## [1.42.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0...v1.42.1-dev.1) (2026-09-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Fullscreen video scale:** Restore UI after leaving fullscreen on tablet/foldable landscape ([#2874](https://github.com/MorpheApp/morphe-patches/issues/2874)) ([75f477f](https://github.com/MorpheApp/morphe-patches/commit/75f477f5c8834bd30cb27f66cc13b7f9c1f4c981))
+* **YouTube - Video quality:** Prevent infinite loading when opening videos from Shorts ([#2871](https://github.com/MorpheApp/morphe-patches/issues/2871)) ([8fb3e31](https://github.com/MorpheApp/morphe-patches/commit/8fb3e318dc19fa25f96c85b1759c1d534a7a931f))
+* **YouTube Music - Remember shuffle state:** Prevent continuous queue shuffling ([#2870](https://github.com/MorpheApp/morphe-patches/issues/2870)) ([b58019c](https://github.com/MorpheApp/morphe-patches/commit/b58019c16a54b315533cc5f61f6f8718c6d66651))
+* **YouTube:** Remove "Restore old player button style" from `21.36` and later experimental targets ([8cc2f54](https://github.com/MorpheApp/morphe-patches/commit/8cc2f549833219384320bf5d43128702bbc1b2bb))
+
+## [1.42.0](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0...v1.42.0) (2026-09-09)
+
+### 🐛 Bug Fixes
+
+* **GmsCore support:** Prompt to update outdated MicroG ([#2787](https://github.com/MorpheApp/morphe-patches/issues/2787)) ([c30850d](https://github.com/MorpheApp/morphe-patches/commit/c30850dea5d27aae956d0c6e10e6d32fc98c3e5f))
+* **YouTube - Channel whitelists:** Hide injected flyout menu buttons from other unrelated menu's  ([#2808](https://github.com/MorpheApp/morphe-patches/issues/2808)) ([5ba4ab4](https://github.com/MorpheApp/morphe-patches/commit/5ba4ab46f1a1ff62a8a733adc1b52a5614208036))
+* **YouTube - Channel whitelists:** Whitelists buttons are visible in some flyouts ([#2802](https://github.com/MorpheApp/morphe-patches/issues/2802)) ([2f482ff](https://github.com/MorpheApp/morphe-patches/commit/2f482ff33e5b0fa59d7877b9e34b7a47aa110397))
+* **YouTube - Hide layout components:** App may crash when 'You may like' section is hidden ([#2852](https://github.com/MorpheApp/morphe-patches/issues/2852)) ([407411d](https://github.com/MorpheApp/morphe-patches/commit/407411db710c8beb6e94e4e5f29fab3dc9060a30))
+* **YouTube - Hide layout components:** Hide guidelines in live chat ([b7528e0](https://github.com/MorpheApp/morphe-patches/commit/b7528e0e3c63f8d50caa3ebefa6dfd4c6a1859b1))
+* **YouTube - Hide layout components:** Hide new type of community posts ([17b13ff](https://github.com/MorpheApp/morphe-patches/commit/17b13fff559866ef733e0b738a3ab7f3ba548200))
+* **YouTube - Hide layout components:** Resolve empty channel tabs when using "Hide channel tab filter" ([#2747](https://github.com/MorpheApp/morphe-patches/issues/2747)) ([8232fa7](https://github.com/MorpheApp/morphe-patches/commit/8232fa7eeeb8d7c6e458e3ac16503fadccfceec4))
+* **YouTube - Hide player overlay buttons:** Apply the control buttons background opacity to the player time bar ([#2805](https://github.com/MorpheApp/morphe-patches/issues/2805)) ([302ab28](https://github.com/MorpheApp/morphe-patches/commit/302ab28ce8c00b2b5a093dcbedeb739706360d67))
+* **YouTube - Hide Shorts components:** Hide new type of paused overlay button ([c958fb6](https://github.com/MorpheApp/morphe-patches/commit/c958fb666cac54aaa3c822b736db85479c4dc6db))
+* **YouTube - SponsorBlock:** Skip buttons are not show with `21.26.45` ([f667d85](https://github.com/MorpheApp/morphe-patches/commit/f667d85352b8165b1680c54bd22e211e81e7f1ce))
+* **YouTube - Theme:** Apply the foreground color to text and icons in more locations ([#2707](https://github.com/MorpheApp/morphe-patches/issues/2707)) ([126a7d7](https://github.com/MorpheApp/morphe-patches/commit/126a7d7baacc3783e88681028612304e54e74608))
+* **YouTube - Video quality:** Restore `ShortsPlayerState` check to fix default video quality ([b596375](https://github.com/MorpheApp/morphe-patches/commit/b59637570cc477d09a236cf14582e4b06d1abc37))
+* **YouTube Music - Downloads:** Prevent external downloader triggering on non-download actions ([#2858](https://github.com/MorpheApp/morphe-patches/issues/2858)) ([a4cd837](https://github.com/MorpheApp/morphe-patches/commit/a4cd8377166eb308ba6d09ecc0f4be166535e9b4))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide channel links section" setting ([ddcdabe](https://github.com/MorpheApp/morphe-patches/commit/ddcdabe19a50aedb0eb80fa62de68e9d534e3167))
+* **YouTube - Hide layout components:** Add "Report AI channel" video menu entry ([#2763](https://github.com/MorpheApp/morphe-patches/issues/2763)) ([17d1135](https://github.com/MorpheApp/morphe-patches/commit/17d1135c33d7af159c48198e30d14623ea738aff))
+* **YouTube - Hide player overlay buttons:** Add option to change the player control buttons background opacity ([#2764](https://github.com/MorpheApp/morphe-patches/issues/2764)) ([4a2d3a4](https://github.com/MorpheApp/morphe-patches/commit/4a2d3a4ddd4006c9aa8efa2546f8d734cf85f28f))
+* **YouTube - Hide Shorts components:** Add "Hide gesture hints" setting ([#2760](https://github.com/MorpheApp/morphe-patches/issues/2760)) ([73df92a](https://github.com/MorpheApp/morphe-patches/commit/73df92adf973775ac42f8d89f938bf17ec7e03b3))
+* **YouTube - Remove background playback restrictions:** Add "Auto pause when device is locked" setting ([#2719](https://github.com/MorpheApp/morphe-patches/issues/2719)) ([f8bc479](https://github.com/MorpheApp/morphe-patches/commit/f8bc479af4e8b53cf1eea71cfaab923ddfb00910))
+* **YouTube Music - Scrobbling:** Add "Fill in missing album" setting ([#2666](https://github.com/MorpheApp/morphe-patches/issues/2666)) ([c94ecbd](https://github.com/MorpheApp/morphe-patches/commit/c94ecbddec7454d866c05b85926dc6670d3ef648))
+* **YouTube:** Add `Remember livestream playback position` patch ([#2753](https://github.com/MorpheApp/morphe-patches/issues/2753)) ([6252c85](https://github.com/MorpheApp/morphe-patches/commit/6252c85e7ce22ee4030a0a9b9094f467f42fa863))
+* **YouTube:** Add channel whitelists for ads and playback speed ([#2334](https://github.com/MorpheApp/morphe-patches/issues/2334)) ([4850003](https://github.com/MorpheApp/morphe-patches/commit/4850003c90948552383f7bead3e185d6085a2b57))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.35.54` ([7e42c2a](https://github.com/MorpheApp/morphe-patches/commit/7e42c2a57aa3838338b02569bce5e69f102457d2))
+* **YouTube:** Add support for `21.13.164` ([58b9a75](https://github.com/MorpheApp/morphe-patches/commit/58b9a7540847828dc543e0056821d451acfdbfdf))
+* **YouTube:** Add experimental support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
+
+## [1.42.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.9...v1.42.0-dev.10) (2026-09-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide guidelines in live chat ([b7528e0](https://github.com/MorpheApp/morphe-patches/commit/b7528e0e3c63f8d50caa3ebefa6dfd4c6a1859b1))
+
+## [1.42.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.8...v1.42.0-dev.9) (2026-09-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music - Downloads:** Prevent external downloader triggering on non-download actions ([#2858](https://github.com/MorpheApp/morphe-patches/issues/2858)) ([a4cd837](https://github.com/MorpheApp/morphe-patches/commit/a4cd8377166eb308ba6d09ecc0f4be166535e9b4))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add support for `21.13.164` ([58b9a75](https://github.com/MorpheApp/morphe-patches/commit/58b9a7540847828dc543e0056821d451acfdbfdf))
+
+## [1.42.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.7...v1.42.0-dev.8) (2026-09-08)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** App may crash when 'You may like' section is hidden ([#2852](https://github.com/MorpheApp/morphe-patches/issues/2852)) ([407411d](https://github.com/MorpheApp/morphe-patches/commit/407411db710c8beb6e94e4e5f29fab3dc9060a30))
+
+## [1.42.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.6...v1.42.0-dev.7) (2026-09-07)
+
+### 🐛 Bug Fixes
+
+* **GmsCore support:** Prompt to update outdated MicroG ([#2787](https://github.com/MorpheApp/morphe-patches/issues/2787)) ([c30850d](https://github.com/MorpheApp/morphe-patches/commit/c30850dea5d27aae956d0c6e10e6d32fc98c3e5f))
+
+## [1.42.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.5...v1.42.0-dev.6) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel whitelists:** Hide injected flyout menu buttons from other unrelated menu's  ([#2808](https://github.com/MorpheApp/morphe-patches/issues/2808)) ([5ba4ab4](https://github.com/MorpheApp/morphe-patches/commit/5ba4ab46f1a1ff62a8a733adc1b52a5614208036))
+
+## [1.42.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.4...v1.42.0-dev.5) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - SponsorBlock:** Skip buttons not working on `21.36.45` ([f667d85](https://github.com/MorpheApp/morphe-patches/commit/f667d85352b8165b1680c54bd22e211e81e7f1ce))
+
+## [1.42.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.3...v1.42.0-dev.4) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel whitelists:** Whitelists buttons are visible in some flyouts ([#2802](https://github.com/MorpheApp/morphe-patches/issues/2802)) ([2f482ff](https://github.com/MorpheApp/morphe-patches/commit/2f482ff33e5b0fa59d7877b9e34b7a47aa110397))
+* **YouTube - Hide player overlay buttons:** Apply the control buttons background opacity to the player time bar ([#2805](https://github.com/MorpheApp/morphe-patches/issues/2805)) ([302ab28](https://github.com/MorpheApp/morphe-patches/commit/302ab28ce8c00b2b5a093dcbedeb739706360d67))
+* **YouTube - Hide Shorts components:** Hide new type of paused overlay button ([c958fb6](https://github.com/MorpheApp/morphe-patches/commit/c958fb666cac54aaa3c822b736db85479c4dc6db))
+
+### ✨ New Features
+
+* **YouTube Music - Scrobbling:** Add "Fill in missing album" setting ([#2666](https://github.com/MorpheApp/morphe-patches/issues/2666)) ([c94ecbd](https://github.com/MorpheApp/morphe-patches/commit/c94ecbddec7454d866c05b85926dc6670d3ef648))
+* **YouTube:** Add `Remember livestream playback position` patch ([#2753](https://github.com/MorpheApp/morphe-patches/issues/2753)) ([6252c85](https://github.com/MorpheApp/morphe-patches/commit/6252c85e7ce22ee4030a0a9b9094f467f42fa863))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
+
+## [1.42.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.2...v1.42.0-dev.3) (2026-09-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Video quality:** Restore `ShortsPlayerState` check to fix default video quality ([b596375](https://github.com/MorpheApp/morphe-patches/commit/b59637570cc477d09a236cf14582e4b06d1abc37))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Report AI channel" video menu entry ([#2763](https://github.com/MorpheApp/morphe-patches/issues/2763)) ([17d1135](https://github.com/MorpheApp/morphe-patches/commit/17d1135c33d7af159c48198e30d14623ea738aff))
+* **YouTube - Hide Shorts components:** Add "Hide gesture hints" setting ([#2760](https://github.com/MorpheApp/morphe-patches/issues/2760)) ([73df92a](https://github.com/MorpheApp/morphe-patches/commit/73df92adf973775ac42f8d89f938bf17ec7e03b3))
+* **YouTube:** Add channel whitelists for ads and playback speed ([#2334](https://github.com/MorpheApp/morphe-patches/issues/2334)) ([4850003](https://github.com/MorpheApp/morphe-patches/commit/4850003c90948552383f7bead3e185d6085a2b57))
+
+## [1.42.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.1...v1.42.0-dev.2) (2026-09-04)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Theme:** Apply the foreground color to text and icons in more locations ([#2707](https://github.com/MorpheApp/morphe-patches/issues/2707)) ([126a7d7](https://github.com/MorpheApp/morphe-patches/commit/126a7d7baacc3783e88681028612304e54e74608))
+
+### ✨ New Features
+
+* **YouTube - Hide player overlay buttons:** Add option to change the player control buttons background opacity ([#2764](https://github.com/MorpheApp/morphe-patches/issues/2764)) ([4a2d3a4](https://github.com/MorpheApp/morphe-patches/commit/4a2d3a4ddd4006c9aa8efa2546f8d734cf85f28f))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.35.54` ([7e42c2a](https://github.com/MorpheApp/morphe-patches/commit/7e42c2a57aa3838338b02569bce5e69f102457d2))
+
+## [1.42.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0...v1.42.0-dev.1) (2026-09-03)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide new type of community posts ([17b13ff](https://github.com/MorpheApp/morphe-patches/commit/17b13fff559866ef733e0b738a3ab7f3ba548200))
+* **YouTube - Hide layout components:** Resolve empty channel tabs when using "Hide channel tab filter" ([#2747](https://github.com/MorpheApp/morphe-patches/issues/2747)) ([8232fa7](https://github.com/MorpheApp/morphe-patches/commit/8232fa7eeeb8d7c6e458e3ac16503fadccfceec4))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide channel links section" setting ([ddcdabe](https://github.com/MorpheApp/morphe-patches/commit/ddcdabe19a50aedb0eb80fa62de68e9d534e3167))
+* **YouTube - Remove background playback restrictions:** Add "Auto pause when device is locked" setting ([#2719](https://github.com/MorpheApp/morphe-patches/issues/2719)) ([f8bc479](https://github.com/MorpheApp/morphe-patches/commit/f8bc479af4e8b53cf1eea71cfaab923ddfb00910))
+
 ## [1.41.1](https://github.com/atanuroy22/morphe-patches/compare/v1.41.0...v1.41.1) (2026-09-03)
 
 Fork changes on top of upstream `v1.41.0`:
@@ -17,6 +1347,7 @@ Fork changes on top of upstream `v1.41.0`:
 ### 🗑️ Fork removals
 
 * **YouTube - Settings:** The `About` entry at the top of `Extra Settings` is still not added.
+
 
 ## [1.41.0](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0...v1.41.0) (2026-09-01)
 

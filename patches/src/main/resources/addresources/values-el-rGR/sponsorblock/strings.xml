@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Προσθέτει ένα κουμπί για να ψηφίσετε θετικά ή αρνητικά τα τμήματα</string>
   <string name="morphe_sb_square_layout_title">Χρήση τετράγωνης διάταξης</string>
   <string name="morphe_sb_square_layout_summary">Χρησιμοποιεί γωνίες τετραγώνου για τα κουμπιά και τα χειριστήρια του SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Κουμπί παράλειψης μικρότερου στυλ</string>
   <string name="morphe_sb_compact_skip_button_summary">Μειώνει το πλάτος του κουμπιού \"Παράλειψη\" για εξοικονόμηση χώρου</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Αυτόματη απόκρυψη κουμπιού παράλειψης</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Η διεύθυνση που χρησιμοποιεί το SponsorBlock για να κάνει κλήσεις στο διακομιστή</string>
   <string name="morphe_sb_channel_whitelist_title">Λίστα επιτρεπόμενων καναλιών</string>
   <string name="morphe_sb_channel_whitelist_summary">Το SponsorBlock είναι απενεργοποιημένο για τα κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Τρέχον κανάλι:</string>
-  <string name="morphe_sb_channel_whitelist_add">Προσθήκη στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_remove">Αφαίρεση</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_empty">Δεν υπάρχουν κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Το κανάλι προστέθηκε στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Το κανάλι αφαιρέθηκε από τη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ειδοποίηση για κανάλι στη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Εμφανίζει μια ειδοποίηση όταν το SponsorBlock είναι απενεργοποιημένο για ένα κανάλι στη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_channel_whitelisted_toast">Το SponsorBlock είναι απενεργοποιημένο για αυτό το κανάλι</string>
@@ -236,8 +228,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s δευτερόλεπτα</string>
   <string name="morphe_sb_color_opacity_label">Αδιαφάνεια:</string>
   <string name="morphe_sb_color_dot_label">Χρώμα:</string>
-  <string name="morphe_sb_about_title">Σχετικά με</string>
-  <string name="morphe_sb_about_api_summary">"Τα δεδομένα παρέχονται από το SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"Το SponsorBlock είναι μια συλλογική βάση δεδομένων με τμήματα βίντεο, όπως διαφημιστικά σποτ, εισαγωγές, εξαγωγές και υπενθυμίσεις εγγραφής. Τα τμήματα υποβάλλονται και ψηφίζονται από την κοινότητα, και η βάση δεδομένων είναι ανοιχτή και δωρεάν στη λήψη
 
-Πατήστε εδώ για να ανοίξετε το Sponsor.ajay.app και να δείτε λήψεις για άλλες πλατφόρμες"</string>
+Το αναγνωριστικό του βίντεο που παρακολουθείτε αποστέλλεται στο API του SponsorBlock για να λάβετε τα τμήματά του"</string>
 </resources>

@@ -12,14 +12,16 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.addon.LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY
@@ -28,9 +30,11 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -38,8 +42,10 @@ import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Node
@@ -187,6 +193,55 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
     }
 }
 
+private var newPlayerControlsOverride = false
+
+context(patchContext: BytecodePatchContext)
+internal fun disableNewPlayerControlsFeatureFlag() {
+    if (newPlayerControlsOverride) return
+    newPlayerControlsOverride = true
+
+    if (is_20_31_or_greater) {
+        PlayerSeekbarFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->forcePlayerSeekbar(Z)Z"
+            )
+        }
+    }
+
+    if (is_21_04_or_greater) {
+        val flagMethod = NewPlayerOverlaysFeatureFlagFingerprint.matchSingle().let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->disableNewPlayerOverlays(Z)Z"
+            )
+            methodCall(it.method)
+        }
+
+        if (is_21_36_or_greater) {
+            // With the flag off the autonav end screen is laid out over the miniplayer
+            // as if it was the full player, so it is given the value the app has.
+            var appliedChanges = false
+            AutonavEndscreenOverlayFingerprint.classDef.methods.forEach { method ->
+                method.findInstructionIndicesReversed(flagMethod).forEach { index ->
+                    val register = method.getInstruction<OneRegisterInstruction>(index + 1).registerA
+                    method.addInstructions(
+                        index + 2,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getOriginalNewPlayerOverlays(Z)Z
+                            move-result v$register
+                        """
+                    )
+                    appliedChanges = true
+                }
+            }
+            if (!appliedChanges) {
+                throw PatchException("Did not apply autonav endscreen changes")
+            }
+        }
+    }
+}
+
 /**
  * Injects the code to initialize the controls.
  * @param descriptor The descriptor of the method which should be called.
@@ -227,17 +282,20 @@ val legacyPlayerControlsPatch = bytecodePatch(
     dependsOn(
         legacyPlayerControlsResourcePatch,
         sharedExtensionPatch,
-        resourceMappingPatch, // Used by fingerprints.
         playerControlsOverlayVisibilityPatch,
         versionCheckPatch,
         settingsPatch
     )
 
     execute {
-        if (is_20_31_or_greater) {
+        if (is_20_31_or_greater && !is_21_36_or_greater) {
             PreferenceScreen.PLAYER.addPreferences(
                 SwitchPreference("morphe_restore_old_player_buttons", summary = true)
             )
+        }
+
+        if (is_21_36_or_greater) {
+            disableNewPlayerControlsFeatureFlag()
         }
 
         // Override flags that interfere with old player icons override.
@@ -275,7 +333,9 @@ val legacyPlayerControlsPatch = bytecodePatch(
         overrideExploderLayout(PlayerBottomControlsExploderFeatureFlagFingerprint)
 
         // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
-        overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
+        if (!is_21_36_or_greater) {
+            overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
+        }
 
         if (is_20_28_or_greater) {
             overrideExploderLayout(PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint)

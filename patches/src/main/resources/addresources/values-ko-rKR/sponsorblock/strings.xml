@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">구간 투표 버튼을 추가합니다</string>
   <string name="morphe_sb_square_layout_title">각진 레이아웃 사용하기</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock 버튼 및 컨트롤에 각진 모서리를 사용합니다</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">최소화된 건너뛰기 버튼 표시하기</string>
   <string name="morphe_sb_compact_skip_button_summary">공간을 절약하기 위해 건너뛰기 버튼의 너비를 줄입니다</string>
   <string name="morphe_sb_auto_hide_skip_button_title">자동으로 건너뛰기 버튼 숨기기</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock이 요청을 보낼 서버 URL입니다</string>
   <string name="morphe_sb_channel_whitelist_title">채널 화이트리스트</string>
   <string name="morphe_sb_channel_whitelist_summary">화이트리스트에 추가된 채널에서 SponsorBlock을 비활성화합니다</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">현재 채널:</string>
-  <string name="morphe_sb_channel_whitelist_add">화이트리스트에 추가</string>
-  <string name="morphe_sb_channel_whitelist_remove">제거</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">화이트리스트 채널</string>
-  <string name="morphe_sb_channel_whitelist_empty">화이트리스트 채널이 없습니다</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">채널을 화이트리스트에 추가하였습니다</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">채널을 화이트리스트에서 제거하였습니다</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">화이트리스트 채널 알림</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">화이트리스트 채널에서 SponsorBlock이 비활성화되었을 경우에 알림을 표시합니다</string>
   <string name="morphe_sb_channel_whitelisted_toast">이 채널에서 SponsorBlock이 비활성화되었습니다</string>
@@ -236,8 +228,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s 초</string>
   <string name="morphe_sb_color_opacity_label">불투명도:</string>
   <string name="morphe_sb_color_dot_label">색상:</string>
-  <string name="morphe_sb_about_title">정보</string>
-  <string name="morphe_sb_about_api_summary">"데이터는 SponsorBlock API에서 제공합니다
+  <string name="morphe_sb_about_api_summary">"SponsorBlock은 스폰서, 인트로, 아웃트로 및 구독 요청 안내와 같은 동영상 구간의 크라우드소싱 데이터베이스입니다. 이러한 구간은 커뮤니티 사용자들이 제출하고 투표를 통해 검증하며, 데이터베이스는 누구나 무료로 다운로드할 수 있도록 공개되어 있습니다
 
-자세한 내용 및 다른 플랫폼용 다운로드를 확인하려면 여기를 탭하여 'Sponsor.ajay.app'으로 이동하세요"</string>
+시청 중인 동영상의 ID는 해당 구간 정보를 가져오기 위해 SponsorBlock API로 전송됩니다"</string>
 </resources>

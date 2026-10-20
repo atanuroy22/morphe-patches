@@ -15,6 +15,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -22,9 +23,10 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -173,6 +175,16 @@ internal object LiveChatDonatorsBarFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Makes the engagement panels extend behind the navigation bar, which hides the bottom
+ * of the panels that do not add the bottom padding themselves, such as the live chat.
+ */
+internal object EngagementPanelEdgeToEdgeFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45744676)
+    )
+)
+
 internal object FilterBarHeightFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
@@ -254,9 +266,21 @@ internal object ShowFloatingMicrophoneButtonFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "Lcom/google/android/libraries/quantum/fab/FloatingActionButton;", "Landroid/view/ViewStub;"),
-    filters = listOf(
-        opcode(Opcode.IGET_BOOLEAN)
-    )
+    filters = opcodesToFilters(Opcode.IGET_BOOLEAN)
+)
+
+/**
+ * 21.25+
+ *
+ * Same as [ShowFloatingMicrophoneButtonFingerprint], but the button is inflated later from a ViewStub.
+ * Used instead of [ShowFloatingMicrophoneButtonFingerprint] with some server layout experiments.
+ */
+internal object ShowFloatingMicrophoneButtonStubFingerprint : Fingerprint(
+    classFingerprint = ShowFloatingMicrophoneButtonParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Landroid/view/ViewStub;", "Landroid/view/ViewStub;"),
+    filters = opcodesToFilters(Opcode.IGET_BOOLEAN)
 )
 
 /**
@@ -454,6 +478,31 @@ internal object ChannelTabRendererFingerprint : Fingerprint(
         "Ljava/util/List;",
         "I"
     ),
+    filters = listOf(
+        opcode(Opcode.IF_EQ),
+        anyInstruction(
+            methodCall(
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I", "Z", "Z", "Z")
+            ),
+            methodCall( // ~21.25
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I", "Z", "Z")
+            ),
+            methodCall( // ~21.16 and older
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I")
+            ),
+            location = MatchAfterWithin(3)
+        ),
+        opcode(
+            Opcode.RETURN_VOID,
+            MatchAfterImmediately()
+        )
+    ),
     strings = listOf(
         "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller."
     )
@@ -590,7 +639,8 @@ internal object AccountListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
     returnType = "V",
     filters = listOf(
-        resourceLiteral(ResourceType.ATTR, "ytCallToAction")
+        resourceLiteral(ResourceType.ATTR, "ytCallToAction"),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "setText")
     )
 )
 
@@ -780,5 +830,63 @@ internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
             name = "findViewById"
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * A row of an app bar menu.
+ */
+internal object ListMenuItemViewOnMeasureFingerprint : Fingerprint(
+    definingClass = "Landroid/support/v7/view/menu/ListMenuItemView;",
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I")
+)
+
+/**
+ * Binds the chapter title shown next to the timestamp.
+ */
+internal object HideTimeBarChapterTitleFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "time_bar_chapter_title"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45752241)
+    )
+)
+
+internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45724388)
+    )
+)
+
+/**
+ * Called while the fullscreen "More videos" panel is dragged.
+ * Shows the player controls when the drag goes up while the panel is peeking.
+ */
+internal object ShowControlsOnRelatedPanelDragFingerprint : Fingerprint(
+    classFingerprint = CreatePlayerOverviewFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        opcode(Opcode.IF_GEZ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            parameters = listOf(),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
     )
 )

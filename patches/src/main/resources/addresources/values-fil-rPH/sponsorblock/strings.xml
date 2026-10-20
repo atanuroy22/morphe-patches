@@ -23,7 +23,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_summary">Nagdaragdag ng button para bumoto ng pabor o hindi pabor sa mga segment</string>
   <string name="morphe_sb_square_layout_title">Gumamit ng square layout</string>
   <string name="morphe_sb_square_layout_summary">Gumagamit ng parisukat na mga sulok para sa mga button at kontrol ng SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Gumamit ng compact Skip button</string>
   <string name="morphe_sb_compact_skip_button_summary">Binabawasan ang lapad ng Skip button para makatipid ng espasyo</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Awtomatikong itago ang Skip button</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Ito ang address na ginagamit ng SponsorBlock upang gumawa ng mga tawag sa server</string>
   <string name="morphe_sb_channel_whitelist_title">Listahan ng mga pinahintulutang channel</string>
   <string name="morphe_sb_channel_whitelist_summary">Hindi pinagana ang SponsorBlock para sa mga pinahihintulutang channel</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Kasalukuyang channel:</string>
-  <string name="morphe_sb_channel_whitelist_add">Idagdag sa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_remove">Alisin</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Mga channel na nasa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_empty">Walang channel na nasa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Mag-notify sa pinahintulutang channel</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Nagpapakita ng notification kapag ang SponsorBlock ay hindi pinagana para sa isang whitelisted channel</string>
   <string name="morphe_sb_channel_whitelisted_toast">Hindi pinagana ang SponsorBlock para sa channel na ito</string>
@@ -236,8 +228,7 @@ Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pa
   <string name="morphe_sb_stats_saved_second_format">%s segundo</string>
   <string name="morphe_sb_color_opacity_label">Opacity:</string>
   <string name="morphe_sb_color_dot_label">Kulay:</string>
-  <string name="morphe_sb_about_title">Tungkol</string>
-  <string name="morphe_sb_about_api_summary">"Ang data ay ibinibigay ng SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock ay isang crowdsourced na database ng mga video segment tulad ng mga sponsor, intro, outro, at mga paalala na mag-subscribe. Ang mga segment ay isinumite at binoboto ng komunidad, at ang database ay bukas at libreng i-download.
 
-I-tap dito upang buksan ang Sponsor.ajay.app at tingnan ang mga pag-download para sa iba pang mga platform"</string>
+Ang ID ng video na iyong pinapanood ay ipinapadala sa SponsorBlock API upang makuha ang mga segment nito"</string>
 </resources>

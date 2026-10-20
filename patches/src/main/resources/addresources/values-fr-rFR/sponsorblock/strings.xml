@@ -17,13 +17,12 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">Activer SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock est un service d\'entraide permettant de passer des parties gênantes des vidéos YouTube</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock est un système collaboratif qui permet de passer automatiquement les passages gênants des vidéos YouTube</string>
   <string name="morphe_sb_appearance_category_title">Apparence</string>
   <string name="morphe_sb_voting_button_title">Afficher un bouton de vote</string>
   <string name="morphe_sb_voting_button_summary">Ajoute un bouton pour voter positivement ou négativement sur les segments</string>
   <string name="morphe_sb_square_layout_title">Utiliser la disposition carrée</string>
   <string name="morphe_sb_square_layout_summary">Utilise des coins carrés pour les boutons et les commandes SponsorBlock</string>
-  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Utiliser le bouton Passer compact</string>
   <string name="morphe_sb_compact_skip_button_summary">Réduit la largeur du bouton \'Passer\' pour gagner de la place</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Masquer automatiquement le bouton \'Passer\'</string>
@@ -73,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">L\'adresse que SponsorBlock utilise pour effectuer des appels au serveur</string>
   <string name="morphe_sb_channel_whitelist_title">Liste blanche des chaînes</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock est désactivé pour les chaînes de la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Chaîne actuelle :</string>
-  <string name="morphe_sb_channel_whitelist_add">Ajouter à la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_remove">Retirer</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Chaînes de la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_empty">Aucune chaîne dans la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Chaîne ajoutée à la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifier pour les chaînes de la liste blanche</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Affiche une notification lorsque SponsorBlock est désactivé pour une chaîne dans la liste blanche</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock est désactivé pour cette chaîne</string>
@@ -236,8 +228,7 @@ Si vous ne soumettez pas de point clé, appuyez sur 'Annuler' et marquez le seco
   <string name="morphe_sb_stats_saved_second_format">%s secondes</string>
   <string name="morphe_sb_color_opacity_label">Opacité :</string>
   <string name="morphe_sb_color_dot_label">Couleur :</string>
-  <string name="morphe_sb_about_title">À propos</string>
-  <string name="morphe_sb_about_api_summary">"Les données sont fournies par l'API SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock est une base de données collaborative de segments vidéo tels que les sponsors, les intros, les outros et les rappels invitant à s'abonner. Les segments sont soumis et votés par la communauté, et la base de données est ouverte et téléchargeable gratuitement
 
-Appuyez ici pour ouvrir Sponsor.ajay.app et voir les téléchargements disponibles pour les autres plateformes"</string>
+L'identifiant de la vidéo que vous regardez est envoyé à l'API de SponsorBlock afin d'obtenir ses segments"</string>
 </resources>

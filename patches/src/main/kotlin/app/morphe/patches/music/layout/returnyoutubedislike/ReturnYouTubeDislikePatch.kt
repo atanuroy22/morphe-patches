@@ -18,12 +18,14 @@ import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.hookLikeDislikeButtons
 import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.util.getFreeRegisterProvider
@@ -38,13 +40,18 @@ private val returnYouTubeDislikeResourcePatch = resourcePatch {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
-            SwitchPreference("morphe_ryd_compact_layout", summary = true),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
             SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
-            NonInteractivePreference(
-                key = "morphe_ryd_attribution",
-                tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
-                selectable = true,
+            screenInfoPreferenceCategory(
+                key = "morphe_ryd_about",
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_ryd_attribution",
+                        titleKey = null,
+                        tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
+                        selectable = true
+                    )
+                )
             ),
             PreferenceCategory(
                 key = "morphe_ryd_statistics_category",
@@ -68,7 +75,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         returnYouTubeDislikeResourcePatch,
         settingsPatch,
         musicVideoInformationPatch,
-        textComponentPatch,
+        textComponentPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -120,5 +127,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         musicVideoIdHook("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         // endregion
+
+        hookLikeDislikeButtons(EXTENSION_CLASS)
     }
 }
