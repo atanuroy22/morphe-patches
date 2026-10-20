@@ -161,8 +161,9 @@ Expected files to modify
 - strings.xml
   - Update UI display text from Morphe to Premium Youtube (settings button labels, import/export text, Android VR note, morphe_settings_title to Extra Settings, morphe_settings_submenu_title to Premium Settings)
 - CustomBrandingPatch.java (extensions/shared-youtube/.../patches/CustomBrandingPatch.java -
-  getDefaultAppNameIndex() = 2 and getDefaultIconStyle() = BrandingTheme.ORIGINAL; this one file
-  covers both YouTube and YouTube Music, so BaseCustomBrandingPatch.kt needs no fork edit any more)
+  getDefaultAppNameIndex() = 2 and getDefaultIconStyle() = BrandingTheme.ORIGINAL)
+- BaseCustomBrandingPatch.kt (patches/src/main/kotlin/app/morphe/patches/shared/layout/branding/BaseCustomBrandingPatch.kt -
+  set DEFAULT_ICON_STYLE_NAME = ORIGINAL_USER_ICON_STYLE_NAME so patch-time default launcher icon and manifest alias resolve to Original)
 - Constants.kt
 - CheckEnvironmentPatch.java (extensions/shared/library/...)
 - SettingsPatch.kt (YouTube - remove the About preference)

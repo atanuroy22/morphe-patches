@@ -66,7 +66,7 @@ private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
 private const val CUSTOM_USER_ICON_STYLE_NAME = "custom"
 
 // The icon the app uses when no icon style was selected.
-private const val DEFAULT_ICON_STYLE_NAME = "black"
+private const val DEFAULT_ICON_STYLE_NAME = ORIGINAL_USER_ICON_STYLE_NAME
 
 // Derived from the bundled styles so a new style cannot be missing here.
 private val iconStyleValues = buildMap {
