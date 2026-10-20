@@ -1,3 +1,9 @@
+## [1.41.2](https://github.com/atanuroy22/morphe-patches/compare/v1.41.1...v1.41.2) (2026-10-20)
+
+### 🐛 Bug Fixes
+
+* **branding:** add missing getDefaultIconStyle declaration ([1234ea6](https://github.com/atanuroy22/morphe-patches/commit/1234ea69ec48eabd9a114e1a04b60e8ea35d5c3a))
+
 # Unreleased
 
 ### 🔧 Fork defaults re-applied after the upstream merge
