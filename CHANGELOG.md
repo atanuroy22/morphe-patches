@@ -4,8 +4,6 @@
 
 * **branding:** add missing getDefaultIconStyle declaration ([1234ea6](https://github.com/atanuroy22/morphe-patches/commit/1234ea69ec48eabd9a114e1a04b60e8ea35d5c3a))
 
-# Unreleased
-
 Fork changes on top of upstream `v1.48.0`:
 
 ### 🔧 Fork defaults re-applied after the upstream merge
