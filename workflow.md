@@ -72,9 +72,12 @@ YouTube defaults to enforce
    - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids in morphe-patches\patches\src\main\kotlin\app\morphe\patches\youtube\misc\gms\Constants.kt
    
 2. External downloader
-   - Disable Override download action button. morphe_external_downloader_action_button = false
-   - Enable show external download button.(morphe_external_downloader = true)
-   - Set default package name to com.video.fun.app.
+   - Disable Override download action button. morphe_download_mode = DownloadMode.DEFAULT
+   - Enable show external download button.(morphe_external_downloader_overlay_button = true)
+   - Set default package name to com.video.fun.app (morphe_external_downloader_name).
+   - Note: upstream v1.48.0 refactored downloads into `morphe_download_mode` (DEFAULT | IN_APP | EXTERNAL)
+     and `morphe_external_downloader_overlay_button`. The fork keeps `DOWNLOAD_MODE = DownloadMode.DEFAULT`
+     and sets `EXTERNAL_DOWNLOADER_OVERLAY_BUTTON = true` and `EXTERNAL_DOWNLOADER_PACKAGE_NAME = "com.video.fun.app"`.
 
 3. Player
    - Enable hide endscreen cards button.(morphe_hide_end_screen_cards = true)
