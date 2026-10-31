@@ -133,8 +133,8 @@ YouTube defaults to enforce
 12. About
    - Hide the About section inside Premium Settings/Extra settings. ("About" button located above "Ads" button.i want to hide the button because it is not useful for me.)
    - Implemented by deleting the `preferences += NonInteractivePreference("morphe_settings_screen_00_about", ...)`
-     block (and its now-unused `NonInteractivePreference` import) from
-     `patches/src/main/kotlin/app/morphe/patches/youtube/misc/settings/SettingsPatch.kt`.
+     block from `patches/src/main/kotlin/app/morphe/patches/youtube/misc/settings/SettingsPatch.kt`.
+     Note: keep the `NonInteractivePreference` import as upstream v2.0.0 uses it for `morphe_settings_new_indicator_days` in `PreferenceScreen.MISC`.
      Leave the `morphe_settings_screen_00_about*` drawables in the `copyResources` list; they are
      harmless and removing them causes needless conflicts on every upstream merge.
 
