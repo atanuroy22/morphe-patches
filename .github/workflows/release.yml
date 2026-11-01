@@ -53,12 +53,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Setup signing key
+        run: |
+          if [ -z "${{ secrets.MORPHE_SIGNING_KEY }}" ] && [ -f morphe-signing.key ]; then
+            echo "MORPHE_SIGNING_KEY=$(cat morphe-signing.key | tr -d '\r\n')" >> $GITHUB_ENV
+          fi
+
       - name: Release
         uses: cycjimmy/semantic-release-action@v8
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MORPHE_SIGNING_KEY: ${{ secrets.MORPHE_SIGNING_KEY }}
+          MORPHE_SIGNING_KEY: ${{ secrets.MORPHE_SIGNING_KEY || env.MORPHE_SIGNING_KEY }}
 
       - name: Attest
         if: steps.release.outputs.new_release_published == 'true'
