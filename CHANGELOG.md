@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/atanuroy22/morphe-patches/compare/v2.1.0...v2.1.1) (2026-11-10)
+
+### 🐛 Bug Fixes
+
+* **branding:** add missing getDefaultIconStyle declaration ([1234ea6](https://github.com/atanuroy22/morphe-patches/commit/1234ea69ec48eabd9a114e1a04b60e8ea35d5c3a))
+* restore NonInteractivePreference import in SettingsPatch ([87cf05c](https://github.com/atanuroy22/morphe-patches/commit/87cf05c1d9bf4a2f70e63260035c7fb30b10fcd5))
+
 # Unreleased
 
 Fork changes on top of upstream `v2.1.0`:
