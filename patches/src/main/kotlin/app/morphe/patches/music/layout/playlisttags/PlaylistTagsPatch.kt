@@ -12,15 +12,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.findInstructionIndicesReversedOrThrow
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.androidauto.GridRendererItemsFingerprint
-import app.morphe.patches.music.misc.androidauto.addInterfaceMethod
-import app.morphe.patches.music.misc.androidauto.findInterfaceMethod
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -49,8 +48,7 @@ private const val FILTER_LIBRARY_ITEMS =
 private const val FILTER_GRID_ITEMS =
     "$EXTENSION_CLASS->filterGridItems(Ljava/util/List;)Ljava/util/List;"
 
-@Suppress("unused")
-val playlistTagsPatch = bytecodePatch(
+val playlistTagsPatch = patch(
     name = "Playlist tags",
     description = "Adds an option to tag playlists from their menu, and to filter the Library playlists by tag.",
 ) {
@@ -88,8 +86,7 @@ val playlistTagsPatch = bytecodePatch(
 
         // region Library: forget the tags of deleted playlists.
 
-        val deleteEventType = HandleDeletePlaylistEventFingerprint.method.parameterTypes.first().toString()
-        deletePlaylistEventConstructorFingerprint(deleteEventType).method.addInstruction(
+        DeletePlaylistEventConstructorFingerprint.method.addInstruction(
             0,
             "invoke-static { p2 }, $EXTENSION_CLASS->onPlaylistRemoved(Ljava/lang/String;)V"
         )
@@ -161,7 +158,7 @@ private fun MutableMethod.filterReturnedItems(filterMethod: String) {
  * @param restoredItemsField Field the constructor sets to the items restored from the saved state
  *                           of a previous presenter, which are filtered again.
  */
-private fun BytecodePatchContext.registerLibraryPresenter(
+private fun registerLibraryPresenter(
     presenterClass: ClassDef,
     restoredItemsField: FieldReference? = null,
 ) {
@@ -199,11 +196,11 @@ private fun BytecodePatchContext.registerLibraryPresenter(
 /**
  * Hooks the presenter of the Library list view.
  */
-private fun BytecodePatchContext.hookLibraryListPresenter() {
+private fun hookLibraryListPresenter() {
     val itemsMethod = GridRendererItemsFingerprint.method
     itemsMethod.filterReturnedItems(FILTER_LIBRARY_ITEMS)
 
-    val bindFingerprint = libraryListBindFingerprint(GridRendererItemsFingerprint.originalMethod)
+    val bindFingerprint = LibraryListBindFingerprint
     val bindMethod = bindFingerprint.method
     val rendererField = bindFingerprint.instructionMatches.first().fieldReference
     val itemsField = bindFingerprint.instructionMatches.last().fieldReference
@@ -212,10 +209,9 @@ private fun BytecodePatchContext.hookLibraryListPresenter() {
     // so bind the renderer the presenter holds again, as the constructor does. This also clears
     // the headers that binding adds again.
     val presenterClass = GridRendererItemsFingerprint.classDef
-    presenterClass.interfaces.add(EXTENSION_LIBRARY_PRESENTER_INTERFACE)
-    presenterClass.addInterfaceMethod(
-        findInterfaceMethod(EXTENSION_LIBRARY_PRESENTER_INTERFACE, "patch_reloadLibrary"),
-        3,
+    presenterClass.addPatchInterface(
+        EXTENSION_LIBRARY_PRESENTER_INTERFACE,
+        "patch_reloadLibrary",
         """
             iget-object v0, p0, $rendererField
             if-eqz v0, :no_renderer
@@ -234,7 +230,7 @@ private fun BytecodePatchContext.hookLibraryListPresenter() {
  * The presenter keeps only the last page of items it loaded in its renderer field, so the
  * extension keeps the items of all pages, and rebinds the grid from them after the filter changes.
  */
-private fun BytecodePatchContext.hookLibraryGridPresenter() {
+private fun hookLibraryGridPresenter() {
     LibraryGridItemsFingerprint.method.apply {
         filterReturnedItems(FILTER_GRID_ITEMS)
         addInstruction(
@@ -250,10 +246,9 @@ private fun BytecodePatchContext.hookLibraryGridPresenter() {
     val messageField = libraryGridItemWrapperConstructorFingerprint(wrapperType, messageType)
         .instructionMatches.first().fieldReference
     mutableClassDefBy(wrapperType).apply {
-        interfaces.add(EXTENSION_MESSAGE_WRAPPER_INTERFACE)
-        addInterfaceMethod(
-            findInterfaceMethod(EXTENSION_MESSAGE_WRAPPER_INTERFACE, "patch_getMessage"),
-            1,
+        addPatchInterface(
+            EXTENSION_MESSAGE_WRAPPER_INTERFACE,
+            "patch_getMessage",
             """
                 iget-object p0, p0, $messageField
                 return-object p0
@@ -278,10 +273,9 @@ private fun BytecodePatchContext.hookLibraryGridPresenter() {
     )
 
     val presenterClass = LibraryGridItemsFingerprint.classDef
-    presenterClass.interfaces.add(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE)
-    presenterClass.addInterfaceMethod(
-        findInterfaceMethod(EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE, "patch_rebindItems"),
-        3,
+    presenterClass.addPatchInterface(
+        EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE,
+        "patch_rebindItems",
         """
             iget-object v0, p0, $rendererField
             if-eqz v0, :no_renderer

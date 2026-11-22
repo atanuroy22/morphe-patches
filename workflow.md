@@ -84,7 +84,7 @@ YouTube defaults to enforce
    - Enable hide end screen suggested video button.(morphe_hide_end_screen_suggested_video = true)
 
 4. Video
-   - Enable remember video quality changes.(morphe_remember_video_quality_last_selected = true)
+   - Enable remember video quality changes.(morphe_remember_video_quality_last_selected = true in SharedYouTubeSettings.java; moved upstream v2.2.0 from Settings.java)
    - Enable remember playback speed changes.(morphe_remember_playback_speed_last_selected = true)
    - Enable advanced video quality menu.(morphe_advanced_video_quality_menu = true)
    - Enable remember shorts quality changes.(morphe_remember_shorts_quality_last_selected = true)
@@ -122,7 +122,7 @@ YouTube defaults to enforce
      BRIGHTNESS | SPEED). Leave the top zone OFF.
 
 10. Miscellaneous
-   - Disable announcements by default.(morphe_announcements = false)
+   - (Obsolete) `morphe_announcements` was removed upstream as of v2.2.0 - the entire announcements patch and setting were deleted, so there is nothing to enforce. Kept here only so the item is not re-added by mistake.
 
 11. Settings entry name (upstream v1.41.0)
    - Upstream added `morphe_settings_name` (SharedSettings.SETTINGS_NAME, default "DEFAULT") plus the
