@@ -27,6 +27,8 @@ Repository setup
 Recurring merge conflicts (and how they are resolved)
 - `.github/workflows/release.yml` — keep the fork's `github.repository == 'MorpheApp/morphe-patches'` +
   `env.<SECRET> != ''` guards, take upstream's action version bumps.
+  Add `continue-on-error: true` to the `Attest` step so transient Sigstore transparency log (Rekor) 404
+  propagation issues do not fail the release run after release assets have already been published.
 - `CHANGELOG.md` — take upstream's side, but keep the fork's own most recent `## [x.y.z]` section
   (upstream does not have it) and place it in date order below upstream's new sections. Then prepend
   a fresh `# Unreleased` section describing the fork changes; semantic-release prepends the generated
